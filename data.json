@@ -1,0 +1,153 @@
+{
+    "moves": [
+        {
+            "id": 1,
+            "shortName": "engage",
+            "capital": "DIRECTLY ENGAGE A THREAT",
+            "phrase": "directly engages a threat!",
+            "blob": "When you *directly engage a threat*, roll + Danger.\nOn a hit, trade blows. On a _10+_, pick two. On a _7-9_,\npick one.\n• resist or avoid their blows\n• take something from them\n• create an opportunity for your allies\n• impress, surprise, or frighten the opposition",
+            "label": "danger",
+            "description": " ",
+            "img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png"
+        },
+        {
+            "id": 2,
+            "shortName": "unleash",
+            "capital": "UNLEASH YOUR POWERS",
+            "phrase": "unleashes their powers!",
+            "blob": "When you *unleash your powers* to overcome an obstacle, reshape your environment, or extend your senses, roll + Freak. \nOn a hit, you do it. On a _7-9_, mark a condition or the GM will tell you how the effect is unstable or temporary.",
+            "label": "freak",
+            "description": " ",
+            "img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png"
+        },
+        {
+            "id": 3,
+            "shortName": "comfort",
+            "capital": "COMFORT OR SUPPORT",
+            "phrase": "comforts or supports!",
+            "blob": "When you *comfort or support someone*, roll + Mundane. \nOn a hit, they hear you: they mark potential, clear a condition, or shift Labels if they open up to you. On a _10+_, you can also add a Team to the pool or clear a condition yourself.",
+            "label": "mundane",
+            "description": " ",
+            "img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png"
+        },
+        {
+            "id": 4,
+            "shortName": "pierce",
+            "capital": "PIERCE THE MASK",
+            "phrase": "pierces the mask!",
+            "blob": "When you *pierce someone’s mask* to see the person beneath, roll + Mundane. \nOn a _10+_, ask three. On a _7-9_, ask one.\n• what are you really planning?\n• what do you want me to do?\n• what do you intend to do?\n• how could I get your character to \\_\\_\\_?\n• how could I gain Influence over you?",
+            "label": "mundane",
+            "description": " ",
+            "img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png"
+        },
+        {
+            "id": 5,
+            "shortName": "defend",
+            "capital": "DEFEND",
+            "phrase": "defends!",
+            "blob": "When you *defend someone or something from an immediate threat*, roll + Savior. \nFor *NPC threats*: on a hit, you keep them safe and choose one. On a _7-9_, it costs you: expose yourself to danger or escalate the situation.\n• add a Team to the pool\n• take Influence over someone you protect\n• clear a condition\nFor *PC threats*: on a hit, give them -2 to their roll.\nOn a _7-9_, you expose yourself to cost, retribution, or judgment.",
+            "label": "savior",
+            "description": " ",
+            "img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png"
+        },
+        {
+            "id": 6,
+            "shortName": "assess",
+            "capital": "ASSESS THE SITUATION",
+            "phrase": "assesses the situation!",
+            "blob": "When you *assess the situation*, roll + Superior. \nOn a 10+, ask two. On a 7-9, ask one. Take +1 while acting on the answers.\n• what here can I use to ________?\n• what here is the biggest threat?\n• what here is in the greatest danger?\n• who here is most vulnerable to me?\n• how could we best end this quickly?",
+            "label": "superior",
+            "description": " ",
+            "img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png"
+        },
+        {
+            "id": 7,
+            "shortName": "provoke",
+            "capital": "PROVOKE SOMEONE",
+            "phrase": "provokes someone!",
+            "blob": "When you *provoke someone* susceptible to your words, say what you’re trying to get them to do and roll + Superior. \nFor *NPCs*: on a _10+_, they rise to the bait and do what you want. On a _7-9_, they can instead choose one.\n• they stumble: you take +1 forward against them\n• they err: you gain a critical opportunity\n• they overreact: you gain Influence over them\nFor *PCs*: On a _10+_, both. On a _7-9_, choose one.\n• if they do it, add a Team to the pool\n• if they don’t do it, they mark a condition",
+            "label": "superior",
+            "description": " ",
+            "img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png"
+        },
+        {
+            "id": 8,
+            "shortName": "take",
+            "capital": "TAKE A POWERFUL BLOW",
+            "phrase": "takes a powerful blow!",
+            "blob": "When you *take a powerful blow*, roll + conditions marked. \nOn a _10+_, choose one.\n• you must remove yourself from the situation: flee, pass out, etc.\n• you lose control of yourself or your powers in a terrible way\n• two options from the 7-9 list\nOn a _7-9_, choose one.\n• you lash out verbally: provoke a teammate to foolhardy action or take advantage of your Influence to inflict a condition\n• you give ground; your opposition gets an opportunity\n• you struggle past the pain; mark two conditions\nOn a miss, you stand strong. Mark potential as normal, and say how you weather the blow.",
+            "label": "conditions",
+            "description": " ",
+            "img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png"
+        },
+        {
+            "id": 9,
+            "shortName": "other",
+            "capital": "ANY OTHER PLAYBOOK MOVE",
+            "phrase": "uses a move!",
+            "label": "flat",
+            "description": " ",
+            "img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png"
+        },
+        {
+            "id": 10,
+            "shortName": "reject",
+            "capital": "REJECT SOMEONE'S INFLUENCE",
+            "phrase": "rejects!",
+            "blob": "When you *reject someone’s Influence*, roll.\n On a hit, you successfully hold to yourself and tune them out.\nOn a _10+_, choose two. On a _7-9_, choose one.\n• clear a condition or mark potential by immediately acting to prove them wrong\n• shift one Label up and one Label down, your choice\n• cancel their Influence and take +1 forward against them\nOn a miss, their words hit you hard. Mark a condition, and the GM will adjust your Labels.\n",
+            "label": "flat",
+            "description": " ",
+            "img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png"
+        },
+        {
+            "id": 11,
+            "shortName": "wield",
+            "capital": "WIELD YOUR POWERS",
+            "phrase": "wields their powers!",
+            "blob": "When you *wield your powers* with precision or grace, roll + Freak. \nOn a hit, choose one. On a _10+_, choose two.\n• take hold of something vulnerable to you\n• create something useful from your environment\n• neutralize an opponent or threat, at least for now",
+            "label": "freak",
+            "description": " ",
+            "img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png"
+        },
+        {
+            "id": 12,
+            "shortName": "overwhelm",
+            "capital": "OVERWHELM A VULNERABLE FOE",
+            "phrase": "overwhelms a vulernable foe!",
+            "blob": "When you *overwhelm a vulnerable foe*, roll +Danger. \nOn a hit, the fight’s over. They’re done.\nOn a _10+_, choose one. On a _7-9_, choose two.\n• you take a powerful blow in turn\n• you hurt your foe more than you intended\n• you cause serious collateral damage",
+            "label": "danger",
+            "description": " ",
+            "img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png"
+        },
+        {
+            "id": 13,
+            "shortName": "persuade",
+            "capital": "PERSUADE WITH BEST INTERESTS",
+            "phrase": "persuades!",
+            "blob": "When you *persuade someone with their best interests*, roll + Superior. \nIf they’re an *NPC*, on a _10+_, they buy it and act accordingly. On a _7-9_, they need concrete assurance, right now.\nIf they’re a PC, on a hit, they can mark potential or shift their own Labels if they do what you want.\nOn a _10+_, take Influence over them as well.",
+            "label": "superior",
+            "description": " ",
+            "img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png"
+        },
+        {
+            "id": 14,
+            "shortName": "empathize",
+            "capital": "EMPATHIZE",
+            "phrase": "emphathizes!",
+            "blob": "When you openly *empathize with someone*, roll +Mundane. \nOn a hit, they must reveal a vulnerability or mark a condition. On a _10+_, take Influence over them as well.",
+            "label": "mundane",
+            "description": " ",
+            "img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png"
+        },
+        {
+            "id": 15,
+            "shortName": "standup",
+            "capital": "STAND UP FOR SOMETHING",
+            "phrase": "stands up for something!",
+            "blob": "When you *stand up for something*, roll + Savior. \nOn a _10+_, choose two. On a _7-9_, choose one.\n• listeners can’t keep doing what they’re doing\n• listeners can’t flee without addressing you\n• listeners can’t attack you without losing status or position",
+            "label": "savior",
+            "description": " ",
+            "img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png"
+        }
+    ]
+}
