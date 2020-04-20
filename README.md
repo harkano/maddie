@@ -70,6 +70,8 @@ e.g.
 
 # Future Enhancements
 
+Currently she's deployed on AWS Free Tier, and I need to hook it up properly so you can release from here.
+
 I've got a protoype of prefix changing in the 2.0 version, but it loses a lot of command parsing flexiblity.
 
 I'm also interested in connecting to an online character sheet, but that's still pending me learning a lot more about web programming.
