@@ -53,4 +53,4 @@ Type `!moves+` to get a more detailed explanation of all moves.
 
 `!standup`   - STAND UP FOR SOMETHING
 
-For any feedback, feature request or bug reports please contact 'Harkano (Ross) #7019'
+For any feedback, feature request or bug reports please visit our Discord @ https://discord.gg/7p8g8H5 'Harkano (Ross) #7019'
