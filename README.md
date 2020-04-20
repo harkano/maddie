@@ -16,6 +16,8 @@ Syntax is as follows - <move>+/-<label>
 If you're using a playbook move not covered here you can use `!other+1`
 The idea is to save you having the generic moves sheet open at any time.
 
+(https://i.imgur.com/MtVp1KM.png)
+
 I will be a bit less verbose if you prefix with !! (once you're comfortable with the detailed results) e.g. `!!unleash+2`
 
 Type `!moves` to see the short version of help.
