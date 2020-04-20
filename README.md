@@ -15,6 +15,8 @@ Syntax is as follows - <move>+/-<label>
 `!support-2`
 If you're using a playbook move not covered here you can use `!other+1`
 The idea is to save you having the generic moves sheet open at any time.
+  
+You can be pretty messy with the command as it uses regular expression matches, it will also only use the first number in the command, and assumes a + if there's no modifier.  So you should be able to `!   unleash234` to get an Unleash+2.  Note that it currently doesn't support prefix changes, so it doesn't play with with other ! prefix bots.
 
 ![Loud Mode](https://i.imgur.com/MtVp1KM.png "Loud Mode")
 
@@ -64,3 +66,13 @@ For any feedback, feature request or bug reports please visit our Discord @ http
 Note that the moveset is designed by a very open JSON format, so I'm potentially interested in adapting this for a variety of PBTA movesets.  I just wanted to run Masks first :)
 e.g.
 ![JSON Data](https://i.imgur.com/qmUCXWW.png "JSON")
+
+# Future Enhancements
+
+I've got a protoype of prefix changing in the 2.0 version, but it loses a lot of command parsing flexiblity.
+
+I'm also interested in connecting i
+
+# Credits
+
+Special Graphics thanks to - Chordial#6969
