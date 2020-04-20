@@ -90,7 +90,9 @@ def mad_parse(msg,user):
 
         return embed
 
-    else:return 0
+    else:
+        logger.info('no match found for '+msg)
+        return 0
 
 
 @client.event
@@ -129,5 +131,7 @@ async def on_message(message):
         log_line = message.guild.name + "|" + message.channel.name + "|" + message.author.name + "|" + message.content
         logger.info(log_line)
         response =  mad_parse(message.content, message.author.display_name)
-        if response: await message.channel.send(embed=response)
+        if response: 
+            logger.info(response)
+            await message.channel.send(embed=response)
 client.run(TOKEN)
