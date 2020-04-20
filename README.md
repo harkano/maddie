@@ -23,21 +23,34 @@ Type `!moves+` to get a more detailed explanation of all moves.
 
 # Basic moves
 `!engage`  - DIRECTLY ENGAGE A THREAT
+
 `!unleash` - UNLEASH YOUR POWERS
+
 `!comfort` - COMFORT OR SUPPORT
+
 `!pierce`  - PIERCE THE MASK
+
 `!defend`  - DEFEND
+
 `!assess`  - ASSESS THE SITUATION
+
 `!provoke` - PROVOKE SOMEONE
+
 `!take`    - TAKE A POWERFUL BLOW
+
 `!reject`  - REJECT SOMEONE'S INFLUENCE
+
 `!other`   - ANY OTHER PLAYBOOK MOVE
 
 # Adult moves
 `!wield`     - WIELD YOUR POWERS
+
 `!overwhelm` - OVERWHELM A VULNERABLE FOE
+
 `!persuade`  - PERSUADE WITH BEST INTERESTS
+
 `!empathize` - EMPATHIZE
+
 `!standup`   - STAND UP FOR SOMETHING
 
 For any feedback, feature request or bug reports please contact 'Harkano (Ross) #7019'
