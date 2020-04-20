@@ -20,6 +20,8 @@ The idea is to save you having the generic moves sheet open at any time.
 
 I will be a bit less verbose if you prefix with !! (once you're comfortable with the detailed results) e.g. `!!unleash+2`
 
+![Quiet Mode](https://i.imgur.com/5iVp7FK.png "Quiet Mode")
+
 Type `!moves` to see the short version of help.
 Type `!moves+` to get a more detailed explanation of all moves.
 
