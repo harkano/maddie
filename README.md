@@ -10,7 +10,7 @@ https://discordapp.com/channels/696999350726819931/697551365362417664/6975515525
 
 `!help` - Displays all commands
 
-Syntax is as follows - <move>+/-<label>
+Syntax is as follows - `move+/-label`
 `!engage+3`
 `!support-2`
 If you're using a playbook move not covered here you can use `!other+1`
