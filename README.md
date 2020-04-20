@@ -60,13 +60,7 @@ Type `!moves+` to get a more detailed explanation of all moves.
 For any feedback, feature request or bug reports please visit our Discord @ https://discord.gg/7p8g8H5 'Harkano (Ross) #7019'
 
 # Dataset
-`        {
-            "id": 2,
-            "shortName": "unleash",
-            "capital": "UNLEASH YOUR POWERS",
-            "phrase": "unleashes their powers!",
-            "blob": "When you *unleash your powers* to overcome an obstacle, reshape your environment, or extend your senses, roll + Freak. \nOn a hit, you do it. On a _7-9_, mark a condition or the GM will tell you how the effect is unstable or temporary.",
-            "label": "freak",
-            "description": " ",
-            "img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png"
-        },`
+
+Note that the moveset is designed by a very open JSON format, so I'm potentially interested in adapting this for a variety of PBTA movesets.  I just wanted to run Masks first :)
+
+![JSON Data](https://i.imgur.com/qmUCXWW.png "JSON")
