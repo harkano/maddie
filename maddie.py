@@ -75,8 +75,8 @@ def mad_parse(msg,user):
     result4 = re.search(searchStr4, msg)
     if result4: quiet = 1
 #do dice rolling
-    result1 = random.randrange(1,6) ##first d6
-    result2 = random.randrange(1,6) ##second d6
+    result1 = random.randrange(1,7) ##first d6
+    result2 = random.randrange(1,7) ##second d6
     result_tot = result1 + result2 + num_calc #2 d6 + mod
 #Ugly format blob!
     if match == 1 : #lets us ignore ! prefix commands that aren't in our list
