@@ -10,6 +10,7 @@ import logging
 #import owner
 
 from dotenv import load_dotenv
+from utils import get_modified_num
 
 logger = logging.getLogger('discord')
 logger.setLevel(logging.INFO) #set logging level to INFO, DEBUG if we want the full dump
