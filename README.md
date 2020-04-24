@@ -4,7 +4,7 @@ Masks Automated Discord Dice Interpreter &amp; Explainer!
 
 # Add Maddie to Your Server
 
-https://discordapp.com/channels/696999350726819931/697551365362417664/697551552550010891
+https://discordapp.com/api/oauth2/authorize?client_id=696512126675583026&permissions=101440&scope=bot
 
 # Maddie Commands 
 
