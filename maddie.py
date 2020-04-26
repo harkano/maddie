@@ -110,24 +110,18 @@ async def on_message(message):
     if message.author == client.user:
         return
     #answer a call for help
+
+    #list moves
+    move_list = get_moves(message, json_array)
+    if move_list:
+        await message.channel.send(move_list)
     elif message.content.startswith("!help"):
         log_line = message.guild.name + "|" + message.channel.name + "|" + message.author.name + "|" + message.content
         logger.info(log_line)
         help_file = open("help","r")
         response = help_file.read() 
         await message.channel.send(response)
-    #list moves
-    elif message.content.startswith("!moves+"):
-        response = '**Name - description, keyword, label**\n'
-        for p in json_array['moves']:
-            response = response + p['capital'].capitalize() + " - " + p['description'] + ", " + p['shortName'] + ", " + p['label'] + "\n "
-        await message.channel.send(response) 
-    elif message.content.startswith("!moves"):
-        response = ''
-        for p in json_array['moves']:
-            response = response + p['shortName'] + ", "
-        await message.channel.send(response) 
-#remember generic ! should always be last in the tree
+    #remember generic ! should always be last in the tree
     elif message.content.startswith("!"):
         log_line = message.guild.name + "|" + message.channel.name + "|" + message.author.name + "|" + message.content
         logger.info(log_line)
