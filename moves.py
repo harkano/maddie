@@ -38,7 +38,7 @@ def get_moves(message, moves_array):
           for playbook in get_playbook_names():
             response = response + playbook
           
-          response = response + "\nAdd one of the names in lowercase and without the 'The'\ne.g.: !moves-beacon"
+          response = response + "\nAdd one of the names in lowercase and without the 'The', basic or adult\ne.g.: !moves-beacon, !moves-basic, !moves-adult"
 
           return response
 
