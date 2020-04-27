@@ -9,6 +9,7 @@ import logging
 
 from dotenv import load_dotenv
 from utils import get_modified_num
+from moves import get_moves
 
 logger = logging.getLogger('discord')
 logger.setLevel(logging.INFO) #set logging level to INFO, DEBUG if we want the full dump
@@ -25,6 +26,16 @@ client = discord.Client()
 ##Load in the existing moves
 input_file = open ('data.json')
 json_array = json.load(input_file)
+
+
+def add_result (embed, num_calc, mod, num):
+    #do dice rolling
+    result1 = random.randrange(1,6) ##first d6
+    result2 = random.randrange(1,6) ##second d6
+    result_tot = result1 + result2 + num_calc #2 d6 + mod
+    embed.add_field(name="Calculation", value=f"Dice **{result1}** + **{result2}**, Label {mod} **{num}**", inline=False)
+    embed.add_field(name="Result", value=f"**{result_tot}**")
+
 
 ##Setup the big sub
 def mad_parse(msg,user):
@@ -70,6 +81,7 @@ def mad_parse(msg,user):
             capital = p['capital']
             phrase = p['phrase']
             img = p['img']
+            roll = p['requiresRolling']
             match = 1
     #Quiet mode
     searchStr4 = r'!!'
@@ -85,8 +97,8 @@ def mad_parse(msg,user):
         embed.set_author(name=f"{user} {phrase}")
         embed.set_thumbnail(url=img)
         if quiet == 0: embed.add_field(name="Description", value=f"{blob}") # don't include the blob if we're in quiet mode (!!)
-        embed.add_field(name="Calculation", value=f"Dice **{result1}** + **{result2}**, Label {mod} **{num}**", inline=False)
-        embed.add_field(name="Result", value=f"**{result_tot}**")
+        if roll:
+            add_result(embed, num_calc, mod, num)
         embed.set_footer(text=" ")
 
         return embed
