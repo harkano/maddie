@@ -24,6 +24,7 @@ print (os.path.basename(__file__))
 if os.path.basename(__file__) == 'maddie2.py':TOKEN = os.getenv('DISCORD_TOKEN_DEV')
 else:TOKEN = os.getenv('DISCORD_TOKEN')
 print (TOKEN)
+
 def get_prefix(bot, message):
     if not message.guild:
         return commands.when_mentioned_or("!")(bot, message)
@@ -63,23 +64,19 @@ for p in json_array['moves']:
     moves_list.append(p['shortName'])
 print (moves_list)
 
-def get_prefix(bot, message):
-    if not message.guild:
-        return commands.when_mentioned_or("!")(bot, message)
-    with open("prefixes.json", 'r') as f:
-        prefixes = json.load(f)
-    if str(message.guild.id) not in prefixes:
-        return commands.when_mentioned_or("!")(bot, message)
-    prefix = prefixes[str(message.guild.id)]
-    return commands.when_mentioned_or(prefix)(bot, message)
 
-
-def add_result (embed, num_calc, mod, num):
+def add_result (embed, num_calc, mod):
     #do dice rolling
     result1 = random.randrange(1,6) ##first d6
     result2 = random.randrange(1,6) ##second d6
     result_tot = result1 + result2 + num_calc #2 d6 + mod
-    embed.add_field(name="Calculation", value=f"Dice **{result1}** + **{result2}**, Label {mod} **{num}**", inline=False)
+
+    if mod == '-':
+        modifier_to_show = ''
+    else:
+        modifier_to_show = f' {mod}'
+
+    embed.add_field(name="Calculation", value=f"Dice **{result1}** + **{result2}**, Label{modifier_to_show} **{num_calc}**", inline=False)
     embed.add_field(name="Result", value=f"**{result_tot}**")
 
 
@@ -97,7 +94,7 @@ def mad_parse(msg,user):
     msg = msg.lower()
     searchStr1 = r'[a-z]+'
     searchStr2 = r'[\+\-]'
-    searchStr3 = r'[123456]'
+    searchStr3 = r'[1234567890]'
     log_line = ''
     result1 = re.search(searchStr1, msg)
     if result1:
@@ -116,10 +113,7 @@ def mad_parse(msg,user):
     else: log_line = log_line + "no num "
     logger.info (msg + log_line)
  # figure out which type of modifier it is
-    num_calc = int(0)
-    if mod == '+': num_calc  = num 
-    elif mod == '-' : num_calc = -1 * num
-    else : num_calc = num
+    num_calc = get_modified_num(mod, num)
  # lookup a table for the big blob of text and a wee blob
     for p in json_array['moves']:
         if p['shortName'] == word:
@@ -141,7 +135,7 @@ def mad_parse(msg,user):
         embed.set_thumbnail(url=img)
         if quiet == 0: embed.add_field(name="Description", value=f"{blob}") # don't include the blob if we're in quiet mode (!!)
         if roll:
-            add_result(embed, num_calc, mod, num)
+            add_result(embed, num_calc, mod)
         embed.set_footer(text=" ")
 
         return embed
