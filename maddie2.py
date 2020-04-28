@@ -11,6 +11,7 @@ import logging
 
 from dotenv import load_dotenv
 from utils import get_modified_num
+from moves import get_moves
 
 logger = logging.getLogger('discord')
 logger.setLevel(logging.INFO) #set logging level to INFO, DEBUG if we want the full dump
@@ -72,7 +73,16 @@ def get_prefix(bot, message):
     prefix = prefixes[str(message.guild.id)]
     return commands.when_mentioned_or(prefix)(bot, message)
 
-        
+
+def add_result (embed, num_calc, mod, num):
+    #do dice rolling
+    result1 = random.randrange(1,6) ##first d6
+    result2 = random.randrange(1,6) ##second d6
+    result_tot = result1 + result2 + num_calc #2 d6 + mod
+    embed.add_field(name="Calculation", value=f"Dice **{result1}** + **{result2}**, Label {mod} **{num}**", inline=False)
+    embed.add_field(name="Result", value=f"**{result_tot}**")
+
+
 ##Setup the big sub
 def mad_parse(msg,user):
     blob = ""
@@ -117,23 +127,21 @@ def mad_parse(msg,user):
             capital = p['capital']
             phrase = p['phrase']
             img = p['img']
+            roll = p['requiresRolling']
             match = 1
     #Quiet mode
     searchStr4 = r'!!'
     result4 = re.search(searchStr4, msg)
     if result4: quiet = 1
-#do dice rolling
-    result1 = random.randrange(1,6) ##first d6
-    result2 = random.randrange(1,6) ##second d6
-    result_tot = result1 + result2 + num_calc #2 d6 + mod
+
 #Ugly format blob!
     if match == 1 : #lets us ignore ! prefix commands that aren't in our list
         embed=discord.Embed(title=f"{capital}")
         embed.set_author(name=f"{user} {phrase}")
         embed.set_thumbnail(url=img)
         if quiet == 0: embed.add_field(name="Description", value=f"{blob}") # don't include the blob if we're in quiet mode (!!)
-        embed.add_field(name="Calculation", value=f"Dice **{result1}** + **{result2}**, Label {mod} **{num}**", inline=False)
-        embed.add_field(name="Result", value=f"**{result_tot}**")
+        if roll:
+            add_result(embed, num_calc, mod, num)
         embed.set_footer(text=" ")
 
         return embed
@@ -157,6 +165,11 @@ async def on_message(message):
     print (pre)
     if message.author == client.user:
         return
+    #list moves
+    move_list = get_moves(message, json_array)
+    if move_list:
+        await message.channel.send(move_list)
+        return
     #answer a call for help
     elif message.content.startswith("!help"):
         log_line = message.guild.name + "|" + message.channel.name + "|" + message.author.name + "|" + message.content
@@ -164,18 +177,7 @@ async def on_message(message):
         help_file = open("../../aws/help", "r")
         response = help_file.read()
         await message.channel.send(response)
-    #list moves
-    elif message.content.startswith("!moves+"):
-        response = '**Name - description, keyword, label**\n'
-        for p in json_array['moves']:
-            response = response + p['capital'].capitalize() + " - " + p['description'] + ", " + p['shortName'] + ", " + p['label'] + "\n "
-        await message.channel.send(response)
-    elif message.content.startswith("!moves"):
-        response = ''
-        for p in json_array['moves']:
-            response = response + p['shortName'] + ", "
-        await message.channel.send(response)
-#remember generic ! should always be last in the tree
+    #remember generic ! should always be last in the tree
     elif message.content.startswith("!"):
         log_line = message.guild.name + "|" + message.channel.name + "|" + message.author.name + "|" + message.content
         logger.info(log_line)
