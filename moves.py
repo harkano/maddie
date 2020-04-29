@@ -1,8 +1,7 @@
 import re
 
-from playbooks import get_playbook_names
+from playbooks import get_playbook_names, get_playbook_list
 
-MOVE_BY_PLAYBOOK_REGEX = r'!moves-(\w)'
 COMMA_SEPARATOR = ', '
 
 
@@ -26,34 +25,54 @@ def join_with_commas(array_to_join, field):
     return result
 
 
+def get_playbook_field(command):
+    playbook_list = get_playbook_list()
+
+    if command in playbook_list:
+        return command
+
+    if command.startswith('moves'):
+        return 'basic'
+
+    if command.startswith('adult'):
+        return 'adult'
+
+    return ''
+
+
+def get_unknown_playbook_response():
+    response = "Sorry, I couldn't find that playbook, the available playbooks are:"
+    for playbook in get_playbook_names():
+        response = response + playbook
+    
+    response = response + "\nType an exclamation sign and one of the names in lowercase and without the 'The', basic or adult\ne.g.: !beacon, !moves, !adult"
+
+    return response
+
+
 def get_moves(message, moves_array):
     content = message.content
 
-    if re.search(MOVE_BY_PLAYBOOK_REGEX, content):
-        playbook_name = content.split('-')[1]
-        moves_by_playbook = list(filter(lambda move_dict: compare_move_to_playbook(move_dict, playbook_name), moves_array['moves']))
-        
-        if not len(moves_by_playbook):
-          response = "Sorry, I couldn't find that playbook, the available playbooks are:"
-          for playbook in get_playbook_names():
-            response = response + playbook
-          
-          response = response + "\nAdd one of the names in lowercase and without the 'The', basic or adult\ne.g.: !moves-beacon, !moves-basic, !moves-adult"
+    type_of_command = content[1:]
+    print(type_of_command)
 
-          return response
+    if type_of_command.startswith('moves+'):
+        basic_moves_list = list(filter(lambda move_dict: compare_move_to_playbook(move_dict, 'basic'), moves_array['moves']))
 
-        return join_with_commas(moves_by_playbook, 'shortName')
-
-    if content.startswith("!moves+"):
         response = '**Name - description, keyword, label**\n'
-        for p in moves_array['moves']:
+        for p in basic_moves_list:
           response = response + p['capital'].capitalize() + " - " + p['description'] + COMMA_SEPARATOR + p['shortName'] + COMMA_SEPARATOR + p['label'] + "\n "
-        
+
         return response
 
-    if content.startswith("!moves"):
-        response = ''
+    playbook_field = get_playbook_field(type_of_command)
 
-        return join_with_commas(moves_array['moves'], 'shortName')
+    if playbook_field:
+        moves_by_playbook = list(filter(lambda move_dict: compare_move_to_playbook(move_dict, playbook_field), moves_array['moves']))
+        
+        if not len(moves_by_playbook):
+          return get_unknown_playbook_response()
+
+        return join_with_commas(moves_by_playbook, 'shortName')
 
     return None
