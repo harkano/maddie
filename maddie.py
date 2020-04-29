@@ -7,9 +7,10 @@ import json
 import re
 import logging
 
+
 from dotenv import load_dotenv
-from utils import get_modified_num
 from moves import get_moves
+from playbooks import get_moment_of_truth
 
 logger = logging.getLogger('discord')
 logger.setLevel(logging.INFO) #set logging level to INFO, DEBUG if we want the full dump
@@ -18,8 +19,7 @@ handler.setFormatter(logging.Formatter('%(asctime)s:%(levelname)s:%(name)s: %(me
 logger.addHandler(handler)
 
 load_dotenv()
-if __file__ == 'maddie2.py':TOKEN = os.getenv('DISCORD_TOKEN_DEV')
-else:TOKEN = os.getenv('DISCORD_TOKEN')
+TOKEN = os.getenv('DISCORD_TOKEN')
 logger.info (TOKEN)
 client = discord.Client()
 
@@ -30,8 +30,8 @@ json_array = json.load(input_file)
 
 def add_result (embed, num_calc, mod):
     #do dice rolling
-    result1 = random.randrange(1,6) ##first d6
-    result2 = random.randrange(1,6) ##second d6
+    result1 = random.randrange(1,7) ##first d6
+    result2 = random.randrange(1,7) ##second d6
     result_tot = result1 + result2 + num_calc #2 d6 + mod
     embed.add_field(name="Calculation", value=f"Dice **{result1}** + **{result2}**, Label {mod} **{num_calc}**", inline=False)
     embed.add_field(name="Result", value=f"**{result_tot}**")
@@ -52,22 +52,25 @@ async def on_message(message):
     if message.author == client.user:
         return
     #answer a call for help
-
+    if message.content.startswith("!help"):
+        log_line = message.guild.name + "|" + message.channel.name + "|" + message.author.name + "|" + message.content
+        logger.info(log_line)
+        help_file = open("help", "r")
+        response = help_file.read()
+        await message.channel.send(response)
     #list moves
     move_list = get_moves(message, json_array)
     if move_list:
         await message.channel.send(move_list)
-    elif message.content.startswith("!help"):
-        log_line = message.guild.name + "|" + message.channel.name + "|" + message.author.name + "|" + message.content
-        logger.info(log_line)
-        help_file = open("help","r")
-        response = help_file.read() 
-        await message.channel.send(response)
+    #lets share a moment of truth!
+    elif message.content.startswith("!mot"):
+        response = get_moment_of_truth(message.content, message.author.display_name, json_array)
+        await message.channel.send(embed=response)
     #remember generic ! should always be last in the tree
     elif message.content.startswith("!"):
         log_line = message.guild.name + "|" + message.channel.name + "|" + message.author.name + "|" + message.content
         logger.info(log_line)
-        response =  mad_parse(message.content, message.author.display_name)
+        response =  mad_parse(message.content, message.author.display_name, json_array)
         if response: 
             logger.info(response)
             await message.channel.send(embed=response)

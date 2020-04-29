@@ -1,4 +1,5 @@
 import re
+from utils import get_modified_num
 
 ##Setup the big sub
 def mad_parse(msg,user):
@@ -31,7 +32,7 @@ def mad_parse(msg,user):
         log_line = log_line + result3.group(0)
         num = int(result3.group(0))
     else: log_line = log_line + "no num "
-    logger.info (msg + log_line)
+    #logger.info (msg + log_line)
  # figure out which type of modifier it is
     num_calc = get_modified_num(mod, num)
  # lookup a table for the big blob of text and a wee blob
