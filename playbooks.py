@@ -35,3 +35,17 @@ def get_moment_of_truth (msg,usr,json_array):
     else: response = 0
 
     return response
+
+def get_playbooks (json_array):
+    embed = discord.Embed(title=f"Playbooks")
+    embed.set_author(name=f"Available Playbooks are - ")
+    for s in json_array['sources']:
+        line = ""
+        for p in json_array['playbooks']:
+            if s['source'] == p['source']:
+                line = line + p['name'] + ", "
+        line = line.rstrip(', ')
+        embed.add_field(name=f"{s['name']}", value=f"{line}", inline=False)
+        embed.set_footer(text=" ")
+        response = embed
+    return response

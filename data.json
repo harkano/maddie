@@ -704,64 +704,141 @@
 		"playbook": "transformed"
 	}],
 	"playbooks": [{
-		"id" : 1,
+		"id": 1,
 		"name": "beacon",
 		"mot": "This is the moment when you show them exactly why you belong here. You do any one thing, take out any one enemy, no matter how insane, no matter how ridiculous, because that’s you. Their jaws are gonna drop when you’re done. Of course, pulling off a stunt like this tends to bring unwanted attention and a dangerous reputation...",
 		"img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
 		"source": "core"
 	}, {
-		"id" : 2,
+		"id": 2,
 		"name": "bull",
 		"mot": "This is what you do best. You let loose, all the pent up strength and rage and glee, and you break whatever stands in your way. You are a walking demolition crew. What can stand up to you? Nothing. Not buildings. Not structures. Not enemies. Nothing. Of course, now the people who changed you know exactly where to find you...",
 		"img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
 		"source": "core"
 	}, {
-		"id" : 3,
+		"id": 3,
 		"name": "delinquent",
 		"mot": "This is when you show them what you really are. Whether you’re the hero underneath the rebel facade...or the one who can make the hard choices heroes can’t make. You do whatever it takes to show that truth, whether it’s saving the day from a terrible villain or stopping a bad guy once and for all. Of course, once you’ve shown what you really are, there’s no going back to playing the clown...",
 		"img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
 		"source": "core"
 	}, {
-		"id" : 4,
+		"id": 4,
 		"name": "doomed",
 		"mot": "The prickly tingling fear of your doom, always in your head—it holds you back most of the time.  But right here, right now? It gives you the confidence to do anything. After all, what’s the worst that could happen? Is it worse than your doom? Do impossible things. Do anything. But mark a doomsign after you’re finished. ",
 		"img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
 		"source": "core"
 	}, {
-		"id" : 5,
+		"id": 5,
 		"name": "janus",
 		"mot": "The mask is a lie, and some piece of you has always known that. Doesn’t matter if others can see it. You’re the one that can do the impossible. Mask off. Costume on. And you’re going to save the damn day. Of course, you better hope nobody nasty is watching…",
 		"img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
 		"source": "core"
 	}, {
-		"id" : 6,
+		"id": 6,
 		"name": "legacy",
 		"mot": "This is the moment when you prove how much the mantle belongs to you. You seize control of all your powers, and you defeat even impossible odds to prove you are worthy of the name you carry. You accomplish feats even your predecessors couldn’t do. Of course, after you prove something like that, you can expect still more responsibilities to be placed on your shoulders...",
 		"img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
 		"source": "core"
 	}, {
-		"id" : 7,
+		"id": 7,
 		"name": "nova",
 		"mot": "Your mind’s eye opens, and you can see the world around you like never before. You can control it, at will, with ease. Of course, warping reality tends to have ramifications down the line, but in your moment of godhood...how could you possibly be worried? ",
 		"img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
 		"source": "core"
 	}, {
-		"id" : 8,
+		"id": 8,
 		"name": "outsider",
 		"mot": "You embrace your home and call them for aid. They will answer your call—in force! —arriving exactly when you need them to turn the tide. They fight and serve you for the rest of the battle. Of course, when all is said and done...they’d probably like to take you home with them. You did, after all, just prove yourself worthy.",
 		"img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
 		"source": "core"
 	}, {
-		"id" : 9,
+		"id": 9,
 		"name": "protege",
 		"mot": "The moment that you show who you really are: your mentor, or something different. You can do whatever your mentor could do and more. You can do the incredible, even the things they always failed to accomplish. Of course, they’re not going to see you the same way, no matter which path you choose… ",
 		"img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
 		"source": "core"
 	}, {
-		"id" : 10,
+		"id": 10,
 		"name": "transformed",
 		"mot": "It’s so easy to forget that you’re not your body, and you’re not the voice in your head—you’re both. Be the monster, and save them anyway. Smash down walls, and speak softly. Because when you embrace it, you can do anything. Of course, putting on a display like this is sure to rile up those who see only the monster when they look at you…",
 		"img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
 		"source": "core"
-	}]
-}
+	}, {
+		"id": 11,
+		"name": "brain",
+		"mot": "Sooner or later, all the super powers, elite training, and experience are helpless in the face of evil or disaster. That’s when somebody like you, gifted as you are with a peerless intellect, can rise to the occasion. Your plan, your invention, or your lightning-fast thought processes save the day, in a way no one else could have foreseen. Of course, after you’ve shown how different you are from them, that distance between you and the others is now that much greater. And the world is only going to pull you farther apart...",
+		"img": "",
+		"source": "aegis"
+	}, {
+		"id": 12,
+		"name": "soldier",
+		"mot": "Freedom isn’t free. But not every mission ends in tragedy. When things look bleakest, when your back is against the wall, when it seems like the dawn will never come...you find a way without violence. Your enemies lay down their arms and surrender; your allies step back from the brink of chaos. Of course, the people you’ve saved aren’t going to forget what you’ve done here today; they may even come to see you as a symbol of the higher cause you claim to serve...",
+		"img": "",
+		"source": "aegis"
+	}, {
+		"id": 13,
+		"name": "reformed",
+		"mot": "You’ve seen your greatest mistakes, and the rest of the world has, too. They’re all watching you now, judging every move you make. When everything is on the line and your back is against the wall, though, you’ll show them what you’re made of—that being a hero is a choice. An act of will. And you’ve got what it takes to save the day. Of course, afterward, you can expect both sides, hero and villain, to deeply question where your loyalties truly lie...",
+		"img": "",
+		"source": "herald"
+	}, {
+		"id": 14,
+		"name": "newborn",
+		"mot": "Something snaps into focus, and suddenly you’re a full thing, true and complete. You’d never have known how fragmented you were before, if not for here, this moment. You’re not a series of individual lessons. You’re not a series of subroutines and programs. You’re...a person. This must be what it’s like to be...human. And this fullness? It gives you a control over yourself, a unity of purpose you’ve never experienced before. Of course, now that you’re showing off all your potential, it’s only a matter of time before someone comes forward to reduce you to a machine again...",
+		"img": "",
+		"source": "herald"
+	}, {
+		"id": 15,
+		"name": "innocent",
+		"mot": "You’ve fought, struggled, and worked so hard to figure out who you are, whether you’re just the same as your future self or whether you’re different...but right now, that’s all out the window. The distinction between your future self and your present self vanishes in the face of the trial before you, and you become exactly the powerful, adamant figure that everyone fears or hopes you will one day become. You can do exactly what your future self could do, and everyone around you sees them in you more clearly than ever. Of course, after this it’s going to be hard to treat you as two different people...",
+		"img": "",
+		"source": "herald"
+	}, {
+		"id": 16,
+		"name": "star",
+		"mot": "Sometimes it can be hard to tell where the show stops and where you begin—but not today. Not now. Because right now, there is no show. Right now, you are the thing you pretend to be—bold and bright and beautiful and amazing and powerful and confident. Right now, you draw strength from your audience, comfort from their belief in you, and you can do anything they think you can. Of course, after such an impassioned performance, your audience will just have even more demands..",
+		"img": "",
+		"source": "herald"
+	}, {
+		"id": 17,
+		"name": "joined",
+		"mot": "When you trigger your Moment of Truth, choose—are you working with your other half, or are you on your own?\\n  If you’re working with your other half, use the text of their Moment of Truth and treat it as if it applies to both of you. Remember to lock your Label and switch a bond to a distinction because you’ll probably never reach these heights of perfect connection, of being one, ever again…\\n If you’re on your own, use the following text:\\n You’re on your own. It’s like missing an arm. Like fighting naked. Like holding your breath. You’re missing something vital...but you’re moving faster than ever, thinking faster than ever, doing things you couldn’t even do while relying on both of your strength combined. And it’s hitting you, hard—you can do this. Without them. And you can win. It’s going to be hard to come down off this high and rejoin with them afterwards, isn’t it?\\n Remember to lock a Label and switch a bond to a distinction, afterward.",
+		"img": "",
+		"source": "herald"
+	}, {
+		"id": 18,
+		"name": "harbinger",
+		"mot": "Everything you do could affect the future. For all you know, the fact that you saved that one guy that one time means that now the future is full of pterodactyls. The connections, the ripples, they’re always so hard to track, and you’re still not sure if you’ve helped or hurt—not really. Until now. Now, in this moment, it’s all clear. You can see the course of events laid out before you like a river, and you know exactly what you have to do here, now, to ensure the future outcome you want. You can reshape the future with perfect certainty. Of course, after this, you’ve changed enough of the timeline to invalidate your prior research—reset all the names in your 'Connecting the dots' section.",
+		"img": "",
+		"source": "unbound"
+	}, {
+		"id": 19,
+		"name": "nomad",
+		"mot": "You basically exist with one foot out the door, ready to leave this place, to go back out into the wide expanse of the universe. You’ve never fully committed. That is, until today. Until right now. Now, you pour everything you have and everything you are into this moment. You pull off tricks no one from this planet has ever seen before. You use your tools in ways no one here could have ever imagined. You devote yourself, here and now, to a cause, and you achieve your goal in ways that you never could’ve if you’d only stayed home. Of course, now you’ve proved to everyone that you really don’t belong here, and the very skills that let you succeed are the ones you earned from out there...",
+		"img": "",
+		"source": "unbound"
+	}, {
+		"id": 20,
+		"name": "scion",
+		"mot": "People have always tried to define you by your lineage. As if from the moment you were born, you were meant to be some villain to be defeated. But...they’re right, aren’t they? That darkness is in you. So right here, right now, you’re not fighting it—you’re embracing it. Both hero and villain, and greater besides. You’re overcoming impossible odds in ways no hero would approve of, and no villain could comprehend. Of course, after seeing what you can really do when you embrace the whole of yourself, the rest of the world isn’t going to forget who you really are...",
+		"img": "",
+		"source": "unbound"
+	}],
+	"sources": [	{
+			"id": 1,
+			"source": "core",
+			"name": "Masks: A New Generation"
+		}, {
+			"id": 2,
+			"source": "aegis",
+			"name": "Secrets of AEGIS"
+		}, {
+			"id": 3,
+			"source": "herald",
+			"name": "Halcyon City Herald Collection"
+		}, {
+			"id": 4,
+			"source": "unbound",
+			"name": "Unbound"
+		}
+	]}

@@ -8,6 +8,7 @@ import logging
 from dotenv import load_dotenv
 from moves import get_moves
 from playbooks import get_moment_of_truth
+from playbooks import get_playbooks
 from parse import mad_parse
 
 logger = logging.getLogger('discord')
@@ -44,16 +45,24 @@ async def on_message(message):
         logger.info(log_line)
         help_file = open("help", "r")
         response = help_file.read()
-        await message.channel.send(response)
-    #list moves
+        if message.content.startswith("!helphere"):
+            await message.channel.send(response)
+        else:
+            await message.author.send(response)
+            await message.channel.send("I have sent help to your PMs.")
+    #list moves#
     move_list = get_moves(message, json_array)
     if move_list:
         await message.channel.send(move_list)
-    #lets share a moment of truth!
-    elif message.content.startswith("!mot"):
+    #list playbooks#
+    if message.content.startswith("!playbooks"):
+        response = get_playbooks(json_array)
+        await message.channel.send(embed=response)
+    #lets share a moment of truth!#
+    if message.content.startswith("!mot"):
         response = get_moment_of_truth(message.content, message.author.display_name, json_array)
         await message.channel.send(embed=response)
-    #remember generic ! should always be last in the tree
+    #remember generic ! should always be last in the tree#
     elif message.content.startswith("!"):
         log_line = message.guild.name + "|" + message.channel.name + "|" + message.author.name + "|" + message.content
         logger.info(log_line)
@@ -61,4 +70,5 @@ async def on_message(message):
         if response: 
             logger.info(response)
             await message.channel.send(embed=response)
+        else : logger.info('no match found for '+message.content)
 client.run(TOKEN)

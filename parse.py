@@ -2,6 +2,8 @@ import re
 import json
 import discord
 import random
+import logging
+
 
 from utils import get_modified_num
 
@@ -40,10 +42,10 @@ def mad_parse(msg,user):
         log_line = log_line + result3.group(0)
         num = int(result3.group(0))
     else: log_line = log_line + "no num "
-    #logger.info (msg + log_line)
- # figure out which type of modifier it is
+
+ # figure out which type of modifier it is#
     num_calc = get_modified_num(mod, num)
- # lookup a table for the big blob of text and a wee blob
+ # lookup a table for the big blob of text and a wee blob#
     for p in json_array['moves']:
         if p['shortName'] == word:
             blob = p['blob']
@@ -56,7 +58,7 @@ def mad_parse(msg,user):
     searchStr4 = r'!!'
     result4 = re.search(searchStr4, msg)
     if result4: quiet = 1
-#Ugly format blob!
+#Ugly format blob!#
     if match == 1 : #lets us ignore ! prefix commands that aren't in our list
         embed=discord.Embed(title=f"{capital}")
         embed.set_author(name=f"{user} {phrase}")
@@ -69,7 +71,6 @@ def mad_parse(msg,user):
         return embed
 
     else:
-        logger.info('no match found for '+msg)
         return 0
 
 def add_result (embed, num_calc, mod):
