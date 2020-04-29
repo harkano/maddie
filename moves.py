@@ -47,7 +47,8 @@ def get_unknown_playbook_response():
     
     response = response + "\nType an exclamation sign and one of the names in lowercase and without the 'The', basic or adult\ne.g.: !beacon, !moves, !adult"
 
-    return response
+    #return response #changing this as we need to be polite to other bots, there's a lot of them
+    return null
 
 
 def get_moves(message, moves_array):
