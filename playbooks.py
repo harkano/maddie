@@ -23,11 +23,12 @@ def get_moment_of_truth (msg,usr,json_array):
     for p in json_array['playbooks']:
         if p['name'] == result1.group(1):
             mot = p['mot']
+            img = p['img']
             found = 1
     if found == 1:
         embed = discord.Embed(title=f"MOMENT OF TRUTH")
         embed.set_author(name=f"This is {usr}'s moment!")
-        #embed.set_thumbnail(url=img)
+        embed.set_thumbnail(url=img)
         embed.add_field(name="Description", value=f"{mot}")
         embed.set_footer(text=" ")
         response = embed
