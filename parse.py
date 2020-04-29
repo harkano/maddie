@@ -1,5 +1,13 @@
 import re
+import json
+import discord
+import random
+
 from utils import get_modified_num
+
+
+input_file = open ('data.json')
+json_array = json.load(input_file)
 
 ##Setup the big sub
 def mad_parse(msg,user):
@@ -64,3 +72,10 @@ def mad_parse(msg,user):
         logger.info('no match found for '+msg)
         return 0
 
+def add_result (embed, num_calc, mod):
+    #do dice rolling
+    result1 = random.randrange(1,7) ##first d6
+    result2 = random.randrange(1,7) ##second d6
+    result_tot = result1 + result2 + num_calc #2 d6 + mod
+    embed.add_field(name="Calculation", value=f"Dice **{result1}** + **{result2}**, Label {mod} **{num_calc}**", inline=False)
+    embed.add_field(name="Result", value=f"**{result_tot}**")

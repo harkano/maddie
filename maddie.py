@@ -11,6 +11,8 @@ import logging
 from dotenv import load_dotenv
 from moves import get_moves
 from playbooks import get_moment_of_truth
+from parse import mad_parse
+
 
 logger = logging.getLogger('discord')
 logger.setLevel(logging.INFO) #set logging level to INFO, DEBUG if we want the full dump
@@ -26,16 +28,6 @@ client = discord.Client()
 ##Load in the existing moves
 input_file = open ('data.json')
 json_array = json.load(input_file)
-
-
-def add_result (embed, num_calc, mod):
-    #do dice rolling
-    result1 = random.randrange(1,7) ##first d6
-    result2 = random.randrange(1,7) ##second d6
-    result_tot = result1 + result2 + num_calc #2 d6 + mod
-    embed.add_field(name="Calculation", value=f"Dice **{result1}** + **{result2}**, Label {mod} **{num_calc}**", inline=False)
-    embed.add_field(name="Result", value=f"**{result_tot}**")
-
 
 
 @client.event
@@ -64,13 +56,13 @@ async def on_message(message):
         await message.channel.send(move_list)
     #lets share a moment of truth!
     elif message.content.startswith("!mot"):
-        response = get_moment_of_truth(message.content, message.author.display_name, json_array)
+        response = get_moment_of_truth(message.content, message.author.display_name)
         await message.channel.send(embed=response)
     #remember generic ! should always be last in the tree
     elif message.content.startswith("!"):
         log_line = message.guild.name + "|" + message.channel.name + "|" + message.author.name + "|" + message.content
         logger.info(log_line)
-        response =  mad_parse(message.content, message.author.display_name, json_array)
+        response =  mad_parse(message.content, message.author.display_name)
         if response: 
             logger.info(response)
             await message.channel.send(embed=response)
