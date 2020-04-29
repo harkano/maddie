@@ -363,7 +363,7 @@
 		"playbook": "delinquent"
 	}, {
 		"id": 33,
-		"shortName": "the mask",
+		"shortName": "themask",
 		"capital": "THE MASK",
 		"phrase": "is masked!",
 		"blob": "You wear a mask and hide your real identity. Choose what Label you try to embody while wearing your mask.\nOnce per session, you can affirm your heroic or secret identity to switch your Mundane with your mask's Label.\nWhen you reveal your secret identity to someone you didn't know it already, mark potential.",
@@ -707,51 +707,61 @@
 		"id" : 1,
 		"name": "beacon",
 		"mot": "This is the moment when you show them exactly why you belong here. You do any one thing, take out any one enemy, no matter how insane, no matter how ridiculous, because that’s you. Their jaws are gonna drop when you’re done. Of course, pulling off a stunt like this tends to bring unwanted attention and a dangerous reputation...",
-		"img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png"
+		"img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
+		"source": "core"
 	}, {
 		"id" : 2,
 		"name": "bull",
 		"mot": "This is what you do best. You let loose, all the pent up strength and rage and glee, and you break whatever stands in your way. You are a walking demolition crew. What can stand up to you? Nothing. Not buildings. Not structures. Not enemies. Nothing. Of course, now the people who changed you know exactly where to find you...",
-		"img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png"
+		"img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
+		"source": "core"
 	}, {
 		"id" : 3,
 		"name": "delinquent",
 		"mot": "This is when you show them what you really are. Whether you’re the hero underneath the rebel facade...or the one who can make the hard choices heroes can’t make. You do whatever it takes to show that truth, whether it’s saving the day from a terrible villain or stopping a bad guy once and for all. Of course, once you’ve shown what you really are, there’s no going back to playing the clown...",
-		"img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png"
+		"img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
+		"source": "core"
 	}, {
 		"id" : 4,
 		"name": "doomed",
 		"mot": "The prickly tingling fear of your doom, always in your head—it holds you back most of the time.  But right here, right now? It gives you the confidence to do anything. After all, what’s the worst that could happen? Is it worse than your doom? Do impossible things. Do anything. But mark a doomsign after you’re finished. ",
-		"img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png"
+		"img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
+		"source": "core"
 	}, {
 		"id" : 5,
 		"name": "janus",
 		"mot": "The mask is a lie, and some piece of you has always known that. Doesn’t matter if others can see it. You’re the one that can do the impossible. Mask off. Costume on. And you’re going to save the damn day. Of course, you better hope nobody nasty is watching…",
-		"img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png"
+		"img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
+		"source": "core"
 	}, {
 		"id" : 6,
 		"name": "legacy",
 		"mot": "This is the moment when you prove how much the mantle belongs to you. You seize control of all your powers, and you defeat even impossible odds to prove you are worthy of the name you carry. You accomplish feats even your predecessors couldn’t do. Of course, after you prove something like that, you can expect still more responsibilities to be placed on your shoulders...",
-		"img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png"
+		"img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
+		"source": "core"
 	}, {
 		"id" : 7,
 		"name": "nova",
 		"mot": "Your mind’s eye opens, and you can see the world around you like never before. You can control it, at will, with ease. Of course, warping reality tends to have ramifications down the line, but in your moment of godhood...how could you possibly be worried? ",
-		"img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png"
+		"img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
+		"source": "core"
 	}, {
 		"id" : 8,
 		"name": "outsider",
 		"mot": "You embrace your home and call them for aid. They will answer your call—in force! —arriving exactly when you need them to turn the tide. They fight and serve you for the rest of the battle. Of course, when all is said and done...they’d probably like to take you home with them. You did, after all, just prove yourself worthy.",
-		"img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png"
+		"img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
+		"source": "core"
 	}, {
 		"id" : 9,
 		"name": "protege",
 		"mot": "The moment that you show who you really are: your mentor, or something different. You can do whatever your mentor could do and more. You can do the incredible, even the things they always failed to accomplish. Of course, they’re not going to see you the same way, no matter which path you choose… ",
-		"img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png"
+		"img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
+		"source": "core"
 	}, {
 		"id" : 10,
 		"name": "transformed",
 		"mot": "It’s so easy to forget that you’re not your body, and you’re not the voice in your head—you’re both. Be the monster, and save them anyway. Smash down walls, and speak softly. Because when you embrace it, you can do anything. Of course, putting on a display like this is sure to rile up those who see only the monster when they look at you…",
-		"img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png"
+		"img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
+		"source": "core"
 	}]
 }
