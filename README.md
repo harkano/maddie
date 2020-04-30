@@ -16,51 +16,36 @@ Syntax is as follows - `move+/-label` e.g.
 
 `!support-2`
 
-If you're using a playbook move not covered here you can use `!other+1`
+If you're using a custom or playbook move not covered here you can use `!other+1`
 The idea is to save you having the generic moves sheet open at any time.
   
 You can be pretty messy with the command as it uses regular expression matches, it will also only use the first number in the command, and assumes a + if there's no modifier.  So you should be able to `!   unleash234` to get an Unleash+2.  Note that it currently doesn't support prefix changes, so it doesn't play with with other ! prefix bots.
 
 ![Loud Mode](https://i.imgur.com/MtVp1KM.png "Loud Mode")
 
-I will be a bit less verbose if you prefix with !! (once you're comfortable with the detailed results) e.g. `!!unleash+2`
+I will be quieter if you prefix with !! (once you're comfortable with the detailed results) e.g. `!!unleash+2`
 
 ![Quiet Mode](https://i.imgur.com/5iVp7FK.png "Quiet Mode")
 
-Type `!moves` to see the short version of help.
+Type `!moves` to see the the basic moves.
 Type `!moves+` to get a more detailed explanation of all moves.
 
 # Basic moves
 `!engage`  - DIRECTLY ENGAGE A THREAT
-
 `!unleash` - UNLEASH YOUR POWERS
+etc.
+`!moves` for more.
 
-`!comfort` - COMFORT OR SUPPORT
-
-`!pierce`  - PIERCE THE MASK
-
-`!defend`  - DEFEND
-
-`!assess`  - ASSESS THE SITUATION
-
-`!provoke` - PROVOKE SOMEONE
-
-`!take`    - TAKE A POWERFUL BLOW
-
-`!reject`  - REJECT SOMEONE'S INFLUENCE
-
-`!other`   - ANY OTHER PLAYBOOK MOVE
+# Playbook moves
+`!playbooks` lists all available playbooks
+`!nomad` lists all moves in that playbook
 
 # Adult moves
 `!wield`     - WIELD YOUR POWERS
+`!adult` for more.
 
-`!overwhelm` - OVERWHELM A VULNERABLE FOE
-
-`!persuade`  - PERSUADE WITH BEST INTERESTS
-
-`!empathize` - EMPATHIZE
-
-`!standup`   - STAND UP FOR SOMETHING
+# Moment of Truth!
+`!mot beacon` will display your playbook's Moment of Truth text.
 
 # Dataset
 
@@ -82,3 +67,4 @@ Special Graphics thanks to - Chordial#6969
 
 For any feedback, feature request or bug reports please visit our Discord @ https://discord.gg/7p8g8H5 'Harkano (Ross) #7019'
 
+Masks The New Generation is a Powered by the Apocalypse RPG designed by Brendan Conway and team @ http://magpiegames.com
