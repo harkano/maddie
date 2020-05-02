@@ -12,6 +12,8 @@ import logging
 from dotenv import load_dotenv
 from utils import get_modified_num
 from moves import get_moves
+from playbook_interactions import lock_label, edit_labels, mark_potential, mark_condition, clear_condition
+from command_handler import plain_command_handler, embed_command_handler
 
 logger = logging.getLogger('discord')
 logger.setLevel(logging.INFO) #set logging level to INFO, DEBUG if we want the full dump
@@ -164,13 +166,19 @@ async def on_message(message):
     if move_list:
         await message.channel.send(move_list)
         return
-    #answer a call for help
-    elif message.content.startswith("!help"):
-        log_line = message.guild.name + "|" + message.channel.name + "|" + message.author.name + "|" + message.content
-        logger.info(log_line)
-        help_file = open("../../aws/help", "r")
-        response = help_file.read()
+    # handle help and all of the playbook interactions
+    response = plain_command_handler(message)
+
+    if response:
         await message.channel.send(response)
+        return
+
+    response = embed_command_handler(message)
+
+    if response:
+        await message.channel.send(embed=response)
+        return
+
     #remember generic ! should always be last in the tree
     elif message.content.startswith("!"):
         log_line = message.guild.name + "|" + message.channel.name + "|" + message.author.name + "|" + message.content

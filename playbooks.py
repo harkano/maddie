@@ -2,6 +2,7 @@ PLAYBOOK_LIST = ['beacon', 'bull', 'delinquent', 'doomed', 'janus', 'legacy', 'n
 
 import re
 import discord
+from utils import get_moves
 
 def get_playbook_list ():
     return PLAYBOOK_LIST
@@ -15,7 +16,10 @@ def format_playbook_name (name):
 def get_playbook_names ():
     return list(map(format_playbook_name, PLAYBOOK_LIST))
 
-def get_moment_of_truth (msg,usr,json_array):
+def get_moment_of_truth (message):
+    msg = message.content
+    usr = message.author.display_name
+    json_array = get_moves()
     found = 0
     msg = msg.lower()
     playbook_re = r'!mot ([a-z]+)'
@@ -36,14 +40,15 @@ def get_moment_of_truth (msg,usr,json_array):
 
     return response
 
-def get_playbooks (json_array):
+def get_playbooks ():
+    json_array = get_moves()
     embed = discord.Embed(title=f"Playbooks")
     embed.set_author(name=f"Available Playbooks are - ")
     for s in json_array['sources']:
         line = ""
         for p in json_array['playbooks']:
             if s['source'] == p['source']:
-                line = line + p['name'] + ", "
+                line = line + p['name'].capitalize() + ", "
         line = line.rstrip(', ')
         embed.add_field(name=f"{s['name']}", value=f"{line}", inline=False)
         embed.set_footer(text=" ")
