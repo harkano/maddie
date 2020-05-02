@@ -231,7 +231,8 @@ def create_character(message):
 
 # These are the functions that get the data in the characters s3 file
 
-def get_labels(key):
+def get_labels(message):
+    key = get_key_and_content_from_message(message)
     s3_client = get_s3_client()
     char_info = info_from_s3(f'adventures/{key}', s3_client)
     if not char_info:
@@ -240,7 +241,8 @@ def get_labels(key):
     return format_labels(char_info[LABELS])
 
 
-def get_conditions(key):
+def get_conditions(message):
+    key = get_key_and_content_from_message(message)
     s3_client = get_s3_client()
     char_info = info_from_s3(f'adventures/{key}', s3_client)
     if not char_info:
@@ -249,7 +251,8 @@ def get_conditions(key):
     return format_conditions(char_info[CONDITIONS])
 
 
-def get_potential(key):
+def get_potential(message):
+    key = get_key_and_content_from_message(message)
     s3_client = get_s3_client()
     char_info = info_from_s3(f'adventures/{key}', s3_client)
     if not char_info:
@@ -259,7 +262,8 @@ def get_potential(key):
 
     return f"You have {potential} potential marked"
 
-def get_moves(key):
+def get_moves(message):
+    key = get_key_and_content_from_message(message)
     s3_client = get_s3_client()
     char_info = info_from_s3(f'adventures/{key}', s3_client)
     if not char_info:
@@ -267,7 +271,8 @@ def get_moves(key):
 
     return format_moves(char_info[MOVES])
 
-def get_pending_advancements(key):
+def get_pending_advancements(message):
+    key = get_key_and_content_from_message(message)
     s3_client = get_s3_client()
     char_info = info_from_s3(f'adventures/{key}', s3_client)
     if not char_info:
@@ -276,7 +281,8 @@ def get_pending_advancements(key):
 
     return f"You have {pending_advancements} unresolved advancements"
 
-def get_advancements(key):
+def get_advancements(message):
+    key = get_key_and_content_from_message(message)
     s3_client = get_s3_client()
     char_info = info_from_s3(f'adventures/{key}', s3_client)
     if not char_info:
