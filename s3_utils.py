@@ -6,9 +6,9 @@ import logging
 
 load_dotenv()
 logger = logging.getLogger('discord')
-logger.setLevel(logging.INFO)
-
+logger.setLevel(logging.INFO) #set logging level to INFO, DEBUG if we want the full dump
 BUCKET = os.getenv('BUCKET')
+EXISTING_KEY_ERROR_MESSAGE = 'An error occurred (NoSuchKey) when calling the GetObject operation: The specified key does not exist.'
 
 def get_s3_client():
     ACCESS_KEY = os.getenv('ACCESS_KEY')
@@ -30,7 +30,7 @@ def info_from_s3(key, s3_client):
     try:
         file = s3_client.get_object(
             Bucket=BUCKET,
-            Key=f'adventures/{key}.json'
+            Key=f'{key}.json'
         )
 
         if file.get('Body'):
@@ -38,9 +38,18 @@ def info_from_s3(key, s3_client):
             return json.loads(file_body.read())
 
     except Exception as e:
+        if f'{e}' == EXISTING_KEY_ERROR_MESSAGE:
+            return None
         logger.error(f'An error occurred while interacting with s3:\n{e}')
 
         raise e
+
+
+def get_files_from_dir(key, s3_client):
+    if not key:
+        return
+
+    return s3_client.list_objects_v2(Bucket=BUCKET, Prefix=f'{key}/')
 
 
 def get_bytes_from_json(json_to_parse):

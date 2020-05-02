@@ -1,6 +1,6 @@
 import boto3
 import json
-from s3_utils import info_from_s3, get_s3_client, upload_to_s3
+from s3_utils import info_from_s3, get_s3_client, upload_to_s3, get_files_from_dir
 
 LABELS = 'labels'
 VALUE = 'value'
@@ -74,7 +74,9 @@ def invert_condition(message, compare_to):
     condition_name = get_args_from_content(content)
 
     s3_client = get_s3_client()
-    char_info = info_from_s3(key, s3_client)
+    char_info = info_from_s3(f'adventures/{key}', s3_client)
+    if not char_info:
+        return "I'm sorry but it appears you have no character created"
 
     conditions = char_info[CONDITIONS]
 
@@ -121,7 +123,10 @@ def edit_labels(message):
         return "The labels must be different, you must select one of your valid labels"
 
     s3_client = get_s3_client()
-    char_info = info_from_s3(key, s3_client)
+    char_info = info_from_s3(f'adventures/{key}', s3_client)
+    if not char_info:
+        return "I'm sorry but it appears you have no character created"
+
     labels = char_info[LABELS]
 
     label_to_increase = labels[label_to_increase_name]
@@ -148,7 +153,9 @@ def lock_label(message):
     label_to_lock_name = get_args_from_content(content)
 
     s3_client = get_s3_client()
-    char_info = info_from_s3(key, s3_client)
+    char_info = info_from_s3(f'adventures/{key}', s3_client)
+    if not char_info:
+        return "I'm sorry but it appears you have no character created"
 
     labels = char_info[LABELS]
     label_to_lock = labels[label_to_lock_name]
@@ -166,7 +173,9 @@ def lock_label(message):
 def mark_potential(message):
     key, _content = get_key_and_content_from_message(message)
     s3_client = get_s3_client()
-    char_info = info_from_s3(key, s3_client)
+    char_info = info_from_s3(f'adventures/{key}', s3_client)
+    if not char_info:
+        return "I'm sorry but it appears you have no character created"
 
     potential = char_info[POTENTIAL]
 
@@ -191,45 +200,87 @@ def clear_condition(message):
     return invert_condition(message, False)
 
 
+def create_character(message):
+    key, content = get_key_and_content_from_message(message)
+    s3_client = get_s3_client()
+
+    char_info = info_from_s3(f'adventures/{key}', s3_client)
+    if char_info:
+        return "It seems you already have a character"
+
+    playbook_name, character_name, player_name, label_to_increase = get_args_from_content(content)
+    file_list = get_files_from_dir('playbooks', s3_client)
+    template_key = f'playbooks/{playbook_name}'
+
+    matching_files = list(filter(lambda file_info: file_info["Key"] == f'{template_key}.json', file_list["Contents"]))
+
+    if not len(matching_files):
+        return f"It seems I don't have a template for a playbook called {playbook_name}"
+
+    print(matching_files)
+    template = info_from_s3(template_key, s3_client)
+
+    template[LABELS][label_to_increase][VALUE] = template[LABELS][label_to_increase][VALUE] + 1
+    template['characterName'] = character_name
+    template['playerName'] = player_name
+
+    upload_to_s3(template, key, s3_client)
+
+    formated_playbook_name = playbook_name.capitalize()
+    return f"Congratulations {character_name}, The {formated_playbook_name} on joining the team!"
+
 # These are the functions that get the data in the characters s3 file
 
 def get_labels(key):
     s3_client = get_s3_client()
-    char_info = info_from_s3(key, s3_client)
+    char_info = info_from_s3(f'adventures/{key}', s3_client)
+    if not char_info:
+        return "I'm sorry but it appears you have no character created"
 
     return format_labels(char_info[LABELS])
 
 
 def get_conditions(key):
     s3_client = get_s3_client()
-    char_info = info_from_s3(key, s3_client)
+    char_info = info_from_s3(f'adventures/{key}', s3_client)
+    if not char_info:
+        return "I'm sorry but it appears you have no character created"
 
     return format_conditions(char_info[CONDITIONS])
 
 
 def get_potential(key):
     s3_client = get_s3_client()
-    char_info = info_from_s3(key, s3_client)
+    char_info = info_from_s3(f'adventures/{key}', s3_client)
+    if not char_info:
+        return "I'm sorry but it appears you have no character created"
+
     potential = char_info[POTENTIAL]
 
     return f"You have {potential} potential marked"
 
 def get_moves(key):
     s3_client = get_s3_client()
-    char_info = info_from_s3(key, s3_client)
+    char_info = info_from_s3(f'adventures/{key}', s3_client)
+    if not char_info:
+        return "I'm sorry but it appears you have no character created"
 
     return format_moves(char_info[MOVES])
 
 def get_pending_advancements(key):
     s3_client = get_s3_client()
-    char_info = info_from_s3(key, s3_client)
+    char_info = info_from_s3(f'adventures/{key}', s3_client)
+    if not char_info:
+        return "I'm sorry but it appears you have no character created"
     pending_advancements = char_info[PENDING_ADVANCEMENTS]
 
     return f"You have {pending_advancements} unresolved advancements"
 
 def get_advancements(key):
     s3_client = get_s3_client()
-    char_info = info_from_s3(key, s3_client)
+    char_info = info_from_s3(f'adventures/{key}', s3_client)
+    if not char_info:
+        return "I'm sorry but it appears you have no character created"
 
     return ""
     # return format_advancements(char_info[ADVANCEMENT])

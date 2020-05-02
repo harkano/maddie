@@ -1,5 +1,5 @@
 import logging
-from playbook_interactions import lock_label, edit_labels, mark_potential, mark_condition, clear_condition
+from playbook_interactions import lock_label, edit_labels, mark_potential, mark_condition, clear_condition, create_character
 from playbooks import get_moment_of_truth, get_playbooks
 
 logger = logging.getLogger('discord')
@@ -19,7 +19,8 @@ plain_commands_dict = {
   "editlabels": edit_labels,
   "potential": mark_potential,
   "markcondition": mark_condition,
-  "clearcondition": clear_condition
+  "clearcondition": clear_condition,
+  "create": create_character
 }
 
 
