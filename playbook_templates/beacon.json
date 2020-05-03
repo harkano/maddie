@@ -1,0 +1,84 @@
+{
+  "characterName": "",
+  "playerName": "",
+  "playbook": "beacon",
+  "labels": {
+    "freak": {
+      "value": -1,
+      "locked": false
+    },
+    "danger": {
+      "value": -1,
+      "locked": false
+    },
+    "savior": {
+      "value": 2,
+      "locked": false
+    },
+    "superior": {
+      "value": 0,
+      "locked": false
+    },
+    "mundane": {
+      "value": 2,
+      "locked": false
+    }
+  },
+  "potential": 0,
+  "pendingAdvancements": 0,
+  "conditions": {
+    "afraid": false,
+    "angry": false,
+    "guilty": false,
+    "hopeless": false,
+    "insecure": false
+  },
+  "moves": [
+    { "id": 16, "picked": false },
+    { "id": 17, "picked": false },
+    { "id": 18, "picked": false },
+    { "id": 19, "picked": false },
+    { "id": 20, "picked": false },
+    { "id": 21, "picked": false }
+  ],
+  "advancement": {
+    "basic": {
+      "otherPlaybookMove1": false,
+      "otherPlaybookMove2": false,
+      "otherPlaybookMove3": false,
+      "yourPlaybookMove1": false,
+      "yourPlaybookMove2": false,
+      "deleteInfluence": false,
+      "reorder": false,
+      "momentOfTruth": false
+    },
+    "advanced": {
+      "momentOfTruth": false,
+      "playbookChange": false,
+      "adultMove1": false,
+      "adultMove2": false,
+      "blockLabel": false,
+      "retire": false
+    }
+  },
+  "drives": {
+    "lead": false,
+    "kissDanger": false,
+    "hitYouShouldnt": false,
+    "helpTeammate": false,
+    "endThreat": false,
+    "ridiculous": false,
+    "saveTeammateLife": false,
+    "drunkOrDrug": false,
+    "drive": false,
+    "newSuit": false,
+    "newName": false,
+    "gainRespect": false,
+    "kissTeammate": false,
+    "breakRelation": false,
+    "stopFight": false,
+    "trueFeelings": false,
+    "placeOrTime": false,
+    "reject": false
+  }
+}

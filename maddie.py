@@ -8,8 +8,8 @@ import logging
 from dotenv import load_dotenv
 from moves import get_moves
 from playbooks import get_moment_of_truth
-from playbooks import get_playbooks
 from parse import mad_parse
+from command_handler import plain_command_handler, embed_command_handler
 
 logger = logging.getLogger('discord')
 logger.setLevel(logging.INFO) #set logging level to INFO, DEBUG if we want the full dump
@@ -39,29 +39,33 @@ async def on_ready():
 async def on_message(message):
     if message.author == client.user:
         return
+    # handle help and all of the playbook interactions
+    response = plain_command_handler(message)
+
+    if response:
+        await message.channel.send(response)
+        return
+
+    response = embed_command_handler(message)
+
+    if response:
+        await message.channel.send(embed=response)
+        return
+
     #answer a call for help
     if message.content.startswith("!help"):
         log_line = message.guild.name + "|" + message.channel.name + "|" + message.author.name + "|" + message.content
         logger.info(log_line)
         help_file = open("help", "r")
         response = help_file.read()
-        if message.content.startswith("!helphere"):
-            await message.channel.send(response)
-        else:
-            await message.author.send(response)
-            await message.channel.send("I have sent help to your PMs.")
+
+        await message.author.send(response)
+        await message.channel.send("I have sent help to your PMs.")
+
     #list moves#
     move_list = get_moves(message, json_array)
     if move_list:
         await message.channel.send(move_list)
-    #list playbooks#
-    if message.content.startswith("!playbooks"):
-        response = get_playbooks(json_array)
-        await message.channel.send(embed=response)
-    #lets share a moment of truth!#
-    if message.content.startswith("!mot"):
-        response = get_moment_of_truth(message.content, message.author.display_name, json_array)
-        await message.channel.send(embed=response)
     #remember generic ! should always be last in the tree#
     elif message.content.startswith("!"):
         log_line = message.guild.name + "|" + message.channel.name + "|" + message.author.name + "|" + message.content
