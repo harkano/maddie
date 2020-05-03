@@ -1,6 +1,7 @@
 import logging
 from playbook_interactions import lock_label, edit_labels, mark_potential, mark_condition, clear_condition, create_character
 from playbooks import get_moment_of_truth, get_playbooks
+from language_handler import get_translation
 
 logger = logging.getLogger('discord')
 logger.setLevel(logging.INFO) #set logging level to INFO, DEBUG if we want the full dump
@@ -29,17 +30,17 @@ embed_commands_dict = {
   "playbooks": lambda msg: get_playbooks()
 }
 
-def plain_command_handler(message):
+def plain_command_handler(message, lang):
     command = message.content.split(" ")[0][1:]
 
-    handler = plain_commands_dict.get(command, lambda msg: '')
+    handler = plain_commands_dict.get(get_translation(lang, f'plain_commands.{command}'), lambda msg: '')
 
     return handler(message)
 
 
-def embed_command_handler(message):
+def embed_command_handler(message, lang):
     command = message.content.split(" ")[0][1:]
 
-    handler = embed_commands_dict.get(command, lambda msg: '')
+    handler = embed_commands_dict.get(get_translation(lang, f'embed_commands.{command}'), lambda msg: '')
 
     return handler(message)
