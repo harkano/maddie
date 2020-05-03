@@ -1,6 +1,7 @@
 import re
 
 from playbooks import get_playbook_names, get_playbook_list
+from language_handler import get_translation
 
 COMMA_SEPARATOR = ', '
 PLUS = '+'
@@ -42,10 +43,12 @@ def get_playbook_field(command):
     if command in playbook_list:
         return command
 
-    if command.startswith('moves'):
+    moves = get_translation('en', 'moves.moves')
+    if command.startswith(moves):
         return 'basic'
 
-    if command.startswith('adult'):
+    adult = get_translation('en', 'moves.adult')
+    if command.startswith(adult):
         return 'adult'
 
     return ''
@@ -63,11 +66,11 @@ def parse_command(command):
     return raw_command, False
 
 def get_unknown_playbook_response():
-    response = "Sorry, I couldn't find that playbook, the available playbooks are:"
+    response = get_translation('en', 'moves.non_existent_playbook_intro')
     for playbook in get_playbook_names():
         response = response + playbook
-
-    response = response + "\nType an exclamation sign and one of the names in lowercase and without the 'The', basic or adult\ne.g.: !beacon, !moves, !adult"
+    
+    response = response + get_translation('en', 'moves.non_existent_playbook_end')
 
     # return response #changing this as we need to be polite to other bots, there's a lot of them
     return 0

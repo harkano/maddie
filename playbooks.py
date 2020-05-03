@@ -1,20 +1,23 @@
-PLAYBOOK_LIST = ['beacon', 'bull', 'delinquent', 'doomed', 'janus', 'legacy', 'nova', 'outsider', 'protege', 'transformed']
-
 import re
 import discord
 from utils import get_moves
+from language_handler import get_translation
 
 def get_playbook_list ():
-    return PLAYBOOK_LIST
+    return get_translation('en', 'playbooks.list')
 
 
-def format_playbook_name (name):
+def format_playbook_name (name, the):
     capitalized_name = name.capitalize()
 
-    return f'\n• The {capitalized_name}'
+    the = get_translation('en', 'playbooks.the')
+    return f'\n• {the} {capitalized_name}'
+
 
 def get_playbook_names ():
-    return list(map(format_playbook_name, PLAYBOOK_LIST))
+    playbook_list = get_translation('en', 'playbooks.list')
+    return list(map(format_playbook_name, playbook_list))
+
 
 def get_moment_of_truth (message):
     msg = message.content
@@ -33,7 +36,8 @@ def get_moment_of_truth (message):
         embed = discord.Embed(title=f"MOMENT OF TRUTH")
         embed.set_author(name=f"This is {usr}'s moment!")
         embed.set_thumbnail(url=img)
-        embed.add_field(name="Description", value=f"{mot}")
+        description = get_translation('en', 'description')
+        embed.add_field(name=description, value=f"{mot}")
         embed.set_footer(text=" ")
         response = embed
     else: response = 0
@@ -42,8 +46,10 @@ def get_moment_of_truth (message):
 
 def get_playbooks ():
     json_array = get_moves()
-    embed = discord.Embed(title=f"Playbooks")
-    embed.set_author(name=f"Available Playbooks are - ")
+    playbooks = get_translation('en', 'playbooks.playbooks')
+    embed = discord.Embed(title=playbooks)
+    available = get_translation('en', 'playbooks.available')
+    embed.set_author(name=available)
     for s in json_array['sources']:
         line = ""
         for p in json_array['playbooks']:

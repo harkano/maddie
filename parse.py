@@ -6,7 +6,7 @@ import logging
 
 
 from utils import get_modified_num
-
+from language_handler import get_translation
 
 input_file = open ('data.json')
 json_array = json.load(input_file)
@@ -58,12 +58,14 @@ def mad_parse(msg,user):
     searchStr4 = r'!!'
     result4 = re.search(searchStr4, msg)
     if result4: quiet = 1
+
 #Ugly format blob!#
     if match == 1 : #lets us ignore ! prefix commands that aren't in our list
         embed=discord.Embed(title=f"{capital}")
         embed.set_author(name=f"{user} {phrase}")
         embed.set_thumbnail(url=img)
-        if quiet == 0: embed.add_field(name="Description", value=f"{blob}") # don't include the blob if we're in quiet mode (!!)
+        desc = get_translation('en', 'description')
+        if quiet == 0: embed.add_field(name=desc, value=f"{blob}") # don't include the blob if we're in quiet mode (!!)
         if roll:
             add_result(embed, num_calc, mod)
         embed.set_footer(text=" ")
@@ -73,10 +75,21 @@ def mad_parse(msg,user):
     else:
         return 0
 
+
 def add_result (embed, num_calc, mod):
     #do dice rolling
-    result1 = random.randrange(1,7) ##first d6
-    result2 = random.randrange(1,7) ##second d6
-    result_tot = result1 + result2 + num_calc #2 d6 + mod
-    embed.add_field(name="Calculation", value=f"Dice **{result1}** + **{result2}**, Label {mod} **{num_calc}**", inline=False)
-    embed.add_field(name="Result", value=f"**{result_tot}**")
+    result1 = random.randrange(1,6) ##first d6
+    result2 = random.randrange(1,6) ##second d6
+    result_tot = result1 + result2 + num_calc
+
+    if mod == '-':
+        modifier_to_show = ''
+    else:
+        modifier_to_show = f' {mod}'
+
+    calculation_title = get_translation('en', 'dice_rolling.calculation_title')
+    calculation = get_translation('en', 'dice_rolling.calculation')(result1, result2, modifier_to_show, num_calc)
+    result = get_translation('en', 'dice_rolling.result')
+
+    embed.add_field(name=calculation_title, value=calculation, inline=False)
+    embed.add_field(name=result, value=f"**{result_tot}**")

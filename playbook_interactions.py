@@ -1,6 +1,7 @@
 import boto3
 import json
 from s3_utils import info_from_s3, get_s3_client, upload_to_s3, get_files_from_dir
+from language_handler import get_translation
 
 LABELS = 'labels'
 VALUE = 'value'
@@ -27,9 +28,9 @@ def get_label_has_border_value_text(label_name, label, direction):
     locked = label[LOCKED]
 
     if locked:
-        return f"Oh no, {label_name} is locked, this one can't change!"
+        return get_translation('en', 'playbook_interactions.is_locked')(label_name)
 
-    return f"Oh no, with a value of {value}, your {label_name} can't go {direction}! You get a condition!"
+    return get_translation('en', 'playbook_interactions.value_is_in_border')(value, label_name, direction)
 
 
 def format_labels(labels):
@@ -40,7 +41,7 @@ def format_labels(labels):
         value = labels[label][VALUE]
 
         if labels[label][LOCKED]:
-            is_locked = '[LOCKED]'
+            is_locked = get_translation('en', 'playbook_interactions.locked')
         else:
             is_locked = ''
 
@@ -51,9 +52,9 @@ def format_labels(labels):
 
 def format_conditions(conditions):
     if not len(conditions):
-        return "You don't have any condition marked"
+        return get_translation('en', 'playbook_interactions.condition_not_marked')
 
-    response = "You are:\n"
+    response = get_translation('en', 'playbook_interactions.youre')
 
     for condition in conditions:
         if conditions[condition]:
@@ -65,9 +66,9 @@ def format_conditions(conditions):
 def get_condition_is_unchangable(is_marked):
     dont = ''
     if not is_marked:
-        dont = "don't "
+        dont = get_translation('en', 'playbook_interactions.dont')
     
-    return f"Oh, you {dont}have that condition marked."
+    return get_translation('en', 'playbook_interactions.condition_status')(dont)
 
 
 def invert_condition(message, compare_to):
@@ -77,12 +78,12 @@ def invert_condition(message, compare_to):
     s3_client = get_s3_client()
     char_info = info_from_s3(f'adventures/{key}', s3_client)
     if not char_info:
-        return "I'm sorry but it appears you have no character created"
+        return get_translation('en', 'playbook_interactions.no_character')
 
     conditions = char_info[CONDITIONS]
 
     if condition_name not in conditions:
-        return f"Oh no, {condition_name} is not a valid condition"
+        return get_translation('en', 'playbook_interactions.invalid_condition')
 
     condition_to_mark = conditions[condition_name]
 
@@ -121,12 +122,12 @@ def edit_labels(message):
     label_to_increase_name, label_to_decrease_name = get_args_from_content(content)
 
     if label_to_increase_name == label_to_decrease_name:
-        return "The labels must be different, you must select one of your valid labels"
+        return get_translation('en', 'playbook_interactions.different_labels')
 
     s3_client = get_s3_client()
     char_info = info_from_s3(f'adventures/{key}', s3_client)
     if not char_info:
-        return "I'm sorry but it appears you have no character created"
+        return get_translation('en', 'playbook_interactions.no_character')
 
     labels = char_info[LABELS]
 
@@ -136,10 +137,12 @@ def edit_labels(message):
     label_to_decrease_value = label_to_decrease[VALUE]
 
     if label_is_not_editable(label_to_increase, MAX_LABEL_VALUE):
-        return get_label_has_border_value_text(label_to_increase_name, label_to_increase, 'up')
+        up = get_translation('en', 'playbook_interactions.up')
+        return get_label_has_border_value_text(label_to_increase_name, label_to_increase, up)
 
     if label_is_not_editable(label_to_decrease, MIN_LABEL_VALUE):
-        return get_label_has_border_value_text(label_to_decrease_name, label_to_decrease, 'down')
+        down = get_translation('en', 'playbook_interactions.down')
+        return get_label_has_border_value_text(label_to_decrease_name, label_to_decrease, down)
 
     labels[label_to_increase_name][VALUE] = label_to_increase_value + 1
     labels[label_to_decrease_name][VALUE] = label_to_decrease_value - 1
@@ -156,7 +159,7 @@ def lock_label(message):
     s3_client = get_s3_client()
     char_info = info_from_s3(f'adventures/{key}', s3_client)
     if not char_info:
-        return "I'm sorry but it appears you have no character created"
+        return get_translation('en', 'playbook_interactions.no_character')
 
     labels = char_info[LABELS]
     label_to_lock = labels[label_to_lock_name]
@@ -176,7 +179,7 @@ def mark_potential(message):
     s3_client = get_s3_client()
     char_info = info_from_s3(f'adventures/{key}', s3_client)
     if not char_info:
-        return "I'm sorry but it appears you have no character created"
+        return get_translation('en', 'playbook_interactions.no_character')
 
     potential = char_info[POTENTIAL]
 
@@ -185,12 +188,12 @@ def mark_potential(message):
         char_info[PENDING_ADVANCEMENTS] = char_info[PENDING_ADVANCEMENTS] + 1
 
         upload_to_s3(char_info, key, s3_client)
-        return f"Nice, you can now do {char_info[PENDING_ADVANCEMENTS] + 1} advancements"
+        return get_translation('en', 'playbook_interactions.congrats_pending_advancements')(char_info[PENDING_ADVANCEMENTS])
 
     char_info[POTENTIAL] = potential + 1
 
     upload_to_s3(char_info, key, s3_client)
-    return f"Nice, you have {potential + 1} potential marked"
+    return get_translation('en', 'playbook_interactions.congrats_potential')(potential)
 
 
 def mark_condition(message):
@@ -207,7 +210,7 @@ def create_character(message):
 
     char_info = info_from_s3(f'adventures/{key}', s3_client)
     if char_info:
-        return "It seems you already have a character"
+        return get_translation('en', 'playbook_interactions.existing_character')
 
     playbook_name, character_name, player_name, label_to_increase = get_args_from_content(content)
     file_list = get_files_from_dir('playbooks', s3_client)
@@ -216,7 +219,7 @@ def create_character(message):
     matching_files = list(filter(lambda file_info: file_info["Key"] == f'{template_key}.json', file_list["Contents"]))
 
     if not len(matching_files):
-        return f"It seems I don't have a template for a playbook called {playbook_name}"
+        return get_translation('en', 'playbook_interactions.no_template')
 
     print(matching_files)
     template = info_from_s3(template_key, s3_client)
@@ -228,7 +231,7 @@ def create_character(message):
     upload_to_s3(template, key, s3_client)
 
     formated_playbook_name = playbook_name.capitalize()
-    return f"Congratulations {character_name}, The {formated_playbook_name} on joining the team!"
+    return get_translation('en', 'playbook_interactions.congrats_on_creation')(character_name, formated_playbook_name)
 
 # These are the functions that get the data in the characters s3 file
 
@@ -237,7 +240,7 @@ def get_labels(message):
     s3_client = get_s3_client()
     char_info = info_from_s3(f'adventures/{key}', s3_client)
     if not char_info:
-        return "I'm sorry but it appears you have no character created"
+        return get_translation('en', 'playbook_interactions.no_character')
 
     return format_labels(char_info[LABELS])
 
@@ -247,7 +250,7 @@ def get_conditions(message):
     s3_client = get_s3_client()
     char_info = info_from_s3(f'adventures/{key}', s3_client)
     if not char_info:
-        return "I'm sorry but it appears you have no character created"
+        return get_translation('en', 'playbook_interactions.no_character')
 
     return format_conditions(char_info[CONDITIONS])
 
@@ -257,37 +260,40 @@ def get_potential(message):
     s3_client = get_s3_client()
     char_info = info_from_s3(f'adventures/{key}', s3_client)
     if not char_info:
-        return "I'm sorry but it appears you have no character created"
+        return get_translation('en', 'playbook_interactions.no_character')
 
     potential = char_info[POTENTIAL]
 
-    return f"You have {potential} potential marked"
+    return get_translation('en',  'playbook_interactions.potential')(potential)
+
 
 def get_moves(message):
     key = get_key_and_content_from_message(message)
     s3_client = get_s3_client()
     char_info = info_from_s3(f'adventures/{key}', s3_client)
     if not char_info:
-        return "I'm sorry but it appears you have no character created"
+        return get_translation('en', 'playbook_interactions.no_character')
 
     return format_moves(char_info[MOVES])
+
 
 def get_pending_advancements(message):
     key = get_key_and_content_from_message(message)
     s3_client = get_s3_client()
     char_info = info_from_s3(f'adventures/{key}', s3_client)
     if not char_info:
-        return "I'm sorry but it appears you have no character created"
+        return get_translation('en', 'playbook_interactions.no_character')
     pending_advancements = char_info[PENDING_ADVANCEMENTS]
 
     return f"You have {pending_advancements} unresolved advancements"
+
 
 def get_advancements(message):
     key = get_key_and_content_from_message(message)
     s3_client = get_s3_client()
     char_info = info_from_s3(f'adventures/{key}', s3_client)
     if not char_info:
-        return "I'm sorry but it appears you have no character created"
+        return get_translation('en', 'playbook_interactions.no_character')
 
     return ""
     # return format_advancements(char_info[ADVANCEMENT])
