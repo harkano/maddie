@@ -15,10 +15,11 @@ MIN_LABEL_VALUE = -2
 
 # These are the auxiliar functions
 
-def label_is_not_editable(label, value):
+def label_is_not_editable(label, border_value):
     locked = label[LOCKED]
+    value = label[VALUE]
 
-    return locked or value == MAX_LABEL_VALUE or value == MIN_LABEL_VALUE
+    return locked or value == border_value
 
 
 def get_label_has_border_value_text(label_name, label, direction):
@@ -134,10 +135,10 @@ def edit_labels(message):
     label_to_decrease = labels[label_to_decrease_name]
     label_to_decrease_value = label_to_decrease[VALUE]
 
-    if label_is_not_editable(label_to_increase, label_to_increase_value):
+    if label_is_not_editable(label_to_increase, MAX_LABEL_VALUE):
         return get_label_has_border_value_text(label_to_increase_name, label_to_increase, 'up')
 
-    if label_is_not_editable(label_to_decrease, label_to_decrease_value):
+    if label_is_not_editable(label_to_decrease, MIN_LABEL_VALUE):
         return get_label_has_border_value_text(label_to_decrease_name, label_to_decrease, 'down')
 
     labels[label_to_increase_name][VALUE] = label_to_increase_value + 1
