@@ -80,8 +80,9 @@ es = {
   },
   "description": "Descripción",
   "moves": {
+    "moves": "movimientos",
     "movimientos": "moves",
-    "adultos": "adult",
+    "adult": "adultos",
     "non_existent_playbook_intro": "Perdón, no pude encontrar ese libreto, los libretos disponibles son:",
     "non_existent_playbook_end": "\nEscribí un signo de exclamación y uno de los libretos en minúscula y sin el 'El', movimientos o adultos\np.ej.: !beacon, !movimientos, !adultos",
     "moves_plus": {
