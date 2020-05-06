@@ -10,6 +10,7 @@ from moves import get_moves
 from playbooks import get_moment_of_truth
 from parse import mad_parse
 from command_handler import plain_command_handler, embed_command_handler
+from config_interactions import get_raw_lang
 
 logger = logging.getLogger('discord')
 logger.setLevel(logging.INFO) #set logging level to INFO, DEBUG if we want the full dump
@@ -21,10 +22,6 @@ load_dotenv()
 TOKEN = os.getenv('DISCORD_TOKEN')
 logger.info (TOKEN)
 client = discord.Client()
-
-##Load in the existing moves
-input_file = open ('data.json')
-json_array = json.load(input_file)
 
 @client.event
 async def on_ready():
@@ -39,14 +36,17 @@ async def on_ready():
 async def on_message(message):
     if message.author == client.user:
         return
+
+    lang = get_raw_lang(message)
+
     # handle help and all of the playbook interactions
-    response = plain_command_handler(message)
+    response = plain_command_handler(message, lang)
 
     if response:
         await message.channel.send(response)
         return
 
-    response = embed_command_handler(message)
+    response = embed_command_handler(message, lang)
 
     if response:
         await message.channel.send(embed=response)
@@ -63,7 +63,7 @@ async def on_message(message):
         await message.channel.send("I have sent help to your PMs.")
 
     #list moves#
-    move_list = get_moves(message, json_array)
+    move_list = get_moves(message, lang)
     if move_list:
         await message.channel.send(move_list)
     #remember generic ! should always be last in the tree#

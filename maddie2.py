@@ -10,11 +10,11 @@ import logging
 #import owner
 
 from dotenv import load_dotenv
-from utils import get_modified_num
+from utils import get_modified_num, get_moves as get_moves_array
 from moves import get_moves
-from playbook_interactions import lock_label, edit_labels, mark_potential, mark_condition, clear_condition
 from command_handler import plain_command_handler, embed_command_handler
 from parse import mad_parse, add_result
+from config_interactions import get_raw_lang
 
 logger = logging.getLogger('discord')
 logger.setLevel(logging.INFO) #set logging level to INFO, DEBUG if we want the full dump
@@ -59,14 +59,7 @@ async def prefix(self, ctx, *, pre):
         json.dump(prefixes, f, indent=4)
 
 ##Load in the existing moves
-input_file = open ('data.json')
-json_array = json.load(input_file)
-
-moves_list = []
-for p in json_array['moves']:
-    moves_list.append(p['shortName'])
-print (moves_list)
-
+json_array = get_moves_array('en')
 
 @client.event
 async def on_ready():
@@ -84,19 +77,22 @@ async def on_message(message):
     print (pre)
     if message.author == client.user:
         return
+
+    lang = get_raw_lang(message)
+
     #list moves
-    move_list = get_moves(message, json_array)
+    move_list = get_moves(message, lang)
     if move_list:
         await message.channel.send(move_list)
         return
     # handle help and all of the playbook interactions
-    response = plain_command_handler(message, 'en')
+    response = plain_command_handler(message, lang)
 
     if response:
         await message.channel.send(response)
         return
 
-    response = embed_command_handler(message, 'en')
+    response = embed_command_handler(message, lang)
 
     if response:
         await message.channel.send(embed=response)

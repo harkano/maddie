@@ -32,6 +32,7 @@ en = {
   "playbook_interactions": {
     "fail_preffix": "Oh no, ",
     "is_locked": lambda label_name: f"Oh no, {label_name} is locked, this one can't change!",
+    "labels_base": "Your labels are:\n",
     "up": "up",
     "down": "down",
     "value_is_in_border": lambda value, label_name, direction: f"Oh no, with a value of {value}, your {label_name} can't go {direction}! You get a condition!",
@@ -56,6 +57,12 @@ en = {
     "list": ['beacon', 'bull', 'delinquent', 'doomed', 'janus', 'legacy', 'nova', 'outsider', 'protege', 'transformed'],
     "playbooks": "Playbooks",
     "available": "Available Playbooks are - "
+  },
+  "configuration": {
+    "settings": "Settings\n",
+    "language": "Language",
+    "teamname": "Team name",
+    "customNames": "Custom names"
   }
 }
 
@@ -92,6 +99,7 @@ es = {
   "playbook_interactions": {
     "fail_preffix": "Oh no, ",
     "is_locked": lambda label_name: f"Oh no, {label_name} está bloqueada, no puede ser alterada!",
+    "labels_base": "Tus etiquetas son:\n",
     "up": "subir",
     "down": "bajar",
     "value_is_in_border": lambda value, label_name, direction: f"Oh no, con un valor de {value}, tu {label_name} no puede {direction}! Marcá una condición!",
@@ -116,6 +124,12 @@ es = {
     "list": ['emblema', 'toro', 'delincuente', 'condenado', 'jano', 'legado', 'nova', 'extranjero', 'protegido', 'transformado'],
     "playbooks": "Libretos",
     "available": "Los Libretos disponibles son - "
+  },
+  "configuration": {
+    "settings": "Configuración\n",
+    "language": "Lenguaje",
+    "teamname": "Nombre de equipo",
+    "customNames": "Nombres customizados"
   }
 }
 
@@ -127,7 +141,7 @@ lang_dicts = {
 
 def get_translation(lang, accessor):
     key_list = accessor.split('.')
-    partial_result = lang_dicts[lang]
+    partial_result = lang_dicts['es']
 
     for key in key_list:
         if key not in partial_result:
