@@ -258,7 +258,7 @@
             "description": "",
             "img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
             "requiresRolling": false,
-            "playbook": "bull"
+            "playbook": "toro"
         }, {
             "id": 23,
             "shortName": "cabeza",
@@ -269,7 +269,7 @@
             "description": "",
             "img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
             "requiresRolling": true,
-            "playbook": "bull"
+            "playbook": "toro"
         }, {
             "id": 24,
             "shortName": "golpealos",
@@ -280,7 +280,7 @@
             "description": "",
             "img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
             "requiresRolling": false,
-            "playbook": "bull"
+            "playbook": "toro"
         }, {
             "id": 25,
             "shortName": "ahi",
@@ -291,7 +291,7 @@
             "description": "",
             "img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
             "requiresRolling": false,
-            "playbook": "bull"
+            "playbook": "toro"
         }, {
             "id": 26,
             "shortName": "porcelana",
@@ -302,7 +302,7 @@
             "description": "",
             "img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
             "requiresRolling": true,
-            "playbook": "bull"
+            "playbook": "toro"
         }, {
             "id": 27,
             "shortName": "fisica",
@@ -313,7 +313,7 @@
             "description": "",
             "img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
             "requiresRolling": true,
-            "playbook": "bull"
+            "playbook": "toro"
         }, {
             "id": 28,
             "shortName": "contraria",
@@ -324,7 +324,7 @@
             "description": " ",
             "img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
             "requiresRolling": true,
-            "playbook": "delinquent"
+            "playbook": "delincuente"
         }, {
             "id": 29,
             "shortName": "nomeimporta",
@@ -335,7 +335,7 @@
             "description": " ",
             "img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
             "requiresRolling": true,
-            "playbook": "delinquent"
+            "playbook": "delincuente"
         }, {
             "id": 29,
             "shortName": "queequipo",
@@ -346,7 +346,7 @@
             "description": " ",
             "img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
             "requiresRolling": false,
-            "playbook": "delinquent"
+            "playbook": "delincuente"
         }, {
             "id": 30,
             "shortName": "criminal",
@@ -357,7 +357,7 @@
             "description": " ",
             "img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
             "requiresRolling": true,
-            "playbook": "delinquent"
+            "playbook": "delincuente"
         }, {
             "id": 31,
             "shortName": "alborotador",
@@ -368,7 +368,7 @@
             "description": " ",
             "img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
             "requiresRolling": false,
-            "playbook": "delinquent"
+            "playbook": "delincuente"
         }, {
             "id": 32,
             "shortName": "miraesto",
@@ -379,7 +379,7 @@
             "description": " ",
             "img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
             "requiresRolling": true,
-            "playbook": "delinquent"
+            "playbook": "delincuente"
         }, {
             "id": 33,
             "shortName": "máscara",
@@ -390,7 +390,7 @@
             "description": " ",
             "img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
             "requiresRolling": false,
-            "playbook": "janus"
+            "playbook": "jano"
         }, {
             "id": 34,
             "shortName": "eljuego",
@@ -401,7 +401,7 @@
             "description": " ",
             "img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
             "requiresRolling": false,
-            "playbook": "janus"
+            "playbook": "jano"
         }, {
             "id": 35,
             "shortName": "loqueves",
@@ -412,18 +412,18 @@
             "description": " ",
             "img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
             "requiresRolling": false,
-            "playbook": "janus"
+            "playbook": "jano"
         }, {
             "id": 36,
             "shortName": "suave",
             "capital": "CARÁCTER SUAVE",
             "phrase": "tiene carácter suave!",
-            "blob": "Cuando intentás *utilizar tu identidad civil para mentir, engañar o escabullirte más allá de alguien*, tirá +Mundano. En un éxito, se creen tu engaño. En un 7 - 9, elegí uno.\n• todavía estás bajo observación\n• dejás atras algo incriminatorio\n• te obligan a hacer el ridículo para convencerlos\nEn un fallo, una de tus obligaciones civiles hace acto de presencia.",
+            "blob": "Cuando intentás *utilizar tu identidad civil para mentir, engañar o escatoroirte más allá de alguien*, tirá +Mundano. En un éxito, se creen tu engaño. En un 7 - 9, elegí uno.\n• todavía estás bajo observación\n• dejás atras algo incriminatorio\n• te obligan a hacer el ridículo para convencerlos\nEn un fallo, una de tus obligaciones civiles hace acto de presencia.",
             "label": "mundane",
             "description": " ",
             "img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
             "requiresRolling": true,
-            "playbook": "janus"
+            "playbook": "jano"
         }, {
             "id": 37,
             "shortName": "salvare",
@@ -434,7 +434,7 @@
             "description": " ",
             "img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
             "requiresRolling": false,
-            "playbook": "janus"
+            "playbook": "jano"
         }, {
             "id": 37,
             "shortName": "red",
@@ -445,7 +445,7 @@
             "description": " ",
             "img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
             "requiresRolling": true,
-            "playbook": "janus"
+            "playbook": "jano"
         }, {
             "id": 38,
             "shortName": "lacorrecta",
@@ -456,7 +456,7 @@
             "description": " ",
             "img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
             "requiresRolling": true,
-            "playbook": "legacy"
+            "playbook": "legado"
         }, {
             "id": 38,
             "shortName": "loquesoy",
@@ -467,7 +467,7 @@
             "description": " ",
             "img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
             "requiresRolling": false,
-            "playbook": "legacy"
+            "playbook": "legado"
         }, {
             "id": 39,
             "shortName": "pasado",
@@ -478,7 +478,7 @@
             "description": " ",
             "img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
             "requiresRolling": false,
-            "playbook": "legacy"
+            "playbook": "legado"
         }, {
             "id": 40,
             "shortName": "importa",
@@ -489,7 +489,7 @@
             "description": " ",
             "img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
             "requiresRolling": false,
-            "playbook": "legacy"
+            "playbook": "legado"
         }, {
             "id": 41,
             "shortName": "nuncaterindas",
@@ -500,7 +500,7 @@
             "description": " ",
             "img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
             "requiresRolling": true,
-            "playbook": "legacy"
+            "playbook": "legado"
         }, {
             "id": 42,
             "shortName": "autoridad",
@@ -511,7 +511,7 @@
             "description": " ",
             "img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
             "requiresRolling": true,
-            "playbook": "legacy"
+            "playbook": "legado"
         }, {
             "id": 43,
             "shortName": "dosmundos",
@@ -522,7 +522,7 @@
             "description": " ",
             "img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
             "requiresRolling": true,
-            "playbook": "outsider"
+            "playbook": "extranjero"
         }, {
             "id": 44,
             "shortName": "tecnologia",
@@ -533,7 +533,7 @@
             "description": " ",
             "img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
             "requiresRolling": true,
-            "playbook": "outsider"
+            "playbook": "extranjero"
         }, {
             "id": 45,
             "shortName": "costumbres",
@@ -544,7 +544,7 @@
             "description": " ",
             "img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
             "requiresRolling": false,
-            "playbook": "outsider"
+            "playbook": "extranjero"
         }, {
             "id": 46,
             "shortName": "kirbycraft",
@@ -555,7 +555,7 @@
             "description": " ",
             "img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
             "requiresRolling": false,
-            "playbook": "outsider"
+            "playbook": "extranjero"
         }, {
             "id": 47,
             "shortName": "lomejor",
@@ -566,7 +566,7 @@
             "description": " ",
             "img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
             "requiresRolling": true,
-            "playbook": "outsider"
+            "playbook": "extranjero"
         }, {
             "id": 48,
             "shortName": "nodiferente",
@@ -577,7 +577,7 @@
             "description": " ",
             "img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
             "requiresRolling": true,
-            "playbook": "outsider"
+            "playbook": "extranjero"
         }, {
             "id": 49,
             "shortName": "archivos",
@@ -588,7 +588,7 @@
             "description": " ",
             "img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
             "requiresRolling": true,
-            "playbook": "protege"
+            "playbook": "protegido"
         }, {
             "id": 50,
             "shortName": "capitan",
@@ -599,7 +599,7 @@
             "description": " ",
             "img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
             "requiresRolling": false,
-            "playbook": "protege"
+            "playbook": "protegido"
         }, {
             "id": 51,
             "shortName": "frustracion",
@@ -610,7 +610,7 @@
             "description": " ",
             "img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
             "requiresRolling": true,
-            "playbook": "protege"
+            "playbook": "protegido"
         }, {
             "id": 52,
             "shortName": "hogar",
@@ -621,7 +621,7 @@
             "description": " ",
             "img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
             "requiresRolling": true,
-            "playbook": "protege"
+            "playbook": "protegido"
         }, {
             "id": 52,
             "shortName": "consciente",
@@ -632,7 +632,7 @@
             "description": " ",
             "img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
             "requiresRolling": true,
-            "playbook": "protege"
+            "playbook": "protegido"
         }, {
             "id": 52,
             "shortName": "tradicion",
@@ -643,7 +643,7 @@
             "description": " ",
             "img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
             "requiresRolling": false,
-            "playbook": "protege"
+            "playbook": "protegido"
         }, {
             "id": 53,
             "shortName": "nomicuerpo",
@@ -654,7 +654,7 @@
             "description": " ",
             "img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
             "requiresRolling": true,
-            "playbook": "transformed"
+            "playbook": "transformado"
         }, {
             "id": 54,
             "shortName": "inhumano",
@@ -665,7 +665,7 @@
             "description": " ",
             "img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
             "requiresRolling": true,
-            "playbook": "transformed"
+            "playbook": "transformado"
         }, {
             "id": 55,
             "shortName": "imparable",
@@ -676,7 +676,7 @@
             "description": " ",
             "img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
             "requiresRolling": true,
-            "playbook": "transformed"
+            "playbook": "transformado"
         }, {
             "id": 56,
             "shortName": "porti",
@@ -687,7 +687,7 @@
             "description": " ",
             "img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
             "requiresRolling": false,
-            "playbook": "transformed"
+            "playbook": "transformado"
         }, {
             "id": 57,
             "shortName": "ojala",
@@ -698,7 +698,7 @@
             "description": " ",
             "img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
             "requiresRolling": true,
-            "playbook": "transformed"
+            "playbook": "transformado"
         }, {
             "id": 58,
             "shortName": "monstruo",
@@ -709,7 +709,146 @@
             "description": " ",
             "img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
             "requiresRolling": true,
-            "playbook": "transformed"
+            "playbook": "transformado"
         }
-    ]
+    ],
+	"playbooks": [{
+		"id": 1,
+		"name": "emblema",
+		"mot": "Este es el momento en el que les muestras exactamente por qué perteneces aquí. Haces algo increíble o te haces cargo de un enemigo, no importa lo loco, no importa lo ridículo que sea, porque ese eres tú. Van a quedar de bocas abiertas cuando hayas terminado. Por supuesto, llevar a cabo una hazaña como esa tiende a atraer atención no deseada. Atención y reputación peligrosa...",
+		"img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
+		"source": "core"
+	}, {
+		"id": 2,
+		"name": "toro",
+		"mot": "Esto es lo que haces mejor. Sueltas toda la fuerza reprimida, tu ira, tu euforia, y rompes lo que se interponga en tu camino. Eres un equipo de demolición andante. ¿Quién puede hacerte frente? Nadie, nadie. Ni edificios. Ni estructuras. Ni enemigos. Nada. Por supuesto, ahora las personas que te cambiaron saben exactamente dónde encontrarte...",
+		"img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
+		"source": "core"
+	}, {
+		"id": 3,
+		"name": "delincuente",
+		"mot": "Ahora es cuando les muestras lo que realmente eres. Ya sea el héroe debajo de la fachada rebelde... o el que puede tomar las decisiones que los héroes no pueden tomar. Haces lo que sea para mostrar esa verdad, ya sea salvar el día de un villano terrible o detener a un malvado de una vez por todas. Por supuesto, una vez que hayas demostrado lo que realmente eres, no podrás volver a las payasadas de antes...",
+		"img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
+		"source": "core"
+	}, {
+		"id": 4,
+		"name": "condenado",
+		"mot": "El escalofriante miedo a tu muerte, siempre en tu cabeza, te frena la mayor parte del tiempo. Pero aquí mismo, ¿ahora mismo? Te da la confianza para hacer cualquier cosa. Después de todo, ¿qué es lo peor que podría pasar? ¿Es peor que tu perdición? Haz cosas imposibles. Haz cualquier cosa. Pero marca una Señal de Perdición despues de que hayas terminado.",
+		"img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
+		"source": "core"
+	}, {
+		"id": 5,
+		"name": "jano",
+		"mot": "La máscara es mentira, y una parte de tí siempre lo ha sabido. No importa si otros pueden verte. Tú eres el que puede hacer lo imposible. Sin máscara, pero con tu traje, vas a salvar el maldito día. Por supuesto, será mejor que nadie desagradable esté mirando...",
+		"img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
+		"source": "core"
+	}, {
+		"id": 6,
+		"name": "legado",
+		"mot": "Este es el momento en el que demuestras que te pertenece. Tomas control de todos tus poderes y superas incluso las chances más imposibles para dmostrar que eres digno del nombre que llevas. Logras hazañas que incluso tus predecesores no pudieron alcanzar. Por supuesto, después de que demuestres algo como eso, puedes esperar aún más responsabilidades sobre tus hombros...",
+		"img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
+		"source": "core"
+	}, {
+		"id": 7,
+		"name": "nova",
+		"mot": "El ojo de tu mente se abre, y puedes ver el mundo a tu alrededor como nunca antes. Puedes controlarlo, a voluntad, con facilidad. Por supuesto, distorsionar la realidad tiende a tener ramificaciones inesperadas más adelante, pero en tu momento de divinidad... ¿cómo podrías estar preocupado?",
+		"img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
+		"source": "core"
+	}, {
+		"id": 8,
+		"name": "extranjero",
+		"mot": "Aceptas tus orígenes y llamas a tu hogar pidiendo ayuda. Responderán a tu llamada, ¡con fuerza!, llegando exactamente cuando la necesites para dar vuelta la situación. Lucharán y te servirán durante el resto de la batalla. Por supuesto, cuando todo esté dicho y hecho... probablemente les gustaría llevarte a casa con ellos. Después de todo acabas de demostrar ser digno.",
+		"img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
+		"source": "core"
+	}, {
+		"id": 9,
+		"name": "protegido",
+		"mot": "El momento en que demuestras quién eres realmente: tu mentor, o algo diferente. Puedes hacer lo que tu mentor pueda hacer y más. Puedes hacer lo increíble, incluso las cosas en las que él siempre falló. Por supuesto, tu mentor ya no te verá de la misma manera, independientemente del camino que elijas...",
+		"img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
+		"source": "core"
+	}, {
+		"id": 10,
+		"name": "transformado",
+		"mot": "Es tan fácil olvidar que no eres tu cuerpo, y no eres la voz en tu cabeza, eres ambas cosas. Sé el monstruo, y sálvalos de todos modos. Destruye paredes y habla en voz baja. Porque cuando abrazas quien realmente eres, puedes hacer cualquier cosa. Por supuesto, una exhibición como esta seguramente irritará a aquellos que solo ven al monstruo cuando te miran...",
+		"img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
+		"source": "core"
+	}, {
+		"id": 11,
+		"name": "brain",
+		"mot": "Sooner or later, all the super powers, elite training, and experience are helpless in the face of evil or disaster. That’s when somebody like you, gifted as you are with a peerless intellect, can rise to the occasion. Your plan, your invention, or your lightning-fast thought processes save the day, in a way no one else could have foreseen. Of course, after you’ve shown how different you are from them, that distance between you and the others is now that much greater. And the world is only going to pull you farther apart...",
+		"img": "",
+		"source": "aegis"
+	}, {
+		"id": 12,
+		"name": "soldier",
+		"mot": "Freedom isn’t free. But not every mission ends in tragedy. When things look bleakest, when your back is against the wall, when it seems like the dawn will never come...you find a way without violence. Your enemies lay down their arms and surrender; your allies step back from the brink of chaos. Of course, the people you’ve saved aren’t going to forget what you’ve done here today; they may even come to see you as a symbol of the higher cause you claim to serve...",
+		"img": "",
+		"source": "aegis"
+	}, {
+		"id": 13,
+		"name": "reformed",
+		"mot": "You’ve seen your greatest mistakes, and the rest of the world has, too. They’re all watching you now, judging every move you make. When everything is on the line and your back is against the wall, though, you’ll show them what you’re made of—that being a hero is a choice. An act of will. And you’ve got what it takes to save the day. Of course, afterward, you can expect both sides, hero and villain, to deeply question where your loyalties truly lie...",
+		"img": "",
+		"source": "herald"
+	}, {
+		"id": 14,
+		"name": "newborn",
+		"mot": "Something snaps into focus, and suddenly you’re a full thing, true and complete. You’d never have known how fragmented you were before, if not for here, this moment. You’re not a series of individual lessons. You’re not a series of subroutines and programs. You’re...a person. This must be what it’s like to be...human. And this fullness? It gives you a control over yourself, a unity of purpose you’ve never experienced before. Of course, now that you’re showing off all your potential, it’s only a matter of time before someone comes forward to reduce you to a machine again...",
+		"img": "",
+		"source": "herald"
+	}, {
+		"id": 15,
+		"name": "innocent",
+		"mot": "You’ve fought, struggled, and worked so hard to figure out who you are, whether you’re just the same as your future self or whether you’re different...but right now, that’s all out the window. The distinction between your future self and your present self vanishes in the face of the trial before you, and you become exactly the powerful, adamant figure that everyone fears or hopes you will one day become. You can do exactly what your future self could do, and everyone around you sees them in you more clearly than ever. Of course, after this it’s going to be hard to treat you as two different people...",
+		"img": "",
+		"source": "herald"
+	}, {
+		"id": 16,
+		"name": "star",
+		"mot": "Sometimes it can be hard to tell where the show stops and where you begin—but not today. Not now. Because right now, there is no show. Right now, you are the thing you pretend to be—bold and bright and beautiful and amazing and powerful and confident. Right now, you draw strength from your audience, comfort from their belief in you, and you can do anything they think you can. Of course, after such an impassioned performance, your audience will just have even more demands..",
+		"img": "",
+		"source": "herald"
+	}, {
+		"id": 17,
+		"name": "joined",
+		"mot": "When you trigger your Moment of Truth, choose—are you working with your other half, or are you on your own?\\n  If you’re working with your other half, use the text of their Moment of Truth and treat it as if it applies to both of you. Remember to lock your Label and switch a bond to a distinction because you’ll probably never reach these heights of perfect connection, of being one, ever again…\\n If you’re on your own, use the following text:\\n You’re on your own. It’s like missing an arm. Like fighting naked. Like holding your breath. You’re missing something vital...but you’re moving faster than ever, thinking faster than ever, doing things you couldn’t even do while relying on both of your strength combined. And it’s hitting you, hard—you can do this. Without them. And you can win. It’s going to be hard to come down off this high and rejoin with them afterwards, isn’t it?\\n Remember to lock a Label and switch a bond to a distinction, afterward.",
+		"img": "",
+		"source": "herald"
+	}, {
+		"id": 18,
+		"name": "harbinger",
+		"mot": "Everything you do could affect the future. For all you know, the fact that you saved that one guy that one time means that now the future is full of pterodactyls. The connections, the ripples, they’re always so hard to track, and you’re still not sure if you’ve helped or hurt—not really. Until now. Now, in this moment, it’s all clear. You can see the course of events laid out before you like a river, and you know exactly what you have to do here, now, to ensure the future outcome you want. You can reshape the future with perfect certainty. Of course, after this, you’ve changed enough of the timeline to invalidate your prior research—reset all the names in your 'Connecting the dots' section.",
+		"img": "",
+		"source": "unbound"
+	}, {
+		"id": 19,
+		"name": "nomad",
+		"mot": "You basically exist with one foot out the door, ready to leave this place, to go back out into the wide expanse of the universe. You’ve never fully committed. That is, until today. Until right now. Now, you pour everything you have and everything you are into this moment. You pull off tricks no one from this planet has ever seen before. You use your tools in ways no one here could have ever imagined. You devote yourself, here and now, to a cause, and you achieve your goal in ways that you never could’ve if you’d only stayed home. Of course, now you’ve proved to everyone that you really don’t belong here, and the very skills that let you succeed are the ones you earned from out there...",
+		"img": "",
+		"source": "unbound"
+	}, {
+		"id": 20,
+		"name": "scion",
+		"mot": "People have always tried to define you by your lineage. As if from the moment you were born, you were meant to be some villain to be defeated. But...they’re right, aren’t they? That darkness is in you. So right here, right now, you’re not fighting it—you’re embracing it. Both hero and villain, and greater besides. You’re overcoming impossible odds in ways no hero would approve of, and no villain could comprehend. Of course, after seeing what you can really do when you embrace the whole of yourself, the rest of the world isn’t going to forget who you really are...",
+		"img": "",
+		"source": "unbound"
+	}],
+	"sources": [	{
+			"id": 1,
+			"source": "core",
+			"name": "Masks: A New Generation"
+		}, {
+			"id": 2,
+			"source": "aegis",
+			"name": "Secrets of AEGIS"
+		}, {
+			"id": 3,
+			"source": "herald",
+			"name": "Halcyon City Herald Collection"
+		}, {
+			"id": 4,
+			"source": "unbound",
+			"name": "Unbound"
+		}
+	]
 }

@@ -56,13 +56,17 @@ en = {
     "the": "The",
     "list": ['beacon', 'bull', 'delinquent', 'doomed', 'janus', 'legacy', 'nova', 'outsider', 'protege', 'transformed'],
     "playbooks": "Playbooks",
-    "available": "Available Playbooks are - "
+    "available": "Available Playbooks are - ",
+    "playbook_re": r"!mot ([a-z]+)",
+    "moment_of_truth": "MOMENT OF TRUTH",
+    "this_is_mot": lambda usr: f"This is {usr}'s moment!"
   },
   "configuration": {
     "settings": "Settings\n",
     "language": "Language",
     "teamname": "Team name",
-    "customNames": "Custom names"
+    "customNames": "Custom names",
+    "no_file": "This chat doesn't have a configuration file. To create it write the following command:\n!adventure en\nif you wish for it to be in english.\n"
   }
 }
 
@@ -123,13 +127,17 @@ es = {
     "the": "",
     "list": ['emblema', 'toro', 'delincuente', 'condenado', 'jano', 'legado', 'nova', 'extranjero', 'protegido', 'transformado'],
     "playbooks": "Libretos",
-    "available": "Los Libretos disponibles son - "
+    "available": "Los Libretos disponibles son - ",
+    "playbook_re": r"!mdlv ([a-z]+)",
+    "moment_of_truth": "MOMENTO DE LA VERDAD",
+    "this_is_mot": lambda usr: f"Este es el momento de la verdad de {usr}!"
   },
   "configuration": {
     "settings": "Configuración\n",
     "language": "Lenguaje",
     "teamname": "Nombre de equipo",
-    "customNames": "Nombres customizados"
+    "customNames": "Nombres customizados",
+    "no_file": "Este chat no tiene archivo de configuración. Para crearlo escribí el siguiente comando:\n!aventura es\nsi quieren que este en español.\n"
   }
 }
 
@@ -139,9 +147,19 @@ lang_dicts = {
   "es": es
 }
 
+
+def get_no_config_message():
+    response = ''
+
+    for lang in lang_dicts:
+        response = response + get_translation(lang, 'configuration.no_file')
+
+    return response
+
+
 def get_translation(lang, accessor):
     key_list = accessor.split('.')
-    partial_result = lang_dicts['es']
+    partial_result = lang_dicts[lang]
 
     for key in key_list:
         if key not in partial_result:

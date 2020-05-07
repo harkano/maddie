@@ -38,7 +38,7 @@ embed_commands_dict = {
 def plain_command_handler(message, lang):
     command = message.content.split(" ")[0][1:]
 
-    handler = plain_commands_dict.get(get_translation(lang, f'plain_commands.{command}'), lambda msg: '')
+    handler = plain_commands_dict.get(get_translation(lang, f'plain_commands.{command}'), lambda _msg, _lang: '')
 
     return handler(message, lang)
 
@@ -46,6 +46,6 @@ def plain_command_handler(message, lang):
 def embed_command_handler(message, lang):
     command = message.content.split(" ")[0][1:]
 
-    handler = embed_commands_dict.get(get_translation(lang, f'embed_commands.{command}'), lambda msg: '')
+    handler = embed_commands_dict.get(get_translation(lang, f'embed_commands.{command}'), lambda _msg, _lang: '')
 
     return handler(message, lang)
