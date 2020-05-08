@@ -58,9 +58,6 @@ async def prefix(self, ctx, *, pre):
     with open(r"prefixes.json", 'r') as f:
         json.dump(prefixes, f, indent=4)
 
-##Load in the existing moves
-json_array = get_moves_array('en')
-
 @client.event
 async def on_ready():
     logger.info(f'{client.user} has connected to Discord!')
@@ -117,6 +114,8 @@ async def test(ctx, arg):
 
 @client.command()
 async def moves(ctx):
+    ##Load in the existing moves
+    json_array = get_moves_array('en')
     response = ''
     for p in json_array['moves']:
         response = response + p['shortName'] + ", "

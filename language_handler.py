@@ -10,7 +10,15 @@ en = {
     "potential": "potential",
     "markcondition": "markcondition",
     "clearcondition": "clearcondition",
-    "create": "create"
+    "create": "create",
+    "settings": "settings",
+    "changesettings": "change_settings",
+    "language": "language",
+    "teamname": "teamname",
+    "updatelang": "update_lang",
+    "updategm": "update_gm",
+    "updateteamname": "update_teamname",
+    "createsettings": "create_settings"
   },
   "dice_rolling": {
     "calculation_title": "Calculation",
@@ -66,7 +74,10 @@ en = {
     "language": "Language",
     "teamname": "Team name",
     "customNames": "Custom names",
-    "no_file": "This chat doesn't have a configuration file. To create it write the following command:\n!adventure en\nif you wish for it to be in english.\n"
+    "no_file": "This chat doesn't have a configuration file. To create it write the following command:\n!adventure en\nif you wish for it to be in english.\n",
+    "existing_settings": "This chat already has a configuration file.",
+    "successfull_update": "The update was successfull",
+    "successfull_creation": "The configuration file has been created"
   }
 }
 
@@ -82,7 +93,15 @@ es = {
     "potencial": "potential",
     "marcarpotencial": "markcondition",
     "borrarcondicion": "clearcondition",
-    "crear": "create"
+    "crear": "create",
+    "config": "settings",
+    "cambiarconfig": "change_settings",
+    "lenguaje": "language",
+    "nombreequipo": "teamname",
+    "editarleng": "update_lang",
+    "editargm": "update_gm",
+    "editarnombre": "update_teamname",
+    "crearconfig": "create_settings"
   },
   "dice_rolling": {
     "calculation_title": "Cálculo",
@@ -137,7 +156,10 @@ es = {
     "language": "Lenguaje",
     "teamname": "Nombre de equipo",
     "customNames": "Nombres customizados",
-    "no_file": "Este chat no tiene archivo de configuración. Para crearlo escribí el siguiente comando:\n!aventura es\nsi quieren que este en español.\n"
+    "no_file": "Este chat no tiene archivo de configuración. Para crearlo escribí el siguiente comando:\n!aventura es\nsi querés que esté en español.\n",
+    "existing_settings": "Este chat ya tiene archivo de configuración.",
+    "successfull_update": "El cambio se hizo con éxito",
+    "successfull_creation": "El archivo de configuración ha sido creado"
   }
 }
 
@@ -148,11 +170,12 @@ lang_dicts = {
 }
 
 
-def get_no_config_message():
+def get_for_all_langs(accessor):
     response = ''
 
     for lang in lang_dicts:
-        response = response + get_translation(lang, 'configuration.no_file')
+        print(f'The lang {lang}, and responso: {accessor}')
+        response = response + get_translation(lang, accessor)
 
     return response
 

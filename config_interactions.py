@@ -1,13 +1,18 @@
 import boto3
 import json
 from s3_utils import info_from_s3, get_s3_client, upload_to_s3, get_files_from_dir
-from language_handler import get_translation
+from language_handler import get_translation, get_for_all_langs
 
 LANGUAGE = 'language'
+GM = 'gm'
 TEAMNAME = 'teamname'
 CUSTOM_NAMES = 'customNames'
 
 # Aux functions
+
+def no_config_file():
+    return get_for_all_langs('configuration.no_file')
+
 
 def get_settings_path(message):
     return f'adventures/{message.channel.id}/settings'
@@ -18,6 +23,9 @@ def get_field_from_config(message, field):
     s3_client = get_s3_client()
     settings = info_from_s3(settings_key, s3_client)
 
+    if not settings:
+        return no_config_file()
+
     name = get_translation(settings[LANGUAGE], f'configuration.{field}').capitalize()
 
     return f'{name}: {settings[field]}'
@@ -25,20 +33,62 @@ def get_field_from_config(message, field):
 
 # Updaters
 
-def update_settings(key, language = '', gm = '', teamname = '', custom_names = ''):
-    settings_key = f'adventures/{key}/settings'
-
+def generic_updater(message, field):
+    settings_key = get_settings_path(message)
     s3_client = get_s3_client()
     settings = info_from_s3(settings_key, s3_client)
 
-    if language:
-        settings[LANGUAGE] = language
-    if teamname:
-        settings[TEAMNAME] = teamname
-    if custom_names:
-        settings[CUSTOM_NAMES] = custom_names
+    if not settings:
+        return no_config_file()
+
+    new_value = message.content.split(" ")[1]
+    settings[field] = new_value
 
     upload_to_s3(settings, settings_key, s3_client)
+
+    return get_translation(settings[LANGUAGE], 'configuration.successfull_update')
+
+
+def update_lang(message):
+    new_lang = message.content.split(" ")[1]
+
+    if is_invalid_lang(new_lang):
+        return get_translation()
+
+    return generic_updater(message, LANGUAGE)
+
+
+def update_gm(message):
+    return generic_updater(message, GM)
+
+
+def update_teamname(message):
+    return generic_updater(message, TEAMNAME)
+
+
+def create_settings(message):
+    print(f'Message: {message}')
+    settings_key = get_settings_path(message)
+    s3_client = get_s3_client()
+    settings = info_from_s3(settings_key, s3_client)
+
+    print(f'Settings: {settings_key}')
+    if settings:
+        return get_translation(settings[LANGUAGE], 'configuration.existing_settings')
+
+    lang = message.content.split(" ")[1]
+    print(f'Lang: {lang}')
+
+    settings = {
+        "language": lang,
+        "gm": "",
+        "teamname": "",
+        "customNames": []
+    }
+
+    upload_to_s3(settings, f'{message.channel.id}/settings', s3_client)
+
+    return get_translation(lang, 'configuration.successfull_creation')
 
 
 # Getters
@@ -47,6 +97,9 @@ def get_settings(message, _lang):
     settings_key = get_settings_path(message)
     s3_client = get_s3_client()
     settings = info_from_s3(settings_key, s3_client)
+
+    if not settings:
+        return no_config_file()
 
     response = get_translation(settings[LANGUAGE], 'configuration.settings')
     for field in settings:
@@ -57,17 +110,23 @@ def get_settings(message, _lang):
     return response
 
 
-def get_raw_lang(message, _lang):
-    settings_key = get_settings_path(message)
-    s3_client = get_s3_client()
-    settings = info_from_s3(settings_key, s3_client)
+def get_raw_lang(message, _lang = None):
+    try:
+        settings_key = get_settings_path(message)
+        s3_client = get_s3_client()
+        settings = info_from_s3(settings_key, s3_client)
 
-    return settings[LANGUAGE]
+        if not settings:
+            return 'en'
+
+        return settings[LANGUAGE]
+    except Exception as exception:
+        return 'en'
 
 
 def get_language(message, _lang):
-    return get_field_from_config(key, LANGUAGE)
+    return get_field_from_config(message, LANGUAGE)
 
 
 def get_teamname(message, _lang):
-    return get_field_from_config(key, TEAMNAME)
+    return get_field_from_config(message, TEAMNAME)
