@@ -55,6 +55,15 @@ etc.
 - `!markcondition angry` will mark _angry_ if it wasn't alread.
 - `!clearcondition` will clear _angry_ if it was marked.
 
+# Configure settings for the chat!
+- `!create_settings en` will create a configuration file in english. The other language supported is spanish (es).
+- `!update_lang es` will change the language to the language sent. 
+- `!update_gm` will set or update a gm for the adventure played in the chat.
+- `!update_teamname` will set or update the team name of young heroes.
+- `!settings` will return all the current settings saved.
+- `!language` will return the language that is set (just the short name, like en or es).
+- `!teamname` will return the name of the team.
+
 # Dataset
 
 Note that the moveset is designed by a very open JSON format, so I'm potentially interested in adapting this for a variety of PBTA movesets.  I just wanted to run Masks first :)
