@@ -13,7 +13,7 @@ MOVES = 'moves'
 ADVANCEMENT = 'advancement'
 MAX_LABEL_VALUE = 3
 MIN_LABEL_VALUE = -2
-
+PLAYBOOK_INTERACTIONS = 'playbook_interactions'
 # These are the auxiliar functions
 
 def label_is_not_editable(label, border_value):
@@ -28,16 +28,16 @@ def get_label_has_border_value_text(label_name, label, direction, lang):
     locked = label[LOCKED]
 
     if locked:
-        return get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.is_locked')(label_name)
+        return get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.is_locked')(get_translation(lang, f'labels.{label_name}'))
 
-    return get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.value_is_in_border')(value, label_name, direction)
+    return get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.value_is_in_border')(value, get_translation(lang, f'labels.{label_name}'), direction)
 
 
 def format_labels(labels, lang):
     response = get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.labels_base')
 
     for label in labels:
-        name = label.capitalize()
+        name = get_translation(lang, f'labels.{label}').capitalize()
         value = labels[label][VALUE]
 
         if labels[label][LOCKED]:
@@ -58,7 +58,7 @@ def format_conditions(conditions, language_handler):
 
     for condition in conditions:
         if conditions[condition]:
-            response = response + f"  - {condition}\n"
+            response = response + f"  - {get_translation(lang, f'conditions.{condition}')}\n"
 
     return response
 
@@ -73,7 +73,8 @@ def get_condition_is_unchangable(is_marked, lang):
 
 def invert_condition(message, compare_to, lang):
     key, content = get_key_and_content_from_message(message)
-    condition_name = get_args_from_content(content)
+    condition_name_og = get_args_from_content(content)
+    condition_name = get_translation(lang, f'inverted_conditions.{condition_name_og}')
 
     s3_client = get_s3_client()
     char_info = info_from_s3(f'adventures/{key}', s3_client)
@@ -119,10 +120,13 @@ def get_key_and_content_from_message(message):
 
 def edit_labels(message, lang):
     key, content = get_key_and_content_from_message(message)
-    label_to_increase_name, label_to_decrease_name = get_args_from_content(content)
+    label_to_increase_name_og, label_to_decrease_name_og = get_args_from_content(content)
 
     if label_to_increase_name == label_to_decrease_name:
         return get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.different_labels')
+
+    label_to_increase_name = get_translation(lang, f'inverted_labels.{label_to_increase_name_og}')
+    label_to_decrease_name = get_translation(lang, f'inverted_labels.{label_to_decrease_name_og}')
 
     s3_client = get_s3_client()
     char_info = info_from_s3(f'adventures/{key}', s3_client)
@@ -137,11 +141,11 @@ def edit_labels(message, lang):
     label_to_decrease_value = label_to_decrease[VALUE]
 
     if label_is_not_editable(label_to_increase, MAX_LABEL_VALUE):
-        up = get_translation('en',  f'{PLAYBOOK_INTERACTIONS}.up')
+        up = get_translation(lang,  f'{PLAYBOOK_INTERACTIONS}.up')
         return get_label_has_border_value_text(label_to_increase_name, label_to_increase, up)
 
     if label_is_not_editable(label_to_decrease, MIN_LABEL_VALUE):
-        down = get_translation('en', f'{PLAYBOOK_INTERACTIONS}.down')
+        down = get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.down')
         return get_label_has_border_value_text(label_to_decrease_name, label_to_decrease, down)
 
     labels[label_to_increase_name][VALUE] = label_to_increase_value + 1
@@ -154,7 +158,8 @@ def edit_labels(message, lang):
 
 def lock_label(message, lang):
     key, content = get_key_and_content_from_message(message)
-    label_to_lock_name = get_args_from_content(content)
+    label_to_lock_name_og = get_args_from_content(content)
+    label_to_lock_name = get_translation(lang, f'inverted_labels.{label_to_lock_name_og}')
 
     s3_client = get_s3_client()
     char_info = info_from_s3(f'adventures/{key}', s3_client)
@@ -165,13 +170,13 @@ def lock_label(message, lang):
     label_to_lock = labels[label_to_lock_name]
 
     if label_to_lock[LOCKED]:
-        return get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.is_locked')(label_to_lock_name)
+        return get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.already_locked')(get_translation(lang, f'labels.{label_to_lock_name}'))
 
     labels[label_to_lock_name][LOCKED] = True
 
     upload_to_s3(char_info, key, s3_client)
 
-    return format_labels(labels)
+    return format_labels(labels, lang)
 
 
 def mark_potential(message, lang):
@@ -221,7 +226,6 @@ def create_character(message, lang):
     if not len(matching_files):
         return get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.no_template')
 
-    print(matching_files)
     template = info_from_s3(template_key, s3_client)
 
     template[LABELS][label_to_increase][VALUE] = template[LABELS][label_to_increase][VALUE] + 1

@@ -70,7 +70,7 @@ async def on_message(message):
     elif message.content.startswith("!"):
         log_line = message.guild.name + "|" + message.channel.name + "|" + message.author.name + "|" + message.content
         logger.info(log_line)
-        response =  mad_parse(message.content, message.author.display_name)
+        response =  mad_parse(message)
         if response: 
             logger.info(response)
             await message.channel.send(embed=response)

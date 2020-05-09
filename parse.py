@@ -11,7 +11,9 @@ from config_interactions import get_raw_lang
 
 
 ##Setup the big sub
-def mad_parse(msg,user):
+def mad_parse(message):
+    msg = message.content
+    user = message.author.display_name
     blob = ""
     capital = ""
     phrase = ""
@@ -42,7 +44,7 @@ def mad_parse(msg,user):
         num = int(result3.group(0))
     else: log_line = log_line + "no num "
 
-    lang = get_raw_lang(msg)
+    lang = get_raw_lang(message)
     json_array = get_moves(lang)
 
  # figure out which type of modifier it is#

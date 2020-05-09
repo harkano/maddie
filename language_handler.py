@@ -39,6 +39,7 @@ en = {
   },
   "playbook_interactions": {
     "fail_preffix": "Oh no, ",
+    "already_locked": lambda label_name: f"Oh no, {label_name} is already locked!",
     "is_locked": lambda label_name: f"Oh no, {label_name} is locked, this one can't change!",
     "labels_base": "Your labels are:\n",
     "up": "up",
@@ -59,6 +60,34 @@ en = {
     "congrats_on_creation": lambda char, playbook: f"Congratulations {char}, The {playbook} on joining the team!",
     "potential": lambda potential: f"You have {potential} potential marked",
     "congrats_pending_advancements": lambda adv_count: f"You can do {adv_count + 1} advancements"
+  },
+  "labels": {
+    "danger": "danger",
+    "freak": "freak",
+    "superior": "superior",
+    "savior": "savior",
+    "mundane": "mundane"
+  },
+  "inverted_labels": {
+    "danger": "danger",
+    "freak": "freak",
+    "superior": "superior",
+    "savior": "savior",
+    "mundane": "mundane"
+  },
+  "conditions": {
+    "afraid": "afraid",
+    "angry": "angry",
+    "guilty": "guilty",
+    "hopeless": "hopeless",
+    "insecure": "insecure"
+  },
+  "inverted_conditions": {
+    "afraid": "afraid",
+    "angry": "angry",
+    "guilty": "guilty",
+    "hopeless": "hopeless",
+    "insecure": "insecure"
   },
   "playbooks": {
     "the": "The",
@@ -121,6 +150,7 @@ es = {
   },
   "playbook_interactions": {
     "fail_preffix": "Oh no, ",
+    "already_locked": lambda label_name: f"Oh no, {label_name} ya está bloqueada!",
     "is_locked": lambda label_name: f"Oh no, {label_name} está bloqueada, no puede ser alterada!",
     "labels_base": "Tus etiquetas son:\n",
     "up": "subir",
@@ -141,6 +171,34 @@ es = {
     "congrats_on_creation": lambda char, playbook: f"Felicidades {char}, {playbook} por unirte al equipo!",
     "potential": lambda potential: f"Tenés {potential} potencial marcado",
     "pending_advancements": lambda adv_count: f"Podés hacer {adv_count} avances"
+  },
+  "labels": {
+    "danger": "peligro",
+    "freak": "fenómeno",
+    "superior": "superior",
+    "savior": "salvador",
+    "mundane": "mundano"
+  },
+  "inverted_labels": {
+    "peligro": "danger",
+    "fenomeno": "freak",
+    "superior": "superior",
+    "salvador": "savior",
+    "mundano": "mundane"
+  },
+  "conditions": {
+    "afraid": "asustado",
+    "angry": "enojado",
+    "guilty": "culpable",
+    "hopeless": "desesperanzado",
+    "insecure": "inseguro"
+  },
+  "inverted_conditions": {
+    "asustado": "afraid",
+    "enojado": "angry",
+    "culpable": "guilty",
+    "desesperanzado": "hopeless",
+    "inseguro": "insecure"
   },
   "playbooks": {
     "the": "",
@@ -174,7 +232,6 @@ def get_for_all_langs(accessor):
     response = ''
 
     for lang in lang_dicts:
-        print(f'The lang {lang}, and responso: {accessor}')
         response = response + get_translation(lang, accessor)
 
     return response

@@ -27,7 +27,7 @@ def join_with_commas(array_to_join, field):
     return result
 
 
-def join_with_detail(array_to_join):
+def join_with_detail(array_to_join, lang):
     response = get_translation(lang, 'moves.moves_plus.response_header')
 
     for p in array_to_join:
@@ -92,7 +92,7 @@ def get_moves(message, lang):
             return get_unknown_playbook_response(lang)
 
         if show_detail:
-            return join_with_detail(moves_by_playbook)
+            return join_with_detail(moves_by_playbook, lang)
 
         return join_with_commas(moves_by_playbook, 'shortName')
 

@@ -67,17 +67,14 @@ def update_teamname(message):
 
 
 def create_settings(message):
-    print(f'Message: {message}')
     settings_key = get_settings_path(message)
     s3_client = get_s3_client()
     settings = info_from_s3(settings_key, s3_client)
 
-    print(f'Settings: {settings_key}')
     if settings:
         return get_translation(settings[LANGUAGE], 'configuration.existing_settings')
 
     lang = message.content.split(" ")[1]
-    print(f'Lang: {lang}')
 
     settings = {
         "language": lang,

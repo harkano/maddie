@@ -99,7 +99,7 @@ async def on_message(message):
     elif message.content.startswith("!"):
         log_line = message.guild.name + "|" + message.channel.name + "|" + message.author.name + "|" + message.content
         logger.info(log_line)
-        response =  mad_parse(message.content, message.author.display_name)
+        response =  mad_parse(message)
         if response: await message.channel.send(embed=response)
 
     await client.process_commands(message)
@@ -115,7 +115,7 @@ async def test(ctx, arg):
 @client.command()
 async def moves(ctx):
     ##Load in the existing moves
-    json_array = get_moves_array('en')
+    json_array = get_moves_array()
     response = ''
     for p in json_array['moves']:
         response = response + p['shortName'] + ", "
