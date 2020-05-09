@@ -710,6 +710,17 @@
             "img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
             "requiresRolling": true,
             "playbook": "transformado"
+        }, {
+            "id": 59,
+            "shortName": "burn",
+            "capital": "BURN",
+            "phrase": "recarga sus poderes!",
+            "blob": "Cuando *recargas tus poderes*, tira + las condiciones que tienes marcadas. En un éxito, guarda (hold) 3 burns. En un 7 - 9, marca una condición. En un fallo, guarda (hold) 2 y marca tres condiciones.\nGasta tus Burns en bengalas. Pierdes los burns al final de la escena.",
+            "label": "conditions",
+            "description": " ",
+            "img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
+            "requiresRolling": true,
+            "playbook": "nova"
         }
     ],
 	"playbooks": [{
