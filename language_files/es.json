@@ -1,0 +1,865 @@
+{
+    "moves": [{
+            "id": 1,
+            "shortName": "enfrentar",
+            "capital": "ENFRENTAR UNA AMENAZA",
+            "phrase": "enfrenta la amenaza!",
+            "blob": "Cuando *enfrentás una amenaza*, lanzá + Peligro. En un éxito, intercambiá golpes. En un 10+, seleccioná dos. En un 7 - 9, seleccioná uno.\n• resistí o evitá sus golpes\n• tomá algo de ellos\n• creá una oportunidad para tus aliados\n• impresioná, sorprendé o asustá a tu oposición",
+            "label": "danger",
+            "description": " ",
+            "img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
+            "requiresRolling": true,
+            "playbook": "basic"
+        },
+        {
+            "id": 2,
+            "shortName": "liberar",
+            "capital": "LIBERÁ TUS PODERES",
+            "phrase": "libera sus poderes!",
+            "blob": "Cuando *liberás tus poderes* para superar un obstáculo, alterar tu ambiente, o extender tus sentidos, tirá + Fenómeno. En un éxito, lo lográs. En un 7 - 9, marcate una condición o el GM te dirá como el efecto es inestable o temporal.",
+            "label": "freak",
+            "description": " ",
+            "img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
+            "requiresRolling": true,
+            "playbook": "basic"
+        },
+        {
+            "id": 3,
+            "shortName": "reconfortar",
+            "capital": "RECONFORTAR O APOYAR",
+            "phrase": "reconforta o apoya!",
+            "blob": "Cuando *reconfortás o apoyas a alguien*, tirá +Mundano. En un éxito, te escuchan: marcan potencial, remueven una condición o alteran Etiquetas (suben 1 bajan 1). En un 10+, también podés agregar Equipo al pozo o removerte una condición.",
+            "label": "mundane",
+            "description": " ",
+            "img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
+            "requiresRolling": true,
+            "playbook": "basic"
+        },
+        {
+            "id": 4,
+            "shortName": "atravesar",
+            "capital": "ATRAVESAR LA MáSCARA",
+            "phrase": "atraviesa la máscara!",
+            "blob": "Cuando *atravesás la máscara de alguien para ver a la persona debajo*, tirá +Mundano. En un 10+ preguntá tres. En un 7 - 9, preguntá dos.\n• ¿qué estás planeando realmente?\n• ¿qué querés que haga?\n• ¿qué pretendés hacer?\n• ¿cómo puedo hacer que tu pj haga _______?\n• ¿cómo puedo ganar influencia sobre vos?",
+            "label": "mundane",
+            "description": " ",
+            "img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
+            "requiresRolling": true,
+            "playbook": "basic"
+        },
+        {
+            "id": 5,
+            "shortName": "defender",
+            "capital": "DEFENDER",
+            "phrase": "defiende!",
+            "blob": "Cuando *defendés algo o a alguien de una amenaza inmediata*, tirá +Salvador. Para amenazas NPJ: en un éxito, lo mantenés a salvo y elegís uno. En un 7 - 9, te cuesta algo: exponete al peligro o escalá la situación.\n• agregá un Equipo al pool\n• tomá Influencia sobre alguien que protegés\n• remové una condicion\nPara amenazas PJ: en un éxito, dales -2 a su tirada. En un 7 - 9, te exponés a un costo, retribución o juicio.",
+            "label": "savior",
+            "description": " ",
+            "img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
+            "requiresRolling": true,
+            "playbook": "basic"
+        },
+        {
+            "id": 6,
+            "shortName": "evaluar",
+            "capital": "EVALUAR LA SITUACIÓN",
+            "phrase": "evalúa la situación!",
+            "blob": "Cuando *analizás la situación*, tirá +Superior. En un 10+, preguntá dos. En un 7 - 9, preguntá una. Tomá +1 cuando actuás sobre las respuestas.\n• ¿qué puedo usar aquí para ______?\n• ¿cuál es la mayor amenaza aquí?\n• ¿cuál es el mayor peligro?\n• ¿quién es aquí es el más vulnerable a mi?\n• ¿cómo podemos terminar esto rápido de la mejor manera?",
+            "label": "superior",
+            "description": " ",
+            "img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
+            "requiresRolling": true,
+            "playbook": "basic"
+        },
+        {
+            "id": 7,
+            "shortName": "provocar",
+            "capital": "PROVOCAR A ALGUIEN",
+            "phrase": "provoca!",
+            "blob": "Cuando *provocás a alguien susceptible a tus palabras*, decí lo que estás tratando de hacerles hacer y tirá +Superior. Para NPJs: en un 10+, muerden el anzuelo y hacen lo que querías. En un 7 - 9, en vez de eso pueden elegir uno.\n• dudan: tomás +1 hacia adelante (forward) contra ellos\n• erran: ganás una oportunidad crítica\n• sobre reaccionan: ganás Influencia sobre ellos\nPara PJs: En un 10+, ambas. En un 7 - 9, elegí uno.\n• si lo hacen, agregá Equipo al pool.\n• si no lo hacen, se marcan una condición",
+            "label": "superior",
+            "description": " ",
+            "img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
+            "requiresRolling": true,
+            "playbook": "basic"
+        },
+        {
+            "id": 8,
+            "shortName": "recibir",
+            "capital": "RECIBIR UN GOLPE PODEROSO",
+            "phrase": "recibe un golpe poderoso!",
+            "blob": "Cuando *recibís un golpe poderoso*, tirá +Condiciones Marcadas. En un 10+, elegí uno.\n• tenés que removerte de la situación: huís, te desmayás, etc\n• perdés el control de tus poderes, de una manera terrible\n• dos opciones de la lista 7 - 9\nEn un 7 - 9, elegí uno.\n• Atacás verbalmente: provocá a un compañero a una acción imprudente o tomá ventaja de tu influencia para inflingir una confición.\n• cedés terreno: tu oposición recibe una oportunidad\n• tratás de resistir el dolor: marcate dos condiciones\nEn una falla, te mantenés fuerte. Marcá potencial normalmente, y describí como aguantás el golpe.",
+            "label": "conditions",
+            "description": " ",
+            "img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
+            "requiresRolling": true,
+            "playbook": "basic"
+        },
+        {
+            "id": 9,
+            "shortName": "otro",
+            "capital": "OTRO MOVIMIENTO",
+            "phrase": "usa un movimiento!",
+            "blob": "Cosas!",
+            "label": "flat",
+            "description": " ",
+            "img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
+            "requiresRolling": true
+        },
+        {
+            "id": 10,
+            "shortName": "rechazar",
+            "capital": "RECHAZAR INFLUENCIA DE ALGUIEN",
+            "phrase": "rechaza la influencia!",
+            "blob": "Cuando *rechazas la influencia de alguien*, tirá dados. En un éxito te mantenés fiel a vos mismo y los ignorás. En un 10+ elegí dos. En un 7 - 9 elegí uno.\n• Remové una condición o marcá potencial inmediatamente actual para demostrarle que están equivocados\n• alterá dos Etiquetas a elección\n• cancelá su Influencia y date +1 hacia adelante (forward) contra ellos\nEn un fallo, sus palabras te pegan duro. Marcate una condición, y el GM altera tus Etiquetas.",
+            "label": "flat",
+            "description": " ",
+            "img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
+            "requiresRolling": true,
+            "playbook": "adult"
+        },
+        {
+            "id": 11,
+            "shortName": "ejercer",
+            "capital": "EJERCER TUS PODERES",
+            "phrase": "ejerce sus poderes!",
+            "blob": "Cuando *ejercés tus poderes con precisión o delicadeza*, tirá +Fenómeno. En un éxito, elegí uno. En un 10+, elegí dos.\n• agarrá algo vulnerable hacia vos\n• creá algo útil desde tu ambiente\n• neutralizá a tu oponente o amenaza, al menos por ahora",
+            "label": "freak",
+            "description": " ",
+            "img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
+            "requiresRolling": true,
+            "playbook": "adult"
+        },
+        {
+            "id": 12,
+            "shortName": "vencer",
+            "capital": "VENCER A UN ENEMIGO VULNERABLE",
+            "phrase": "vence a un enemigo vulnerable!",
+            "blob": "Cuando *vencés a un enemigo vulnerable*, tirá +Peligro. En un éxito, la pelea se termina. Están acabados. En un 10+, elegí dos. En un 7 - 9, elegí dos.\n• recibís un golpe poderoso\n• lastimás a tu oponente más de lo planeado\n• causas daño colateral serio",
+            "label": "danger",
+            "description": " ",
+            "img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
+            "requiresRolling": true,
+            "playbook": "adult"
+        },
+        {
+            "id": 13,
+            "shortName": "persuadir",
+            "capital": "PERSUADIR CON LAS MEJORES INTENCIONES",
+            "phrase": "persuade con las mejores intenciones!",
+            "blob": "Cuando *persuadís a alguien con las mejores intenciones*, tirá +Superior.\nSi son un NPJ, en un 10+ los convences y actúan de forma acorde. En un 7 - 9, necesitan una garantía concreta, ya mismo.\nSi son un PJ, en un éxito, pueden marcar potencial o alterar Etiquetas ellos mismos, si te hacen caso. En un 10+, también ganás Influencia sobre ellos.",
+            "label": "superior",
+            "description": " ",
+            "img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
+            "requiresRolling": true,
+            "playbook": "adult"
+        },
+        {
+            "id": 14,
+            "shortName": "empatizar",
+            "capital": "EMPATIZARSE",
+            "phrase": "se empatiza!",
+            "blob": "Cuando *empatizás de forma abierta con alguien*, tirá +Mundano. En un éxito, deben revelarte una vulnerabilidad o marcarse una condición. En un 10+, también ganas Influencia sobre ellos.",
+            "label": "mundane",
+            "description": " ",
+            "img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
+            "requiresRolling": true,
+            "playbook": "adult"
+        },
+        {
+            "id": 15,
+            "shortName": "posicion",
+            "capital": "DEFENDER UNA POSICIÓN",
+            "phrase": "defiende una posición!",
+            "blob": "Cuando *defendés una posición*, tirá +Salvador. En un 10+, elegí dos. En un 7 - 9, elegí uno.\n• el que te escucha no puede proseguir\n• el que te escucha no puede huir sin responderte\n• el que te ecucha no puede atacarte sin perder estatus o su posición",
+            "label": "savior",
+            "description": " ",
+            "img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
+            "requiresRolling": true,
+            "playbook": "adult"
+        },
+        {
+            "id": 16,
+            "shortName": "arrastrandote",
+            "capital": "Prácticamente arrastrándote",
+            "phrase": "prácticamente se arrastra!",
+            "blob": "Cuando *investigas a una persona o lugar*, tira +Mundano. En un 10+, preguntá dos. En un 7 - 9, preguntá uno:\n• ¿cuál es mi mejor manera de entrar/salir?\n• ¿qué pasó aquí recientemente?\n• ¿qué, aquí, vale la pena agarrar?\n• ¿quién o qué no es lo que parece?\n• ¿de quién es este lugar?\nEn un fallo, el GM te dirá por qué estás en una mala situación.",
+            "label": "mundane",
+            "description": " ",
+            "img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
+            "requiresRolling": true,
+            "playbook": "beacon"
+        },
+        {
+            "id": 17,
+            "shortName": "sinpoderes",
+            "capital": "SIN PODERES Y NI DE LEJOS SUFICIENTE ENTRENAMIENTO",
+            "phrase": "no tiene ni de lejos suficiente entrenamiento!",
+            "blob": "Siempre estás recogiendo equipo nuevo para mantenerte a la altura. Cada vez que recojas una nueva pieza de equipamiento, puedes escribirlo como una nueva habilidad, si no tenías otra de este movimiento.  La primera vez que uses cada pieza de equipo para *enfrentar directamente una amenaza, desatar tus poderes o defender a alguien*, podés tirar +Mundano en lugar de la etiqueta normal.",
+            "label": "",
+            "description": " ",
+            "img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
+            "requiresRolling": false,
+            "playbook": "beacon"
+        },
+        {
+          "id": 18,
+          "shortName": "notedecepcionare",
+          "capital": "NO TE DECEPCIONARÉ",
+          "phrase": "no te va a decepcionar!",
+          "blob": "Cuando *ayudás a un compañero de equipo*, podés gastar 2 TP para agregar a su tirada.",
+          "label": "",
+          "description": " ",
+          "img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
+          "requiresRolling": false,
+          "playbook": "beacon"
+        },
+        {
+          "id": 19,
+          "shortName": "practicamente",
+          "capital": "PRÁCTICAMENTE UN SUPERHÉROE",
+          "phrase": "es prácticamente un superhéroe!",
+          "blob": "Cuando *mencionas tu nombre de superhéroe a alguien importante (a tu elección)*, tira +Salvador.\nEn un éxito han oído hablar de ti; di cuál de tus hazañas han escuchado de tí, y eligirá una segunda etiqueta que ellos te asignan.\nEn una falla, no te toman en serio o desconfían de tí de ahora en más.",
+          "label": "mundane",
+          "description": " ",
+          "img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
+          "requiresRolling": true,
+          "playbook": "beacon"
+        },
+        {
+            "id": 20,
+            "shortName": "suertudo",
+            "capital": "VAMOS, SUERTUDO",
+            "phrase": "tiene una mascota!",
+            "blob": "Tienes una mascota de algún tipo, un compañero más pequeño que te ayuda. Descríbelo. Elige tres movimientos básicos y dile al GM cómo tu mascota te ayuda con esos movimientos. Cuando tu mascota pueda ayudarte, toma +1 a ese movimiento. Si tu mascota alguna vez se lastima, trátalo como si hubieras *recibido un golpe poderoso*.",
+            "label": "",
+            "description": "",
+            "img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
+            "requiresRolling": false,
+            "playbook": "beacon"
+        }, {
+            "id": 21,
+            "shortName": "aguantala",
+            "capital": "AGUANTALA, DOMINICIANO",
+            "phrase": "se la aguanta!",
+            "blob": "Cuando *resistís mientras estás dramáticamente bajo fuego*, tira +Salvador.En un éxito, intercambiá golpes. En un 10+, seleccioná dos. En un 7 - 9, seleccioná uno.\n• resistí o evitá sus golpes\n• tomá algo de ellos\n• creá una oportunidad para tus aliados\n• impresioná, sorprendé o asustá a tu oposición",
+            "label": "savior",
+            "description": "",
+            "img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
+            "requiresRolling": true,
+            "playbook": "beacon"
+        }, {
+            "id": 22,
+            "shortName": "piel",
+            "capital": "DE PIEL GRUESA Y DELGADA",
+            "phrase": "es de piel gruesa y delgada!",
+            "blob": "Cuando *tengas marcada la condición Enojado*, toma +1 continuado (ongoing) para *desatar tus poderes*.",
+            "label": "",
+            "description": "",
+            "img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
+            "requiresRolling": false,
+            "playbook": "toro"
+        }, {
+            "id": 23,
+            "shortName": "cabeza",
+            "capital": "PARA QUÉ QUIERO UNA CABEZA?",
+            "phrase": "no sabría para que quiere una cabeza!",
+            "blob": "Cuando *provocas a alguien con amenazas obvias y demostraciones de poder*, tirá +Peligro. Para NPJs: en un 10+, muerden el anzuelo y hacen lo que querías. En un 7 - 9, en vez de eso pueden elegir uno.\n• dudan: tomás +1 hacia adelante (forward) contra ellos\n• erran: ganás una oportunidad crítica\n• sobre reaccionan: ganás Influencia sobre ellos\nPara PJs: En un 10+, ambas. En un 7 - 9, elegí uno.\n• si lo hacen, agregá Equipo al pool.\n• si no lo hacen, se marcan una condición",
+            "label": "danger",
+            "description": "",
+            "img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
+            "requiresRolling": true,
+            "playbook": "toro"
+        }, {
+            "id": 24,
+            "shortName": "golpealos",
+            "capital": "GOLPEALOS A TODOS",
+            "phrase": "va a golpearlos a todos!",
+            "blob": "Cada vez que *te arrojas al combate sin cuidado*, puedes cambiar la etiqueta *Peligro* arriba y *cualquier otra* etiqueta abajo.",
+            "label": "",
+            "description": "",
+            "img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
+            "requiresRolling": false,
+            "playbook": "toro"
+        }, {
+            "id": 25,
+            "shortName": "ahi",
+            "capital": "AHÍ CUANDO IMPORTA",
+            "phrase": "está ahí cuando importa!",
+            "blob": "Cuando *defendés a alguien*, si tenés éxito, podés guardar (hold) 1 en lugar de elegir de la lista. Gastá los puntos guardados cuando ellos estén en peligro más tarde para llegar a la escena listo para ayudar.",
+            "label": "",
+            "description": "",
+            "img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
+            "requiresRolling": false,
+            "playbook": "toro"
+        }, {
+            "id": 26,
+            "shortName": "porcelana",
+            "capital": "EN UNA TIENDA DE PORCELANA",
+            "phrase": "está en una tienda de porcelana!",
+            "blob": "Cuando *enfrentás directamente a una amenaza*, tira +Peligro. En un éxito, intercambiá golpes. En un 10+, seleccioná three. En un 7 - 9, seleccioná dos. En un fallo, elegí uno de todas formas.\n• resistí o evitá sus golpes\n• tomá algo de ellos\n• creá una oportunidad para tus aliados\n• impresioná, sorprendé o asustá a tu oposición",
+            "label": "danger",
+            "description": "",
+            "img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
+            "requiresRolling": true,
+            "playbook": "toro"
+        }, {
+            "id": 27,
+            "shortName": "fisica",
+            "capital": "¿FÍSICA? ¿QUÉ FÍSICA?",
+            "phrase": "ignora la física!",
+            "blob": "Cuando *liberás tus poderes para atravesar una barrera insuperable*, tirá +Peligro. En un éxito, lo lográs. En un 7 - 9, marcate una condición o el GM te dirá como el efecto es inestable o temporal.",
+            "label": "danger",
+            "description": "",
+            "img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
+            "requiresRolling": true,
+            "playbook": "toro"
+        }, {
+            "id": 28,
+            "shortName": "contraria",
+            "capital": "MARÍA CONTRARIA",
+            "phrase": "es una María Contraria!",
+            "blob": "Cuando alguien intenta *atravesar tu máscara, reconfortarte o apoyarte, o provocarte*, podés interferir. Tirá +Superior. En un éxito, tu oponente toma un -2 en su tirada. En un 10+, tomás Influencia sobre ellos o eliminás una condicion. En un fallo, obtiene un 10+ sin importar lo que tiró y marca una condición a su elección.",
+            "label": "superior",
+            "description": " ",
+            "img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
+            "requiresRolling": true,
+            "playbook": "delincuente"
+        }, {
+            "id": 29,
+            "shortName": "nomeimporta",
+            "capital": "¡NO ME IMPORTA LO QUE PIENSES!",
+            "phrase": "no le importa lo que pienses!",
+            "blob": "Cuando *rechazas la influencia de otros*, tirá +2. En un 10+ elegí dos. En un 7 - 9 elegí uno.\n• Remové una condición o marcá potencial inmediatamente actual para demostrarle que están equivocados\n• alterá dos Etiquetas a elección\n• cancelá su Influencia y date +1 hacia adelante (forward) contra ellos\nEn un fallo, sus palabras te pegan duro. Marcate una condición, y el GM altera tus Etiquetas.",
+            "label": "",
+            "description": " ",
+            "img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
+            "requiresRolling": true,
+            "playbook": "delincuente"
+        }, {
+            "id": 29,
+            "shortName": "queequipo",
+            "capital": "¿EQUIPO? ¿QUÉ EQUIPO?",
+            "phrase": "de qué equipo están hablando?",
+            "blob": "Cuando *usas el TP de forma egoísta*, borrá una condición o marcá potencial. La primera vez en una sesión en la que usas TP para ayudar a un Compañero de equipo, toma +1 hacia adelante (forward).",
+            "label": "",
+            "description": " ",
+            "img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
+            "requiresRolling": false,
+            "playbook": "delincuente"
+        }, {
+            "id": 30,
+            "shortName": "criminal",
+            "capital": "MENTE CRIMINAL",
+            "phrase": "tiene una mente criminal!",
+            "blob": "Cuando *evaluás la situación*, tira +Superior. En un 10+, preguntá dos. En un 7 - 9, preguntá una. Tomá +1 cuando actuás sobre las respuestas.\n• ¿qué puedo usar aquí para ______?\n• ¿cuál es la mayor amenaza aquí?\n• ¿cuál es el mayor peligro?\n• ¿quién es aquí es el más vulnerable a mi?\n• ¿cómo podemos terminar esto rápido de la mejor manera?\n• ¿qué aquí, es útil o valioso para mí?\n• ¿cómo podría enfurecer o provocar mejor a __________?\n• ¿cuál es a mejor manera de entrar/pasar?\nEn un fallo, podés preguntar una de las últimas tres preguntas.",
+            "label": "superior",
+            "description": " ",
+            "img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
+            "requiresRolling": true,
+            "playbook": "delincuente"
+        }, {
+            "id": 31,
+            "shortName": "alborotador",
+            "capital": "ALBOROTADOR",
+            "phrase": "es un alborotador!",
+            "blob": "Cuando *ayudás a un compañero de equipo mediante acciones destructivas, criminales o que rompen las reglas*, podés otorgarles un +2 en lugar de un +1 cuando gastás un 1 TP de la reserva.",
+            "label": "superior",
+            "description": " ",
+            "img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
+            "requiresRolling": false,
+            "playbook": "delincuente"
+        }, {
+            "id": 32,
+            "shortName": "miraesto",
+            "capital": "MIRA ESTO!",
+            "phrase": "hace que mires esto!",
+            "blob": "Cuando *despistás, engañás o distraés a alguien*, tirá +Superior. En un éxito, se creen el engaño o son distraídos, al menos por un momento. En un 10+, elegí tres. En un 7 - 9, elegí dos:\n• tenés una oportunidad\n• exponés una debilidad o defecto\n• los confundís por un tiempo\n• evitás mas enredos\nEn una falla, te ves irremediablemente enrredado en la mentira y bajo presión; marcá una condición.",
+            "label": "superior",
+            "description": " ",
+            "img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
+            "requiresRolling": true,
+            "playbook": "delincuente"
+        }, {
+            "id": 33,
+            "shortName": "máscara",
+            "capital": "LA MÁSCARA",
+            "phrase": "tiene una máscara!",
+            "blob": "Te ponés una máscara y ocultás tu identidad real. Elegí la Etiqueta que intentás encarnar mientras usas tu máscara.\nUna vez por sesión, podés afirmar ya sea tu identidad heróica o secreta para cambiar tu *Mundano* con la *etiqueta de tu máscara*. Cuando revelás tu identidad secreta a alguien que no lo sabía ya, marcá potencial.",
+            "label": "",
+            "description": " ",
+            "img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
+            "requiresRolling": false,
+            "playbook": "jano"
+        }, {
+            "id": 34,
+            "shortName": "eljuego",
+            "capital": "CON LA CABEZA EN EL JUEGO",
+            "phrase": "tiene la cabeza en el juego!",
+            "blob": "Cuando te *comprometés a salvar a alguien o a derrotar a un enemigo terrible*, marcá una Condición y toma +1 continuado (ongoing) a todas las tiradas en persecución directa de ese objetivo. Al final de la cualquier escena en la que no hayas avanzado hacia dicho objetivo, marcá una Condición. Cuando cumplís tu objetivo, marcá potencial.",
+            "label": "",
+            "description": " ",
+            "img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
+            "requiresRolling": false,
+            "playbook": "jano"
+        }, {
+            "id": 35,
+            "shortName": "loqueves",
+            "capital": "SOY LO QUE VES",
+            "phrase": "es lo que ves!",
+            "blob": "Cuando *pasás tiempo hablando con alguien sobre tu identidad*, podés preguntarles qué Etiqueta quieren imponerte. El jugador te responderá honestamente. Si aceptás lo que dicen, tomá +1 hacia adelante (forward) y marcá potencial o eliminá una confición.",
+            "label": "",
+            "description": " ",
+            "img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
+            "requiresRolling": false,
+            "playbook": "jano"
+        }, {
+            "id": 36,
+            "shortName": "suave",
+            "capital": "CARÁCTER SUAVE",
+            "phrase": "tiene carácter suave!",
+            "blob": "Cuando intentás *utilizar tu identidad civil para mentir, engañar o escatoroirte más allá de alguien*, tirá +Mundano. En un éxito, se creen tu engaño. En un 7 - 9, elegí uno.\n• todavía estás bajo observación\n• dejás atras algo incriminatorio\n• te obligan a hacer el ridículo para convencerlos\nEn un fallo, una de tus obligaciones civiles hace acto de presencia.",
+            "label": "mundane",
+            "description": " ",
+            "img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
+            "requiresRolling": true,
+            "playbook": "jano"
+        }, {
+            "id": 37,
+            "shortName": "salvare",
+            "capital": "TE SALVARÉ",
+            "phrase": "te salvará!",
+            "blob": "Estás dispuesto a pagar altos costos para mantener a salvo a tus seres queridos. Revela tu identidad secreta a algún observador o marca una condición para defender a un ser querido como si hubieras tirado un 12+.",
+            "label": "",
+            "description": " ",
+            "img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
+            "requiresRolling": false,
+            "playbook": "jano"
+        }, {
+            "id": 37,
+            "shortName": "red",
+            "capital": "RED PELIGROSA",
+            "phrase": "tiene una red peligrosa!",
+            "blob": "Cuando *revelas una trampa que has dejado para alguien utilizando tus poderes*, tira + la *Etiqueta de la máscara*. En un éxito, tu oponente activa la trampa y tenés una abertura u oportunidad contra ellos.\nEn un 10+, toma +1 hacia adelante (forward) para utilizar la oportunidad. En un fallo, la trampa, inadvertidamente, hace que la situación escale a peor.",
+            "label": "",
+            "description": " ",
+            "img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
+            "requiresRolling": true,
+            "playbook": "jano"
+        }, {
+            "id": 38,
+            "shortName": "lacorrecta",
+            "capital": "LA BATALLA CORRECTA",
+            "phrase": "lucha en la batalla correcta!",
+            "blob": "Cuando *contenés tus golpes mientras te enfrentás directamente a una amenaza*, podés tirar +Salvador. En un 10+, seleccioná dos. En un 7 - 9, seleccioná uno.\n• resistí o evitá sus golpes\n• tomá algo de ellos\n• creá una oportunidad para tus aliados",
+            "label": "saviour",
+            "description": " ",
+            "img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
+            "requiresRolling": true,
+            "playbook": "legado"
+        }, {
+            "id": 38,
+            "shortName": "loquesoy",
+            "capital": "SÉ LO QUE SOY",
+            "phrase": "sabe lo que es!",
+            "blob": "Una vez por escena, cuando *defiendes un compañero de equipo*, podés cambiar *Salvador* hacia arriba y *otra Etiqueta* hacia abajo, además de cualquier otro beneficio del movimiento, incluso en un fallo. Si lo hacés, agregá 1 TP al pozo.",
+            "label": "",
+            "description": " ",
+            "img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
+            "requiresRolling": false,
+            "playbook": "legado"
+        }, {
+            "id": 39,
+            "shortName": "pasado",
+            "capital": "PALABRAS DEL PASADO",
+            "phrase": "escucha las palabras del pasado!",
+            "blob": "Cuando *busques la guía de uno de tus mayores o de un miembro de tu legado*, contales el problema que enfrentás y hacé una pregunta sobre el problema. Ellos responderán honestamente y te dirán que hacer. Toma +1 continuado (ongoing) si escuchás su consejo. Si seguís tu propio camino, marcá potencial.",
+            "label": "",
+            "description": " ",
+            "img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
+            "requiresRolling": false,
+            "playbook": "legado"
+        }, {
+            "id": 40,
+            "shortName": "importa",
+            "capital": "EL LEGADO IMPORTA",
+            "phrase": "sabe que el legado importa!",
+            "blob": "Cuando *tomás Influencia sobre alguien de tu legado (o le das Influencia sobre vos)*, marcá potencial y tomá +1 hacia adelante (forward). Cuando alguien de tu legado haga que tus Etiquetas cambien, marcá potencial y tomá +1 hacia adelante (forward).",
+            "label": "",
+            "description": " ",
+            "img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
+            "requiresRolling": false,
+            "playbook": "legado"
+        }, {
+            "id": 41,
+            "shortName": "nuncaterindas",
+            "capital": "NUNCA TE DES POR VENCIDO, NUNCA TE RINDAS",
+            "phrase": "nunca se rinde!",
+            "blob": "Cuando *recibas un golpe poderoso de alguien mucho más fuerte que vos*, utilizá este movimiento en vez del movimiento básico. Tirá +Salvador. En un éxito, te mantenés firme y elegís uno. En un 7 - 9, marcá una condición.\n• tenés una oportunidad o apertura después del golpe contra tu atacante\n• te reagrupás despues del golpe, e inspirás al equipo; añadí 1 TP al pozo\n• mantenés a tu atacante centrado en vos\nEn caso de fallar, caés violentamente, pero dejás a tu oponente desequilibrado y vulnerable.",
+            "label": "saviour",
+            "description": " ",
+            "img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
+            "requiresRolling": true,
+            "playbook": "legado"
+        }, {
+            "id": 42,
+            "shortName": "autoridad",
+            "capital": "SÍMBOLO DE AUTORIDAD",
+            "phrase": "tiene un símbolo de autoridad!",
+            "blob": "Cuando *le das a un NPC una orden basada en una autoridad que dicho NPC reconoce*, tirá +Salvador. En un éxito, elegí uno.\n• harán lo que decís\n• saldrán de tu camino\n• te atacan en desventaja\n• se quedan inmóviles\nEn un 10+, también tomás +1 adelante (forward) contra ellos. En un fallo, hacen lo que quieren y tomás -1 hacia adelante (forward) contra ellos.",
+            "label": "saviour",
+            "description": " ",
+            "img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
+            "requiresRolling": true,
+            "playbook": "legado"
+        }, {
+            "id": 43,
+            "shortName": "dosmundos",
+            "capital": "PARTE DE DOS MUNDOS",
+            "phrase": "es parte de dos mundos!",
+            "blob": "Tenés los recursos que vienen con tu cargo. Cada vez que *contactes a tu gente*, tirá +Superior. En un 10+, guardá (hold) 3. En un 7 - 9, guarda (hold) 2. En un fallo, guarda (hold) 1, pero tu gente te hace una demanda incómoda. Gasta lo guardado 1 a 1 paraÑ\n• recibir una pieza de tecnología alienígena útil que te permite usar cualquier habilidad de otro playbook una vez (elegí la habilidad cuando gastes lo guardado (hold))\n• consultar los conocimentos de tu gente para hacerle una pregunta al GM sobre la situación actual\n• eliminar una confición gracias al confort de contactar con tu hogar",
+            "label": "superior",
+            "description": " ",
+            "img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
+            "requiresRolling": true,
+            "playbook": "extranjero"
+        }, {
+            "id": 44,
+            "shortName": "tecnologia",
+            "capital": "TECNOLOGÍA ALIENÍGENA",
+            "phrase": "tiene tecnología alienígena!",
+            "blob": "Cuando *alterás un dispositivo humano con tu tecnología*, tirás +Fenómeno. En un éxito, creás un dispositivo que puede hacer algo imposible una vez y luego se esfuma. Cuando sacás 10+, elegí uno:\n• funciona excepcionalmente bien\n• le das un uso adicional\nEn un fallo, el dispositivo funciona, pero tiene un efecto secundario totalmente involuntario que el GM revelará cuando lo uses.",
+            "label": "freak",
+            "description": " ",
+            "img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
+            "requiresRolling": true,
+            "playbook": "extranjero"
+        }, {
+            "id": 45,
+            "shortName": "costumbres",
+            "capital": "COSTUMBRES EXTRATERRESTRES",
+            "phrase": "tiene costumbres extraterres!",
+            "blob": "Cada vez que *abiertamente ignores o socaves una importante costumbre de la Tierra en favor de una de las costumbres de tu propia gente*, desplazá *Superior* hacia arriba y cualquier *otra Etiqueta* hacia abajo.",
+            "label": "",
+            "description": " ",
+            "img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
+            "requiresRolling": false,
+            "playbook": "extranjero"
+        }, {
+            "id": 46,
+            "shortName": "kirbycraft",
+            "capital": "KIRBY-CRAFT",
+            "phrase": "tiene una kirby-craft!",
+            "blob": "Tenés un vehículo, algo de tu hogar. Detallá su aspecto y elegí dos fortalezas y dos debilidades. Cuando estés volando tu nave, podés usarla para *desatar tus poderes, enfrentarte directamente a una amenazao defender a alguien*, usando Superior.\n• Fortalezas: Rápido y maniobrable, cameleónico, armas poderosas, regeneración, cambio de dimensión, cambio de tamaño, telepatía\n• Debilidades: fuente de combustible rara, susceptible a _________, fácilmente detectable, lenta y torpe, desarmada, difícil de reparar",
+            "label": "",
+            "description": " ",
+            "img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
+            "requiresRolling": false,
+            "playbook": "extranjero"
+        }, {
+            "id": 47,
+            "shortName": "lomejor",
+            "capital": "LO MEJOR DE AMBOS MUNDOS",
+            "phrase": "reconoce lo mejor de ambos mundos!",
+            "blob": "Cuando *reconfortas o apoyas a alguien diciéndole como ejemplifica las mejores partes de la Tierra*, tirá +Fenómeno. En un éxito, te escuchan: marcan potencial, remueven una condición o alteran Etiquetas (suben 1 bajan 1). En un 10+, también podés agregar Equipo al pozo o removerte una condición.",
+            "label": "superior",
+            "description": " ",
+            "img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
+            "requiresRolling": true,
+            "playbook": "extranjero"
+        }, {
+            "id": 48,
+            "shortName": "nodiferente",
+            "capital": "NO TAN DIFERENTE DESPUES DE TODO",
+            "phrase": "no es tan diferente despues de todo!",
+            "blob": "Cuando *hablás de tu casa con alguien*, tirá +Fenómeno. En un 10+ elegí dos. En un 7 - 9, elegí uno. Durante la conversación:\n• confezás un defecto de tu hogar; añadí 1 TP al pozo\n• lo engañas sobre tu hogar; tomá Influencia sobre tu interlocutor\n• describís las glorias de tu hogar; borrá una condición\nEn un fallo, inadvertidamente revelás más sobre vos mismo de lo que planeabas; contales un secreto o vulnerabilidad que no hayas compartido con los terrícolas hasta ahora.",
+            "label": "freak",
+            "description": " ",
+            "img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
+            "requiresRolling": true,
+            "playbook": "extranjero"
+        }, {
+            "id": 49,
+            "shortName": "archivos",
+            "capital": "HE ESTADO LEYENDO LOS ARCHIVOS",
+            "phrase": "ha estado leyendo los archivos!",
+            "blob": "Aprendiste sobre el mundo sobrehumano a través de los recursos de tu mentor. Cuando *te encontrás por primera vez con un fenómeno superpoderoso (tu decisión)*, tirá +Superior. En un éxito, comunicá al equipo un detalle importante que hayas aprendido de tus estudios. El GM te dirá qué, si es que hay algo, parece diferente de lo que recordás. En un 10+, preguntale al GM una pregunta de seguimiento, él responderá honestamente. En caso de una falla, la situación está fuera de conocimiento, el GM te dirá por qué.",
+            "label": "superior",
+            "description": " ",
+            "img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
+            "requiresRolling": true,
+            "playbook": "protegido"
+        }, {
+            "id": 50,
+            "shortName": "capitan",
+            "capital": "CAPITÁN",
+            "phrase": "es el capitán!",
+            "blob": "Cuando *entres en batalla como equipo*, agregá 1 TP adicional al pozo y llevpa +1 hacia adelante (forward) si eres el líder.",
+            "label": "",
+            "description": " ",
+            "img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
+            "requiresRolling": false,
+            "playbook": "protegido"
+        }, {
+            "id": 51,
+            "shortName": "frustracion",
+            "capital": "DESCARGANDO FRUSTRACIÓN",
+            "phrase": "está descargando frustración!",
+            "blob": "Cuado *te enfrentás directamente a una amenaza mientras estás enojado*, podés tirar + *la Etiqueta que tu mentor niega* y eliminar el enojo. En un 10+, seleccioná dos. En un 7 - 9, seleccioná uno.\n• resistí o evitá sus golpes\n• tomá algo de ellos\n• creá una oportunidad para tus aliados\n• impresioná, sorprendé o asustá a tu oposición",
+            "label": "",
+            "description": " ",
+            "img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
+            "requiresRolling": true,
+            "playbook": "protegido"
+        }, {
+            "id": 52,
+            "shortName": "hogar",
+            "capital": "CONVERSACIÓN JUNTO AL HOGAR",
+            "phrase": "quiere una conversación junto al hogar!",
+            "blob": "Cuando *buscás el consejo de tu mentor*, tirá + *la Etiqueta que encarna*. En un éxito te dirá que hace. En un 10+, marcá potencial si seguís sus consejos y tomá +1 continuado (ongoing) para seguirlo. En un 7 - 9, obtenés un +1 hacia adelante (forward) para lograrlo si lo haces a su manera. En un fallo, no tiene tiempo para vos porque algo grande ha pasado; marcá una condición, a la elección del GM.",
+            "label": "superior",
+            "description": " ",
+            "img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
+            "requiresRolling": true,
+            "playbook": "protegido"
+        }, {
+            "id": 52,
+            "shortName": "consciente",
+            "capital": "SE CONSCIENTE DE LO QUE TE RODEA",
+            "phrase": "es consciente de lo que lo rodea!",
+            "blob": "Cuando *evaluás la situación antes de iniciar una pelea*, tirá +Superior. En un 10+, preguntá tres. En un 7 - 9, preguntá dos. En un fallo, preguntá una de todas formas. Tomá +1 cuando actuás sobre las respuestas.\n• ¿qué puedo usar aquí para ______?\n• ¿cuál es la mayor amenaza aquí?\n• ¿cuál es el mayor peligro?\n• ¿quién es aquí es el más vulnerable a mi?\n• ¿cómo podemos terminar esto rápido de la mejor manera?",
+            "label": "superior",
+            "description": " ",
+            "img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
+            "requiresRolling": true,
+            "playbook": "protegido"
+        }, {
+            "id": 52,
+            "shortName": "tradicion",
+            "capital": "TRADICIÓN HERÓICA",
+            "phrase": "tiene una tradirción heróica!",
+            "blob": "Cuando *le das a alguien el consejo que daría tu mentor*, podés tirar + *la Etiqueta que tu mentor encarna* para *reconfortar o apoyar a alguien*, en lugar de tirar Mundano.",
+            "label": "",
+            "description": " ",
+            "img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
+            "requiresRolling": false,
+            "playbook": "protegido"
+        }, {
+            "id": 53,
+            "shortName": "nomicuerpo",
+            "capital": "NO SOY MI CUERPO",
+            "phrase": "no es su cuerpo!",
+            "blob": "Cuando *recibís un golpe poderoso*, tirá +Condiciones Marcadas -2 (mínimo 0). En un 10+, perdés el control de tus poderes, de una manera terrible\nEn un 7 - 9, elegí uno.\n• Atacás verbalmente: provocá a un compañero a una acción imprudente o tomá ventaja de tu influencia para inflingir una confición.\n• cedés terreno: tu oposición recibe una oportunidad\n• tratás de resistir el dolor: marcate dos condiciones\nEn una falla, te mantenés fuerte. Marcá potencial normalmente, y describí como aguantás el golpe.",
+            "label": "conditions",
+            "description": " ",
+            "img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
+            "requiresRolling": true,
+            "playbook": "transformado"
+        }, {
+            "id": 54,
+            "shortName": "inhumano",
+            "capital": "NO LO SUFICIENTEMENTE HUMANO",
+            "phrase": "no es lo suficientemente humano!",
+            "blob": "Cuando *teenfrentas directamente a una amenaza de una manera aterradora*, marcá una condición y tirá +Peligro. En un éxito, intercambiá golpes. En un 10+, seleccioná tres. En un 7 - 9, seleccioná dos. En un fallo, seleccioná una de todas formas.\n• resistí o evitá sus golpes\n• tomá algo de ellos\n• creá una oportunidad para tus aliados\n• impresioná, sorprendé o asustá a tu oposición",
+            "label": "danger",
+            "description": " ",
+            "img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
+            "requiresRolling": true,
+            "playbook": "transformado"
+        }, {
+            "id": 55,
+            "shortName": "imparable",
+            "capital": "IMPARABLE",
+            "phrase": "es imparable!",
+            "blob": "Cuando *te abrís camino a la fuerza a través del escenario para llegar a o alejarte de algo*, tirá +Peligro. En un éxito el mundo se rompe ante ti y obtenés lo que querés.\nEn un 7 - 9, elegí uno\n• marcá una condición\n• dejá algo atras\n• llegate algo con vos\nEn una falla, te abalanzás, pero causás devastación a tu paso o terminás en un lugar peor que antes, a la elección del GM.",
+            "label": "danger",
+            "description": " ",
+            "img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
+            "requiresRolling": true,
+            "playbook": "transformado"
+        }, {
+            "id": 56,
+            "shortName": "porti",
+            "capital": "VOY A POR TI",
+            "phrase": "viene a por ti!",
+            "blob": "Cuando *marcás una condición*, tomá +1 hacia adelante (forward) contra la persona a la que más culpes por causar dicha condición.",
+            "label": "",
+            "description": " ",
+            "img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
+            "requiresRolling": false,
+            "playbook": "transformado"
+        }, {
+            "id": 57,
+            "shortName": "ojala",
+            "capital": "OJALÁ PUDIERA SER",
+            "phrase": "desea que ojalá pudiera ser!",
+            "blob": "Cuando *reconfortás o apoyas a alguien, si les decís lo que más envidiás de ellos*, tirá +Fenómeno. En un éxito, te escuchan: marcan potencial, remueven una condición o alteran Etiquetas (suben 1 bajan 1). En un 10+, también podés agregar Equipo al pozo o removerte una condición.",
+            "label": "freak",
+            "description": " ",
+            "img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
+            "requiresRolling": true,
+            "playbook": "transformado"
+        }, {
+            "id": 58,
+            "shortName": "monstruo",
+            "capital": "SÉ EL MONSTRUO",
+            "phrase": "es el monstruo!",
+            "blob": "Cuando *asustás, intimidás o amedrentas a otros con tu forma monstruosa*, tirá +Fenómeno. En un éxito, tu actuación los agita y se vuelven vulnerables a vos, o huyen. En un 10+ elegí uno. En un 7 - 9, elegí dos.\nAsustás a otros que no pretendías asustar\n• Lastimás a alguien o rompés algo que no deberías\n• Te sentís más como un monstruo después; marcá una condición a la elección del GM.\nEn un fallo, reaccionan con violencia, odio y paranoia, y sufrís la peor parte.",
+            "label": "conditions",
+            "description": " ",
+            "img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
+            "requiresRolling": true,
+            "playbook": "transformado"
+        }, {
+            "id": 59,
+            "shortName": "burn",
+            "capital": "BURN",
+            "phrase": "recarga sus poderes!",
+            "blob": "Cuando *recargas tus poderes*, tira + las condiciones que tienes marcadas. En un éxito, guarda (hold) 3 burns. En un 7 - 9, marca una condición. En un fallo, guarda (hold) 2 y marca tres condiciones.\nGasta tus Burns en bengalas. Pierdes los burns al final de la escena.",
+            "label": "conditions",
+            "description": " ",
+            "img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
+            "requiresRolling": true,
+            "playbook": "nova"
+        }
+    ],
+	"playbooks": [{
+		"id": 1,
+		"name": "emblema",
+		"mot": "Este es el momento en el que les muestras exactamente por qué perteneces aquí. Haces algo increíble o te haces cargo de un enemigo, no importa lo loco, no importa lo ridículo que sea, porque ese eres tú. Van a quedar de bocas abiertas cuando hayas terminado. Por supuesto, llevar a cabo una hazaña como esa tiende a atraer atención no deseada. Atención y reputación peligrosa...",
+		"img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
+		"source": "core"
+	}, {
+		"id": 2,
+		"name": "toro",
+		"mot": "Esto es lo que haces mejor. Sueltas toda la fuerza reprimida, tu ira, tu euforia, y rompes lo que se interponga en tu camino. Eres un equipo de demolición andante. ¿Quién puede hacerte frente? Nadie, nadie. Ni edificios. Ni estructuras. Ni enemigos. Nada. Por supuesto, ahora las personas que te cambiaron saben exactamente dónde encontrarte...",
+		"img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
+		"source": "core"
+	}, {
+		"id": 3,
+		"name": "delincuente",
+		"mot": "Ahora es cuando les muestras lo que realmente eres. Ya sea el héroe debajo de la fachada rebelde... o el que puede tomar las decisiones que los héroes no pueden tomar. Haces lo que sea para mostrar esa verdad, ya sea salvar el día de un villano terrible o detener a un malvado de una vez por todas. Por supuesto, una vez que hayas demostrado lo que realmente eres, no podrás volver a las payasadas de antes...",
+		"img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
+		"source": "core"
+	}, {
+		"id": 4,
+		"name": "condenado",
+		"mot": "El escalofriante miedo a tu muerte, siempre en tu cabeza, te frena la mayor parte del tiempo. Pero aquí mismo, ¿ahora mismo? Te da la confianza para hacer cualquier cosa. Después de todo, ¿qué es lo peor que podría pasar? ¿Es peor que tu perdición? Haz cosas imposibles. Haz cualquier cosa. Pero marca una Señal de Perdición despues de que hayas terminado.",
+		"img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
+		"source": "core"
+	}, {
+		"id": 5,
+		"name": "jano",
+		"mot": "La máscara es mentira, y una parte de tí siempre lo ha sabido. No importa si otros pueden verte. Tú eres el que puede hacer lo imposible. Sin máscara, pero con tu traje, vas a salvar el maldito día. Por supuesto, será mejor que nadie desagradable esté mirando...",
+		"img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
+		"source": "core"
+	}, {
+		"id": 6,
+		"name": "legado",
+		"mot": "Este es el momento en el que demuestras que te pertenece. Tomas control de todos tus poderes y superas incluso las chances más imposibles para dmostrar que eres digno del nombre que llevas. Logras hazañas que incluso tus predecesores no pudieron alcanzar. Por supuesto, después de que demuestres algo como eso, puedes esperar aún más responsabilidades sobre tus hombros...",
+		"img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
+		"source": "core"
+	}, {
+		"id": 7,
+		"name": "nova",
+		"mot": "El ojo de tu mente se abre, y puedes ver el mundo a tu alrededor como nunca antes. Puedes controlarlo, a voluntad, con facilidad. Por supuesto, distorsionar la realidad tiende a tener ramificaciones inesperadas más adelante, pero en tu momento de divinidad... ¿cómo podrías estar preocupado?",
+		"img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
+		"source": "core"
+	}, {
+		"id": 8,
+		"name": "extranjero",
+		"mot": "Aceptas tus orígenes y llamas a tu hogar pidiendo ayuda. Responderán a tu llamada, ¡con fuerza!, llegando exactamente cuando la necesites para dar vuelta la situación. Lucharán y te servirán durante el resto de la batalla. Por supuesto, cuando todo esté dicho y hecho... probablemente les gustaría llevarte a casa con ellos. Después de todo acabas de demostrar ser digno.",
+		"img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
+		"source": "core"
+	}, {
+		"id": 9,
+		"name": "protegido",
+		"mot": "El momento en que demuestras quién eres realmente: tu mentor, o algo diferente. Puedes hacer lo que tu mentor pueda hacer y más. Puedes hacer lo increíble, incluso las cosas en las que él siempre falló. Por supuesto, tu mentor ya no te verá de la misma manera, independientemente del camino que elijas...",
+		"img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
+		"source": "core"
+	}, {
+		"id": 10,
+		"name": "transformado",
+		"mot": "Es tan fácil olvidar que no eres tu cuerpo, y no eres la voz en tu cabeza, eres ambas cosas. Sé el monstruo, y sálvalos de todos modos. Destruye paredes y habla en voz baja. Porque cuando abrazas quien realmente eres, puedes hacer cualquier cosa. Por supuesto, una exhibición como esta seguramente irritará a aquellos que solo ven al monstruo cuando te miran...",
+		"img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
+		"source": "core"
+	}, {
+		"id": 11,
+		"name": "brain",
+		"mot": "Sooner or later, all the super powers, elite training, and experience are helpless in the face of evil or disaster. That’s when somebody like you, gifted as you are with a peerless intellect, can rise to the occasion. Your plan, your invention, or your lightning-fast thought processes save the day, in a way no one else could have foreseen. Of course, after you’ve shown how different you are from them, that distance between you and the others is now that much greater. And the world is only going to pull you farther apart...",
+		"img": "",
+		"source": "aegis"
+	}, {
+		"id": 12,
+		"name": "soldier",
+		"mot": "Freedom isn’t free. But not every mission ends in tragedy. When things look bleakest, when your back is against the wall, when it seems like the dawn will never come...you find a way without violence. Your enemies lay down their arms and surrender; your allies step back from the brink of chaos. Of course, the people you’ve saved aren’t going to forget what you’ve done here today; they may even come to see you as a symbol of the higher cause you claim to serve...",
+		"img": "",
+		"source": "aegis"
+	}, {
+		"id": 13,
+		"name": "reformed",
+		"mot": "You’ve seen your greatest mistakes, and the rest of the world has, too. They’re all watching you now, judging every move you make. When everything is on the line and your back is against the wall, though, you’ll show them what you’re made of—that being a hero is a choice. An act of will. And you’ve got what it takes to save the day. Of course, afterward, you can expect both sides, hero and villain, to deeply question where your loyalties truly lie...",
+		"img": "",
+		"source": "herald"
+	}, {
+		"id": 14,
+		"name": "newborn",
+		"mot": "Something snaps into focus, and suddenly you’re a full thing, true and complete. You’d never have known how fragmented you were before, if not for here, this moment. You’re not a series of individual lessons. You’re not a series of subroutines and programs. You’re...a person. This must be what it’s like to be...human. And this fullness? It gives you a control over yourself, a unity of purpose you’ve never experienced before. Of course, now that you’re showing off all your potential, it’s only a matter of time before someone comes forward to reduce you to a machine again...",
+		"img": "",
+		"source": "herald"
+	}, {
+		"id": 15,
+		"name": "innocent",
+		"mot": "You’ve fought, struggled, and worked so hard to figure out who you are, whether you’re just the same as your future self or whether you’re different...but right now, that’s all out the window. The distinction between your future self and your present self vanishes in the face of the trial before you, and you become exactly the powerful, adamant figure that everyone fears or hopes you will one day become. You can do exactly what your future self could do, and everyone around you sees them in you more clearly than ever. Of course, after this it’s going to be hard to treat you as two different people...",
+		"img": "",
+		"source": "herald"
+	}, {
+		"id": 16,
+		"name": "star",
+		"mot": "Sometimes it can be hard to tell where the show stops and where you begin—but not today. Not now. Because right now, there is no show. Right now, you are the thing you pretend to be—bold and bright and beautiful and amazing and powerful and confident. Right now, you draw strength from your audience, comfort from their belief in you, and you can do anything they think you can. Of course, after such an impassioned performance, your audience will just have even more demands..",
+		"img": "",
+		"source": "herald"
+	}, {
+		"id": 17,
+		"name": "joined",
+		"mot": "When you trigger your Moment of Truth, choose—are you working with your other half, or are you on your own?\\n  If you’re working with your other half, use the text of their Moment of Truth and treat it as if it applies to both of you. Remember to lock your Label and switch a bond to a distinction because you’ll probably never reach these heights of perfect connection, of being one, ever again…\\n If you’re on your own, use the following text:\\n You’re on your own. It’s like missing an arm. Like fighting naked. Like holding your breath. You’re missing something vital...but you’re moving faster than ever, thinking faster than ever, doing things you couldn’t even do while relying on both of your strength combined. And it’s hitting you, hard—you can do this. Without them. And you can win. It’s going to be hard to come down off this high and rejoin with them afterwards, isn’t it?\\n Remember to lock a Label and switch a bond to a distinction, afterward.",
+		"img": "",
+		"source": "herald"
+	}, {
+		"id": 18,
+		"name": "harbinger",
+		"mot": "Everything you do could affect the future. For all you know, the fact that you saved that one guy that one time means that now the future is full of pterodactyls. The connections, the ripples, they’re always so hard to track, and you’re still not sure if you’ve helped or hurt—not really. Until now. Now, in this moment, it’s all clear. You can see the course of events laid out before you like a river, and you know exactly what you have to do here, now, to ensure the future outcome you want. You can reshape the future with perfect certainty. Of course, after this, you’ve changed enough of the timeline to invalidate your prior research—reset all the names in your 'Connecting the dots' section.",
+		"img": "",
+		"source": "unbound"
+	}, {
+		"id": 19,
+		"name": "nomad",
+		"mot": "You basically exist with one foot out the door, ready to leave this place, to go back out into the wide expanse of the universe. You’ve never fully committed. That is, until today. Until right now. Now, you pour everything you have and everything you are into this moment. You pull off tricks no one from this planet has ever seen before. You use your tools in ways no one here could have ever imagined. You devote yourself, here and now, to a cause, and you achieve your goal in ways that you never could’ve if you’d only stayed home. Of course, now you’ve proved to everyone that you really don’t belong here, and the very skills that let you succeed are the ones you earned from out there...",
+		"img": "",
+		"source": "unbound"
+	}, {
+		"id": 20,
+		"name": "scion",
+		"mot": "People have always tried to define you by your lineage. As if from the moment you were born, you were meant to be some villain to be defeated. But...they’re right, aren’t they? That darkness is in you. So right here, right now, you’re not fighting it—you’re embracing it. Both hero and villain, and greater besides. You’re overcoming impossible odds in ways no hero would approve of, and no villain could comprehend. Of course, after seeing what you can really do when you embrace the whole of yourself, the rest of the world isn’t going to forget who you really are...",
+		"img": "",
+		"source": "unbound"
+	}],
+	"sources": [	{
+			"id": 1,
+			"source": "core",
+			"name": "Masks: A New Generation"
+		}, {
+			"id": 2,
+			"source": "aegis",
+			"name": "Secrets of AEGIS"
+		}, {
+			"id": 3,
+			"source": "herald",
+			"name": "Halcyon City Herald Collection"
+		}, {
+			"id": 4,
+			"source": "unbound",
+			"name": "Unbound"
+		}
+	]
+}

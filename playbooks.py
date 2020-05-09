@@ -1,28 +1,31 @@
-PLAYBOOK_LIST = ['beacon', 'bull', 'delinquent', 'doomed', 'janus', 'legacy', 'nova', 'outsider', 'protege', 'transformed']
-
 import re
 import discord
 from utils import get_moves
+from language_handler import get_translation
 
-def get_playbook_list ():
-    return PLAYBOOK_LIST
+def get_playbook_list(lang):
+    return get_translation(lang, 'playbooks.list')
 
 
-def format_playbook_name (name):
+def format_playbook_name(name, lang):
     capitalized_name = name.capitalize()
 
-    return f'\n• The {capitalized_name}'
+    the = get_translation(lang, 'playbooks.the')
+    return f'\n• {the} {capitalized_name}'
 
-def get_playbook_names ():
-    return list(map(format_playbook_name, PLAYBOOK_LIST))
 
-def get_moment_of_truth (message):
+def get_playbook_names(lang):
+    playbook_list = get_translation(lang, 'playbooks.list')
+    return list(map(lambda name: format_playbook_name(name, lang), playbook_list))
+
+
+def get_moment_of_truth(message, lang):
     msg = message.content
     usr = message.author.display_name
-    json_array = get_moves()
+    json_array = get_moves(lang)
     found = 0
     msg = msg.lower()
-    playbook_re = r'!mot ([a-z]+)'
+    playbook_re = get_translation(lang, 'playbooks.playbook_re')
     result1 = re.search(playbook_re, msg)
     for p in json_array['playbooks']:
         if p['name'] == result1.group(1):
@@ -30,20 +33,23 @@ def get_moment_of_truth (message):
             img = p['img']
             found = 1
     if found == 1:
-        embed = discord.Embed(title=f"MOMENT OF TRUTH")
-        embed.set_author(name=f"This is {usr}'s moment!")
+        embed = discord.Embed(title=get_translation(lang, 'playbooks.moment_of_truth'))
+        embed.set_author(name=get_translation(lang, 'playbooks.this_is_mot')(usr))
         embed.set_thumbnail(url=img)
-        embed.add_field(name="Description", value=f"{mot}")
+        description = get_translation(lang, 'description')
+        embed.add_field(name=description, value=mot)
         embed.set_footer(text=" ")
         response = embed
     else: response = 0
 
     return response
 
-def get_playbooks ():
-    json_array = get_moves()
-    embed = discord.Embed(title=f"Playbooks")
-    embed.set_author(name=f"Available Playbooks are - ")
+def get_playbooks(lang):
+    json_array = get_moves(lang)
+    playbooks = get_translation(lang, 'playbooks.playbooks')
+    embed = discord.Embed(title=playbooks)
+    available = get_translation(lang, 'playbooks.available')
+    embed.set_author(name=available)
     for s in json_array['sources']:
         line = ""
         for p in json_array['playbooks']:

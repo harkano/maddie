@@ -11,9 +11,9 @@ def get_modified_num(mod, num):
     return num
 
 
-def get_moves():
+def get_moves(language = 'en'):
     ##Load in the existing moves
-    input_file = open ('data.json')
+    input_file = open (f'language_files/{language}.json')
     json_array = json.load(input_file)
 
     return json_array

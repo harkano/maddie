@@ -1,11 +1,13 @@
 import logging
 from playbook_interactions import lock_label, edit_labels, mark_potential, mark_condition, clear_condition, create_character
+from config_interactions import get_settings, get_language, get_teamname, update_lang, update_gm, update_teamname, create_settings
 from playbooks import get_moment_of_truth, get_playbooks
+from language_handler import get_translation
 
 logger = logging.getLogger('discord')
 logger.setLevel(logging.INFO) #set logging level to INFO, DEBUG if we want the full dump
 
-def handle_help(message):
+def handle_help(message, _lang):
     log_line = message.guild.name + "|" + message.channel.name + "|" + message.author.name + "|" + message.content
     logger.info(log_line)
     help_file = open("../../aws/help", "r")
@@ -20,26 +22,33 @@ plain_commands_dict = {
   "potential": mark_potential,
   "markcondition": mark_condition,
   "clearcondition": clear_condition,
-  "create": create_character
+  "create": create_character,
+  "settings": get_settings,
+  "language": get_language,
+  "teamname": get_teamname,
+  "update_lang": lambda msg, _lang: update_lang(msg),
+  "update_gm": lambda msg, _lang: update_gm(msg),
+  "update_teamname": lambda msg, _lang: update_teamname(msg),
+  "create_settings": lambda msg, _lang: create_settings(msg)
 }
 
 
 embed_commands_dict = {
   "mot": get_moment_of_truth,
-  "playbooks": lambda msg: get_playbooks()
+  "playbooks": lambda _msg, lang: get_playbooks(lang)
 }
 
-def plain_command_handler(message):
+def plain_command_handler(message, lang):
     command = message.content.split(" ")[0][1:]
 
-    handler = plain_commands_dict.get(command, lambda msg: '')
+    handler = plain_commands_dict.get(get_translation(lang, f'plain_commands.{command}'), lambda _msg, _lang: '')
 
-    return handler(message)
+    return handler(message, lang)
 
 
-def embed_command_handler(message):
+def embed_command_handler(message, lang):
     command = message.content.split(" ")[0][1:]
 
-    handler = embed_commands_dict.get(command, lambda msg: '')
+    handler = embed_commands_dict.get(get_translation(lang, f'embed_commands.{command}'), lambda _msg, _lang: '')
 
-    return handler(message)
+    return handler(message, lang)

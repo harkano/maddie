@@ -1,6 +1,8 @@
 import re
 
 from playbooks import get_playbook_names, get_playbook_list
+from language_handler import get_translation
+from utils import get_moves as get_moves_json_array
 
 COMMA_SEPARATOR = ', '
 PLUS = '+'
@@ -25,8 +27,8 @@ def join_with_commas(array_to_join, field):
     return result
 
 
-def join_with_detail(array_to_join):
-    response = '**Name - description, keyword, label**\n'
+def join_with_detail(array_to_join, lang):
+    response = get_translation(lang, 'moves.moves_plus.response_header')
 
     for p in array_to_join:
         response = response + p['capital'].capitalize() + " - " + p['description'] + \
@@ -36,16 +38,18 @@ def join_with_detail(array_to_join):
     return response
 
 
-def get_playbook_field(command):
-    playbook_list = get_playbook_list()
+def get_playbook_field(command, lang):
+    playbook_list = get_playbook_list(lang)
 
     if command in playbook_list:
         return command
 
-    if command.startswith('moves'):
+    moves = get_translation(lang, 'moves.moves')
+    if command.startswith(moves):
         return 'basic'
 
-    if command.startswith('adult'):
+    adult = get_translation(lang, 'moves.adult')
+    if command.startswith(adult):
         return 'adult'
 
     return ''
@@ -62,33 +66,33 @@ def parse_command(command):
 
     return raw_command, False
 
-def get_unknown_playbook_response():
-    response = "Sorry, I couldn't find that playbook, the available playbooks are:"
-    for playbook in get_playbook_names():
+def get_unknown_playbook_response(lang):
+    response = get_translation(lang, 'moves.non_existent_playbook_intro')
+    for playbook in get_playbook_names(lang):
         response = response + playbook
-
-    response = response + "\nType an exclamation sign and one of the names in lowercase and without the 'The', basic or adult\ne.g.: !beacon, !moves, !adult"
+    
+    response = response + get_translation(lang, 'moves.non_existent_playbook_end')
 
     # return response #changing this as we need to be polite to other bots, there's a lot of them
     return 0
 
 
-def get_moves(message, moves_array):
+def get_moves(message, lang):
     content = message.content
-
+    moves_array = get_moves_json_array(lang)
     type_of_command, show_detail = parse_command(content)
 
-    playbook_field = get_playbook_field(type_of_command)
+    playbook_field = get_playbook_field(type_of_command, lang)
 
     if playbook_field:
         moves_by_playbook = list(filter(lambda move_dict: compare_move_to_playbook(
             move_dict, playbook_field), moves_array['moves']))
 
         if not len(moves_by_playbook):
-            return get_unknown_playbook_response()
+            return get_unknown_playbook_response(lang)
 
         if show_detail:
-            return join_with_detail(moves_by_playbook)
+            return join_with_detail(moves_by_playbook, lang)
 
         return join_with_commas(moves_by_playbook, 'shortName')
 
