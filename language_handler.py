@@ -115,15 +115,15 @@ en = {
       "loseInfluence": "Someone permanently loses Influence over you; add +1 to a Label",
       "rearrange": "Rearrange your Labels as you choose, and add +1 to a Label",
       "mot": "Unlock your Moment of Truth",
-      "moreRoles": "Choose another two roles for the Bull's Heart", # Bull
+      "moreRoles": "Choose another two roles for the Bull's Heart",
       "motAgain": "Unlock your Moment of Truth after it's been used once",
       "playbookChange": "Change playbooks",
       "adult": "Take an adult move",
       "lock": "Lock a Label and add +1 to a Label your Choice",
       "retire": "Retire from the life or become a paragon of the city",
-      "plusOne": "Add +1 to any two Labels", # Delinquent
-      "clear": "Clear a doomsign; you lose access to that move for now", # Doom
-      "burns": "Get burn and three flares (from the Nova's playbook)" # Doom
+      "plusOne": "Add +1 to any two Labels",
+      "clear": "Clear a doomsign; you lose access to that move for now",
+      "burns": "Get burn and three flares (from the Nova's playbook)",
       "confront": "Confront your doom on your terms; if you survive, change playbooks", # Doom
       "paragon": "Become a paragon of the city for however long you have left", # Doom
       "maskLabel": "Change your mask's Label; add +1 to your new mask's Label", # Janus
@@ -140,6 +140,7 @@ en = {
       "mutate": "Mutate further and reveal another two new abilities (chosen from any playbook)" # Transformed
     },
     "beacon": {
+      "drivesDescription": "Choose four drives to mark at the start of play. When you fulfill a marked drive, strike it out, and choose one: mark potential, clear a condition, take Influence over someone involved.\nWhen your four marked drives are all struck out, choose and mark four new drives. When all drives are struck out, change playbooks, retire from the life, or become a paragon of the city."
       "lead": "lead the team successfull in battle",
       "kissDanger": "kiss someone dangerous",
       "hitYouShouldnt": "punch someone you probably shouldn't",
@@ -161,8 +162,38 @@ en = {
       "placeOrTime": "travel to a incredible place (or time)",
       "reject": "reject someone who tells you `you shouldn't be here`"
     },
+    "bull": {
+      "rival": "rival",
+      "lover": "lover",
+      "title": "The Bull's Heart",
+      "explanation": "You always have exactly one love and one rival. You can change your love or rival at any time; give the new subject of your affections or disdain Influence over you. Take +1 ongoing to any action that impress your love or frustrates your rival.",
+      "description": "Choose a role you commonly fulfill with your love or rival",
+      "roles": {
+        "titles": {
+          "defender": "Defender",
+          "friend": "Friend",
+          "listener": "Listener",
+          "enabler": "Enabler"
+        },
+        "descriptions": {
+          "defender": "When you leap to defend your love or rival in battle, roll +Danger instead of +Savior to defend them.",
+          "friend": "When you comfort or support your love or rival, mark potential on a hit. When your love or rival comforts or supports you, mark potential when they roll a hit.",
+          "listener": "When you pierce the mask of your love or rival, you can always let them ask you a question to ask them an additional question in turn, even on a miss. These additional questions do not have to be on the list.",
+          "enabler": "When you provoke your love or rival, roll +Danger if you are trying to provke them to rash or poorly thought out action."
+        }
+      }
+    }
     "doomed": {
+      "nemesis": {
+        "title": "Nemesis",
+        "description": "You have a nemesis, an epic and powerful enemy representing and embodying your doom. It's going to take everything you have to take them down in the time you have left.\nWho is your nemesis _______________?\nAt the end of every session, answer the question: Did you make progress on defeating your nemesis? If the answer is yes, mark potential. If the answer is no, mark your doom track."
+      },
       "doomBringers": {
+        "title": "Doom",
+        "description": "You're doomed. Your powers may be killing you, or maybe you're hunted ruthlessly, or maybe you embody an apocalypse. But one way or another, your future is grim. What brings your doom closer? Choose two.",
+        "markExplanation": "Whenever you bring your doom closer, mark one box on your doom track.",
+        "track": "Doom Track:",
+        "fillExplanation": "When your doom track fills, clear it and take one of your doomsigns.",
         "overexerting": "overexerting yourself",
         "innocents": "injuring innocents",
         "alone": "facing danger alone",
@@ -171,6 +202,8 @@ en = {
         "openly": "talking about it openly"
       },
       "doomsigns": {
+        "title": "Doomsigns",
+        "description": "These are abilities that come to you with your approaching doom. Once you have taken all five doomsigns above the line, you must take 'Your doom arrives' the next time your doom track fills. Choose one doomsign you already hold at character creation.",
         "titles": {
           "visions": "Dark Visions",
           "infinite": "Infinite Powers",
@@ -188,6 +221,9 @@ en = {
           "perish": "Your doom arrives; confront it and perish."
         },
         "sanctuary": {
+          "title": "Sanctuary",
+          "description": "You have a place where you can rest, recover, and reflect upon your powers. Choose and underline three features of your sanctuary:",
+          "callResources": "When you call upon the resources of your sanctuary to solve a problem, say what you want to do. The GM will give you one to four conditions you must fulfill to complete your solution:",
           "features": {
             "assistant": "an aide or assistant",
             "traps": "locks and traps",
@@ -222,6 +258,8 @@ en = {
       }
     },
     "janus": {
+      "title": "Secret identity",
+      "description": "Your mundane life coes with a series of obligations. Choose a total of three obligations.",
       "jobs": {
         "barista": "barista",
         "intern": "intern",
@@ -288,20 +326,27 @@ en = {
       }
     },
     "protege": {
-      {
-      "base": "a hidden base",
-      "vehicle": "a vehicle",
-      "supercomputer": "a supercomputer",
-      "communicators": "communicators",
-      "surveillance": "surveillance equipment",
-      "identities": "false identities",
-      "badges": "badges of authority",
-      "chem": "a chem lab",
-      "med": "a med lab"
-      "teleportal": "a teleportal",
-      "weapon": "a weapon of last resport",
-      "security": "security systems",
-      "robots": "simple robots"
+      "mentor": {
+        "title": "Mentor",
+        "description": "You have a mentor, someone who's taught you, given you aid, or raised you up. Someone who might have confined you a bit too rigidly to a single path. Which label do they embody, and which do they deny? (circle one each)",
+        "embodies": "Encarna",
+        "denies": "Niega"
+      }
+      "resources": {
+        "base": "a hidden base",
+        "vehicle": "a vehicle",
+        "supercomputer": "a supercomputer",
+        "communicators": "communicators",
+        "surveillance": "surveillance equipment",
+        "identities": "false identities",
+        "badges": "badges of authority",
+        "chem": "a chem lab",
+        "med": "a med lab"
+        "teleportal": "a teleportal",
+        "weapon": "a weapon of last resport",
+        "security": "security systems",
+        "robots": "simple robots"
+      }
     }
   }
 }
@@ -414,7 +459,248 @@ es = {
     "existing_settings": "Este chat ya tiene archivo de configuración.",
     "successfull_update": "El cambio se hizo con éxito",
     "successfull_creation": "El archivo de configuración ha sido creado"
+  },
+  "playbooks": {
+    "advances": {
+      "moveYouPlaybook": "Toma otro movimiento de tu libreto",
+      "moveOtherPlaybook": "Toma un movimiento de otro libreto",
+      "loseInfluence": "Alguien pierde permanentemente Influencia sobre tí; agrega +1 a una Etiqueta",
+      "rearrange": "Reorganiza tus etiquetas como elijas y agrega +1 a una etiqueta",
+      "mot": "Desbloquea tu Momento de la Verdad",
+      "moreRoles": "Elige otros dos roles para el Corazón del Toro",
+      "motAgain": "Desbloquea tu Momento de la Verdad después de que se haya utilizado una vez",
+      "playbookChange": "Cambia de libreto",
+      "adult": "Toma un movimiento adulto",
+      "lock": "Bloquea una etiqueta y agrega +1 a una etiqueta a tu elección",
+      "retire": "Retirate de la vida de superhéroe o convertite en un parangón de la ciudad",
+      "plusOne": "Añade +1 a dos etiquetas",
+      "clear": "Borra una Señal de perdición, pierdes acceso a ese movimiento, por ahora",
+      "burns": "Toma Burn y tres bengalas (del libreto de Nova)",
+      "confront": "Enfrenta a tu condena en tus términos. Si sobrevives, cambia de libreto",
+      "paragon": "Conviértete en un parangón de la ciudad por el tiempo que te",
+      "maskLabel": "Cambia la etiqueta de tu máscara, agrega +1 a la nueva etiqueta de tu máscara",
+      "drives": "Toma impulsos del libreto del Emblema",
+      "sanctuary": "Toma un Santuario del libreto del Condenado",
+      "powers": "Desbloquea los dos poderes restantes de tu conjunto",
+      "flares": "Desbloquea tres nuevas bengalas",
+      "heart": "Toma Coracón de Toro del libreto del Toro",
+      "abilities": "Elige dos nuevas nuevas habilidades de cualquier playbook",
+      "identity": "Adoptas una vida humana, toma Identidad secreta y La Máscara del libreto del Jano",
+      "mentorLabel": "Add +2 to the Label your mentor embodies or denies", # Protege
+      "resources": "Choose up to four more resources from your mentor" # Protege
+      "doom": "Take a doom, doomtrack, and doomsigns from the Doomed playbook" # Transformed
+      "mutate": "Mutate further and reveal another two new abilities (chosen from any playbook)" # Transformed
+    },
+    "beacon": {
+      "drivesDescription": "Elige cuatro impulsos para marcar al comienzo del juego. Cuando cumplas con un impulso marcado, tachalo y elegí una:\nMarcar potencial, eliminar una condición, tomar Influencia sobre alguien involucrado\nCuando los cuatro impulsos marcados estén tachados, elegí y marcá cuatro impulsos nuevos.\nCuando se hayan tachado todos los impulsos, cambiá de libreto, retirate de la vida de superhéroe o convertite en un parangón de la ciudad."
+      "lead": "lidera el equipo exitosamente en la batalla",
+      "kissDanger": "besa a alguien peligroso",
+      "hitYouShouldnt": "golpea a alguien que probablemente no deberías",
+      "helpTeammate": "ayuda a un compañero cuando más te necesita",
+      "endThreat": "acaba con una amenaza por tu cuenta",
+      "outperform": "logra hacer algo mejor que un héroe adulto",
+      "ridiculous": "completa una proeza ridícula",
+      "saveTeammateLife": "salva la vida de un compañero de equipo",
+      "drunkOrDrug": "emborrachate o drogate con un compañero",
+      "drive": "conduce un vehículo fantástico",
+      "newSuit": "consigue un nuevo traje",
+      "newName": "consigue un nuevo nombre de héroe",
+      "gainRespect": "gana el respeto de un héroe al que admiras",
+      "kissTeammate": "besate con un compañero de equipo",
+      "punchTeammate": "golpea a un compañero de equipo",
+      "breakRelation": "rompe una relación con alguien",
+      "stopFight": "deten una pelea con palabras tranquilizadoras",
+      "trueFeelings": "dile a alguien tus verdaderos sentimientos hacia él/ella",
+      "placeOrTime": "viaja a un lugar (o tiempo) increíble",
+      "reject": "rechaza a alguien que te dice `no deberías estar aquí`"
+    },
+    "bull": {
+      "rival": "rival",
+      "lover": "amor",
+      "title": "Corazón del Toro",
+      "explanation": "Siempre tienes exatamente un amor y un rival. Puedes cambiar tu amor o rival en cualquier momento; dale al nuevo objeto de tus afectos o desdén Influencia sobre tí. Toma +1 continuado (ongoing) a cualquier acción que impresione a tu amor o frustre a tu rival",
+      "description": "Elige un rol que normalmente cumples para tu amor o rival:",
+      "roles": {
+        "titles": {
+          "defender": "Defensor",
+          "friend": "Amigo",
+          "listener": "Confidente",
+          "enabler": "Habilitador"
+        },
+        "descriptions": {
+          "defender": "Cuando saltas para defender a tu amor o rival en batalla, tira +Peligro en lugar de +Salvador para defenderlos.",
+          "friend": "Cuando reconfortas o apoyas a tu amor o rival, marca potencial en un éxito. Cuando tu amor o rival te reconforta o apoya, marca potencial cuando ellos obtienen un éxito.",
+          "listener": "Cuando atravieses la máscara de tu amor o rival, siempre puedes dejar que te hagan una pregunta para hacerles una pregunta adicional, incluso en un fallo. No es necesario que estas preguntas estén en la lista.",
+          "enabler": "Cuando provocas a tu amor o rival, tira +Peligro si estás tratando de provocarlos a tomar acciones precipitadas o poco pensadas."
+        }
+      }
+    },
+    "doomed": {
+      "nemesis": {
+        "title": "Némesis",
+        "description": "Tienes un némesis, un enemigo épico y poderoso que representa y encarna tu perdición. Tomará todo lo que tengas poder derrotarlo en el tiempo que te queda.\n¿Quién es tu némesis? ______________________\nAl final de cada sesión, response la pregunta: ¿Has progresado en derotar a tu némesis? Si la respuesta es afirmativa, marca potencial. Si la respuesta es no, marca la grilla de perdición."
+      },
+      "doomBringers": {
+        "title": "Perdición",
+        "description": "Estás condenado. Tus poderes pueden estar matándote, o tal vez te persiguen despiadadamente, o quizás tú mismo encarnas el apocalipsis. Pero de una forma u otra, tu futuro es sombrío. ¿Qué cosas te acercan a tu perdición? Elige dos.",
+        "track": "Grilla de Perdición:",
+        "markExplanation": "Cada vz que tu perdición se acerque, marca una casilla en la grilla de perdición.",
+        "fillExplanation": "Cuando la grilla de perdición se llene, elimínala y toma una de sus señales de perdición.",
+        "overexerting": "sobreexigirte",
+        "innocents": "lastimar a inocentes",
+        "alone": "enfrentar peligro solo",
+        "loved": "asustar a tus seres queridos",
+        "mercy": "mostrar piedad",
+        "openly": "hablar abiertamente sobre ello"
+      },
+      "doomsigns": {
+        "title": "Señales de perdición",
+        "description": "Estas son habilidades que adquieres a medida que te acercas a tu perdición. Una vez que hayas tomado las cinco Señales de perdición por encima de la línea, debes tomar 'Tu perdición llega' la próxima vez que la grilla de perdición se llene. Elige una señal de perdición inicial durante la creación del personaje.",
+        "titles": {
+          "visions": "Visiones oscuras",
+          "infinite": "Poderes infinitos",
+          "portal": "Portal",
+          "bright": "Ardor resplandeciente",
+          "bolstered": "Reforzado",
+          "perish": ""
+        },
+        "descriptions": {
+          "visions": "Marca tu grilla de perdición para tener una Visión sobre la situación actual. Después de la visión, hazle al GM una pregunta, te contestará honestamente.",
+          "infinite": "Marca tu grilla de perdición para usar una habilidad de cualquier playbook, una vez.",
+          "portal": "Marca tu grilla de perdición para aparecer en una escena con quien tu quieras.",
+          "bright": "Marca tu grilla de perdición para ignorar uno de los requisitos establecidos por el GM al invocar los recursos de tu santuario.",
+          "bolstered": "Marca tu grilla de perdición para usar un movimiento adulto una vez.",
+          "perish": "Tu perdición llega. Enfréntala y perece."
+        },
+        "sanctuary": {
+          "title": "Santuario",
+          "description": "Tienes un lugar donde puedes descansar, recuperarte y reflexionar sobre tus poderes. Elige y subraya tres características de tu santuario:",
+          "callResources": "Cuando recurras a los recursos del santuario para resolver un problema, describe lo que deseas hacer. El GM te dará de una a cuatro condiciones que debes cumplir para completar la solución:",
+          "features": {
+            "assistant": "un ayudante o asistente",
+            "traps": "cerraduras y trampas",
+            "tomes": "una biblioteca de tomos valiosos",
+            "relics": "diversas reliquias antiguas",
+            "teleportal": "un teleportal",
+            "containment": "un sistema de contención",
+            "computer": "una computadora poderosa",
+            "tools": "herramientas útiles",
+            "meditation": "un espacio de meditación",
+            "battery": "una batería de energía",
+            "enhancement": "un sistema amplificador de poderes",
+            "healing": "equipo de curación",
+            "art": "arte, música y comida"
+          },
+          "downsides": {
+            "access": "de difícil acceso",
+            "attention": "atrae una atención peligrosa",
+            "location": "ubucación conoida por muchos",
+            "damaged": "fácilmente dañada o manipulada",
+            "tied": "vinculado intrínsecamente a tu perdición"
+          },
+          "conditions": {
+            "first": "Primero, debes ______________",
+            "help": "Necesitarás ayuda de _____________",
+            "danger": "Tú y tu equipo correrán peligro de ____________",
+            "lesser": "Lo mejor que puedes lograr es una versión menor, poco fiable y limitada",
+            "doom": "Deberás marcar una casilla en la grilla de perdición",
+            "obtain": "Necesitarás obtener ______________"
+          }
+        }
+      }
+    },
+    "janus": {
+      "title": "Identidad secreta",
+      "description": "Tu vida mundana viene con una serie de obligaciones. Elije un total de tres obligaciones:",
+      "jobs": {
+        "barista": "barista",
+        "intern": "interno",
+        "host": "camarero/a",
+        "sales": "vendedor/a",
+        "delivery": "repartidor/a",
+        "fastfood": "trabajador de comida rapida",
+        "babysitter": "niñero/a",
+        "dishwasher": "lavaplatos",
+        "tech": "soporte técnico",
+        "waiter": "recepcionista"
+      },
+      "school": {
+        "schoolwork": "trabajo escolar",
+        "athletic": "equipo de atletismo",
+        "chess": "club de ajedrez",
+        "photography": "club de fotografía",
+        "government": "gobierno estudiantil"
+      },
+      "home": {
+        "caring": "cuidar de alguien",
+        "chores": "tareas domésticas",
+        "bills": "pagar facturas",
+        "parenting": "padrastro/madrastra"
+      },
+      "social": {
+        "significant": "pareja",
+        "friend": "mejor amigo/a",
+        "popularity": "popularidad",
+        "relative": "pariente cercano",
+        "teacher": "entrenador/a o maestro/a"
+      }
+    },
+    "legacy": {
+      "active": "sigue siendo activo y prominente en la ciudad.",
+      "retired": "está retirado y es bastante prejuicioso.",
+      "possible": "es el siguiente posible miembro de tu legado.",
+      "opponent": "es el mayor oponente al que se ha enfrentado tu legado... y aún está en libertad."
+    }
+    "nova": {
+      "names": {
+        "storm": "Tormenta de realidad",
+        "shield": "Blindaje",
+        "constructs": "Constructo",
+        "moat": "Foso",
+        "worship": "Adoración",
+        "move": "Movimiento",
+        "boost": "Impulso",
+        "overcharge": "Sobrecarga",
+        "elemental": "Percepción elemental",
+        "snatch": "Arrebato"
+      },
+      "descriptions": {
+        "storm": "Canalizas una explosión destructiva con tus poderes. Gasta 1 Burn para enfrentar directamente una amenaza usando tus poderes, tirando +Fenómeno en lugar de +Peligro. Si lo haces, causarás daño colateral no deseado a menos que gastes otro Burn.",
+        "shield": "Conjuras rápidamente un campo de protección para detener un peligro. Gasta 1 Burn para defender a alguien de una amenaza inmediata, tirando +Fenómeno en lugar de +Salvador.",
+        "constructs": "Gasta 1 Burn para crear cualquier objeto con tus poderes, hasta el tamaño de una persona. Gasta un Burn adicional para animarla independientemente de ti. El constructo se disuelve al final de la escena.",
+        "moat": "Gasta 1 Burn para crear una barrera que retenga las amenazas siempre y cuando mantengas tu atención en ella. El GM puede pedirte que gastes otro Burn si la barera está amenazada por enemigos particularmente poderosos.",
+        "worship": "Exhibes una gran demostración de tu poder. Gasta 1 Burn para asombrar a una audiencia y dejarla en silencio, respeto y atención cuando liberes tus poderes.",
+        "move": "Gasta 1 Burn para moverte a cualquier lugar que elijas dentro de la escena, rompiendo o deslizándote por cualquier barrera o restricción que encuentres en tu camino. Gasta un segundo Burn para moverte a cualquier lugar que hayas estado anteriormente.",
+        "boost": "Gasta 1 Burn para potenciar los esfuerzos de un compañero con tus poderes, dándole una bonificación de +1 a su tirada como msi hubieras gastado TP del pozo.",
+        "overcharge": "Canaliza toda la capacidad de tus increíbles poderes para superar un obstáculo, remodelar tu entorno o ampliar tus sentidos. Gasta 2 Burns para ganar un 10+ cuando desates tus poderes.",
+        "elemental": "Gasta 1 Burn y marca una condición para abrir tu mente al mundo que te rodea con tus poderes. Puedes hacer cualquier pregunta sobre el mundo que te rodea y el GM responderá con sinceridad.",
+        "snatch": "Gasta1 Burn para usar tus poderes para arrebatarle cualquier objeto de hasta el tamaño de una persona a alguien que está a la vista."
+      }
+    },
+    "protege": {
+      "mentor": {
+        "title": "Mentor",
+        "description": "Tienes un mentor, alguien que te enseñó, te entrenó, te dio ayuda o te crió. Alguien que puede haberte confijado de forma demasiado rígida a un solo camino.\n¿Qué etiqueta encarna y cuál niega? (marca uno de cada uno)",
+        "embodies": "Encarna",
+        "denies": "Niega"
+      }
+      "resources": {
+        "base": "una base oculta",
+        "vehicle": "un vehículo",
+        "supercomputer": "una supercomputadora",
+        "communicators": "comunicadores",
+        "surveillance": "equipo de vigilancia",
+        "identities": "identidades falsas",
+        "badges": "insignias de autoridad",
+        "chem": "un laboratorio de química",
+        "med": "un laboratorio médico"
+        "teleportal": "un teletransportador",
+        "weapon": "un arma de último recurso",
+        "security": "sistemas de seguridad",
+        "robots": "robots simples"
+      }
   }
+
 }
 
 

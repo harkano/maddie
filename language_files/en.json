@@ -724,6 +724,17 @@
 		"img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
 		"requiresRolling": true,
 		"playbook": "legacy"
+	}, {
+		"id": 62,
+		"shortName": "nemesis",
+		"capital": "NEMESIS",
+		"phrase": "must defeat the nemesis!",
+		"blob": "*At the end of every session*, answer the question: Did you make progress on defeating your nemesis? If the answer is yes, mark potential. If the answer is no, mark your doom track.",
+		"label": "",
+		"description": " ",
+		"img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
+		"requiresRolling": false,
+		"playbook": "doomed"
 	}
 ],
 	"playbooks": [{

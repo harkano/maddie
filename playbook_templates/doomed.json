@@ -33,7 +33,7 @@
     "hopeless": false,
     "insecure": false
   },
-  "moves": [],
+  "moves": [{ "id": 62, "taken": true }],
   "advancement": {
     "basic": {
       "otherPlaybookMove1": {
