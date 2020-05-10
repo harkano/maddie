@@ -318,7 +318,7 @@
 		"requiresRolling": true,
 		"playbook": "delinquent"
 	}, {
-		"id": 29,
+		"id": 30,
 		"shortName": "whatteam",
 		"capital": "TEAM? THAT TEAM?",
 		"phrase": "doesn't know what team you are talking about!",
@@ -329,7 +329,7 @@
 		"requiresRolling": false,
 		"playbook": "delinquent"
 	}, {
-		"id": 30,
+		"id": 31,
 		"shortName": "criminal",
 		"capital": "CRIMINAL MIND",
 		"phrase": "has a criminal mind!",
@@ -340,7 +340,7 @@
 		"requiresRolling": true,
 		"playbook": "delinquent"
 	}, {
-		"id": 31,
+		"id": 32,
 		"shortName": "troublemaker",
 		"capital": "TROUBLEMAKER",
 		"phrase": "is a troublemaker!",
@@ -351,7 +351,7 @@
 		"requiresRolling": false,
 		"playbook": "delinquent"
 	}, {
-		"id": 32,
+		"id": 33,
 		"shortName": "watchingclosely",
 		"capital": "ARE YOU WATCHING CLOSELY?",
 		"phrase": "doest some tricks!",
@@ -362,7 +362,7 @@
 		"requiresRolling": true,
 		"playbook": "delinquent"
 	}, {
-		"id": 33,
+		"id": 34,
 		"shortName": "themask",
 		"capital": "THE MASK",
 		"phrase": "is masked!",
@@ -373,7 +373,7 @@
 		"requiresRolling": false,
 		"playbook": "janus"
 	}, {
-		"id": 34,
+		"id": 35,
 		"shortName": "gameface",
 		"capital": "GAME FACE",
 		"phrase": "has the game face on!",
@@ -384,7 +384,7 @@
 		"requiresRolling": false,
 		"playbook": "janus"
 	}, {
-		"id": 35,
+		"id": 36,
 		"shortName": "whatyousee",
 		"capital": "I AM WHAT YOU SEE",
 		"phrase": "is what you see!",
@@ -395,7 +395,7 @@
 		"requiresRolling": false,
 		"playbook": "janus"
 	}, {
-		"id": 36,
+		"id": 37,
 		"shortName": "mildmannered",
 		"capital": "MILD-MANNERED",
 		"phrase": "is mild mannered!",
@@ -406,7 +406,7 @@
 		"requiresRolling": true,
 		"playbook": "janus"
 	}, {
-		"id": 37,
+		"id": 38,
 		"shortName": "saveyou",
 		"capital": "I'LL SAVE YOU",
 		"phrase": "will save you!",
@@ -417,7 +417,7 @@
 		"requiresRolling": false,
 		"playbook": "janus"
 	}, {
-		"id": 37,
+		"id": 39,
 		"shortName": "web",
 		"capital": "DANGEROUS WEB",
 		"phrase": "had a dangerous web!",
@@ -428,7 +428,7 @@
 		"requiresRolling": true,
 		"playbook": "janus"
 	}, {
-		"id": 38,
+		"id": 40,
 		"shortName": "thegoodfight",
 		"capital": "FIGHT THE GOOD FIGHT",
 		"phrase": "fights the good fight!",
@@ -439,7 +439,7 @@
 		"requiresRolling": true,
 		"playbook": "legacy"
 	}, {
-		"id": 38,
+		"id": 41,
 		"shortName": "whatiam",
 		"capital": "I KNOW WHAT I AM",
 		"phrase": "knows what he/she is!",
@@ -450,7 +450,7 @@
 		"requiresRolling": false,
 		"playbook": "legacy"
 	}, {
-		"id": 39,
+		"id": 42,
 		"shortName": "past",
 		"capital": "WORDS OF THE PAST",
 		"phrase": "hears the words of the past!",
@@ -461,7 +461,7 @@
 		"requiresRolling": false,
 		"playbook": "legacy"
 	}, {
-		"id": 40,
+		"id": 43,
 		"shortName": "matters",
 		"capital": "THE LEGACY MATTERS",
 		"phrase": "knows the legacy matters!",
@@ -472,7 +472,7 @@
 		"requiresRolling": false,
 		"playbook": "legacy"
 	}, {
-		"id": 41,
+		"id": 44,
 		"shortName": "neversurrender",
 		"capital": "NEVER GIVE UP, NEVER SURRENDER",
 		"phrase": "never gives up!",
@@ -483,7 +483,7 @@
 		"requiresRolling": true,
 		"playbook": "legacy"
 	}, {
-		"id": 42,
+		"id": 45,
 		"shortName": "authority",
 		"capital": "SYMBOL OF AUTHORITY",
 		"phrase": "has a symbol of authority!",
@@ -494,7 +494,7 @@
 		"requiresRolling": true,
 		"playbook": "legacy"
 	}, {
-		"id": 43,
+		"id": 46,
 		"shortName": "twoworlds",
 		"capital": "BELONG IN TWO WORLDS",
 		"phrase": "belongs in two worlds!",
@@ -505,7 +505,7 @@
 		"requiresRolling": true,
 		"playbook": "outsider"
 	}, {
-		"id": 44,
+		"id": 47,
 		"shortName": "alientech",
 		"capital": "ALIEN TECH",
 		"phrase": "has alien tech!",
@@ -516,7 +516,7 @@
 		"requiresRolling": true,
 		"playbook": "outsider"
 	}, {
-		"id": 45,
+		"id": 48,
 		"shortName": "alienways",
 		"capital": "ALIEN WAYS",
 		"phrase": "has alien ways!",
@@ -527,18 +527,7 @@
 		"requiresRolling": false,
 		"playbook": "outsider"
 	}, {
-		"id": 45,
-		"shortName": "alienways",
-		"capital": "ALIEN WAYS",
-		"phrase": "has alien ways!",
-		"blob": "Whenever you *openly disregard or undermine an important Earth custom in favor of one of your own people's custom*, Shift superior up and any other Label down.",
-		"label": "",
-		"description": " ",
-		"img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
-		"requiresRolling": false,
-		"playbook": "outsider"
-	}, {
-		"id": 46,
+		"id": 49,
 		"shortName": "kirbycraft",
 		"capital": "KIRBY-CRAFT",
 		"phrase": "has a kirby-craft!",
@@ -549,7 +538,7 @@
 		"requiresRolling": false,
 		"playbook": "outsider"
 	}, {
-		"id": 47,
+		"id": 50,
 		"shortName": "thembest",
 		"capital": "THE BEST OF THEM",
 		"phrase": "acknowledge the best of them!",
@@ -560,7 +549,7 @@
 		"requiresRolling": true,
 		"playbook": "outsider"
 	}, {
-		"id": 48,
+		"id": 51,
 		"shortName": "notdifferent",
 		"capital": "NOT SO DIFFERENT AFTER ALL",
 		"phrase": "isn't so different after all!",
@@ -571,7 +560,7 @@
 		"requiresRolling": true,
 		"playbook": "outsider"
 	}, {
-		"id": 49,
+		"id": 52,
 		"shortName": "thefiles",
 		"capital": "BEEN READING THE FILES",
 		"phrase": "has been reading the files!",
@@ -582,7 +571,7 @@
 		"requiresRolling": true,
 		"playbook": "protege"
 	}, {
-		"id": 50,
+		"id": 53,
 		"shortName": "captain",
 		"capital": "CAPTAIN",
 		"phrase": "is the captain!",
@@ -593,7 +582,7 @@
 		"requiresRolling": false,
 		"playbook": "protege"
 	}, {
-		"id": 51,
+		"id": 54,
 		"shortName": "frustration",
 		"capital": "VENTING FRUSTRATION",
 		"phrase": "is venting frustration!",
@@ -604,7 +593,7 @@
 		"requiresRolling": true,
 		"playbook": "protege"
 	}, {
-		"id": 52,
+		"id": 55,
 		"shortName": "fireside",
 		"capital": "FIRESIDE CHAT",
 		"phrase": "wants a fireside chat!",
@@ -615,7 +604,7 @@
 		"requiresRolling": true,
 		"playbook": "protege"
 	}, {
-		"id": 52,
+		"id": 56,
 		"shortName": "surroundings",
 		"capital": "BE MINDFUL OR YOUR SURROUNDINGS",
 		"phrase": "is mindful of the surroundings!",
@@ -626,7 +615,7 @@
 		"requiresRolling": true,
 		"playbook": "protege"
 	}, {
-		"id": 52,
+		"id": 57,
 		"shortName": "tradition",
 		"capital": "HEROIC TRADITIOn",
 		"phrase": "has an heroic tradition!",
@@ -637,7 +626,7 @@
 		"requiresRolling": false,
 		"playbook": "protege"
 	}, {
-		"id": 53,
+		"id": 58,
 		"shortName": "notmybody",
 		"capital": "I AM NOT MY BODY",
 		"phrase": "is not his/her body!",
@@ -648,7 +637,7 @@
 		"requiresRolling": true,
 		"playbook": "transformed"
 	}, {
-		"id": 54,
+		"id": 59,
 		"shortName": "nothuman",
 		"capital": "NOT HUMAN ENOUGH",
 		"phrase": "is not human enough!",
@@ -659,7 +648,7 @@
 		"requiresRolling": true,
 		"playbook": "transformed"
 	}, {
-		"id": 55,
+		"id": 60,
 		"shortName": "unstoppable",
 		"capital": "UNSTOPPABLE",
 		"phrase": "is unstoppable!",
@@ -670,7 +659,7 @@
 		"requiresRolling": true,
 		"playbook": "transformed"
 	}, {
-		"id": 56,
+		"id": 61,
 		"shortName": "coming",
 		"capital": "COMING FOR YOU",
 		"phrase": "is coming for you!",
@@ -681,10 +670,10 @@
 		"requiresRolling": false,
 		"playbook": "transformed"
 	}, {
-		"id": 57,
+		"id": 62,
 		"shortName": "wish",
 		"capital": "WISH I COULD BE",
-		"phrase": "is coming for you!",
+		"phrase": "wishes he/she could be!",
 		"blob": "When you *comfort or support someone, if you tell them what you most envy about them*, roll + Freak.\nOn a hit, they hear you: they mark potential, clear a condition, or shift Labels if they open up to you. On a _10+_, you can also add a Team to the pool or clear a condition yourself.",
 		"label": "freak",
 		"description": " ",
@@ -692,7 +681,7 @@
 		"requiresRolling": true,
 		"playbook": "transformed"
 	}, {
-		"id": 58,
+		"id": 63,
 		"shortName": "themonster",
 		"capital": "BE THE MONSTER",
 		"phrase": "is the monster!",
@@ -713,7 +702,30 @@
 		"img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
 		"requiresRolling": true,
 		"playbook": "nova"
-	}],
+	}, {
+		"id": 60,
+		"shortName": "obligations",
+		"capital": "EVERYDAY LIFE",
+		"phrase": "has everyday life obligations!",
+		"blob": "When *time passes*, roll + Mundane to see how you're managing your obligations. \nOn a hit, things are going pretty well - you have an opportunity or advantage thanks to one of your obligations. On a 7 - 9, you've lapsed on one obligation, your choice. On a miss, you haven't given your normal life anywhere near the attention it deserves; the GM chooses two obligations that are going to bite you in the butt.",
+		"label": "mundane",
+		"description": " ",
+		"img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
+		"requiresRolling": true,
+		"playbook": "janus"
+	}, {
+		"id": 61,
+		"shortName": "legacy",
+		"capital": "LEGACY",
+		"phrase": "has to answer to the legacy!",
+		"blob": "When *time passes*, roll + Savior to see how the members of your legacy feel or react to your most recent exploits. Before rolling, ask the other players to answer these questions about your perfomance. Take -1 to the roll for each 'no' answer:\nhave you been upholding the traditions of your legacy?\nhave you mantained the image of your legacy?\nhave you made the other of your members of your legacy proud?\n On a hit, one of them offers meaningful encouragement, an opportunity, or an advantage. On a 7 - 9, another is upset with your most recent actions, and will make their displeasure known. On a miss, something you did stirred up the hornet's nest - expect several members of your legacy to meddle with your life.",
+		"label": "savior",
+		"description": " ",
+		"img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
+		"requiresRolling": true,
+		"playbook": "legacy"
+	}
+],
 	"playbooks": [{
 		"id": 1,
 		"name": "beacon",
