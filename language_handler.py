@@ -139,6 +139,28 @@ en = {
       "doom": "Take a doom, doomtrack, and doomsigns from the Doomed playbook" # Transformed
       "mutate": "Mutate further and reveal another two new abilities (chosen from any playbook)" # Transformed
     },
+    "beacon": {
+      "lead": "lead the team successfull in battle",
+      "kissDanger": "kiss someone dangerous",
+      "hitYouShouldnt": "punch someone you probably shouldn't",
+      "helpTeammate": "help a teammate when they most need you",
+      "endThreat": "take down a threat all on your own",
+      "outperform": "outperform an adult hero",
+      "ridiculous": "pull off a ridiculous stunt",
+      "saveTeammateLife": "save a teammate's life",
+      "drunkOrDrug": "get drunk or high with a teammate",
+      "drive": "drive a fantastical vehicle",
+      "newSuit": "get a new costume",
+      "newName": "get a new hero name",
+      "gainRespect": "earn the respect of a hero you admire",
+      "kissTeammate": "make out with a teammate",
+      "punchTeammate": "punch out a teammate",
+      "breakRelation": "break up with someone",
+      "stopFight": "stop a fight with calm words",
+      "trueFeelings": "tell someone your true feelings for them",
+      "placeOrTime": "travel to a incredible place (or time)",
+      "reject": "reject someone who tells you `you shouldn't be here`"
+    },
     "doomed": {
       "doomBringers": {
         "overexerting": "overexerting yourself",
