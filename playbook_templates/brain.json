@@ -1,0 +1,112 @@
+{
+  "characterName": "",
+  "playerName": "",
+  "playbook": "brain",
+  "labels": {
+    "freak": {
+      "value": 0,
+      "locked": false
+    },
+    "danger": {
+      "value": 0,
+      "locked": false
+    },
+    "savior": {
+      "value": 1,
+      "locked": false
+    },
+    "superior": {
+      "value": 2,
+      "locked": false
+    },
+    "mundane": {
+      "value": -1,
+      "locked": false
+    }
+  },
+  "potential": 0,
+  "pendingAdvancements": 0,
+  "conditions": {
+    "afraid": false,
+    "angry": false,
+    "guilty": false,
+    "hopeless": false,
+    "insecure": false
+  },
+  "moves": [
+    { "id": 109, "picked": false },
+    { "id": 110, "picked": false },
+    { "id": 111, "picked": false },
+    { "id": 112, "picked": false },
+    { "id": 113, "picked": false },
+    { "id": 114, "picked": false },
+    { "id": 115, "picked": true },
+    { "id": 116, "picked": true }
+  ],
+  "advancement": {
+    "basic": {
+      "yourPlaybookMove1": {
+        "description": "moveOtherPlaybook",
+        "taken": false
+      },
+      "yourPlaybookMove2": {
+        "description": "moveOtherPlaybook",
+        "taken": false
+      },
+      "yourPlaybookMove3": {
+        "description": "moveOtherPlaybook",
+        "taken": false
+      },
+      "sanctuary": {
+        "description": "sanctuary",
+        "taken": false
+      },
+      "drives": {
+        "description": "drives",
+        "taken": false
+      },
+      "deleteInfluence": {
+        "description": "loseInfluence",
+        "taken": false
+      },
+      "rearrange": {
+        "description": "rearrange",
+        "taken": false
+      },
+      "momentOfTruth": {
+        "description": "mot",
+        "taken": false
+      }
+    },
+    "advanced": {
+      "momentOfTruth": {
+        "description": "motAgain",
+        "taken": false
+      },
+      "shame": {
+        "description": "shame",
+        "taken": false
+      },
+      "playbookChange": {
+        "description": "playbookChange",
+        "taken": false
+      },
+      "adultMove1": {
+        "description": "adult",
+        "taken": false
+      },
+      "adultMove2": {
+        "description": "adult",
+        "taken": false
+      },
+      "blockLabel": {
+        "description": "lock",
+        "taken": false
+      },
+      "paragon": {
+        "description": "paragon",
+        "taken": false
+      }
+    }
+  }
+}

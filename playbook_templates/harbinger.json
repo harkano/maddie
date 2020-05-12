@@ -1,0 +1,117 @@
+{
+  "characterName": "",
+  "playerName": "",
+  "playbook": "delinquent",
+  "labels": {
+    "freak": {
+      "value": 0,
+      "locked": false
+    },
+    "danger": {
+      "value": 0,
+      "locked": false
+    },
+    "savior": {
+      "value": -1,
+      "locked": false
+    },
+    "superior": {
+      "value": 2,
+      "locked": false
+    },
+    "mundane": {
+      "value": 1,
+      "locked": false
+    }
+  },
+  "potential": 0,
+  "pendingAdvancements": 0,
+  "conditions": {
+    "afraid": false,
+    "angry": false,
+    "guilty": false,
+    "hopeless": false,
+    "insecure": false
+  },
+  "moves": [
+    { "id": 126, "picked": false },
+    { "id": 127, "picked": false },
+    { "id": 128, "picked": false },
+    { "id": 129, "picked": false },
+    { "id": 130, "picked": false },
+    { "id": 131, "picked": false },
+    { "id": 132, "picked": true },
+    { "id": 133, "picked": true }
+  ],
+  "advancement": {
+    "basic": {
+      "otherPlaybookMove1": {
+        "description": "moveYouPlaybook",
+        "taken": false
+      },
+      "otherPlaybookMove2": {
+        "description": "moveYouPlaybook",
+        "taken": false
+      },
+      "yourPlaybookMove1": {
+        "description": "moveOtherPlaybook",
+        "taken": false
+      },
+      "yourPlaybookMove2": {
+        "description": "moveOtherPlaybook",
+        "taken": false
+      },
+      "deleteInfluence": {
+        "description": "loseInfluence",
+        "taken": false
+      },
+      "rearrange1": {
+        "description": "rearrange",
+        "taken": false
+      },
+      "rearrange2": {
+        "description": "rearrange",
+        "taken": false
+      },
+      "momentOfTruth": {
+        "description": "mot",
+        "taken": false
+      }
+    },
+    "advanced": {
+      "momentOfTruth": {
+        "description": "motAgain",
+        "taken": false
+      },
+      "playbookChange": {
+        "description": "playbookChange",
+        "taken": false
+      },
+      "adultMove1": {
+        "description": "adult",
+        "taken": false
+      },
+      "adultMove2": {
+        "description": "adult",
+        "taken": false
+      },
+      "blockLabel": {
+        "description": "lock",
+        "taken": false
+      },
+      "future": {
+        "description": "retire",
+        "taken": false
+      }
+    },
+    "memories": -1,
+    "roles": {
+      "monster": "",
+      "traitor": "",
+      "corruptor": "",
+      "martyr": "",
+      "builder": "",
+      "leader": ""
+    }
+  }
+}

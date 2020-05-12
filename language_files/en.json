@@ -701,7 +701,8 @@
 		"description": " ",
 		"img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
 		"requiresRolling": true,
-		"playbook": "nova"
+		"playbook": "nova",
+		"special": true
 	}, {
 		"id": 60,
 		"shortName": "obligations",
@@ -712,7 +713,8 @@
 		"description": " ",
 		"img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
 		"requiresRolling": true,
-		"playbook": "janus"
+		"playbook": "janus",
+		"special": true
 	}, {
 		"id": 61,
 		"shortName": "legacy",
@@ -723,7 +725,8 @@
 		"description": " ",
 		"img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
 		"requiresRolling": true,
-		"playbook": "legacy"
+		"playbook": "legacy",
+		"special": true
 	}, {
 		"id": 62,
 		"shortName": "nemesis",
@@ -734,9 +737,989 @@
 		"description": " ",
 		"img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
 		"requiresRolling": false,
-		"playbook": "doomed"
-	}
-],
+		"playbook": "doomed",
+		"special": true
+	}, {
+		"id": 63,
+		"shortName": "wthero",
+		"capital": "WHAT THE HELL, HERO",
+		"phrase": "asks, what the hell, hero?!",
+		"blob": "When you *call out an injustice that a hero has perpetrated*, roll +Danger. On a hit, take Influence over them. On a 7 - 9, choose 1. On a 10+, choose two.\n• You get them to admit their wrongdoing\n• You win over an onlooker; take Influence over them\n• You don't turn their attention and danger onto yourself\nOn a miss, they dismiss you; mark a condition (their choice), shift Danger up, Savior down.",
+		"label": "danger",
+		"description": " ",
+		"img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
+		"requiresRolling": true,
+		"playbook": "reformed"
+	}, {
+		"id": 64,
+		"shortName": "wrongside",
+		"capital": "WRONG SIDE OF THE TRACKS",
+		"phrase": "knows how it is to be on the other side of the tracks!",
+		"blob": "You always get to ask an additional question when you *pierce the mask of a villain*, even on a miss. When you *pierce the mask of a hero (your call)*, add this question to the list:\n• what was your darkest moment?",
+		"label": "",
+		"description": " ",
+		"img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
+		"requiresRolling": false,
+		"playbook": "reformed"
+	}, {
+		"id": 65,
+		"shortName": "notsodif",
+		"capital": "NOT SO DIFFERENT",
+		"phrase": "is not so different!",
+		"blob": "When you *provoke someone to criminal or villainous action*, roll +Danger.\nFor *NPCs*: on a _10+_, they rise to the bait and do what you want. On a _7-9_, they can instead choose one.\n• they stumble: you take +1 forward against them\n• they err: you gain a critical opportunity\n• they overreact: you gain Influence over them\nFor *PCs*: On a _10+_, both. On a _7-9_, choose one.\n• if they do it, add a Team to the pool\n• if they don’t do it, they mark a condition.",
+		"label": "danger",
+		"description": " ",
+		"img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
+		"requiresRolling": true,
+		"playbook": "reformed"
+	}, {
+		"id": 66,
+		"shortName": "darkpast",
+		"capital": "DARK PAST",
+		"phrase": "has a dark past!",
+		"blob": "When you *confess a to a serious crime you committed as a villain while in the presence of seomeone involved*, shift Danger up and any other Label down, say what you did, and choose one.\n• No one was hurt badly by the crime\n• You aren't in legal danger from the crime\n• You aren't being actively pursed for extralegal retribution",
+		"label": "",
+		"description": " ",
+		"img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
+		"requiresRolling": false,
+		"playbook": "reformed"
+	}, {
+		"id": 67,
+		"shortName": "steamoff",
+		"capital": "BLOWING OFF STEAM",
+		"phrase": "is blowing off steam!",
+		"blob": "When you *commit a misdemeanor or small 'victimless' crime*, you may clear a condition of your choice.",
+		"label": "",
+		"description": " ",
+		"img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
+		"requiresRolling": false,
+		"playbook": "reformed"
+	}, {
+		"id": 68,
+		"shortName": "favor",
+		"capital": "DO ME A FAVOR",
+		"phrase": "is asking for a favor!",
+		"blob": "When you *go to an ordinary civilian you know for a favor*, roll + Mundane. On a 10+ they'll lend you a hand. On a 7 - 9 they need a promise up front. On a miss you catch them up in your superpowered nonsense, and they suffer for it.",
+		"label": "mundane",
+		"description": " ",
+		"img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
+		"requiresRolling": true,
+		"playbook": "reformed"
+	}, {
+		"id": 69,
+		"shortName": "lowfavor",
+		"capital": "HELP FROM FRIENDS IN LOW PLACES",
+		"phrase": "needs help from his/her friends in low places!",
+		"blob": "When you *come to your villain friends for help with your problems*, mark obligation on them and they'll help out within their speciality. If all their boxes are full, then they won't help you until you help them.",
+		"label": "mundane",
+		"description": " ",
+		"img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
+		"requiresRolling": false,
+		"playbook": "reformed",
+		"special": true
+	}, {
+		"id": 70,
+		"shortName": "lowobligations",
+		"capital": "VILLAIN OBLIGATIONS",
+		"phrase": "is in debt with villains!",
+		"blob": "When *time pases*, roll + your highest obligation. On a 10+, they come crashing into your life with a crisis. On a 7 - 9, they call for a favor. On a miss, they don't come knocking yet, but mark obligation with them - the debts are getting heavier.",
+		"label": "obligations",
+		"description": " ",
+		"img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
+		"requiresRolling": true,
+		"playbook": "reformed",
+		"special": true
+	}, {
+		"id": 71,
+		"shortName": "helpvillains",
+		"capital": "HELP VILLAINS",
+		"phrase": "is helping villains!",
+		"blob": "When you *help one of these villains with your problems*, erase two obligations on them.",
+		"label": "",
+		"description": " ",
+		"img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
+		"requiresRolling": false,
+		"playbook": "reformed",
+		"special": true
+	}, {
+		"id": 72,
+		"shortName": "notfromhere",
+		"capital": "NOT FROM AROUND HERE",
+		"phrase": "is not from around here!",
+		"blob": "When you *act clueless, goofy, or confsed to get out of a sticky situation*, roll +Freak. On a hit you create an opportunity, a distraction or a plausible excuse. On a 7 - 9, you also feel all the weight of playing the clown and of the people staring at you. The GM shifts one of your Labels up and one down. On a miss, no one is fooled, and you've put yourself in their crosshairs.",
+		"label": "freak",
+		"description": " ",
+		"img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
+		"requiresRolling": true,
+		"playbook": "newborn"
+	}, {
+		"id": 73,
+		"shortName": "thermodynamic",
+		"capital": "THERMODYNAMIC MIRACLE",
+		"phrase": "is a thermodynamic miracle!",
+		"blob": "When you *comfort or support someone by telling them what makes them unique*, roll +Freak. If they open up to you, shift Freak up and Mundane down. If they don't, mark a condition.\nOn a hit, they hear you: they mark potential, clear a condition, or shift Labels if they open up to you. On a _10+_, you can also add a Team to the pool or clear a condition yourself.",
+		"label": "freak",
+		"description": " ",
+		"img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
+		"requiresRolling": true,
+		"playbook": "newborn"
+	}, {
+		"id": 74,
+		"shortName": "ownmind",
+		"capital": "A MIND OF THEIR OWN",
+		"phrase": "has powers with a mind of their own!",
+		"blob": "Your powers evolve and mutate. When you are *facing an obstacle or threat that your powers would not be able to deal with*, you can mark a condition to gain brand new abilities adapted to the situation. You lose these new powers once the danger is gone.",
+		"label": "",
+		"description": " ",
+		"img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
+		"requiresRolling": false,
+		"playbook": "newborn"
+	}, {
+		"id": 75,
+		"shortName": "damage",
+		"capital": "DAMAGE",
+		"phrase": "can be damaged!",
+		"blob": "You get an additional condition called Damaged. While marked, take +1 to take a powerful blow.\nTo clear the Damaged condition, you need time, external help, or special equipment or abilities.",
+		"label": "",
+		"description": " ",
+		"img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
+		"requiresRolling": false,
+		"playbook": "newborn"
+	}, {
+		"id": 76,
+		"shortName": "regeneration",
+		"capital": "REGENERATION",
+		"phrase": "can regenerate!",
+		"blob": "When you're *taken out*, you can trigger an emergency process. If you do, your body undergoes an umpredictable transformation, and in mere moments, you're back on your feet and ready to fight. Clear three conditions and choose three from the list:\n• Change your gender identity or presentation\n• Change your physical appearance\n• Forget all your lessons\n• Lose an important memory of a teammate; they lose Influence over you\n• Swap an ability with another one from the Newborn playbook",
+		"label": "",
+		"description": " ",
+		"img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
+		"requiresRolling": false,
+		"playbook": "newborn"
+	}, {
+		"id": 77,
+		"shortName": "embodylesson",
+		"capital": "EMBODY LESSON",
+		"phrase": "embodies one lesson!",
+		"blob": "When you *embody one of your lessons*, shift one Label up and one Label down, your choice. If you cause a misundersanding, collateral damage, or unintended consequences in the process, mark potential.",
+		"label": "",
+		"description": " ",
+		"img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
+		"requiresRolling": false,
+		"playbook": "newborn",
+		"special": true
+	}, {
+		"id": 78,
+		"shortName": "rejectlesson",
+		"capital": "REJECT LESSON",
+		"phrase": "rejects one lesson!",
+		"blob": "When you *reject one of your lessons*, reject its Influence as if it were an NPC. If you choose to have it lose Influence over you, erase that lesson and write a new one in its stead.\n On a hit, you successfully hold to yourself and tune them out.\nOn a _10+_, choose two. On a _7-9_, choose one.\n• clear a condition or mark potential by immediately acting to prove them wrong\n• shift one Label up and one Label down, your choice\n• cancel their Influence and take +1 forward against them\nOn a miss, their words hit you hard. Mark a condition, and the GM will adjust your Labels.",
+		"label": "flat",
+		"description": " ",
+		"img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
+		"requiresRolling": true,
+		"playbook": "newborn",
+		"special": true
+	}, {
+		"id": 79,
+		"shortName": "approeach",
+		"capital": "APPROACH CREATOR OR CARETAKERS",
+		"phrase": "approaches with a problem!",
+		"blob": "When you *approach your creator or caretakers with a problem*, tell them what obstacle you face or what you need to achieve, and they will offer you something you need. The GM chooses one:\n• secret information\n• a way to temporarily boost or expand your powers\n• access to instrumend, weapons or resources\n• official and explicit backing\nIf you accept their help, they rewrite one of your lessons for you.",
+		"label": "",
+		"description": " ",
+		"img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
+		"requiresRolling": false,
+		"playbook": "newborn",
+		"special": true
+	}, {
+		"id": 80,
+		"shortName": "amends",
+		"capital": "MAKING AMENDS",
+		"phrase": "is making amends!",
+		"blob": "When you *make yourself vulnerable while comforting or supporting someone you (or your future self) has fought or hurt*, roll +2 +Mundane.\nOn a hit, they hear you: they mark potential, clear a condition, or shift Labels if they open up to you. On a _10+_, you can also add a Team to the pool or clear a condition yourself. If you miss or refuse to open up, mark a condition and take a powerful blow.",
+		"label": "mundane",
+		"description": " ",
+		"img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
+		"requiresRolling": true,
+		"playbook": "innocent"
+	}, {
+		"id": 81,
+		"shortName": "growing",
+		"capital": "GROWING INTO POWER",
+		"phrase": "is growing into power!",
+		"blob": "When you *unleash your powers to do something your future self can do*, mark a condition and roll +Savior.\nOn a hit, you do it. On a _7-9_, mark a condition or the GM will tell you how the effect is unstable or temporary.",
+		"label": "savior",
+		"description": " ",
+		"img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
+		"requiresRolling": true,
+		"playbook": "innocent"
+	}, {
+		"id": 82,
+		"shortName": "theirway",
+		"capital": "SEE IT THEIR WAY",
+		"phrase": "sees it their way!",
+		"blob": "When you *accept someone's Influence when they equate you with your future self*, mark potential. When you *reject someone's Influence when they equate you with your future self*, roll +Savior.\n On a hit, you successfully hold to yourself and tune them out.\nOn a _10+_, choose two. On a _7-9_, choose one.\n• clear a condition or mark potential by immediately acting to prove them wrong\n• shift one Label up and one Label down, your choice\n• cancel their Influence and take +1 forward against them\nOn a miss, their words hit you hard. Mark a condition, and the GM will adjust your Labels.",
+		"label": "savior",
+		"description": " ",
+		"img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
+		"requiresRolling": true,
+		"playbook": "innocent"
+	}, {
+		"id": 83,
+		"shortName": "whatsthis",
+		"capital": "WHAT'S THIS THING?",
+		"phrase": "doesn't know what this thing is!",
+		"blob": "When you *ask for someone else's guidance on themodern world*, they must tell you what they think you should do or how you should act. If you act that way and it goes poorly, mark potential.",
+		"label": "",
+		"description": " ",
+		"img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
+		"requiresRolling": false,
+		"playbook": "innocent"
+	}, {
+		"id": 84,
+		"shortName": "knight",
+		"capital": "WHITE KNIGHT",
+		"phrase": "is a white knight!",
+		"blob": "When you *give a speech on morality and heroism*, roll +Superior.\nFor *NPCs*: on a _10+_, they rise to the bait and do what you want. On a _7-9_, they can instead choose one.\n• they stumble: you take +1 forward against them\n• they err: you gain a critical opportunity\n• they overreact: you gain Influence over them\nFor *PCs*: On a _10+_, both. On a _7-9_, choose one.\n• if they do it, add a Team to the pool\n• if they don’t do it, they mark a condition",
+		"label": "suerior",
+		"description": " ",
+		"img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
+		"requiresRolling": true,
+		"playbook": "innocent"
+	}, {
+		"id": 85,
+		"shortName": "martyr",
+		"capital": "MARTYR",
+		"phrase": "is a martyr!",
+		"blob": "When you *take a powerful blow while defending someone or something*, you may shift Savior up and any other Label down.",
+		"label": "",
+		"description": " ",
+		"img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
+		"requiresRolling": false,
+		"playbook": "innocent"
+	}, {
+		"id": 86,
+		"shortName": "future",
+		"capital": "FUTURE SELF",
+		"phrase": "has a future self!",
+		"blob": "When you *learn of another step of your future self's path*, circle it. You can have at most 5 steps circled. When you *undergo an experience that echoes one of the above(your call)*, strike it out.\nWhen you *strike out a circled step, or circle a struk out step*, choose one of the following\nReplace *comfort or support* with the following:\nWhen you *coldly dismiss someone*, roll +Mundane. On a hit they mark a condition or leave you alone, their choice. On a 7 - 9, they can also inflict a condition on you.\nReplace *defend someone* with the following:\nWhen you *aggressively defend a large group or area*, roll +Savior. On a hit, you create an opportunity for yourself to press the atack and take +1 forward to purse it. On a 10+, the collateral damage is minimal.\nReplace *prpvoke someone* with the following:\nWhen you *threaten someone*, say what you want them to do and roll +Superior. Oh a hit, they either do it or they are put at a significant disadvantage against you, their choice. On a 10+, either way they mark a condition, your choice.\nReplace *reject someone's influence* with the following:\nWhen you *spit in the face of guidance or Influence*, roll +2. On a hit, take await their Influence over you or clear a condition, your choice. On a 7 - 9, you both take a powerful blow from the intensity of your words.\nBecome an NPC antagonist - your path is irreconcilably set along the same course that your future self followed.",
+		"label": "",
+		"description": " ",
+		"img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
+		"requiresRolling": false,
+		"playbook": "innocent",
+		"special": true
+	}, {
+		"id": 87,
+		"shortName": "dismiss",
+		"capital": "COLDLY DISMISS",
+		"phrase": "coldly dismisses you!",
+		"blob": "When you *coldly dismiss someone*, roll +Mundane. On a hit they mark a condition or leave you alone, their choice. On a 7 - 9, they can also inflict a condition on you.",
+		"label": "mundane",
+		"description": " ",
+		"img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
+		"requiresRolling": true,
+		"playbook": "innocent",
+		"special": true
+	}, {
+		"id": 88,
+		"shortName": "aggresive",
+		"capital": "AGGRESSIVELY DEFEND",
+		"phrase": "defends aggressively!",
+		"blob": "When you *aggressively defend a large group or area*, roll +Savior. On a hit, you create an opportunity for yourself to press the atack and take +1 forward to purse it. On a 10+, the collateral damage is minimal.",
+		"label": "savior",
+		"description": " ",
+		"img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
+		"requiresRolling": true,
+		"playbook": "innocent",
+		"special": true
+	}, {
+		"id": 89,
+		"shortName": "threaten",
+		"capital": "THREATEN",
+		"phrase": "threatens!",
+		"blob": "When you *threaten someone*, say what you want them to do and roll +Superior. Oh a hit, they either do it or they are put at a significant disadvantage against you, their choice. On a 10+, either way they mark a condition, your choice.",
+		"label": "superior",
+		"description": " ",
+		"img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
+		"requiresRolling": true,
+		"playbook": "innocent",
+		"special": true
+	}, {
+		"id": 90,
+		"shortName": "threaten",
+		"capital": "THREATEN",
+		"phrase": "threatens!",
+		"blob": "When you *threaten someone*, say what you want them to do and roll +Superior. Oh a hit, they either do it or they are put at a significant disadvantage against you, their choice. On a 10+, either way they mark a condition, your choice.",
+		"label": "superior",
+		"description": " ",
+		"img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
+		"requiresRolling": true,
+		"playbook": "innocent",
+		"special": true
+	}, {
+		"id": 91,
+		"shortName": "spit",
+		"capital": "SPIT IN THE FACE OF GUIDANCE",
+		"phrase": "spits in the face of guidance or influence!",
+		"blob": "When you *spit in the face of guidance or Influence*, roll +2. On a hit, take await their Influence over you or clear a condition, your choice. On a 7 - 9, you both take a powerful blow from the intensity of your words.",
+		"label": "flat",
+		"description": " ",
+		"img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
+		"requiresRolling": true,
+		"playbook": "innocent",
+		"special": true
+	}, {
+		"id": 92,
+		"shortName": "antagonist",
+		"capital": "ANTAGONIST",
+		"phrase": "becomes an antagonist!",
+		"blob": "Become an NPC antagonist - your path is irreconcilably set along the same course that your future self followed.",
+		"label": "",
+		"description": " ",
+		"img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
+		"requiresRolling": false,
+		"playbook": "innocent",
+		"special": true
+	}, {
+		"id": 93,
+		"shortName": "gossip",
+		"capital": "THE GOSSIP MAGS",
+		"phrase": "taps into gossip!",
+		"blob": "When you *tap into the gossip and rumor of the velebrity industry for information on an important city figure*, roll +Superior. On a hit you can ask the GM questions. On a 10+, ask three. On a 7 - 9, ask one.\n• What are they up to?\n• What or who do they most care about?\n• What allies do they have? Enemies?\n• Where and when can I find them?\n• How could I make them vulnerable to me?\nOn a miss, ask one anyway, but they hear about your interest in them.",
+		"label": "superior",
+		"description": " ",
+		"img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
+		"requiresRolling": true,
+		"playbook": "star"
+	}, {
+		"id": 94,
+		"shortName": "stage",
+		"capital": "STAGE-FIGHTING",
+		"phrase": "is stage-fighting!",
+		"blob": "When you *directly engage a threat with an audience watching*, mark a condition and roll +Superior.\nOn a hit, trade blows. On a _10+_, pick two. On a _7-9_,\npick one.\n• resist or avoid their blows\n• take something from them\n• create an opportunity for your allies\n• impress, surprise, or frighten the opposition",
+		"label": "superior",
+		"description": " ",
+		"img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
+		"requiresRolling": true,
+		"playbook": "star"
+	}, {
+		"id": 95,
+		"shortName": "show",
+		"capital": "TIME FOR THE SHOW",
+		"phrase": "knows it's time for the show!",
+		"blob": "When you *put on a flamboyant display of your powers*, roll +Superior. On a 7 - 9, name one NPC present. On a 10+, name two NPC's present. The named NPCs must either volunteer help or information, express admiration, or ask for your help. On a miss your display catches someone watching in the wrong way.",
+		"label": "superior",
+		"description": " ",
+		"img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
+		"requiresRolling": true,
+		"playbook": "star"
+	}, {
+		"id": 96,
+		"shortName": "fromme",
+		"capital": "TAKE IT FROM ME",
+		"phrase": "knows how to support!",
+		"blob": "When you *comfort or support someone who openly admires your celebrity persona*, roll +Superior.\nOn a hit, they hear you: they mark potential, clear a condition, or shift Labels if they open up to you. On a _10+_, you can also add a Team to the pool or clear a condition yourself.",
+		"label": "superior",
+		"description": " ",
+		"img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
+		"requiresRolling": true,
+		"playbook": "star"
+	}, {
+		"id": 97,
+		"shortName": "cruel",
+		"capital": "COLD AND CRUEL",
+		"phrase": "is cold and cruel!",
+		"blob": "When you *shut someone down*, roll +Superior.\nOn a 10+, you either inflict a condition on them, make them lose Influence over you, or take Influence over them, your choice. On a 7 - 9, you either inflict a condition on the other, or both lose Influence over each other, your choice. On a miss they gain Influence over you.",
+		"label": "superior",
+		"description": " ",
+		"img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
+		"requiresRolling": true,
+		"playbook": "star"
+	}, {
+		"id": 98,
+		"shortName": "audience",
+		"capital": "AUDIENCE OPINION",
+		"phrase": "has an audience with opinion!",
+		"blob": "When you *accept what your audience tells you about yourself*, clear a condition. When you *reject what your audience tells you about yourself*, on a hit mark potential and expect retributions.",
+		"label": "",
+		"description": " ",
+		"img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
+		"requiresRolling": false,
+		"playbook": "star",
+		"special": true
+	}, {
+		"id": 99,
+		"shortName": "audiencehelp",
+		"capital": "HELP FROM YOUR AUDIENCE",
+		"phrase": "seeks help from his/her audience!",
+		"blob": "When you *seek help from your audience*, roll +Superior. On a hit, someone in your audience can hook you up. On a 10+, they only make a small demand. On a 7 - 9, their demands are a lot higher. On a miss, you've made a mistake, and your audience won't help you until you've redeemed yourself in their eyes.",
+		"label": "superior",
+		"description": " ",
+		"img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
+		"requiresRolling": true,
+		"playbook": "star",
+		"special": true
+	}, {
+		"id": 100,
+		"shortName": "two",
+		"capital": "TWO OF A KIND",
+		"phrase": "and the other half are two of a kind!",
+		"blob": "When you *time passes*, you and your other half gain Influence over each other. When you or your other half pierces the other's mask, mark a condition to take a 10+.\nAsk three.\n• what are you really planning?\n• what do you want me to do?\n• what do you intend to do?\n• how could I get your character to \\_\\_\\_?\n• how could I gain Influence over you?",
+		"label": "",
+		"description": " ",
+		"img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
+		"requiresRolling": false,
+		"playbook": "joined",
+		"special": true
+	}, {
+		"id": 101,
+		"shortName": "fastball",
+		"capital": "FASTBALL SPECIAL",
+		"phrase": "and the other half make a great combo!",
+		"blob": "When you *perform a coordinated fighting maneuver with your other half*, say who takes the lead and who assists. The leader rolls the adult move overwhelm a vulnerable foe. The assistant marks a condition.",
+		"label": "",
+		"description": " ",
+		"img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
+		"requiresRolling": false,
+		"playbook": "joined",
+		"special": true
+	}, {
+		"id": 102,
+		"shortName": "activate",
+		"capital": "POWERS, ACTIVATE!",
+		"phrase": "pools powers with the other half!",
+		"blob": "When you *and your other half pool your powers*, say who takes the lead and who assists. The leader *unleashes their powers* with your combined Freak (max +4). The assistant shifts Savior up down, and Mundane up.",
+		"label": "",
+		"description": " ",
+		"img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
+		"requiresRolling": false,
+		"playbook": "joined",
+		"special": true
+	}, {
+		"id": 103,
+		"shortName": "eyes",
+		"capital": "FOUR EYES ARE BETTER",
+		"phrase": "and the other half use their eyes!",
+		"blob": "When you *and your other half assess the situation from two different vantage points*, one of you makes the move, and the other may either clear a condition or ask an additional question. You both get +1 when following the answers.",
+		"label": "",
+		"description": " ",
+		"img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
+		"requiresRolling": false,
+		"playbook": "joined",
+		"special": true
+	}, {
+		"id": 103,
+		"shortName": "eyes",
+		"capital": "FOUR EYES ARE BETTER",
+		"phrase": "and the other half use their eyes!",
+		"blob": "When you *and your other half assess the situation from two different vantage points*, one of you makes the move, and the other may either clear a condition or ask an additional question. You both get +1 when following the answers.",
+		"label": "",
+		"description": " ",
+		"img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
+		"requiresRolling": false,
+		"playbook": "joined",
+		"special": true
+	}, {
+		"id": 105,
+		"shortName": "mirror",
+		"capital": "MIRROR, MIRROR",
+		"phrase": "!",
+		"blob": "When you *pierce someone's mask*, roll +Mundane.\nOn a _10+_, ask three. On a _7-9_, ask one.\n• what are you really planning?\n• what do you want me to do?\n• what do you intend to do?\n• how could I get your character to \\_\\_\\_?\n• how could I gain Influence over you?\n• what are you feeling right now?\nThe last question can be asked even of a miss. If you pick that question (whatever the result), they can ask you the same question.",
+		"label": "mundane",
+		"description": " ",
+		"img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
+		"requiresRolling": true,
+		"playbook": "joined",
+		"special": true
+	}, {
+		"id": 106,
+		"shortName": "burden",
+		"capital": "SHOULDERING THE BURDEN",
+		"phrase": "shoulders the burden!",
+		"blob": "When you *push yourself to do something your other half failed at or can't do*, mark a condition and roll +Freak.\nOn a hit, choose one. On a _10+_, choose two.\n• take hold of something vulnerable to you\n• create something useful from your environment\n• neutralize an opponent or threat, at least for now",
+		"label": "freak",
+		"description": " ",
+		"img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
+		"requiresRolling": true,
+		"playbook": "joined",
+		"special": true
+	}, {
+		"id": 107,
+		"shortName": "solo",
+		"capital": "GOING SOLO",
+		"phrase": "goes solo!",
+		"blob": "When you *directly engage a threat entirely on your own*, roll +Superior.\nOn a hit, trade blows. On a _10+_, pick two. On a _7-9_,\npick one.\n• resist or avoid their blows\n• take something from them\n• create an opportunity for your allies\n• impress, surprise, or frighten the opposition",
+		"label": "danger",
+		"description": " ",
+		"img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
+		"requiresRolling": true,
+		"playbook": "joined",
+		"special": true
+	}, {
+		"id": 108,
+		"shortName": "strife",
+		"capital": "INTERNAL STRIFE",
+		"phrase": "talks behind the other half's back!",
+		"blob": "When you *snipe about your other half behind their back*, remove one Team from the pool and clear a condition.",
+		"label": "",
+		"description": " ",
+		"img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
+		"requiresRolling": false,
+		"playbook": "joined",
+		"special": true
+	}, {
+		"id": 109,
+		"shortName": "fray",
+		"capital": "ABOVE THE FRAY",
+		"phrase": "is above the fray!",
+		"blob": "When you *enter battle as a Team against a dangerous for*, if you have Influence over the leader and provide tactical input, add 1 Team to the pool. When you *contradict the leader during battle*, you may return Influence over the leader to add an additional 1 Team to the pool.",
+		"label": "",
+		"description": " ",
+		"img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
+		"requiresRolling": false,
+		"playbook": "brain"
+	}, {
+		"id": 111,
+		"shortName": "debrief",
+		"capital": "MISSION DEBRIEF",
+		"phrase": "is in a debrief!",
+		"blob": "During a debrief, when you *downplay your role in helping a teammate during the mission*, mark potential and shift Superior down and any other Label up. When you *exaggerate your role in helping a teammate during the mission*, clear a condition and either give them Influence or lose Influence over them.",
+		"label": "",
+		"description": " ",
+		"img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
+		"requiresRolling": false,
+		"playbook": "brain"
+	}, {
+		"id": 111,
+		"shortName": "angle",
+		"capital": "LOGICAL ANGLE",
+		"phrase": "sees it from a logical angle!",
+		"blob": "When you *comfort or support someone by rationally pointing out their mistakes so they can do better next time*, roll +Superior. But, if they do not open up to you, mark a condition.\nOn a hit, they hear you: they mark potential, clear a condition, or shift Labels if they open up to you. On a _10+_, you can also add a Team to the pool or clear a condition yourself.",
+		"label": "superior",
+		"description": " ",
+		"img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
+		"requiresRolling": true,
+		"playbook": "brain"
+	}, {
+		"id": 112,
+		"shortName": "insight",
+		"capital": "SCIENTIFIC INSIGHT",
+		"phrase": "has scientific insight!",
+		"blob": "You have achieved mastery over a field of science and technology. Name it.\nWhenever you *assess the situation* and your field of study is directly relevant, you may ask a single follow-up question.",
+		"label": "",
+		"description": " ",
+		"img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
+		"requiresRolling": false,
+		"playbook": "brain"
+	}, {
+		"id": 113,
+		"shortName": "prepared",
+		"capital": "ALWAYS PREPARED",
+		"phrase": "is always prepared!",
+		"blob": "When you *have a change to restock your supplies*, hold up to 2-gadgets. When you *unleash your powers by producing a brand new minor invention or gadget from your supply*, spend 1-gadget and roll +Superior. When you reach 0-gadgets, mark a condition.",
+		"label": "",
+		"description": " ",
+		"img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
+		"requiresRolling": false,
+		"playbook": "brain"
+	}, {
+		"id": 114,
+		"shortName": "genius",
+		"capital": "TACTICAL GENIUS",
+		"phrase": "is a tactical genius!",
+		"blob": "When you *point out the obvious flaw in a known foe's plan*, roll +Superior.\nOn a hit, you're right, and another teammate (your choice) can take advantage; they get +1 ongoing to act on your information. On a 7 - 9, pick one:\n• You missed something important. The GM will tell you what.\n• You look like a showoff. Your chosen teammate takes Influence over you, and you lose Influence over them.\n• You make your teammates feel like little more than pawns, Your chosen teammate marks a condition.\nOn a miss, you've played into your enemy's hands;watch the trap spring.",
+		"label": "",
+		"description": " ",
+		"img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
+		"requiresRolling": false,
+		"playbook": "brain"
+	}, {
+		"id": 115,
+		"shortName": "shame",
+		"capital": "CONFRONTED WITH THE SHAME",
+		"phrase": "is confronted with their shame!",
+		"blob": "Whenever you *are confronted with your shame*, either mark a condition or shift Superior down and Danger up. If your shame is an NPC, they can never lose Influence over you.",
+		"label": "",
+		"description": " ",
+		"img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
+		"requiresRolling": false,
+		"playbook": "brain",
+		"special": true
+	}, {
+		"id": 116,
+		"shortName": "shamesteps",
+		"capital": "AMENDS FOR THE SHAME",
+		"phrase": "needs to make amends for their shame!",
+		"blob": "*At the end of every session*, answer the question.\n• Did you take steps to make amends for your shame?\nIf the answer is yes, mark potential. If the answer is no, give Influence to oone of your teammates",
+		"label": "",
+		"description": " ",
+		"img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
+		"requiresRolling": false,
+		"playbook": "brain",
+		"special": true
+	}, {
+		"id": 117,
+		"shortName": "before",
+		"capital": "BEFORE WE GET STARTED",
+		"phrase": "observes the opposition!",
+		"blob": "When you *have time to closely observe your opposition before a fight*, roll +Savior. On a 10+, hold 3. On a 7 - 9, hold 2. On a miss, hold 1 and mark a condition. During the fight, you can spend your hold to name a character you observed and...:\n• ...redirect their attack to another character or nowhere - into a wall or the sky.\n• ...cross a distance between them and you.\n• ...stun them, close up or from a distance.\n• ...ignore all harm from one of their attacks.\n• ...escape any bindings or impediments they attempt to place on you.",
+		"label": "",
+		"description": " ",
+		"img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
+		"requiresRolling": false,
+		"playbook": "soldier"
+	}, {
+		"id": 118,
+		"shortName": "youmove",
+		"capital": "NO, YOU MOVE",
+		"phrase": "makes them move!",
+		"blob": "When you *demand that an NPC live up to a higher moral code*, roll +Savior. On a hit, they have to meet your standard or mark a Conditino. On a 10+, take Influence over them as well. On a miss they reveal that the conflict in question is more complicated than it seems; give them Influence over you.",
+		"label": "",
+		"description": " ",
+		"img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
+		"requiresRolling": true,
+		"playbook": "soldier"
+	}, {
+		"id": 119,
+		"shortName": "allday",
+		"capital": "I CAN DO THIS ALL DAY",
+		"phrase": "can do this all day!",
+		"blob": "When *something causes you to remove yourself from a fight*, you can shift Savior down (and another Label up) instead. If shifting Savior down would move it below -2, you have to leave the fight instead of shifting Labels.",
+		"label": "",
+		"description": " ",
+		"img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
+		"requiresRolling": false,
+		"playbook": "soldier"
+	}, {
+		"id": 120,
+		"shortName": "personal",
+		"capital": "IT KINDA FEELS PERSONAL",
+		"phrase": "thinks this feels kinda personal!",
+		"blob": "When you *discover that someone has misled you or betrayed your cause*, mark a condition and take +1 ongoing against them until they are brought to justice.",
+		"label": "",
+		"description": " ",
+		"img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
+		"requiresRolling": false,
+		"playbook": "soldier"
+	}, {
+		"id": 121,
+		"shortName": "mission",
+		"capital": "MISSION FIRST",
+		"phrase": "knows that the mission comes first!",
+		"blob": "When you *secure a valuable resource by defeating a powerful foe*, you can shift yous Savior up and any other Label down. If you (and your team) managed to avoid causing any collateral damage, clear a condition as well.",
+		"label": "",
+		"description": " ",
+		"img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
+		"requiresRolling": false,
+		"playbook": "soldier"
+	}, {
+		"id": 122,
+		"shortName": "shield",
+		"capital": "MORE THAN A SHIELD",
+		"phrase": "is more than a shield!",
+		"blob": "When you *directly engage a threat by heading directly into danger without regard for your own safety*, roll +Savior.\nOn a hit, trade blows. On a _10+_, pick two. On a _7-9_,\npick one. On a miss, your focused attack leaves someone in grave danger; the GM will tell you what it takes to keep them safe\n• resist or avoid their blows\n• take something from them\n• create an opportunity for your allies\n• impress, surprise, or frighten the opposition",
+		"label": "",
+		"description": " ",
+		"img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
+		"requiresRolling": false,
+		"playbook": "soldier"
+	}, {
+		"id": 123,
+		"shortName": "orders",
+		"capital": "ACTING ON ORDERS",
+		"phrase": "is acting on orders!",
+		"blob": "When you're *acting on orders and relying on your trainint*, give A.E.G.I.S. Influence to use Soldier instead of any other Label when you make a basic playbook move.",
+		"label": "",
+		"description": " ",
+		"img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
+		"requiresRolling": false,
+		"playbook": "soldier",
+		"special": true
+	}, {
+		"id": 124,
+		"shortName": "invoke",
+		"capital": "INVOKE AUTHORITY",
+		"phrase": "is invoking their authority!",
+		"blob": "When you *invoke your authority over civilians, Halcyon City personnel, or A.E.G.I.S. staff*, roll +Soldier.\nOn a hit, your words carry weight. On a 7 - 9, someone will push back against your instructions or orders... sooner rather than later. On a miss your attempts to control the situation create an opportunity for your enemies within A.E.G.I.S. to act against you.",
+		"label": "soldier",
+		"description": " ",
+		"img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
+		"requiresRolling": true,
+		"playbook": "soldier",
+		"special": true
+	}, {
+		"id": 125,
+		"shortName": "aegis",
+		"capital": "ASKING A.E.G.I.S.",
+		"phrase": "is asking A.E.G.I.S. for resources!",
+		"blob": "When you *ask A.E.G.I.S. for resources, equipment, or information during a mission*, roll +Soldier.\nOn a hit, they'll resupply you as best they can. On a 10+ the resources are highly classified or experimental; take +1 ongoing to deploying them throughout the mission. On a miss, A.E.G.I.S. sends you what they think you need, regardless of what you actually requested.",
+		"label": "soldier",
+		"description": " ",
+		"img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
+		"requiresRolling": true,
+		"playbook": "soldier",
+		"special": true
+	}, {
+		"id": 126,
+		"shortName": "stick",
+		"capital": "STICK TO THE MISSION",
+		"phrase": "sticks to the mission!",
+		"blob": "When you *defend someone or something critically important to the future (tell us why)*, you may mark a condition to shift down one Label and shift up Savior before the roll. Roll +Savior.For *NPC threats*: on a hit, you keep them safe and choose one. On a _7-9_, it costs you: expose yourself to danger or escalate the situation.\n• add a Team to the pool\n• take Influence over someone you protect\nFor *PC threats*: on a hit, give them -2 to their roll.\nOn a _7-9_, you expose yourself to cost, retribution, or judgment.",
+		"label": "savior",
+		"description": " ",
+		"img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
+		"requiresRolling": true,
+		"playbook": "harbinger"
+	}, {
+		"id": 127,
+		"shortName": "tomorrow",
+		"capital": "TOMORROW'S GOLDEN PROMISE",
+		"phrase": "knows of tomorrow!",
+		"blob": "When you *comfort or support someone with the tales of what you think their future will be*, roll +Savior. Mark a condition unless you are confident the stories are true.\nOn a hit, they hear you: they mark potential, clear a condition, or shift Labels if they open up to you. On a _10+_, you can also add a Team to the pool or clear a condition yourself.",
+		"label": "savior",
+		"description": " ",
+		"img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
+		"requiresRolling": true,
+		"playbook": "harbinger"
+	}, {
+		"id": 128,
+		"shortName": "history",
+		"capital": "APPLIED HISTORY",
+		"phrase": "applies history knowledge!",
+		"blob": "When you *pierce the mask of someone you believe will shape the future*, roll +Savior. \nOn a _10+_, ask three. On a _7-9_, ask one.\n• what are you really planning?\n• what do you want me to do?\n• what do you intend to do?\n• how could I get your character to \\_\\_\\_?\n• how could I gain Influence over you?",
+		"label": "savior",
+		"description": " ",
+		"img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
+		"requiresRolling": true,
+		"playbook": "harbinger"
+	}, {
+		"id": 129,
+		"shortName": "notyet",
+		"capital": "YOU HAVEN'T LEARNED YOU CAN DO THAT YET",
+		"phrase": "knows what you will learn!",
+		"blob": "When you *tell a teammate about a new, never-before-performed trick that they've never considered*, spend a Team from the pool to allow them to *unleash their powers, directly engage a threat or defend someone* using your Superior as if it was their Label. Any costs or complications from their move affect you, as well.",
+		"label": "",
+		"description": " ",
+		"img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
+		"requiresRolling": false,
+		"playbook": "harbinger"
+	}, {
+		"id": 130,
+		"shortName": "grade",
+		"capital": "I LEARNED THE SOLUTION IN GRADE SCHOOL",
+		"phrase": "learned that in grade school!",
+		"blob": "When you *unleash your powers to extend your senses or overcome an intellectual obstacle*, roll +Savior.\nOn a hit, you do it. On a _7-9_, mark a condition or the GM will tell you how the effect is unstable or temporary.",
+		"label": "savior",
+		"description": " ",
+		"img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
+		"requiresRolling": true,
+		"playbook": "harbinger"
+	}, {
+		"id": 131,
+		"shortName": "studies",
+		"capital": "21ST CENTURY STUDIES",
+		"phrase": "learned that in grade school!",
+		"blob": "When you *assess the situation*, roll +Superior.\nOn a 10+, ask two. On a 7-9, ask one. Take +1 while acting on the answers.\n• what here can I use to ________?\n• what here is the biggest threat?\n• what here is in the greatest danger?\n• who here is most vulnerable to me?\n• how could we best end this quickly?\n• what does the future know about this moment?\nOn a miss you can still ask the last question.",
+		"label": "savior",
+		"description": " ",
+		"img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
+		"requiresRolling": true,
+		"playbook": "harbinger"
+	}, {
+		"id": 132,
+		"shortName": "remember",
+		"capital": "REMEMBER THE FUTURE",
+		"phrase": "remembers the future!",
+		"blob": "When you *push yourself to remember the version of someone that exists in your future*, mark a condition and roll +Memories. On a hit, you connect who they are now to who they are in the future, choose the role that they fulfill in the future, and the GM will tell you about their future self. On a 10+, ask a follow-up question. On a miss, they're not at all who you tought they would be, the GM will choose their role, or tell you that as fat as you know, they don't exist in the future.\nWhen you *remember someone*, they gain Influence over you if they did not already have it.",
+		"label": "memories",
+		"description": " ",
+		"img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
+		"requiresRolling": true,
+		"playbook": "harbinger",
+		"special": true
+	}, {
+		"id": 133,
+		"shortName": "investigations",
+		"capital": "INVESTIGATING THE TIMELINE",
+		"phrase": "has been investigating the timeline!",
+		"blob": "*At the start of each session*, roll +Savior. to find out how your investigations into the timeline have been going. On a 10+, you found a strong lead; choose one figure noted above or one aspect of the future world you can remember, and the GM will reveal to you clear detail on the path that leads to their future form. On a 7 - 9, you found a lead; choose one figure noted above or one aspect of the future world you can remember, and the GM will tell you what lead you have to learn more about their path. On a miss, you're lost in the present. The GM will tell you how things are so different here, and shift your Labels according to how it makes you feel.",
+		"label": "savior",
+		"description": " ",
+		"img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
+		"requiresRolling": true,
+		"playbook": "harbinger",
+		"special": true
+	}, {
+		"id": 134,
+		"shortName": "notkid",
+		"capital": "NOT GOOD AT BEING A KID",
+		"phrase": "is not good at being a kid!",
+		"blob": "When you *clear a condition*, you can shift Labels, your choice.",
+		"label": "",
+		"description": " ",
+		"img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
+		"requiresRolling": false,
+		"playbook": "nomad"
+	}, {
+		"id": 135,
+		"shortName": "cbeams",
+		"capital": "WATCHED C-BEAMS GLITTER",
+		"phrase": "has watched c-beams glitter!",
+		"blob": "When you *make a claim about a strange situation or phenomenon based on your experience*, roll +Freak. On a hit, you were right; the GM will tell you what opportunity your knowledge grands to you. On a 7 - 9, your claim is incomplete, flawed, or tangential; the GM will tell you how. On a miss, your experiences are deeply incomplete; the GM will tell you what mistake your flawed understanding leads you to.",
+		"label": "freak",
+		"description": " ",
+		"img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
+		"requiresRolling": true,
+		"playbook": "nomad"
+	}, {
+		"id": 136,
+		"shortName": "cavalry",
+		"capital": "I HATE CALLING THE CAVALRY",
+		"phrase": "hates calling the cavalry!",
+		"blob": "When you *call the allies you made beyond this world to ask them for help*, mark a condition and roll +Superior. On a hit, someone shows up to lend you a hand. On a 7 - 9, they're dragging their own problems. On a miss, your call reaches you wish it hadn't.",
+		"label": "freak",
+		"description": " ",
+		"img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
+		"requiresRolling": true,
+		"playbook": "nomad"
+	}, {
+		"id": 137,
+		"shortName": "bandit",
+		"capital": "THE LITTLEST SPACE BANDIT",
+		"phrase": "is the littlest space bandit!",
+		"blob": "When you *directly engage a threat that underestimates you*, roll +Superior.\nOn a hit, trade blows. On a _10+_, pick two. On a _7-9_,\npick one.\n• resist or avoid their blows\n• take something from them\n• create an opportunity for your allies\n• impress, surprise, or frighten the opposition",
+		"label": "superior",
+		"description": " ",
+		"img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
+		"requiresRolling": true,
+		"playbook": "nomad"
+	}, {
+		"id": 138,
+		"shortName": "outworld",
+		"capital": "OUT OF THIS WORLD",
+		"phrase": "knows of things out of this world!",
+		"blob": "When you *plug in the cosmit aether and tune out of this world*, roll +Freak. On a hit, you come to a new, interesting insight about your current problems and situation; the GM will tell you what. On a _10+_, you can also shift your own Labels according to match your new understanding. On a miss, you realize something dangerous or terrible; the GM will tell you what, and shift your Labels accordingly.",
+		"label": "superior",
+		"description": " ",
+		"img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
+		"requiresRolling": true,
+		"playbook": "nomad"
+	}, {
+		"id": 139,
+		"shortName": "sharpened",
+		"capital": "SHARPENED EYES",
+		"phrase": "has sharpened eyes!",
+		"blob": "When you *assess the situation*, roll +Superior.\nOn a 10+, ask two. On a 7-9, ask one. Take +1 while acting on the answers.\n• what here can I use to ________?\n• what here is the biggest threat?\n• what here is in the greatest danger?\n• who here is most vulnerable to me?\n• how could we best end this quickly?\n• what's my best way out/way out/way past?\n• what here youd be handy to grab\n• who here is susceptible to my words?\nYou can ask one of the tree lasts questions even on a miss.",
+		"label": "superior",
+		"description": " ",
+		"img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
+		"requiresRolling": true,
+		"playbook": "nomad"
+	}, {
+		"id": 140,
+		"shortName": "showem",
+		"capital": "I'LL SHOW THEM",
+		"phrase": "will show them!",
+		"blob": "When you *defend someone who doesn't believe in you*, roll +Savior.\nFor *NPC threats*: on a hit, you keep them safe and choose one. On a _7-9_, it costs you: expose yourself to danger or escalate the situation. On a miss, you can take Influence over them.\n• add a Team to the pool\n• take Influence over someone you protect\n• clear a condition\nFor *PC threats*: on a hit, give them -2 to their roll.\nOn a _7-9_, you expose yourself to cost, retribution, or judgment.",
+		"label": "savior",
+		"description": " ",
+		"img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
+		"requiresRolling": true,
+		"playbook": "scion"
+	}, {
+		"id": 141,
+		"shortName": "sides",
+		"capital": "CHANGED SIDES",
+		"phrase": "has changed sides!",
+		"blob": "When you *mislead or trick an enemy by pretending to be on their side*, roll +Danger.On a hit, they buy your charade for now. On a 7 - 9, choose 1. On a 10+, choose 2.\n• You avoid having to provide concrete evidence\n• You create an opportunity\n• You expose a weakness or flaw\nOn a miss, someone else watching comes to the worst possible conclusion.",
+		"label": "savior",
+		"description": " ",
+		"img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
+		"requiresRolling": true,
+		"playbook": "scion"
+	}, {
+		"id": 142,
+		"shortName": "forgiveness",
+		"capital": "THEY DON'T DESERVE FORGIVENESS",
+		"phrase": "doesn't think they deserve forgiveness!",
+		"blob": "When you *accuse an enemy of being irredeemable*, you can mark two conditions to take Influence over you away from them. When you *directly engage someone who has no Influence over you*, you can always choose 1 additional option, even on a miss.",
+		"label": "",
+		"description": " ",
+		"img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
+		"requiresRolling": false,
+		"playbook": "scion"
+	}, {
+		"id": 143,
+		"shortName": "moldable",
+		"capital": "MOLDABLE",
+		"phrase": "is moldable!",
+		"blob": "When you *pierce the mask of someone whose respect you crave*, roll +Mundane.\nOn a _10+_, ask three. On a _7-9_, ask one.\n• what are you really planning?\n• what do you want me to do?\n• what do you intend to do?\n• how could I get your character to \\_\\_\\_?\n• how could I gain Influence over you?\nYou can always ask “How could I gain Influence over you?”, even on a miss. Take +1 ongoing to acting on the answer.",
+		"label": "mundane",
+		"description": " ",
+		"img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
+		"requiresRolling": true,
+		"playbook": "scion"
+	}, {
+		"id": 144,
+		"shortName": "beststuff",
+		"capital": "ALL THE BEST STUFF",
+		"phrase": "knows where the best stuff is!",
+		"blob": "You’ve compiled access to caches of equipment and weaponry other supers have hidden in the city. When you access a cache, say whose cache it is. If it’s a hero’s, roll + Savior. If it’s a villain’s, roll + Danger. On a hit, you find a tool or intel useful to your situation; the GM will detail. On a 7-9, you leave evidence that you’ve been here. On a miss, you tripped an alarm and they’re coming; prepare to explain yourself.",
+		"label": "",
+		"description": " ",
+		"img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
+		"requiresRolling": false,
+		"playbook": "scion"
+	}, {
+		"id": 145,
+		"shortName": "lies",
+		"capital": "WHITE LIES",
+		"phrase": "knows how to tell a white lie!",
+		"blob": "When you *comfort or support someone by telling them how they are your role model as a hero*, roll + Savior.\nOn a hit, they hear you: they mark potential, clear a condition, or shift Labels if they open up to you. If they open up to you, take Influence over them. On a _10+_, you can also add a Team to the pool or clear a condition yourself.",
+		"label": "savior",
+		"description": " ",
+		"img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
+		"requiresRolling": true,
+		"playbook": "scion"
+	}, {
+		"id": 146,
+		"shortName": "seek",
+		"capital": "SEEK OUT RESPECT HOLDERS",
+		"phrase": "seeks out the people he/she wish they respected him/she!",
+		"blob": "When you *seek out one of the characters you seek respect from*, roll +Savior. On a hit, you find them where you expected to. On a 7-9, they’re juggling their own problems, and may not have time for you. On a miss, when you find them, the situation is dire; the GM will tell you how.",
+		"label": "savior",
+		"description": " ",
+		"img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
+		"requiresRolling": true,
+		"playbook": "scion",
+		"special": true
+	}, {
+		"id": 147,
+		"shortName": "respect",
+		"capital": "RESPECT",
+		"phrase": "gains respect!",
+		"blob": "When you *earn Influence over a character you seek respect from*, instead you mark 1 Respect. If you lose Influence over the characters listed above, you lose 1 Respect. If you lose 1 Respect and you have none marked, you immediately mark a condition, GM’s choice.",
+		"label": "",
+		"description": " ",
+		"img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
+		"requiresRolling": false,
+		"playbook": "scion",
+		"special": true
+	}, {
+		"id": 148,
+		"shortName": "fullrespect",
+		"capital": "FULL RESPECT",
+		"phrase": "has full respect!",
+		"blob": "*The first time you reach 4 Respect on an individual*, take an advancement.\nWhile you have 4 Respect on an individual:\n• You can reject their Influence at a +3 (does not stack with the above).\n• You take +1 to a Label of their choice. (record it next to their name)\nIf you dip below 4 Respect on an individual, you lose those benefits.",
+		"label": "",
+		"description": " ",
+		"img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
+		"requiresRolling": false,
+		"playbook": "scion",
+		"special": true
+	}],
 	"playbooks": [{
 		"id": 1,
 		"name": "beacon",
@@ -836,7 +1819,7 @@
 	}, {
 		"id": 17,
 		"name": "joined",
-		"mot": "When you trigger your Moment of Truth, choose—are you working with your other half, or are you on your own?\\n  If you’re working with your other half, use the text of their Moment of Truth and treat it as if it applies to both of you. Remember to lock your Label and switch a bond to a distinction because you’ll probably never reach these heights of perfect connection, of being one, ever again…\\n If you’re on your own, use the following text:\\n You’re on your own. It’s like missing an arm. Like fighting naked. Like holding your breath. You’re missing something vital...but you’re moving faster than ever, thinking faster than ever, doing things you couldn’t even do while relying on both of your strength combined. And it’s hitting you, hard—you can do this. Without them. And you can win. It’s going to be hard to come down off this high and rejoin with them afterwards, isn’t it?\\n Remember to lock a Label and switch a bond to a distinction, afterward.",
+		"mot": "When you trigger your Moment of Truth, choose—are you working with your other half, or are you on your own?\n  If you’re working with your other half, use the text of their Moment of Truth and treat it as if it applies to both of you. Remember to lock your Label and switch a bond to a distinction because you’ll probably never reach these heights of perfect connection, of being one, ever again…\n If you’re on your own, use the following text:\n You’re on your own. It’s like missing an arm. Like fighting naked. Like holding your breath. You’re missing something vital...but you’re moving faster than ever, thinking faster than ever, doing things you couldn’t even do while relying on both of your strength combined. And it’s hitting you, hard—you can do this. Without them. And you can win. It’s going to be hard to come down off this high and rejoin with them afterwards, isn’t it?\n Remember to lock a Label and switch a bond to a distinction, afterward.",
 		"img": "",
 		"source": "herald"
 	}, {
@@ -858,21 +1841,21 @@
 		"img": "",
 		"source": "unbound"
 	}],
-	"sources": [	{
-			"id": 1,
-			"source": "core",
-			"name": "Masks: A New Generation"
-		}, {
-			"id": 2,
-			"source": "aegis",
-			"name": "Secrets of AEGIS"
-		}, {
-			"id": 3,
-			"source": "herald",
-			"name": "Halcyon City Herald Collection"
-		}, {
-			"id": 4,
-			"source": "unbound",
-			"name": "Unbound"
-		}
-	]}
+	"sources": [{
+		"id": 1,
+		"source": "core",
+		"name": "Masks: A New Generation"
+	}, {
+		"id": 2,
+		"source": "aegis",
+		"name": "Secrets of AEGIS"
+	}, {
+		"id": 3,
+		"source": "herald",
+		"name": "Halcyon City Herald Collection"
+	}, {
+		"id": 4,
+		"source": "unbound",
+		"name": "Unbound"
+	}]
+}

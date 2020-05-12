@@ -1,0 +1,117 @@
+{
+  "characterName": "",
+  "playerName": "",
+  "playbook": "delinquent",
+  "labels": {
+    "freak": {
+      "value": 0,
+      "locked": false
+    },
+    "danger": {
+      "value": -1,
+      "locked": false
+    },
+    "savior": {
+      "value": 2,
+      "locked": false
+    },
+    "superior": {
+      "value": 1,
+      "locked": false
+    },
+    "mundane": {
+      "value": 0,
+      "locked": false
+    },
+    "soldier": {
+      "value": 2,
+      "locked": false
+    }
+  },
+  "potential": 0,
+  "pendingAdvancements": 0,
+  "conditions": {
+    "afraid": false,
+    "angry": false,
+    "guilty": false,
+    "hopeless": false,
+    "insecure": false
+  },
+  "moves": [
+    { "id": 117, "picked": true },
+    { "id": 118, "picked": false },
+    { "id": 119, "picked": false },
+    { "id": 120, "picked": false },
+    { "id": 121, "picked": false },
+    { "id": 122, "picked": false },
+    { "id": 123, "picked": true },
+    { "id": 124, "picked": true },
+    { "id": 125, "picked": true }
+  ],
+  "advancement": {
+    "basic": {
+      "otherPlaybookMove1": {
+        "description": "moveYouPlaybook",
+        "taken": false
+      },
+      "yourPlaybookMove1": {
+        "description": "moveOtherPlaybook",
+        "taken": false
+      },
+      "yourPlaybookMove2": {
+        "description": "moveOtherPlaybook",
+        "taken": false
+      },
+      "yourPlaybookMove3": {
+        "description": "moveOtherPlaybook",
+        "taken": false
+      },
+      "deleteInfluence": {
+        "description": "loseInfluence",
+        "taken": false
+      },
+      "rearrange": {
+        "description": "rearrange",
+        "taken": false
+      },
+      "momentOfTruth": {
+        "description": "mot",
+        "taken": false
+      },
+      "enhancement": {
+        "description": "enhancement",
+        "taken": false
+      }
+    },
+    "advanced": {
+      "lockSoldier": {
+        "description": "lockSoldier",
+        "taken": false
+      },
+      "mentor": {
+        "description": "mentor",
+        "taken": false
+      },
+      "noAegis": {
+        "description": "noAegis",
+        "taken": false
+      },
+      "momentOfTruth": {
+        "description": "motAgain",
+        "taken": false
+      },
+      "adultMove1": {
+        "description": "adult",
+        "taken": false
+      },
+      "adultMove2": {
+        "description": "adult",
+        "taken": false
+      },
+      "civilian": {
+        "description": "retire",
+        "taken": false
+      }
+    }
+  }
+}

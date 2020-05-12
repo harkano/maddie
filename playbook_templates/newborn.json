@@ -1,0 +1,114 @@
+{
+  "characterName": "",
+  "playerName": "",
+  "playbook": "newborn",
+  "labels": {
+    "freak": {
+      "value": 2,
+      "locked": false
+    },
+    "danger": {
+      "value": 1,
+      "locked": false
+    },
+    "savior": {
+      "value": 0,
+      "locked": false
+    },
+    "superior": {
+      "value": 1,
+      "locked": false
+    },
+    "mundane": {
+      "value": -2,
+      "locked": false
+    }
+  },
+  "potential": 0,
+  "pendingAdvancements": 0,
+  "conditions": {
+    "afraid": false,
+    "angry": false,
+    "guilty": false,
+    "hopeless": false,
+    "insecure": false
+  },
+  "moves": [
+    { "id": 72, "picked": false },
+    { "id": 73, "picked": false },
+    { "id": 74, "picked": false },
+    { "id": 75, "picked": false },
+    { "id": 76, "picked": false },
+    { "id": 77, "picked": true },
+    { "id": 78, "picked": true },
+    { "id": 79, "picked": true }
+  ],
+  "advancement": {
+    "basic": {
+      "otherPlaybookMove1": {
+        "description": "moveYouPlaybook",
+        "taken": false
+      },
+      "otherPlaybookMove2": {
+        "description": "moveYouPlaybook",
+        "taken": false
+      },
+      "yourPlaybookMove1": {
+        "description": "moveOtherPlaybook",
+        "taken": false
+      },
+      "yourPlaybookMove2": {
+        "description": "moveOtherPlaybook",
+        "taken": false
+      },
+      "deleteInfluence": {
+        "description": "loseInfluence",
+        "taken": false
+      },
+      "rearrange": {
+        "description": "rearrange",
+        "taken": false
+      },
+      "momentOfTruth": {
+        "description": "mot",
+        "taken": false
+      },
+      "burn": {
+        "description": "burn",
+        "taken": false
+      }
+    },
+    "advanced": {
+      "momentOfTruth": {
+        "description": "motAgain",
+        "taken": false
+      },
+      "lockLessons": {
+        "description": "lockLessons",
+        "taken": false
+      },
+      "adultMove1": {
+        "description": "adult",
+        "taken": false
+      },
+      "adultMove2": {
+        "description": "adult",
+        "taken": false
+      },
+      "blockLabel": {
+        "description": "lock",
+        "taken": false
+      },
+      "retire": {
+        "description": "retire",
+        "taken": false
+      }
+    }
+  },
+  "lessons": {
+    "iam": "",
+    "should": "",
+    "always": "",
+    "never": ""
+  }
+}

@@ -1,0 +1,133 @@
+{
+  "characterName": "",
+  "playerName": "",
+  "playbook": "star",
+  "labels": {
+    "freak": {
+      "value": 0,
+      "locked": false
+    },
+    "danger": {
+      "value": 0,
+      "locked": false
+    },
+    "savior": {
+      "value": -1,
+      "locked": false
+    },
+    "superior": {
+      "value": 2,
+      "locked": false
+    },
+    "mundane": {
+      "value": 1,
+      "locked": false
+    }
+  },
+  "potential": 0,
+  "pendingAdvancements": 0,
+  "conditions": {
+    "afraid": false,
+    "angry": false,
+    "guilty": false,
+    "hopeless": false,
+    "insecure": false
+  },
+  "moves": [
+    { "id": 93, "picked": false },
+    { "id": 94, "picked": false },
+    { "id": 95, "picked": false },
+    { "id": 96, "picked": false },
+    { "id": 97, "picked": false },
+    { "id": 98, "picked": true },
+    { "id": 99, "picked": true }
+  ],
+  "advancement": {
+    "basic": {
+      "otherPlaybookMove1": {
+        "description": "moveYouPlaybook",
+        "taken": false
+      },
+      "otherPlaybookMove2": {
+        "description": "moveYouPlaybook",
+        "taken": false
+      },
+      "yourPlaybookMove1": {
+        "description": "moveOtherPlaybook",
+        "taken": false
+      },
+      "yourPlaybookMove2": {
+        "description": "moveOtherPlaybook",
+        "taken": false
+      },
+      "deleteInfluence": {
+        "description": "loseInfluence",
+        "taken": false
+      },
+      "rearrange": {
+        "description": "rearrange",
+        "taken": false
+      },
+      "momentOfTruth": {
+        "description": "mot",
+        "taken": false
+      },
+      "legacy": {
+        "description": "legacy",
+        "taken": false
+      }
+    },
+    "advanced": {
+      "momentOfTruth": {
+        "description": "motAgain",
+        "taken": false
+      },
+      "playbookChange": {
+        "description": "playbookChange",
+        "taken": false
+      },
+      "adultMove1": {
+        "description": "adult",
+        "taken": false
+      },
+      "adultMove2": {
+        "description": "adult",
+        "taken": false
+      },
+      "blockLabel": {
+        "description": "lock",
+        "taken": false
+      },
+      "retire": {
+        "description": "retire",
+        "taken": false
+      }
+    }
+  },
+  "audience": {
+    "loves": {
+      "alike": false,
+      "dangerous": false,
+      "noble": false,
+      "beautiful": false,
+      "charming": false,
+      "firebrand": false
+    },
+    "advantages": {
+      "devoted": false,
+      "speak": false,
+      "agent": false,
+      "money": false,
+      "endorsement": false,
+      "wider": false
+    },
+    "demands": {
+      "stimulation": false,
+      "perfection": false,
+      "drama": false,
+      "heroism": false,
+      "novelty": false,
+      "chemistry": false
+    }
+  }
+}

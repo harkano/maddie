@@ -1,0 +1,150 @@
+{
+  "characterName": "",
+  "playerName": "",
+  "playbook": "reformed",
+  "labels": {
+    "freak": {
+      "value": 1,
+      "locked": false
+    },
+    "danger": {
+      "value": 2,
+      "locked": false
+    },
+    "savior": {
+      "value": -1,
+      "locked": false
+    },
+    "superior": {
+      "value": 0,
+      "locked": false
+    },
+    "mundane": {
+      "value": 0,
+      "locked": false
+    }
+  },
+  "potential": 0,
+  "pendingAdvancements": 0,
+  "conditions": {
+    "afraid": false,
+    "angry": false,
+    "guilty": false,
+    "hopeless": false,
+    "insecure": false
+  },
+  "moves": [{
+      "id": 63,
+      "picked": false
+    },
+    {
+      "id": 64,
+      "picked": false
+    },
+    {
+      "id": 65,
+      "picked": false
+    },
+    {
+      "id": 66,
+      "picked": false
+    },
+    {
+      "id": 67,
+      "picked": false
+    },
+    {
+      "id": 68,
+      "picked": false
+    },
+    {
+      "id": 69,
+      "picked": true
+    },
+    {
+      "id": 70,
+      "picked": true
+    },
+    {
+      "id": 71,
+      "picked": true
+    }
+  ],
+  "advancement": {
+    "basic": {
+      "otherPlaybookMove1": {
+        "description": "moveYouPlaybook",
+        "taken": false
+      },
+      "otherPlaybookMove2": {
+        "description": "moveYouPlaybook",
+        "taken": false
+      },
+      "yourPlaybookMove1": {
+        "description": "moveOtherPlaybook",
+        "taken": false
+      },
+      "yourPlaybookMove2": {
+        "description": "moveOtherPlaybook",
+        "taken": false
+      },
+      "deleteInfluence": {
+        "description": "loseInfluence",
+        "taken": false
+      },
+      "rearrange": {
+        "description": "rearrange",
+        "taken": false
+      },
+      "momentOfTruth": {
+        "description": "mot",
+        "taken": false
+      },
+      "drives": {
+        "description": "drives",
+        "taken": false
+      }
+    },
+    "advanced": {
+      "momentOfTruth": {
+        "description": "motAgain",
+        "taken": false
+      },
+      "playbookChange": {
+        "description": "playbookChange",
+        "taken": false
+      },
+      "adultMove1": {
+        "description": "adult",
+        "taken": false
+      },
+      "adultMove2": {
+        "description": "adult",
+        "taken": false
+      },
+      "blockLabel": {
+        "description": "lock",
+        "taken": false
+      },
+      "retire": {
+        "description": "retire",
+        "taken": false
+      }
+    }
+  },
+  "friends": [{
+      "name": "",
+      "speciality": "",
+      "obligation": 0
+    },
+    {
+      "name": "",
+      "speciality": "",
+      "obligation": 0
+    },
+    {
+      "name": "",
+      "speciality": "",
+      "obligation": 0
+    }]
+}
