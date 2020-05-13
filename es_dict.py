@@ -136,7 +136,21 @@ es = {
       "mentorLabel": "Add +2 to the Label your mentor embodies or denies",
       "resources": "Choose up to four more resources from your mentor",
       "doom": "Take a doom, doomtrack, and doomsigns from the Doomed playbook",
-      "mutate": "Mutate further and reveal another two new abilities (chosen from any playbook)"
+      "mutate": "Mutate further and reveal another two new abilities (chosen from any playbook)",
+      "lockLessons": "Bloquea tus aprendizajes y cambia de libreto",
+      "mentor": "Elegí un mentor para vos (del libreto Protegido)",
+      "pastParagon": "Volvé de vuelta a tu tiempo o convertite en un icono de la ciudad",
+      "legacy": "Te volves parte de una larga tradición de superhéroes y tomas un Legado (del libreto Legado)",
+      "joinAbilities": "Gana dos nuevas habilidades de otro libreto",
+      "advance": "Toma un avance del libreto de tu otra mitad",
+      "shame": "Confronta a Tu Vergüenza en tus términos, si sobrevivís, cambia de libreto",
+      "enhancement": "Te sometes a mejoras: tomas 2 nuevas habilidades",
+      "lockSoldier": "Bloquea Soldado y agrega +1 a una Etiqueta a tu elección",
+      "noAegis": "A.E.G.I.S permanentemente pierde Influencia sobre vos, cambia de libreto",
+      "civilian": "Retírate de A.E.G.I.S a la vida de civil o unite a las altos mandos de A.E.G.I.S como Director Superior",
+      "future": "Volve  al futuro y acepta su nueva forma o viaja a otro punto del pasado para iniciar de nuevo tu misión.",
+      "depart": "Partís a parajes desconocidos, para no volver nunca más",
+      "mask": "Toma La Máscara y una identidad secreta del libreto Jano"
     },
     "beacon": {
       "drivesDescription": "Elige cuatro impulsos para marcar al comienzo del juego. Cuando cumplas con un impulso marcado, tachalo y elegí una:\nMarcar potencial, eliminar una condición, tomar Influencia sobre alguien involucrado\nCuando los cuatro impulsos marcados estén tachados, elegí y marcá cuatro impulsos nuevos.\nCuando se hayan tachado todos los impulsos, cambiá de libreto, retirate de la vida de superhéroe o convertite en un parangón de la ciudad."
@@ -346,6 +360,138 @@ es = {
         "security": "sistemas de seguridad",
         "robots": "robots simples"
       }
+    },
+    "reformed": {
+      "title": "Amigos en lugares bajos",
+      "description": "Tenes vínculos con villanos de tu vida anterior. Elegí tres nombres para completar:",
+      "nameExamples": "Finch, Ellen “Diablo” Drummond, Mr. Cane, The Mad Magpie, Dr. Cutler, Armorer, Tegan Queen, Lovelace",
+      "choose": "Para cada uno elegí una Especialidad.",
+      "speciality": "Especialidad",
+      "obligation": "Obligación",
+      "specialities": ["armas", "materiales", "artefactos cósmicos", "tecnología alíen", "información interna"],
+      "atCreation": "Cuando creas tu personaje marca 2 obligaciones con un villano y marca una obligación en otro."
+    },
+    "newborn": {
+      "title": "Una Hoja en Blanco",
+      "description": "Fuiste creado con un entendimiento básico del mundo. Cuando aprendes algo que te ayuda a entender mejor el mundo anota como un aprendizaje. Completa dos al crear tu personaje y completa las otras dos cuando las hayas aprendido durante la partida.",
+      "iam": "Yo soy",
+      "should": "Un superhéroe debería",
+      "always": "Siempre",
+      "never": "Nunca"
+    },
+    "innocent": {
+      "title": "Yo del futuro",
+      "description": "Tu yo del futuro está ahí fuera, es una figura importante en Ciudad Halcyon y en el resto del mundo (también es todo lo que esperabas nunca ser). Pero enterarte de cómo se volvió quien es puede llevarte a seguir un camino similar. Elegí un paso del camino de tu Yo del Futuro que ya sepas y circúlalo.",
+      "lost": "Perdió a alguien que le importaba mucho",
+      "failed": "Falló de forma horrible en una causa noble"
+      "crime": "Cometió un crimen mayor",
+      "betray": "Traicionó a un amigo o aliado cercano",
+      "cost": "Consiguió una victoria  a un precio horrible para el mundo que los rodea",
+      "kill": "Mató a alguien",
+      "battled": "Peleó públicamente contra otro héroe",
+      "innocent": "Lastimó a un inocente"
+    },
+    "star": {
+      "title": "Audiencia",
+      "description": "Sos una celebridad en la ciudad. Por defecto tu audiencia es un grupo limitado de fans interesados con quienes te comunicas a través de entrevistas luego de la acción y frecuentes conferencias de prensa.".
+      "lovesDescription": "¿Por qué tu audiencia te ama? Marca todo lo que aplique",
+      "loves": {
+        "alike": "Sos como ellos",
+        "dangerous": "Sos una persona peligrosa, una mala influencia",
+        "noble": "Sos un noble guerrero de la justicia",
+        "beautiful": "Sos impresionante, único, bello",
+        "charming": "Sos encantador, bien hablado e inteligente",
+        "firebrand": "Sos un agitador, mobilizas a la gente"
+      },
+      "advantagesDescription": "Elegí 2 ventajas:",
+      "advantages": {
+        "devoted": "Tu audiencia tiene una gran devoción hacia vos",
+        "speak": "Podés hablar fácilmente con ellos en cualquier momento",
+        "agent": "Tenés un agente de relaciones públicas que maneja a tu audiencia",
+        "money": "Ganas mucho dinero por su interés",
+        "endorsement": "Tenés el aval de un héroe importante",
+        "wider": "Tenés una audiencia muy amplia"
+      },
+      "demandsDescription": "Elegí 2 demandas de tu audiencia:"
+      "demands": {
+        "stimulation": "Requieren estimulación constante",
+        "perfection": "Requieren perdección, no admiten errores",
+        "drama": "Requieren constantes escenas de drama",
+        "heroism": "Requieren grandes actos de heroísmo",
+        "novelty": "Requieren novedad y acción siempre distinta",
+        "chemistry": "Requieren química con tus aliados"
+      }
+    },
+    "joined": {
+      "otherHalf": {
+        "title": "Tu otra mitad",
+        "description": "Compartís un profundo vínculo con tu otra mitad. Son más fuertes juntos que cuando están separados, por ahora. Si tu otra mitad es un Delinquent, Outsider o Transformed, toma dos movimientos de su playbook, uno que hayan elegido y otro que no. Recorda que comparten más que solo movimientos; por ejemplo, si tu otra mitad es Outsider, ambos vienen del mismo planeta/dimensión, etc, Para todos los demás playbooks compartís los extras de base de tu mitad.",
+        "beacon": "Toma Impulso y marca cuatro de tu elección. Cuando tu otra mitad tacha un Impulso, también lo tachas.",
+        "bull": "Toma el Corazón de Toro con el mismo amor y rival que tu otra mitad. Elegí un diferente rol que cumplís de forma complementaria.",
+        "janus": "Toma La  máscara y una identidad secreta. Elegí una Etiqueta distinta para tu mascara. Toma dos obligaciones: una compartida y otra única para vos.",
+        "legacy": "Toma un Legado. Tu otra mitad pone tantos nombres en la lista inicial como elija, vos completas el resto. Nunca podes contestar las preguntas del movimiento de Legado de tu otra mitad.",
+        "protege": "Compartís un mentor con tu otra mitad. Cuando tu otra mitad define el mentor y los recursos, agrega un recurso adicional.",
+        "doomed": "Toma un santuario, una perdición y la grilla de perdición: Vos y tu otra mitad comparten las mismas condiciones que acercan su perdición. Cuando se llena la grilla de perdición, ambos eligen una nueva señal de perdición. Empezas con la señal de perdición que eligió tu otra mitad. Tu otra mitad elige las características y desventajas iniciales del santuario compartido. Vos elegís una más de cada una.",
+        "nova": "Toma un santuario, una perdición y la grilla de perdición: Vos y tu otra mitad comparten las mismas condiciones que acercan su perdición. Cuando se llena la grilla de perdición, ambos eligen una nueva señal de perdición. Empezas con la señal de perdición que eligió tu otra mitad. Tu otra mitad elige las características y desventajas iniciales del santuario compartido. Vos elegís una más de cada una."
+      },
+      "bondsDistinctions": {
+        "title": "Vínculos y Distinciones",
+        "description": "En la creación de personajes empezas con Únicos, luego elegí otro vinculo. Cuando vos o tu otra mitad bloqueen una etiqueta, tacha uno de tus vínculos elegidos y elegí una distinción.",
+        "bonds": {
+          "titles": {
+            "two": "Únicos",
+            "fastball": "Fastball special",
+            "activate": "Powers, activate!",
+            "eyes": "Four eyes are better"
+          },
+          "descriptions": {
+            "two": "When time passes, ",
+            "fastball": "",
+            "activate": "When you and your other half",
+            "eyes": "Four eyes are better"
+          }
+        }
+      }
+    },
+    "brain": {
+      "title": "Tu Vergüenza",
+      "description": "Tenes una profunda y constante sensación de culpa por algo que creaste o diste una mano para crearlo. Puede ser algo que inventaste cuanto te volviste un genio o algo que comenzaste a hacer y que ya no tenes el poder de detener. Incluso puede ser algo que este mas alla de tus habilidades volver a lograr, esta creación única solo puede ser hecha una vez en la vida. Asi como tu inteligencia es de escala mundial, Tu Vergüenza es un problema de escala mundial. Cualquiera sea el caso, tu rol en la creación de esto no es públicamente conocido … por ahora.",
+      "is": "¿Qué es tu Vergüenza?",
+      "isOptions": ["Un prototipo de Inteligencia Artificial", "Un Fenómeno Cósmico", "Un arma catastrófica", "Un peligroso compuesto químico", "Una monstruosidad viviente", "Un antiguo aliado ahora alterado"]
+    },
+    "soldier": {
+      "title": "Una llamada más alta",
+      "description": "Trabajas para una agencia policial metahumana (A.E.G.I.S) que mantiene al mundo a salvo de todo tipo de amenazas superhumanas, sobrenaturales y extraterrestres. Te ofreciste voluntariamente a trabajar con un equipo de jóvenes héroes como parte de un nuevo programa de A.E.G.I.S designado para mantener la ciudad segura.",
+      "label": "Tenes una Etiqueta adicional:",
+      "labelExplanation": "Soldado funciona como cualquier otra Etiqueta. Los personajes con Influencia sobre vos pueden alterarla y marcas una condición si tuviera que alterarse por sobre +3 o -2. Solo podes cancelar la Influencia de A.E.G.I.S sobre vos usando el avance apropiado. No podes bloquear Soldado con el Momento de la Verdad."
+    },
+    "harbinger": {
+      "monster": "Monstruo",
+      "traitor": "Traidor",
+      "corruptor": "Corruptor",
+      "martyr": "Mártir",
+      "builder": "Constructor",
+      "leader": "Líder"
+    },
+    "nomad": {
+      "title": "Echando raíces",
+      "description": "Estas acá, y a la vez no, y se nota. Con el tiempo vas a poder comprometerte con este lugar y encontrar porque esta gente elige invertir en los demás.\nLos adultos no tienen Influencia sobre vos por defecto. Nadie la tiene. Solo podes dar un total de 6 de Influencia. Durante la partida, solo podes dar Influencia revelando una vulnerabilidad o debilidad a alguien. Podes dar Influencia a través del movimiento de fin de sesión. No podes darle Influencia a alguien que ya tenga sobre vos.\nLos otros no pueden tomar Influencia sobre vos; si fueran a hacerlo, en vez de eso pueden marcar potencial o infligirte una condición, a su elección. Rechazas Influencia con -2 por defecto, en vez de +0. Cuando alguien toma ventaja de la Influencia sobre vos, pueden elegir dos opciones de la lista. Al final de cada sesión, podes tomar de vuelta 1 Influencia de alguien a tu elección.\nSi diste 0-Influencia, no podes reconfortar ni apoyar a nadie. Si fueras a activar ese movimiento, en vez de eso marca una condición mientras decís exactamente la cosa equivocada. Si diste 0-Influencia y alguien intenta reconfortarte o apoyarte a vos, no podes abrirte a ellos.",
+      "benefits": "You gain benefits based on how much Influence you have given out. These benefits stack.",
+      "oneTwo": "Cuando defendes a alguien que tiene Influencia sobre vos podes ignorar la condición Inseguro. Cuando enfrentas de forma directa a alguien que tiene Influencia sobre vos, podes ignorar la condición Asustado.",
+      "three": "Cuando recibís un golpe poderoso de alguien que tiene Influencia sobre vos, toma -2 a la tirada.",
+      "four": "Cuando atravesas la máscara de alguien que tiene Influencia sobre vos, podes siempre hacerles una pregunta, incluso en un fallo.",
+      "five": "Cuando gastas un Equipo para ayudar a alguien que tiene Influencia sobre vos, le das +2 a la tirada.",
+      "six": "Cuando aceptas la palabras de alguien que tiene Influencia sobre vos, marca potencial, remove una condición o toma +1 a la siguiente tirada.ss"
+    },
+    "scion": {
+      "title": "Respeto",
+      "description": "Escribí los nombres de al menos otros dos personajes cuyo respeto necesitas ganar para diferenciarte de tu familia. Podes agregar nuevos nombres cuando sea apropiado.",
+      "enemy": "El mayor enemigo de tu padre/madre ",
+      "victim": "La mayor víctima de tu padre/madre",
+      "idol": "Tu ídolo personal",
+      "leader": "El líder de la ciudad",
+      "hero": "La más grande heroína de la ciudad",
+      "celebrity": "El más famoso de la ciudad"
     }
   }
 }

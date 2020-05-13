@@ -384,7 +384,7 @@ en = {
       "title": "Your future self",
       "description": "Your future self is out there, an important figure in Halcyon City and the world beyond - and everything you'd hoped you'd never be. But finding out how they became who they are may be al it takes to push you along a similar path. Pick one step of your future self's path that you already know about and circle it.",
       "lost": "They lost someone they cared about deeply",
-      "failed": "They failed horrifically in a noble pursuit or caus"
+      "failed": "They failed horrifically in a noble pursuit or cause"
       "crime": "They committed a major crime",
       "betray": "They betrayed a close friend or ally",
       "cost": "They won a victory at enormous cost to the world around them",
@@ -427,7 +427,7 @@ en = {
       "otherHalf": {
         "title": "Your other half",
         "description": "You share a deep bond with your other half. You are stronger together than you are apart, for now. If your other half is a Delinquent, Outsider or Transformed, take two moves from theid playbook: one they have and one they don't. Remember that you share much beyond your moves; i.e. if your other half is an Outsider, you both hail from the same dimension/planet/etc. For all other playbooks, you share in the core extras of your other half",
-        "beacon": "Take frives and mark four of your choice. When your other half strikes out a drive, strike it out as well.",
+        "beacon": "Take drives and mark four of your choice. When your other half strikes out a drive, strike it out as well.",
         "bull": "Take The Bull's Heart with the same love and rival as your other half. Choose a different role that you commonly fulfill.",
         "janus": "Take The Mask and a secret identity. Choose a different Label for your Mask. Take two obligations: one shared, one unique to you.",
         "legacy": "Take a legacy. Your other half fills in as many names in the initial list as they choose; you fill in the rest. You can never answer the questions for your other half's Legacy move.",
@@ -466,6 +466,14 @@ en = {
       "label": "You have an additional Label:",
       "labelExplanation": "Soldier functions like any other Label. Characters with Influence over you can shift it, and you mark a condition if it would ever shift above +3 or below -2. You can only cancel the influence A.E.G.I.S. holds over you with the appropiate advancement. You cannot lock Soldier with a Moment of Truth."
     },
+    "harbinger": {
+      "monster": "Monster",
+      "traitor": "Traitor",
+      "corruptor": "Corruptor",
+      "martyr": "Martyr",
+      "builder": "Builder",
+      "leader": "Leader"
+    }
     "nomad": {
       "title": "Putting down roots",
       "description": "You’re here, but not, and it shows. Over time, you may be able to commit to this place, and find out why it is that some people choose to invest in others.\nAdults do not have Influence over you by default. No one does. You can only give out a total of 6 Influence. During play, you can only give out Influence by revealing a vulnerability or weakness to someone. You can still give out Influence through the end of session move. You cannot give Influence to somebody who already has Influence over you.\nOthers cannot take Influence over you; if they would, instead they can mark potential or inflict a condition on you, their choice. You reject Influence at -2 by default, instead of +0. When someone takes advantage of their Influence over you, they can choose two options from the list. At the end of every session, you can take back 1 Influence from someone of your choice.\nIf you have given out 0-Influence, you cannot comfort or support anyone. If you would trigger that move, instead mark a condition as you say exactly the wrong thing. If you have given out 0-Influence and someone tries to comfort or support you, you cannot open up to them.",
