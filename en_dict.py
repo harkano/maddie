@@ -89,15 +89,6 @@ en = {
     "hopeless": "hopeless",
     "insecure": "insecure"
   },
-  "playbooks": {
-    "the": "The",
-    "list": ['beacon', 'bull', 'delinquent', 'doomed', 'janus', 'legacy', 'nova', 'outsider', 'protege', 'transformed'],
-    "playbooks": "Playbooks",
-    "available": "Available Playbooks are - ",
-    "playbook_re": r"!mot ([a-z]+)",
-    "moment_of_truth": "MOMENT OF TRUTH",
-    "this_is_mot": lambda usr: f"This is {usr}'s moment!"
-  },
   "configuration": {
     "settings": "Settings\n",
     "language": "Language",
@@ -109,6 +100,13 @@ en = {
     "successfull_creation": "The configuration file has been created"
   },
   "playbooks": {
+    "the": "The",
+    "list": ['beacon', 'bull', 'delinquent', 'doomed', 'janus', 'legacy', 'nova', 'outsider', 'protege', 'transformed'],
+    "playbooks": "Playbooks",
+    "available": "Available Playbooks are - ",
+    "playbook_re": r"!mot ([a-z]+)",
+    "moment_of_truth": "MOMENT OF TRUTH",
+    "this_is_mot": lambda usr: f"This is {usr}'s moment!",
     "advances": {
       "moveYouPlaybook": "Take another move from your playbook",
       "moveOtherPlaybook": "Take a move from another playbook",
