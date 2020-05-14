@@ -34,13 +34,13 @@
     "insecure": false
   },
   "moves": [
-    { "id": 93, "picked": false },
-    { "id": 94, "picked": false },
-    { "id": 95, "picked": false },
-    { "id": 96, "picked": false },
     { "id": 97, "picked": false },
-    { "id": 98, "picked": true },
-    { "id": 99, "picked": true }
+    { "id": 98, "picked": false },
+    { "id": 99, "picked": false },
+    { "id": 100, "picked": false },
+    { "id": 101, "picked": false },
+    { "id": 102, "picked": true },
+    { "id": 103, "picked": true }
   ],
   "advancement": {
     "basic": {

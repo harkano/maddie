@@ -34,12 +34,12 @@
     "insecure": false
   },
   "moves": [
-    { "id": 134, "picked": false },
-    { "id": 135, "picked": false },
-    { "id": 136, "picked": false },
     { "id": 137, "picked": false },
     { "id": 138, "picked": false },
-    { "id": 139, "picked": false }
+    { "id": 139, "picked": false },
+    { "id": 140, "picked": false },
+    { "id": 141, "picked": false },
+    { "id": 142, "picked": false }
   ],
   "advancement": {
     "basic": {

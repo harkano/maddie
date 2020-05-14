@@ -337,7 +337,7 @@
             "requiresRolling": true,
             "playbook": "delincuente"
         }, {
-            "id": 29,
+            "id": 30,
             "shortName": "queequipo",
             "capital": "¿EQUIPO? ¿QUÉ EQUIPO?",
             "phrase": "de qué equipo están hablando?",
@@ -348,7 +348,7 @@
             "requiresRolling": false,
             "playbook": "delincuente"
         }, {
-            "id": 30,
+            "id": 31,
             "shortName": "criminal",
             "capital": "MENTE CRIMINAL",
             "phrase": "tiene una mente criminal!",
@@ -359,7 +359,7 @@
             "requiresRolling": true,
             "playbook": "delincuente"
         }, {
-            "id": 31,
+            "id": 32,
             "shortName": "alborotador",
             "capital": "ALBOROTADOR",
             "phrase": "es un alborotador!",
@@ -370,7 +370,7 @@
             "requiresRolling": false,
             "playbook": "delincuente"
         }, {
-            "id": 32,
+            "id": 33,
             "shortName": "miraesto",
             "capital": "MIRA ESTO!",
             "phrase": "hace que mires esto!",
@@ -381,7 +381,7 @@
             "requiresRolling": true,
             "playbook": "delincuente"
         }, {
-            "id": 33,
+            "id": 34,
             "shortName": "máscara",
             "capital": "LA MÁSCARA",
             "phrase": "tiene una máscara!",
@@ -392,7 +392,7 @@
             "requiresRolling": false,
             "playbook": "jano"
         }, {
-            "id": 34,
+            "id": 35,
             "shortName": "eljuego",
             "capital": "CON LA CABEZA EN EL JUEGO",
             "phrase": "tiene la cabeza en el juego!",
@@ -403,7 +403,7 @@
             "requiresRolling": false,
             "playbook": "jano"
         }, {
-            "id": 35,
+            "id": 36,
             "shortName": "loqueves",
             "capital": "SOY LO QUE VES",
             "phrase": "es lo que ves!",
@@ -414,7 +414,7 @@
             "requiresRolling": false,
             "playbook": "jano"
         }, {
-            "id": 36,
+            "id": 37,
             "shortName": "suave",
             "capital": "CARÁCTER SUAVE",
             "phrase": "tiene carácter suave!",
@@ -425,7 +425,7 @@
             "requiresRolling": true,
             "playbook": "jano"
         }, {
-            "id": 37,
+            "id": 38,
             "shortName": "salvare",
             "capital": "TE SALVARÉ",
             "phrase": "te salvará!",
@@ -436,7 +436,7 @@
             "requiresRolling": false,
             "playbook": "jano"
         }, {
-            "id": 37,
+            "id": 39,
             "shortName": "red",
             "capital": "RED PELIGROSA",
             "phrase": "tiene una red peligrosa!",
@@ -447,7 +447,7 @@
             "requiresRolling": true,
             "playbook": "jano"
         }, {
-            "id": 38,
+            "id": 40,
             "shortName": "lacorrecta",
             "capital": "LA BATALLA CORRECTA",
             "phrase": "lucha en la batalla correcta!",
@@ -458,7 +458,7 @@
             "requiresRolling": true,
             "playbook": "legado"
         }, {
-            "id": 38,
+            "id": 41,
             "shortName": "loquesoy",
             "capital": "SÉ LO QUE SOY",
             "phrase": "sabe lo que es!",
@@ -469,7 +469,7 @@
             "requiresRolling": false,
             "playbook": "legado"
         }, {
-            "id": 39,
+            "id": 42,
             "shortName": "pasado",
             "capital": "PALABRAS DEL PASADO",
             "phrase": "escucha las palabras del pasado!",
@@ -480,7 +480,7 @@
             "requiresRolling": false,
             "playbook": "legado"
         }, {
-            "id": 40,
+            "id": 43,
             "shortName": "importa",
             "capital": "EL LEGADO IMPORTA",
             "phrase": "sabe que el legado importa!",
@@ -491,7 +491,7 @@
             "requiresRolling": false,
             "playbook": "legado"
         }, {
-            "id": 41,
+            "id": 44,
             "shortName": "nuncaterindas",
             "capital": "NUNCA TE DES POR VENCIDO, NUNCA TE RINDAS",
             "phrase": "nunca se rinde!",
@@ -502,7 +502,7 @@
             "requiresRolling": true,
             "playbook": "legado"
         }, {
-            "id": 42,
+            "id": 45,
             "shortName": "autoridad",
             "capital": "SÍMBOLO DE AUTORIDAD",
             "phrase": "tiene un símbolo de autoridad!",
@@ -513,7 +513,7 @@
             "requiresRolling": true,
             "playbook": "legado"
         }, {
-            "id": 43,
+            "id": 46,
             "shortName": "dosmundos",
             "capital": "PARTE DE DOS MUNDOS",
             "phrase": "es parte de dos mundos!",
@@ -524,7 +524,7 @@
             "requiresRolling": true,
             "playbook": "extranjero"
         }, {
-            "id": 44,
+            "id": 47,
             "shortName": "tecnologia",
             "capital": "TECNOLOGÍA ALIENÍGENA",
             "phrase": "tiene tecnología alienígena!",
@@ -535,7 +535,7 @@
             "requiresRolling": true,
             "playbook": "extranjero"
         }, {
-            "id": 45,
+            "id": 48,
             "shortName": "costumbres",
             "capital": "COSTUMBRES EXTRATERRESTRES",
             "phrase": "tiene costumbres extraterres!",
@@ -546,7 +546,7 @@
             "requiresRolling": false,
             "playbook": "extranjero"
         }, {
-            "id": 46,
+            "id": 49,
             "shortName": "kirbycraft",
             "capital": "KIRBY-CRAFT",
             "phrase": "tiene una kirby-craft!",
@@ -557,7 +557,7 @@
             "requiresRolling": false,
             "playbook": "extranjero"
         }, {
-            "id": 47,
+            "id": 50,
             "shortName": "lomejor",
             "capital": "LO MEJOR DE AMBOS MUNDOS",
             "phrase": "reconoce lo mejor de ambos mundos!",
@@ -568,7 +568,7 @@
             "requiresRolling": true,
             "playbook": "extranjero"
         }, {
-            "id": 48,
+            "id": 51,
             "shortName": "nodiferente",
             "capital": "NO TAN DIFERENTE DESPUES DE TODO",
             "phrase": "no es tan diferente despues de todo!",
@@ -579,7 +579,7 @@
             "requiresRolling": true,
             "playbook": "extranjero"
         }, {
-            "id": 49,
+            "id": 52,
             "shortName": "archivos",
             "capital": "HE ESTADO LEYENDO LOS ARCHIVOS",
             "phrase": "ha estado leyendo los archivos!",
@@ -590,7 +590,7 @@
             "requiresRolling": true,
             "playbook": "protegido"
         }, {
-            "id": 50,
+            "id": 53,
             "shortName": "capitan",
             "capital": "CAPITÁN",
             "phrase": "es el capitán!",
@@ -601,7 +601,7 @@
             "requiresRolling": false,
             "playbook": "protegido"
         }, {
-            "id": 51,
+            "id": 54,
             "shortName": "frustracion",
             "capital": "DESCARGANDO FRUSTRACIÓN",
             "phrase": "está descargando frustración!",
@@ -612,7 +612,7 @@
             "requiresRolling": true,
             "playbook": "protegido"
         }, {
-            "id": 52,
+            "id": 55,
             "shortName": "hogar",
             "capital": "CONVERSACIÓN JUNTO AL HOGAR",
             "phrase": "quiere una conversación junto al hogar!",
@@ -623,7 +623,7 @@
             "requiresRolling": true,
             "playbook": "protegido"
         }, {
-            "id": 52,
+            "id": 56,
             "shortName": "consciente",
             "capital": "SE CONSCIENTE DE LO QUE TE RODEA",
             "phrase": "es consciente de lo que lo rodea!",
@@ -634,7 +634,7 @@
             "requiresRolling": true,
             "playbook": "protegido"
         }, {
-            "id": 52,
+            "id": 57,
             "shortName": "tradicion",
             "capital": "TRADICIÓN HERÓICA",
             "phrase": "tiene una tradirción heróica!",
@@ -645,7 +645,7 @@
             "requiresRolling": false,
             "playbook": "protegido"
         }, {
-            "id": 53,
+            "id": 58,
             "shortName": "nomicuerpo",
             "capital": "NO SOY MI CUERPO",
             "phrase": "no es su cuerpo!",
@@ -656,7 +656,7 @@
             "requiresRolling": true,
             "playbook": "transformado"
         }, {
-            "id": 54,
+            "id": 59,
             "shortName": "inhumano",
             "capital": "NO LO SUFICIENTEMENTE HUMANO",
             "phrase": "no es lo suficientemente humano!",
@@ -667,7 +667,7 @@
             "requiresRolling": true,
             "playbook": "transformado"
         }, {
-            "id": 55,
+            "id": 60,
             "shortName": "imparable",
             "capital": "IMPARABLE",
             "phrase": "es imparable!",
@@ -678,7 +678,7 @@
             "requiresRolling": true,
             "playbook": "transformado"
         }, {
-            "id": 56,
+            "id": 61,
             "shortName": "porti",
             "capital": "VOY A POR TI",
             "phrase": "viene a por ti!",
@@ -689,7 +689,7 @@
             "requiresRolling": false,
             "playbook": "transformado"
         }, {
-            "id": 57,
+            "id": 62,
             "shortName": "ojala",
             "capital": "OJALÁ PUDIERA SER",
             "phrase": "desea que ojalá pudiera ser!",
@@ -700,7 +700,7 @@
             "requiresRolling": true,
             "playbook": "transformado"
         }, {
-            "id": 58,
+            "id": 63,
             "shortName": "monstruo",
             "capital": "SÉ EL MONSTRUO",
             "phrase": "es el monstruo!",
@@ -711,7 +711,7 @@
             "requiresRolling": true,
             "playbook": "transformado"
         }, {
-            "id": 59,
+            "id": 64,
             "shortName": "burn",
             "capital": "BURN",
             "phrase": "recarga sus poderes!",
@@ -722,7 +722,7 @@
             "requiresRolling": true,
             "playbook": "nova"
         }, {
-            "id": 60,
+            "id": 65,
             "shortName": "obligaciones",
             "capital": "VIDA DIARIA",
             "phrase": "tiene obligaciones de su vida diaria!",
@@ -733,7 +733,7 @@
             "requiresRolling": true,
             "playbook": "janus"
         }, {
-            "id": 61,
+            "id": 66,
             "shortName": "legado",
             "capital": "LEGADO",
             "phrase": "debe responder ante su legado!",
@@ -744,7 +744,7 @@
             "requiresRolling": true,
             "playbook": "legacy"
         }, {
-            "id": 62,
+            "id": 67,
             "shortName": "nemesis",
             "capital": "NEMESIS",
             "phrase": "debe derrotar su némesis!",
@@ -755,7 +755,7 @@
             "requiresRolling": false,
             "playbook": "condenado"
         }, {
-            "id": 63,
+            "id": 68,
             "shortName": "demonios",
             "capital": "¿QUÉ DEMONIOS, HÉROE?",
             "phrase": "pregunta, qué demonios, héroe?!",
@@ -766,7 +766,7 @@
             "requiresRolling": true,
             "playbook": "reformed"
         }, {
-            "id": 64,
+            "id": 69,
             "shortName": "vias",
             "capital": "EN EL LADO EQUIVOCADO DE LAS VÍAS",
             "phrase": "sabe lo que es estar del lado equivocado de las vías!",
@@ -777,7 +777,7 @@
             "requiresRolling": false,
             "playbook": "reformed"
         }, {
-            "id": 65,
+            "id": 70,
             "shortName": "diferente",
             "capital": "NO TAN DIFERENTE",
             "phrase": "no es tan diferente!",
@@ -788,7 +788,7 @@
             "requiresRolling": true,
             "playbook": "reformed"
         }, {
-            "id": 66,
+            "id": 71,
             "shortName": "oscuro",
             "capital": "PASADO OSCURO",
             "phrase": "tiene un pasado oscuro!",
@@ -799,7 +799,7 @@
             "requiresRolling": false,
             "playbook": "reformed"
         }, {
-            "id": 67,
+            "id": 72,
             "shortName": "desahogo",
             "capital": "DESAHOGÁNDOTE",
             "phrase": "está desahogándose!",
@@ -810,7 +810,7 @@
             "requiresRolling": false,
             "playbook": "reformed"
         }, {
-            "id": 68,
+            "id": 73,
             "shortName": "favor",
             "capital": "HACEME UN FAVOR",
             "phrase": "necesita un favor!",
@@ -821,7 +821,7 @@
             "requiresRolling": true,
             "playbook": "reformed"
         }, {
-            "id": 69,
+            "id": 74,
             "shortName": "favorbajo",
             "capital": "FAVOR DE LOS AMIGOS EN LUGARES BAJOS",
             "phrase": "necesita un favor de sus amigos en lugares bajos!",
@@ -833,7 +833,7 @@
             "playbook": "reformed",
             "special": true
         }, {
-            "id": 70,
+            "id": 75,
             "shortName": "obligacionesbajas",
             "capital": "OBLIGACIONES VILLANILES",
             "phrase": "está en deuda con villanos!",
@@ -845,7 +845,7 @@
             "playbook": "reformed",
             "special": true
         }, {
-            "id": 71,
+            "id": 76,
             "shortName": "ayudavillana",
             "capital": "AYUDAR VILLANOS",
             "phrase": "está ayudando villanos!",
@@ -857,7 +857,7 @@
             "playbook": "reformed",
             "special": true
         }, {
-            "id": 72,
+            "id": 77,
             "shortName": "nodeaqui",
             "capital": "NO DE POR AQUÍ",
             "phrase": "no es de por aquí!",
@@ -868,7 +868,7 @@
             "requiresRolling": true,
             "playbook": "newborn"
         }, {
-            "id": 73,
+            "id": 78,
             "shortName": "termodinamico",
             "capital": "MILAGRO TERMODINÁMICO",
             "phrase": "es un milagro termodinámico!",
@@ -879,7 +879,7 @@
             "requiresRolling": true,
             "playbook": "newborn"
         }, {
-            "id": 74,
+            "id": 79,
             "shortName": "mente",
             "capital": "CON MENTE PROPIA",
             "phrase": "tiene poderes con mente propia!",
@@ -890,7 +890,7 @@
             "requiresRolling": false,
             "playbook": "newborn"
         }, {
-            "id": 75,
+            "id": 80,
             "shortName": "averiado",
             "capital": "DAÑADO",
             "phrase": "puede ser dañado!",
@@ -901,7 +901,7 @@
             "requiresRolling": false,
             "playbook": "newborn"
         }, {
-            "id": 76,
+            "id": 81,
             "shortName": "regeneracion",
             "capital": "REGENERACIÓN",
             "phrase": "puede regenerarse!",
@@ -912,7 +912,7 @@
             "requiresRolling": false,
             "playbook": "newborn"
         }, {
-            "id": 77,
+            "id": 82,
             "shortName": "representar",
             "capital": "REPRESENTAR APRENDIZAJE",
             "phrase": "representa un aprendizaje!",
@@ -924,7 +924,7 @@
             "playbook": "newborn",
             "special": true
         }, {
-            "id": 78,
+            "id": 83,
             "shortName": "desaprender",
             "capital": "RECHAZAR APRENDIZAJE",
             "phrase": "rechaza un arendizaje!",
@@ -936,7 +936,7 @@
             "playbook": "newborn",
             "special": true
         }, {
-            "id": 79,
+            "id": 84,
             "shortName": "acercar",
             "capital": "ACERCARSE AL CREADOR O CUIDADORES",
             "phrase": "se acerca al creador o cuidadores!",
@@ -948,7 +948,7 @@
             "playbook": "newborn",
             "special": true
         }, {
-            "id": 80,
+            "id": 85,
             "shortName": "reparar",
             "capital": "REPARAR EL DAÑO",
             "phrase": "repara el daño!",
@@ -959,7 +959,7 @@
             "requiresRolling": true,
             "playbook": "innocent"
         }, {
-            "id": 81,
+            "id": 86,
             "shortName": "creciendo",
             "capital": "CRECIENDO EN PODER",
             "phrase": "está creciendo en poder!",
@@ -970,7 +970,7 @@
             "requiresRolling": true,
             "playbook": "innocent"
         }, {
-            "id": 82,
+            "id": 87,
             "shortName": "sumanera",
             "capital": "VERLO A SU MANERA",
             "phrase": "lo ve a su manera!",
@@ -981,7 +981,7 @@
             "requiresRolling": true,
             "playbook": "innocent"
         }, {
-            "id": 83,
+            "id": 88,
             "shortName": "quees",
             "capital": "¿QUÉ ES ESTA COSA?",
             "phrase": "no sabe lo que es esta cosa!",
@@ -992,7 +992,7 @@
             "requiresRolling": false,
             "playbook": "innocent"
         }, {
-            "id": 84,
+            "id": 89,
             "shortName": "caballero",
             "capital": "CABALLERO BLANCO",
             "phrase": "es un caballero blanco!",
@@ -1003,7 +1003,7 @@
             "requiresRolling": true,
             "playbook": "innocent"
         }, {
-            "id": 85,
+            "id": 90,
             "shortName": "martir",
             "capital": "MÁRTIR",
             "phrase": "es un mártir!",
@@ -1014,7 +1014,7 @@
             "requiresRolling": false,
             "playbook": "innocent"
         }, {
-            "id": 86,
+            "id": 91,
             "shortName": "futuro",
             "capital": "YO DEL FUTURO",
             "phrase": "tiene un yo del futuro!",
@@ -1026,7 +1026,7 @@
             "playbook": "innocent",
             "special": true
         }, {
-            "id": 87,
+            "id": 92,
             "shortName": "ignorar",
             "capital": "IGNORAR FRÍAMENTE",
             "phrase": "te ignora fríamente!",
@@ -1038,7 +1038,7 @@
             "playbook": "innocent",
             "special": true
         }, {
-            "id": 88,
+            "id": 93,
             "shortName": "agresivamente",
             "capital": "DEFENDER AGRESIVAMENTE",
             "phrase": "defiende agresivamente!",
@@ -1050,7 +1050,7 @@
             "playbook": "innocent",
             "special": true
         }, {
-            "id": 89,
+            "id": 94,
             "shortName": "amenazar",
             "capital": "AMENAZAR",
             "phrase": "amenaza!",
@@ -1062,7 +1062,7 @@
             "playbook": "innocent",
             "special": true
         }, {
-            "id": 91,
+            "id": 95,
             "shortName": "escupir",
             "capital": "ESCUPIR EN LA CARA DE LA INFLUENCIA",
             "phrase": "escupe en la cara de la influencia!",
@@ -1074,7 +1074,7 @@
             "playbook": "innocent",
             "special": true
         }, {
-            "id": 92,
+            "id": 96,
             "shortName": "antagonista",
             "capital": "ANTAGONISTA",
             "phrase": "se vuelve el antagonista!",
@@ -1086,7 +1086,7 @@
             "playbook": "innocent",
             "special": true
         }, {
-            "id": 93,
+            "id": 97,
             "shortName": "chismes",
             "capital": "REVISTAS DE CHISMES",
             "phrase": "usa los chismes!",
@@ -1097,7 +1097,7 @@
             "requiresRolling": true,
             "playbook": "star"
         }, {
-            "id": 94,
+            "id": 98,
             "shortName": "escena",
             "capital": "PELEA EN ESCENA",
             "phrase": "tiene una pelea en escena!",
@@ -1108,7 +1108,7 @@
             "requiresRolling": true,
             "playbook": "star"
         }, {
-            "id": 95,
+            "id": 99,
             "shortName": "espectaculo",
             "capital": "HORA DEL ESPECTÁCULO",
             "phrase": "sabe que es hora del espectáculo!",
@@ -1119,7 +1119,7 @@
             "requiresRolling": true,
             "playbook": "star"
         }, {
-            "id": 96,
+            "id": 100,
             "shortName": "demi",
             "capital": "TÓMALO DE MÍ",
             "phrase": "tómalo de mí!",
@@ -1130,7 +1130,7 @@
             "requiresRolling": true,
             "playbook": "star"
         }, {
-            "id": 97,
+            "id": 101,
             "shortName": "cruel",
             "capital": "FRÍO Y CRUEL",
             "phrase": "es frío y cruel!",
@@ -1141,7 +1141,7 @@
             "requiresRolling": true,
             "playbook": "star"
         }, {
-            "id": 98,
+            "id": 102,
             "shortName": "audiencia",
             "capital": "OPINIÓN DE LA AUDIENCIA",
             "phrase": "tiene una audiencia con opinión!",
@@ -1153,7 +1153,7 @@
             "playbook": "star",
             "special": true
         }, {
-            "id": 99,
+            "id": 103,
             "shortName": "ayudaaudiencia",
             "capital": "AYUDA DE LA AUDIENCIA",
             "phrase": "busca ayuda de su audiencia!",
@@ -1165,7 +1165,7 @@
             "playbook": "star",
             "special": true
         }, {
-            "id": 100,
+            "id": 104,
             "shortName": "unicos",
             "capital": "ÚNICOS",
             "phrase": "y su otra mitad son únicos!",
@@ -1177,7 +1177,7 @@
             "playbook": "joined",
             "special": true
         }, {
-            "id": 101,
+            "id": 105,
             "shortName": "catapulta",
             "capital": "CATAPULTA EXPLOSIVA",
             "phrase": "y su otra mitad forman una catapulta explosiva!",
@@ -1189,7 +1189,7 @@
             "playbook": "joined",
             "special": true
         }, {
-            "id": 102,
+            "id": 106,
             "shortName": "activense",
             "capital": "¡poderes, ACTÍVENSE!",
             "phrase": "y su otra mitad unen sus poderes!",
@@ -1201,7 +1201,7 @@
             "playbook": "joined",
             "special": true
         }, {
-            "id": 103,
+            "id": 107,
             "shortName": "ojos",
             "capital": "CUATRO OJOS SON MEJORES QUE DOS",
             "phrase": "y su otra mitad combinan sus miradas!",
@@ -1213,7 +1213,7 @@
             "playbook": "joined",
             "special": true
         }, {
-            "id": 105,
+            "id": 108,
             "shortName": "espejito",
             "capital": "ESPEJITO, ESPEJITO",
             "phrase": "!",
@@ -1225,7 +1225,7 @@
             "playbook": "joined",
             "special": true
         }, {
-            "id": 106,
+            "id": 109,
             "shortName": "hombro",
             "capital": "PONIENDO EL HOMBRO",
             "phrase": "pone el hombro!",
@@ -1237,7 +1237,7 @@
             "playbook": "joined",
             "special": true
         }, {
-            "id": 107,
+            "id": 110,
             "shortName": "solo",
             "capital": "IR SOLO",
             "phrase": "va solo!",
@@ -1249,7 +1249,7 @@
             "playbook": "joined",
             "special": true
         }, {
-            "id": 108,
+            "id": 111,
             "shortName": "conflictos",
             "capital": "CONFLICTOS INTERNOS",
             "phrase": "tiene conflictos internos con su otra mitad!",
@@ -1261,7 +1261,7 @@
             "playbook": "joined",
             "special": true
         }, {
-            "id": 109,
+            "id": 112,
             "shortName": "lucha",
             "capital": "POR ENCIMA DE LA LUCHA",
             "phrase": "está por encima de la lucha!",
@@ -1272,7 +1272,7 @@
             "requiresRolling": false,
             "playbook": "brain"
         }, {
-            "id": 111,
+            "id": 113,
             "shortName": "informe",
             "capital": "INFORME DE LA MISIÓN",
             "phrase": "está durante el informe!",
@@ -1283,7 +1283,7 @@
             "requiresRolling": false,
             "playbook": "brain"
         }, {
-            "id": 111,
+            "id": 114,
             "shortName": "angulo",
             "capital": "ÁNGuLO LÓGICO",
             "phrase": "lo ve desde el ángulo lógico!",
@@ -1294,7 +1294,7 @@
             "requiresRolling": true,
             "playbook": "brain"
         }, {
-            "id": 112,
+            "id": 115,
             "shortName": "conocimiento",
             "capital": "CONOCIMIENTO CIENTÍFICO",
             "phrase": "tiene conocimiento científico!",
@@ -1305,7 +1305,7 @@
             "requiresRolling": false,
             "playbook": "brain"
         }, {
-            "id": 113,
+            "id": 116,
             "shortName": "preparado",
             "capital": "SIEMPRE PREPARADO",
             "phrase": "siempre está preparado!",
@@ -1316,7 +1316,7 @@
             "requiresRolling": false,
             "playbook": "brain"
         }, {
-            "id": 114,
+            "id": 117,
             "shortName": "genio",
             "capital": "GENIO TÁCTICO",
             "phrase": "es un genio táctico!",
@@ -1327,7 +1327,7 @@
             "requiresRolling": false,
             "playbook": "brain"
         }, {
-            "id": 115,
+            "id": 118,
             "shortName": "verguenza",
             "capital": "ENFRENTADO POR SU VERGÜENZA",
             "phrase": "es enfrentado por su vergüenza!",
@@ -1339,7 +1339,7 @@
             "playbook": "brain",
             "special": true
         }, {
-            "id": 116,
+            "id": 119,
             "shortName": "medidas",
             "capital": "ENMENDAR TU VERGÜENZA",
             "phrase": "tiene que enmendar su vergüenza!",
@@ -1351,7 +1351,7 @@
             "playbook": "brain",
             "special": true
         }, {
-            "id": 117,
+            "id": 120,
             "shortName": "empecemos",
             "capital": "ANTES DE QUE EMPECEMOS",
             "phrase": "observa detenidamente la oposición!",
@@ -1362,7 +1362,7 @@
             "requiresRolling": false,
             "playbook": "soldier"
         }, {
-            "id": 118,
+            "id": 121,
             "shortName": "movete",
             "capital": "NO, MOVETE VOS",
             "phrase": "va a hacer que te muevas!",
@@ -1373,7 +1373,7 @@
             "requiresRolling": true,
             "playbook": "soldier"
         }, {
-            "id": 119,
+            "id": 122,
             "shortName": "todoeldia",
             "capital": "PUEDO HACER ESTO TODO EL DÍA",
             "phrase": "puede hacer esto todo el día!",
@@ -1384,7 +1384,7 @@
             "requiresRolling": false,
             "playbook": "soldier"
         }, {
-            "id": 120,
+            "id": 123,
             "shortName": "personal",
             "capital": "SE SIENTE ALGO PERSONAL",
             "phrase": "cree que esto se siente algo personal!",
@@ -1395,7 +1395,7 @@
             "requiresRolling": false,
             "playbook": "soldier"
         }, {
-            "id": 121,
+            "id": 124,
             "shortName": "mision",
             "capital": "LA MISIÓN PRIMERO",
             "phrase": "sabe que la misión viene primero!",
@@ -1406,7 +1406,7 @@
             "requiresRolling": false,
             "playbook": "soldier"
         }, {
-            "id": 122,
+            "id": 125,
             "shortName": "escudo",
             "capital": "MÁS QUE UN ESCUDO",
             "phrase": "es más que un escudo!",
@@ -1417,7 +1417,7 @@
             "requiresRolling": false,
             "playbook": "soldier"
         }, {
-            "id": 123,
+            "id": 126,
             "shortName": "ordenes",
             "capital": "ACTUANDO POR ÓRDENES",
             "phrase": "está actuando por órdenes!",
@@ -1429,7 +1429,7 @@
             "playbook": "soldier",
             "special": true
         }, {
-            "id": 124,
+            "id": 127,
             "shortName": "recurrir",
             "capital": "RECURRIR A LA AUTORIDAD",
             "phrase": "recurre a la autoridad!",
@@ -1441,7 +1441,7 @@
             "playbook": "soldier",
             "special": true
         }, {
-            "id": 125,
+            "id": 128,
             "shortName": "aegis",
             "capital": "PIDIENDO A A.E.G.I.S.",
             "phrase": "le pide a A.E.G.I.S. recursos!",
@@ -1453,7 +1453,7 @@
             "playbook": "soldier",
             "special": true
         }, {
-            "id": 126,
+            "id": 129,
             "shortName": "apegarse",
             "capital": "APEGARSE A LA MISIÓN",
             "phrase": "se apega a la misión!",
@@ -1464,7 +1464,7 @@
             "requiresRolling": true,
             "playbook": "harbinger"
         }, {
-            "id": 127,
+            "id": 130,
             "shortName": "promesa",
             "capital": "LA PROMESA DE UN MAÑANA DORADO",
             "phrase": "sabe que el mañana será dorado!",
@@ -1475,7 +1475,7 @@
             "requiresRolling": true,
             "playbook": "harbinger"
         }, {
-            "id": 128,
+            "id": 131,
             "shortName": "historia",
             "capital": "HISTORIA APLICADA",
             "phrase": "aplica lo que aprendió en historia!",
@@ -1486,7 +1486,7 @@
             "requiresRolling": true,
             "playbook": "harbinger"
         }, {
-            "id": 129,
+            "id": 132,
             "shortName": "notodavia",
             "capital": "TODAVÍA NO APRENDISTE A HACER ESO",
             "phrase": "sabe lo que podrás hacer!",
@@ -1497,7 +1497,7 @@
             "requiresRolling": false,
             "playbook": "harbinger"
         }, {
-            "id": 130,
+            "id": 133,
             "shortName": "primaria",
             "capital": "APRENDÍ LA SOLUCIÓN EN LA ESCUELA PRIMARIA",
             "phrase": "aprendió eso en primaria!",
@@ -1508,7 +1508,7 @@
             "requiresRolling": true,
             "playbook": "harbinger"
         }, {
-            "id": 131,
+            "id": 134,
             "shortName": "estudios",
             "capital": "ESTUDIOS DEL SIGLO 21",
             "phrase": "learned that in grade school!",
@@ -1519,7 +1519,7 @@
             "requiresRolling": true,
             "playbook": "harbinger"
         }, {
-            "id": 132,
+            "id": 135,
             "shortName": "recordar",
             "capital": "RECORDAR EL FUTURI",
             "phrase": "recuerda el futuro!",
@@ -1531,7 +1531,7 @@
             "playbook": "harbinger",
             "special": true
         }, {
-            "id": 133,
+            "id": 136,
             "shortName": "investigaciones",
             "capital": "INVESTIGANDO LA LÍNEA DE TIEMPO",
             "phrase": "ha estado investigando la línea de tiempo!",
@@ -1543,7 +1543,7 @@
             "playbook": "harbinger",
             "special": true
         }, {
-            "id": 134,
+            "id": 137,
             "shortName": "nochico",
             "capital": "NO HAY NADA BUENO EN SER NIÑO",
             "phrase": "sabe que no hay nada bueno en ser un niño!",
@@ -1554,7 +1554,7 @@
             "requiresRolling": false,
             "playbook": "nomad"
         }, {
-            "id": 135,
+            "id": 138,
             "shortName": "rayosc",
             "capital": "VI A LOS RAYOS-C BRILLAR",
             "phrase": "ha visto a los rayos-c brillar!",
@@ -1565,7 +1565,7 @@
             "requiresRolling": true,
             "playbook": "nomad"
         }, {
-            "id": 136,
+            "id": 139,
             "shortName": "caballeria",
             "capital": "ODIO LLAMAR A LA CABALLERÍA",
             "phrase": "odia llamar a la caballería!",
@@ -1576,7 +1576,7 @@
             "requiresRolling": true,
             "playbook": "nomad"
         }, {
-            "id": 137,
+            "id": 140,
             "shortName": "bandido",
             "capital": "EL BANDIDIO ESPACIAL MÁS PEQUEÑO ",
             "phrase": "es el bandido especial más pequeño!",
@@ -1587,7 +1587,7 @@
             "requiresRolling": true,
             "playbook": "nomad"
         }, {
-            "id": 138,
+            "id": 141,
             "shortName": "fuera",
             "capital": "FUERA DE ESTE MUNDO",
             "phrase": "sabe de cosas de fuera de este mundo!",
@@ -1598,7 +1598,7 @@
             "requiresRolling": true,
             "playbook": "nomad"
         }, {
-            "id": 139,
+            "id": 142,
             "shortName": "ojos",
             "capital": "OJOS AFILADOS",
             "phrase": "tiene ojos afilados!",
@@ -1609,7 +1609,7 @@
             "requiresRolling": true,
             "playbook": "nomad"
         }, {
-            "id": 140,
+            "id": 143,
             "shortName": "mostrarles",
             "capital": "LES VOY A MOSTRAR",
             "phrase": "les va a mostrar!",
@@ -1620,7 +1620,7 @@
             "requiresRolling": true,
             "playbook": "scion"
         }, {
-            "id": 141,
+            "id": 144,
             "shortName": "bandos",
             "capital": "CAMBIO DE BANDO",
             "phrase": "hace un cambio de bando!",
@@ -1631,7 +1631,7 @@
             "requiresRolling": true,
             "playbook": "scion"
         }, {
-            "id": 142,
+            "id": 145,
             "shortName": "perdon",
             "capital": "NO MERECEN PERDÓN",
             "phrase": "no cree que merezcan perdón!",
@@ -1642,7 +1642,7 @@
             "requiresRolling": false,
             "playbook": "scion"
         }, {
-            "id": 143,
+            "id": 146,
             "shortName": "moldeable",
             "capital": "MOLDEABLE",
             "phrase": "es moldeable!",
@@ -1653,7 +1653,7 @@
             "requiresRolling": true,
             "playbook": "scion"
         }, {
-            "id": 144,
+            "id": 147,
             "shortName": "lomejor",
             "capital": "LO MEJOR DE LO MEJOR",
             "phrase": "sabe donde está lo mejor de lo mejor!",
@@ -1664,7 +1664,7 @@
             "requiresRolling": false,
             "playbook": "scion"
         }, {
-            "id": 145,
+            "id": 148,
             "shortName": "mentiras",
             "capital": "MENTIRAS PIADOSAS",
             "phrase": "sabe como decir una mentira piadosa!",
@@ -1675,7 +1675,7 @@
             "requiresRolling": true,
             "playbook": "scion"
         }, {
-            "id": 146,
+            "id": 149,
             "shortName": "buscando",
             "capital": "BUSCANDO RESPETADORES",
             "phrase": "busca a la gente de la que busca respeto!",
@@ -1687,7 +1687,7 @@
             "playbook": "scion",
             "special": true
         }, {
-            "id": 147,
+            "id": 150,
             "shortName": "respeto",
             "capital": "RESPETO",
             "phrase": "gana respeto!",
@@ -1699,7 +1699,7 @@
             "playbook": "scion",
             "special": true
         }, {
-            "id": 148,
+            "id": 151,
             "shortName": "respetolleno",
             "capital": "RESPETO MÁXIMO",
             "phrase": "tiene el respeto máximo!",

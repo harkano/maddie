@@ -34,14 +34,14 @@
     "insecure": false
   },
   "moves": [
-    { "id": 72, "picked": false },
-    { "id": 73, "picked": false },
-    { "id": 74, "picked": false },
-    { "id": 75, "picked": false },
-    { "id": 76, "picked": false },
-    { "id": 77, "picked": true },
-    { "id": 78, "picked": true },
-    { "id": 79, "picked": true }
+    { "id": 77, "picked": false },
+    { "id": 78, "picked": false },
+    { "id": 79, "picked": false },
+    { "id": 80, "picked": false },
+    { "id": 81, "picked": false },
+    { "id": 82, "picked": true },
+    { "id": 83, "picked": true },
+    { "id": 84, "picked": true }
   ],
   "advancement": {
     "basic": {

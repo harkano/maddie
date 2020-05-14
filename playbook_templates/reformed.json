@@ -34,39 +34,39 @@
     "insecure": false
   },
   "moves": [{
-      "id": 63,
-      "picked": false
-    },
-    {
-      "id": 64,
-      "picked": false
-    },
-    {
-      "id": 65,
-      "picked": false
-    },
-    {
-      "id": 66,
-      "picked": false
-    },
-    {
-      "id": 67,
-      "picked": false
-    },
-    {
       "id": 68,
       "picked": false
     },
     {
       "id": 69,
-      "picked": true
+      "picked": false
     },
     {
       "id": 70,
-      "picked": true
+      "picked": false
     },
     {
       "id": 71,
+      "picked": false
+    },
+    {
+      "id": 72,
+      "picked": false
+    },
+    {
+      "id": 73,
+      "picked": false
+    },
+    {
+      "id": 74,
+      "picked": true
+    },
+    {
+      "id": 75,
+      "picked": true
+    },
+    {
+      "id": 76,
       "picked": true
     }
   ],
@@ -146,5 +146,6 @@
       "name": "",
       "speciality": "",
       "obligation": 0
-    }]
+    }
+  ]
 }

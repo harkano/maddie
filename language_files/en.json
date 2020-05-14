@@ -692,7 +692,7 @@
 		"requiresRolling": true,
 		"playbook": "transformed"
 	}, {
-		"id": 59,
+		"id": 64,
 		"shortName": "chargeburn",
 		"capital": "CHARGE BURN",
 		"phrase": "charges their burn!",
@@ -704,7 +704,7 @@
 		"playbook": "nova",
 		"special": true
 	}, {
-		"id": 60,
+		"id": 65,
 		"shortName": "obligations",
 		"capital": "EVERYDAY LIFE",
 		"phrase": "has everyday life obligations!",
@@ -716,7 +716,7 @@
 		"playbook": "janus",
 		"special": true
 	}, {
-		"id": 61,
+		"id": 66,
 		"shortName": "legacy",
 		"capital": "LEGACY",
 		"phrase": "has to answer to the legacy!",
@@ -728,7 +728,7 @@
 		"playbook": "legacy",
 		"special": true
 	}, {
-		"id": 62,
+		"id": 67,
 		"shortName": "nemesis",
 		"capital": "NEMESIS",
 		"phrase": "must defeat the nemesis!",
@@ -740,7 +740,7 @@
 		"playbook": "doomed",
 		"special": true
 	}, {
-		"id": 63,
+		"id": 68,
 		"shortName": "wthero",
 		"capital": "WHAT THE HELL, HERO",
 		"phrase": "asks, what the hell, hero?!",
@@ -751,7 +751,7 @@
 		"requiresRolling": true,
 		"playbook": "reformed"
 	}, {
-		"id": 64,
+		"id": 69,
 		"shortName": "wrongside",
 		"capital": "WRONG SIDE OF THE TRACKS",
 		"phrase": "knows how it is to be on the other side of the tracks!",
@@ -762,7 +762,7 @@
 		"requiresRolling": false,
 		"playbook": "reformed"
 	}, {
-		"id": 65,
+		"id": 70,
 		"shortName": "notsodif",
 		"capital": "NOT SO DIFFERENT",
 		"phrase": "is not so different!",
@@ -773,7 +773,7 @@
 		"requiresRolling": true,
 		"playbook": "reformed"
 	}, {
-		"id": 66,
+		"id": 71,
 		"shortName": "darkpast",
 		"capital": "DARK PAST",
 		"phrase": "has a dark past!",
@@ -784,7 +784,7 @@
 		"requiresRolling": false,
 		"playbook": "reformed"
 	}, {
-		"id": 67,
+		"id": 72,
 		"shortName": "steamoff",
 		"capital": "BLOWING OFF STEAM",
 		"phrase": "is blowing off steam!",
@@ -795,7 +795,7 @@
 		"requiresRolling": false,
 		"playbook": "reformed"
 	}, {
-		"id": 68,
+		"id": 73,
 		"shortName": "favor",
 		"capital": "DO ME A FAVOR",
 		"phrase": "is asking for a favor!",
@@ -806,7 +806,7 @@
 		"requiresRolling": true,
 		"playbook": "reformed"
 	}, {
-		"id": 69,
+		"id": 74,
 		"shortName": "lowfavor",
 		"capital": "HELP FROM FRIENDS IN LOW PLACES",
 		"phrase": "needs help from his/her friends in low places!",
@@ -818,7 +818,7 @@
 		"playbook": "reformed",
 		"special": true
 	}, {
-		"id": 70,
+		"id": 75,
 		"shortName": "lowobligations",
 		"capital": "VILLAIN OBLIGATIONS",
 		"phrase": "is in debt with villains!",
@@ -830,7 +830,7 @@
 		"playbook": "reformed",
 		"special": true
 	}, {
-		"id": 71,
+		"id": 76,
 		"shortName": "helpvillains",
 		"capital": "HELP VILLAINS",
 		"phrase": "is helping villains!",
@@ -842,7 +842,7 @@
 		"playbook": "reformed",
 		"special": true
 	}, {
-		"id": 72,
+		"id": 77,
 		"shortName": "notfromhere",
 		"capital": "NOT FROM AROUND HERE",
 		"phrase": "is not from around here!",
@@ -853,7 +853,7 @@
 		"requiresRolling": true,
 		"playbook": "newborn"
 	}, {
-		"id": 73,
+		"id": 78,
 		"shortName": "thermodynamic",
 		"capital": "THERMODYNAMIC MIRACLE",
 		"phrase": "is a thermodynamic miracle!",
@@ -864,7 +864,7 @@
 		"requiresRolling": true,
 		"playbook": "newborn"
 	}, {
-		"id": 74,
+		"id": 79,
 		"shortName": "ownmind",
 		"capital": "A MIND OF THEIR OWN",
 		"phrase": "has powers with a mind of their own!",
@@ -875,7 +875,7 @@
 		"requiresRolling": false,
 		"playbook": "newborn"
 	}, {
-		"id": 75,
+		"id": 80,
 		"shortName": "damage",
 		"capital": "DAMAGE",
 		"phrase": "can be damaged!",
@@ -886,7 +886,7 @@
 		"requiresRolling": false,
 		"playbook": "newborn"
 	}, {
-		"id": 76,
+		"id": 81,
 		"shortName": "regeneration",
 		"capital": "REGENERATION",
 		"phrase": "can regenerate!",
@@ -897,7 +897,7 @@
 		"requiresRolling": false,
 		"playbook": "newborn"
 	}, {
-		"id": 77,
+		"id": 82,
 		"shortName": "embodylesson",
 		"capital": "EMBODY LESSON",
 		"phrase": "embodies one lesson!",
@@ -909,7 +909,7 @@
 		"playbook": "newborn",
 		"special": true
 	}, {
-		"id": 78,
+		"id": 83,
 		"shortName": "rejectlesson",
 		"capital": "REJECT LESSON",
 		"phrase": "rejects one lesson!",
@@ -921,7 +921,7 @@
 		"playbook": "newborn",
 		"special": true
 	}, {
-		"id": 79,
+		"id": 84,
 		"shortName": "approach",
 		"capital": "APPROACH CREATOR OR CARETAKERS",
 		"phrase": "approaches with a problem!",
@@ -933,7 +933,7 @@
 		"playbook": "newborn",
 		"special": true
 	}, {
-		"id": 80,
+		"id": 85,
 		"shortName": "amends",
 		"capital": "MAKING AMENDS",
 		"phrase": "is making amends!",
@@ -944,7 +944,7 @@
 		"requiresRolling": true,
 		"playbook": "innocent"
 	}, {
-		"id": 81,
+		"id": 86,
 		"shortName": "growing",
 		"capital": "GROWING INTO POWER",
 		"phrase": "is growing into power!",
@@ -955,7 +955,7 @@
 		"requiresRolling": true,
 		"playbook": "innocent"
 	}, {
-		"id": 82,
+		"id": 87,
 		"shortName": "theirway",
 		"capital": "SEE IT THEIR WAY",
 		"phrase": "sees it their way!",
@@ -966,7 +966,7 @@
 		"requiresRolling": true,
 		"playbook": "innocent"
 	}, {
-		"id": 83,
+		"id": 88,
 		"shortName": "whatsthis",
 		"capital": "WHAT'S THIS THING?",
 		"phrase": "doesn't know what this thing is!",
@@ -977,7 +977,7 @@
 		"requiresRolling": false,
 		"playbook": "innocent"
 	}, {
-		"id": 84,
+		"id": 89,
 		"shortName": "knight",
 		"capital": "WHITE KNIGHT",
 		"phrase": "is a white knight!",
@@ -988,7 +988,7 @@
 		"requiresRolling": true,
 		"playbook": "innocent"
 	}, {
-		"id": 85,
+		"id": 90,
 		"shortName": "martyr",
 		"capital": "MARTYR",
 		"phrase": "is a martyr!",
@@ -999,7 +999,7 @@
 		"requiresRolling": false,
 		"playbook": "innocent"
 	}, {
-		"id": 86,
+		"id": 91,
 		"shortName": "future",
 		"capital": "FUTURE SELF",
 		"phrase": "has a future self!",
@@ -1011,7 +1011,7 @@
 		"playbook": "innocent",
 		"special": true
 	}, {
-		"id": 87,
+		"id": 92,
 		"shortName": "dismiss",
 		"capital": "COLDLY DISMISS",
 		"phrase": "coldly dismisses you!",
@@ -1023,7 +1023,7 @@
 		"playbook": "innocent",
 		"special": true
 	}, {
-		"id": 88,
+		"id": 93,
 		"shortName": "aggresive",
 		"capital": "AGGRESSIVELY DEFEND",
 		"phrase": "defends aggressively!",
@@ -1035,7 +1035,7 @@
 		"playbook": "innocent",
 		"special": true
 	}, {
-		"id": 89,
+		"id": 94,
 		"shortName": "threaten",
 		"capital": "THREATEN",
 		"phrase": "threatens!",
@@ -1047,19 +1047,7 @@
 		"playbook": "innocent",
 		"special": true
 	}, {
-		"id": 90,
-		"shortName": "threaten",
-		"capital": "THREATEN",
-		"phrase": "threatens!",
-		"blob": "When you *threaten someone*, say what you want them to do and roll +Superior. Oh a hit, they either do it or they are put at a significant disadvantage against you, their choice. On a 10+, either way they mark a condition, your choice.",
-		"label": "superior",
-		"description": " ",
-		"img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
-		"requiresRolling": true,
-		"playbook": "innocent",
-		"special": true
-	}, {
-		"id": 91,
+		"id": 95,
 		"shortName": "spit",
 		"capital": "SPIT IN THE FACE OF GUIDANCE",
 		"phrase": "spits in the face of guidance or influence!",
@@ -1071,7 +1059,7 @@
 		"playbook": "innocent",
 		"special": true
 	}, {
-		"id": 92,
+		"id": 96,
 		"shortName": "antagonist",
 		"capital": "ANTAGONIST",
 		"phrase": "becomes an antagonist!",
@@ -1083,7 +1071,7 @@
 		"playbook": "innocent",
 		"special": true
 	}, {
-		"id": 93,
+		"id": 97,
 		"shortName": "gossip",
 		"capital": "THE GOSSIP MAGS",
 		"phrase": "taps into gossip!",
@@ -1094,7 +1082,7 @@
 		"requiresRolling": true,
 		"playbook": "star"
 	}, {
-		"id": 94,
+		"id": 98,
 		"shortName": "stage",
 		"capital": "STAGE-FIGHTING",
 		"phrase": "is stage-fighting!",
@@ -1105,7 +1093,7 @@
 		"requiresRolling": true,
 		"playbook": "star"
 	}, {
-		"id": 95,
+		"id": 99,
 		"shortName": "show",
 		"capital": "TIME FOR THE SHOW",
 		"phrase": "knows it's time for the show!",
@@ -1116,7 +1104,7 @@
 		"requiresRolling": true,
 		"playbook": "star"
 	}, {
-		"id": 96,
+		"id": 100,
 		"shortName": "fromme",
 		"capital": "TAKE IT FROM ME",
 		"phrase": "knows how to support!",
@@ -1127,7 +1115,7 @@
 		"requiresRolling": true,
 		"playbook": "star"
 	}, {
-		"id": 97,
+		"id": 101,
 		"shortName": "cruel",
 		"capital": "COLD AND CRUEL",
 		"phrase": "is cold and cruel!",
@@ -1138,7 +1126,7 @@
 		"requiresRolling": true,
 		"playbook": "star"
 	}, {
-		"id": 98,
+		"id": 102,
 		"shortName": "audience",
 		"capital": "AUDIENCE OPINION",
 		"phrase": "has an audience with opinion!",
@@ -1150,7 +1138,7 @@
 		"playbook": "star",
 		"special": true
 	}, {
-		"id": 99,
+		"id": 103,
 		"shortName": "audiencehelp",
 		"capital": "HELP FROM YOUR AUDIENCE",
 		"phrase": "seeks help from his/her audience!",
@@ -1162,7 +1150,7 @@
 		"playbook": "star",
 		"special": true
 	}, {
-		"id": 100,
+		"id": 104,
 		"shortName": "two",
 		"capital": "TWO OF A KIND",
 		"phrase": "and the other half are two of a kind!",
@@ -1174,7 +1162,7 @@
 		"playbook": "joined",
 		"special": true
 	}, {
-		"id": 101,
+		"id": 105,
 		"shortName": "fastball",
 		"capital": "FASTBALL SPECIAL",
 		"phrase": "and the other half make a great combo!",
@@ -1186,7 +1174,7 @@
 		"playbook": "joined",
 		"special": true
 	}, {
-		"id": 102,
+		"id": 106,
 		"shortName": "activate",
 		"capital": "POWERS, ACTIVATE!",
 		"phrase": "pools powers with the other half!",
@@ -1198,7 +1186,7 @@
 		"playbook": "joined",
 		"special": true
 	}, {
-		"id": 103,
+		"id": 107,
 		"shortName": "eyes",
 		"capital": "FOUR EYES ARE BETTER",
 		"phrase": "and the other half use their eyes!",
@@ -1210,7 +1198,7 @@
 		"playbook": "joined",
 		"special": true
 	}, {
-		"id": 105,
+		"id": 108,
 		"shortName": "mirror",
 		"capital": "MIRROR, MIRROR",
 		"phrase": "!",
@@ -1222,7 +1210,7 @@
 		"playbook": "joined",
 		"special": true
 	}, {
-		"id": 106,
+		"id": 109,
 		"shortName": "burden",
 		"capital": "SHOULDERING THE BURDEN",
 		"phrase": "shoulders the burden!",
@@ -1234,7 +1222,7 @@
 		"playbook": "joined",
 		"special": true
 	}, {
-		"id": 107,
+		"id": 110,
 		"shortName": "solo",
 		"capital": "GOING SOLO",
 		"phrase": "goes solo!",
@@ -1246,7 +1234,7 @@
 		"playbook": "joined",
 		"special": true
 	}, {
-		"id": 108,
+		"id": 111,
 		"shortName": "strife",
 		"capital": "INTERNAL STRIFE",
 		"phrase": "talks behind the other half's back!",
@@ -1258,7 +1246,7 @@
 		"playbook": "joined",
 		"special": true
 	}, {
-		"id": 109,
+		"id": 112,
 		"shortName": "fray",
 		"capital": "ABOVE THE FRAY",
 		"phrase": "is above the fray!",
@@ -1269,7 +1257,7 @@
 		"requiresRolling": false,
 		"playbook": "brain"
 	}, {
-		"id": 111,
+		"id": 113,
 		"shortName": "debrief",
 		"capital": "MISSION DEBRIEF",
 		"phrase": "is in a debrief!",
@@ -1280,7 +1268,7 @@
 		"requiresRolling": false,
 		"playbook": "brain"
 	}, {
-		"id": 111,
+		"id": 114,
 		"shortName": "angle",
 		"capital": "LOGICAL ANGLE",
 		"phrase": "sees it from a logical angle!",
@@ -1291,7 +1279,7 @@
 		"requiresRolling": true,
 		"playbook": "brain"
 	}, {
-		"id": 112,
+		"id": 115,
 		"shortName": "insight",
 		"capital": "SCIENTIFIC INSIGHT",
 		"phrase": "has scientific insight!",
@@ -1302,7 +1290,7 @@
 		"requiresRolling": false,
 		"playbook": "brain"
 	}, {
-		"id": 113,
+		"id": 116,
 		"shortName": "prepared",
 		"capital": "ALWAYS PREPARED",
 		"phrase": "is always prepared!",
@@ -1313,7 +1301,7 @@
 		"requiresRolling": false,
 		"playbook": "brain"
 	}, {
-		"id": 114,
+		"id": 117,
 		"shortName": "genius",
 		"capital": "TACTICAL GENIUS",
 		"phrase": "is a tactical genius!",
@@ -1324,7 +1312,7 @@
 		"requiresRolling": false,
 		"playbook": "brain"
 	}, {
-		"id": 115,
+		"id": 118,
 		"shortName": "shame",
 		"capital": "CONFRONTED WITH THE SHAME",
 		"phrase": "is confronted with their shame!",
@@ -1336,7 +1324,7 @@
 		"playbook": "brain",
 		"special": true
 	}, {
-		"id": 116,
+		"id": 119,
 		"shortName": "shamesteps",
 		"capital": "AMENDS FOR THE SHAME",
 		"phrase": "needs to make amends for their shame!",
@@ -1348,7 +1336,7 @@
 		"playbook": "brain",
 		"special": true
 	}, {
-		"id": 117,
+		"id": 120,
 		"shortName": "before",
 		"capital": "BEFORE WE GET STARTED",
 		"phrase": "observes the opposition!",
@@ -1359,7 +1347,7 @@
 		"requiresRolling": false,
 		"playbook": "soldier"
 	}, {
-		"id": 118,
+		"id": 121,
 		"shortName": "youmove",
 		"capital": "NO, YOU MOVE",
 		"phrase": "makes them move!",
@@ -1370,7 +1358,7 @@
 		"requiresRolling": true,
 		"playbook": "soldier"
 	}, {
-		"id": 119,
+		"id": 122,
 		"shortName": "allday",
 		"capital": "I CAN DO THIS ALL DAY",
 		"phrase": "can do this all day!",
@@ -1381,7 +1369,7 @@
 		"requiresRolling": false,
 		"playbook": "soldier"
 	}, {
-		"id": 120,
+		"id": 123,
 		"shortName": "personal",
 		"capital": "IT KINDA FEELS PERSONAL",
 		"phrase": "thinks this feels kinda personal!",
@@ -1392,7 +1380,7 @@
 		"requiresRolling": false,
 		"playbook": "soldier"
 	}, {
-		"id": 121,
+		"id": 124,
 		"shortName": "mission",
 		"capital": "MISSION FIRST",
 		"phrase": "knows that the mission comes first!",
@@ -1403,7 +1391,7 @@
 		"requiresRolling": false,
 		"playbook": "soldier"
 	}, {
-		"id": 122,
+		"id": 125,
 		"shortName": "shield",
 		"capital": "MORE THAN A SHIELD",
 		"phrase": "is more than a shield!",
@@ -1414,7 +1402,7 @@
 		"requiresRolling": false,
 		"playbook": "soldier"
 	}, {
-		"id": 123,
+		"id": 126,
 		"shortName": "orders",
 		"capital": "ACTING ON ORDERS",
 		"phrase": "is acting on orders!",
@@ -1426,7 +1414,7 @@
 		"playbook": "soldier",
 		"special": true
 	}, {
-		"id": 124,
+		"id": 127,
 		"shortName": "invoke",
 		"capital": "INVOKE AUTHORITY",
 		"phrase": "is invoking their authority!",
@@ -1438,7 +1426,7 @@
 		"playbook": "soldier",
 		"special": true
 	}, {
-		"id": 125,
+		"id": 128,
 		"shortName": "aegis",
 		"capital": "ASKING A.E.G.I.S.",
 		"phrase": "is asking A.E.G.I.S. for resources!",
@@ -1450,7 +1438,7 @@
 		"playbook": "soldier",
 		"special": true
 	}, {
-		"id": 126,
+		"id": 129,
 		"shortName": "stick",
 		"capital": "STICK TO THE MISSION",
 		"phrase": "sticks to the mission!",
@@ -1461,7 +1449,7 @@
 		"requiresRolling": true,
 		"playbook": "harbinger"
 	}, {
-		"id": 127,
+		"id": 130,
 		"shortName": "tomorrow",
 		"capital": "TOMORROW'S GOLDEN PROMISE",
 		"phrase": "knows of tomorrow!",
@@ -1472,7 +1460,7 @@
 		"requiresRolling": true,
 		"playbook": "harbinger"
 	}, {
-		"id": 128,
+		"id": 131,
 		"shortName": "history",
 		"capital": "APPLIED HISTORY",
 		"phrase": "applies history knowledge!",
@@ -1483,7 +1471,7 @@
 		"requiresRolling": true,
 		"playbook": "harbinger"
 	}, {
-		"id": 129,
+		"id": 132,
 		"shortName": "notyet",
 		"capital": "YOU HAVEN'T LEARNED YOU CAN DO THAT YET",
 		"phrase": "knows what you will learn!",
@@ -1494,7 +1482,7 @@
 		"requiresRolling": false,
 		"playbook": "harbinger"
 	}, {
-		"id": 130,
+		"id": 133,
 		"shortName": "grade",
 		"capital": "I LEARNED THE SOLUTION IN GRADE SCHOOL",
 		"phrase": "learned that in grade school!",
@@ -1505,7 +1493,7 @@
 		"requiresRolling": true,
 		"playbook": "harbinger"
 	}, {
-		"id": 131,
+		"id": 134,
 		"shortName": "studies",
 		"capital": "21ST CENTURY STUDIES",
 		"phrase": "has had studies!",
@@ -1516,7 +1504,7 @@
 		"requiresRolling": true,
 		"playbook": "harbinger"
 	}, {
-		"id": 132,
+		"id": 135,
 		"shortName": "remember",
 		"capital": "REMEMBER THE FUTURE",
 		"phrase": "remembers the future!",
@@ -1528,7 +1516,7 @@
 		"playbook": "harbinger",
 		"special": true
 	}, {
-		"id": 133,
+		"id": 136,
 		"shortName": "investigations",
 		"capital": "INVESTIGATING THE TIMELINE",
 		"phrase": "has been investigating the timeline!",
@@ -1540,7 +1528,7 @@
 		"playbook": "harbinger",
 		"special": true
 	}, {
-		"id": 134,
+		"id": 137,
 		"shortName": "notkid",
 		"capital": "NOT GOOD AT BEING A KID",
 		"phrase": "is not good at being a kid!",
@@ -1551,7 +1539,7 @@
 		"requiresRolling": false,
 		"playbook": "nomad"
 	}, {
-		"id": 135,
+		"id": 138,
 		"shortName": "cbeams",
 		"capital": "WATCHED C-BEAMS GLITTER",
 		"phrase": "has watched c-beams glitter!",
@@ -1562,7 +1550,7 @@
 		"requiresRolling": true,
 		"playbook": "nomad"
 	}, {
-		"id": 136,
+		"id": 139,
 		"shortName": "cavalry",
 		"capital": "I HATE CALLING THE CAVALRY",
 		"phrase": "hates calling the cavalry!",
@@ -1573,7 +1561,7 @@
 		"requiresRolling": true,
 		"playbook": "nomad"
 	}, {
-		"id": 137,
+		"id": 140,
 		"shortName": "bandit",
 		"capital": "THE LITTLEST SPACE BANDIT",
 		"phrase": "is the littlest space bandit!",
@@ -1584,7 +1572,7 @@
 		"requiresRolling": true,
 		"playbook": "nomad"
 	}, {
-		"id": 138,
+		"id": 141,
 		"shortName": "outworld",
 		"capital": "OUT OF THIS WORLD",
 		"phrase": "knows of things out of this world!",
@@ -1595,7 +1583,7 @@
 		"requiresRolling": true,
 		"playbook": "nomad"
 	}, {
-		"id": 139,
+		"id": 142,
 		"shortName": "sharpened",
 		"capital": "SHARPENED EYES",
 		"phrase": "has sharpened eyes!",
@@ -1606,7 +1594,7 @@
 		"requiresRolling": true,
 		"playbook": "nomad"
 	}, {
-		"id": 140,
+		"id": 143,
 		"shortName": "showem",
 		"capital": "I'LL SHOW THEM",
 		"phrase": "will show them!",
@@ -1617,7 +1605,7 @@
 		"requiresRolling": true,
 		"playbook": "scion"
 	}, {
-		"id": 141,
+		"id": 144,
 		"shortName": "sides",
 		"capital": "CHANGED SIDES",
 		"phrase": "has changed sides!",
@@ -1628,7 +1616,7 @@
 		"requiresRolling": true,
 		"playbook": "scion"
 	}, {
-		"id": 142,
+		"id": 145,
 		"shortName": "forgiveness",
 		"capital": "THEY DON'T DESERVE FORGIVENESS",
 		"phrase": "doesn't think they deserve forgiveness!",
@@ -1639,7 +1627,7 @@
 		"requiresRolling": false,
 		"playbook": "scion"
 	}, {
-		"id": 143,
+		"id": 146,
 		"shortName": "moldable",
 		"capital": "MOLDABLE",
 		"phrase": "is moldable!",
@@ -1650,7 +1638,7 @@
 		"requiresRolling": true,
 		"playbook": "scion"
 	}, {
-		"id": 144,
+		"id": 147,
 		"shortName": "beststuff",
 		"capital": "ALL THE BEST STUFF",
 		"phrase": "knows where the best stuff is!",
@@ -1661,7 +1649,7 @@
 		"requiresRolling": false,
 		"playbook": "scion"
 	}, {
-		"id": 145,
+		"id": 148,
 		"shortName": "lies",
 		"capital": "WHITE LIES",
 		"phrase": "knows how to tell a white lie!",
@@ -1672,7 +1660,7 @@
 		"requiresRolling": true,
 		"playbook": "scion"
 	}, {
-		"id": 146,
+		"id": 149,
 		"shortName": "seek",
 		"capital": "SEEK OUT RESPECT HOLDERS",
 		"phrase": "seeks out the people he/she wish they respected him/she!",
@@ -1684,7 +1672,7 @@
 		"playbook": "scion",
 		"special": true
 	}, {
-		"id": 147,
+		"id": 150,
 		"shortName": "respect",
 		"capital": "RESPECT",
 		"phrase": "gains respect!",
@@ -1696,7 +1684,7 @@
 		"playbook": "scion",
 		"special": true
 	}, {
-		"id": 148,
+		"id": 151,
 		"shortName": "fullrespect",
 		"capital": "FULL RESPECT",
 		"phrase": "has full respect!",
