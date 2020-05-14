@@ -101,7 +101,7 @@ en = {
   },
   "playbooks": {
     "the": "The",
-    "list": ['beacon', 'bull', 'delinquent', 'doomed', 'janus', 'legacy', 'nova', 'outsider', 'protege', 'transformed'],
+    "list": ['beacon', 'bull', 'delinquent', 'doomed', 'janus', 'legacy', 'nova', 'outsider', 'protege', 'transformed', 'brain', 'harbinger', 'innocent', 'joined', 'newborn', 'nomad', 'reformed', 'scion', 'soldier'],
     "playbooks": "Playbooks",
     "available": "Available Playbooks are - ",
     "playbook_re": r"!mot ([a-z]+)",
