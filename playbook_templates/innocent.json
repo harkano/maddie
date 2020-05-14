@@ -1,22 +1,22 @@
 {
   "characterName": "",
   "playerName": "",
-  "playbook": "beacon",
+  "playbook": "innocent",
   "labels": {
     "freak": {
-      "value": -1,
+      "value": 0,
       "locked": false
     },
     "danger": {
-      "value": -1,
+      "value": 0,
       "locked": false
     },
     "savior": {
-      "value": 2,
+      "value": 1,
       "locked": false
     },
     "superior": {
-      "value": 0,
+      "value": -1,
       "locked": false
     },
     "mundane": {
@@ -34,12 +34,13 @@
     "insecure": false
   },
   "moves": [
-    { "id": 16, "picked": false },
-    { "id": 17, "picked": false },
-    { "id": 18, "picked": false },
-    { "id": 19, "picked": false },
-    { "id": 20, "picked": false },
-    { "id": 21, "picked": false }
+    { "id": 85, "picked": false },
+    { "id": 86, "picked": false },
+    { "id": 87, "picked": false },
+    { "id": 88, "picked": false },
+    { "id": 89, "picked": false },
+    { "id": 90, "picked": false },
+    { "id": 91, "picked": true }
   ],
   "advancement": {
     "basic": {
@@ -48,10 +49,6 @@
         "taken": false
       },
       "otherPlaybookMove2": {
-        "description": "moveYouPlaybook",
-        "taken": false
-      },
-      "otherPlaybookMove3": {
         "description": "moveYouPlaybook",
         "taken": false
       },
@@ -73,6 +70,10 @@
       },
       "momentOfTruth": {
         "description": "mot",
+        "taken": false
+      },
+      "mentor": {
+        "description": "mentor",
         "taken": false
       }
     },
@@ -97,33 +98,20 @@
         "description": "lock",
         "taken": false
       },
-      "retire": {
-        "description": "retire",
+      "pastParagon": {
+        "description": "pastParagon",
         "taken": false
       }
     }
   },
-  "drivesDescription": "drivesDescription",
-  "drives": {
-    "lead": false,
-    "kissDanger": false,
-    "hitYouShouldnt": false,
-    "helpTeammate": false,
-    "endThreat": false,
-    "outperform": false,
-    "ridiculous": false,
-    "saveTeammateLife": false,
-    "drunkOrDrug": false,
-    "drive": false,
-    "newSuit": false,
-    "newName": false,
-    "gainRespect": false,
-    "kissTeammate": false,
-    "punchTeammate": false,
-    "breakRelation": false,
-    "stopFight": false,
-    "trueFeelings": false,
-    "placeOrTime": false,
-    "reject": false
+  "futureSelfInfo": {
+    "lost": false,
+    "failed": false,
+    "crime": false,
+    "betray": false,
+    "cost": false,
+    "kill": false,
+    "battled": false,
+    "innocent": false
   }
 }

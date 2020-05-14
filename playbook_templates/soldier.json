@@ -1,10 +1,10 @@
 {
   "characterName": "",
   "playerName": "",
-  "playbook": "beacon",
+  "playbook": "delinquent",
   "labels": {
     "freak": {
-      "value": -1,
+      "value": 0,
       "locked": false
     },
     "danger": {
@@ -16,10 +16,14 @@
       "locked": false
     },
     "superior": {
-      "value": 0,
+      "value": 1,
       "locked": false
     },
     "mundane": {
+      "value": 0,
+      "locked": false
+    },
+    "soldier": {
       "value": 2,
       "locked": false
     }
@@ -34,24 +38,19 @@
     "insecure": false
   },
   "moves": [
-    { "id": 16, "picked": false },
-    { "id": 17, "picked": false },
-    { "id": 18, "picked": false },
-    { "id": 19, "picked": false },
-    { "id": 20, "picked": false },
-    { "id": 21, "picked": false }
+    { "id": 120, "picked": true },
+    { "id": 121, "picked": false },
+    { "id": 122, "picked": false },
+    { "id": 123, "picked": false },
+    { "id": 124, "picked": false },
+    { "id": 125, "picked": false },
+    { "id": 126, "picked": true },
+    { "id": 127, "picked": true },
+    { "id": 128, "picked": true }
   ],
   "advancement": {
     "basic": {
       "otherPlaybookMove1": {
-        "description": "moveYouPlaybook",
-        "taken": false
-      },
-      "otherPlaybookMove2": {
-        "description": "moveYouPlaybook",
-        "taken": false
-      },
-      "otherPlaybookMove3": {
         "description": "moveYouPlaybook",
         "taken": false
       },
@@ -60,6 +59,10 @@
         "taken": false
       },
       "yourPlaybookMove2": {
+        "description": "moveOtherPlaybook",
+        "taken": false
+      },
+      "yourPlaybookMove3": {
         "description": "moveOtherPlaybook",
         "taken": false
       },
@@ -74,15 +77,27 @@
       "momentOfTruth": {
         "description": "mot",
         "taken": false
+      },
+      "enhancement": {
+        "description": "enhancement",
+        "taken": false
       }
     },
     "advanced": {
-      "momentOfTruth": {
-        "description": "motAgain",
+      "lockSoldier": {
+        "description": "lockSoldier",
         "taken": false
       },
-      "playbookChange": {
-        "description": "playbookChange",
+      "mentor": {
+        "description": "mentor",
+        "taken": false
+      },
+      "noAegis": {
+        "description": "noAegis",
+        "taken": false
+      },
+      "momentOfTruth": {
+        "description": "motAgain",
         "taken": false
       },
       "adultMove1": {
@@ -93,37 +108,10 @@
         "description": "adult",
         "taken": false
       },
-      "blockLabel": {
-        "description": "lock",
-        "taken": false
-      },
-      "retire": {
+      "civilian": {
         "description": "retire",
         "taken": false
       }
     }
-  },
-  "drivesDescription": "drivesDescription",
-  "drives": {
-    "lead": false,
-    "kissDanger": false,
-    "hitYouShouldnt": false,
-    "helpTeammate": false,
-    "endThreat": false,
-    "outperform": false,
-    "ridiculous": false,
-    "saveTeammateLife": false,
-    "drunkOrDrug": false,
-    "drive": false,
-    "newSuit": false,
-    "newName": false,
-    "gainRespect": false,
-    "kissTeammate": false,
-    "punchTeammate": false,
-    "breakRelation": false,
-    "stopFight": false,
-    "trueFeelings": false,
-    "placeOrTime": false,
-    "reject": false
   }
 }

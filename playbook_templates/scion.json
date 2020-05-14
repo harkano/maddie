@@ -1,18 +1,18 @@
 {
   "characterName": "",
   "playerName": "",
-  "playbook": "beacon",
+  "playbook": "delinquent",
   "labels": {
     "freak": {
-      "value": -1,
+      "value": 0,
       "locked": false
     },
     "danger": {
-      "value": -1,
+      "value": 1,
       "locked": false
     },
     "savior": {
-      "value": 2,
+      "value": 1,
       "locked": false
     },
     "superior": {
@@ -20,7 +20,7 @@
       "locked": false
     },
     "mundane": {
-      "value": 2,
+      "value": 0,
       "locked": false
     }
   },
@@ -34,12 +34,15 @@
     "insecure": false
   },
   "moves": [
-    { "id": 16, "picked": false },
-    { "id": 17, "picked": false },
-    { "id": 18, "picked": false },
-    { "id": 19, "picked": false },
-    { "id": 20, "picked": false },
-    { "id": 21, "picked": false }
+    { "id": 143, "picked": false },
+    { "id": 144, "picked": false },
+    { "id": 145, "picked": false },
+    { "id": 146, "picked": false },
+    { "id": 147, "picked": false },
+    { "id": 148, "picked": false },
+    { "id": 149, "picked": true },
+    { "id": 150, "picked": true },
+    { "id": 151, "picked": true }
   ],
   "advancement": {
     "basic": {
@@ -48,10 +51,6 @@
         "taken": false
       },
       "otherPlaybookMove2": {
-        "description": "moveYouPlaybook",
-        "taken": false
-      },
-      "otherPlaybookMove3": {
         "description": "moveYouPlaybook",
         "taken": false
       },
@@ -73,6 +72,10 @@
       },
       "momentOfTruth": {
         "description": "mot",
+        "taken": false
+      },
+      "mask": {
+        "description": "mask",
         "taken": false
       }
     },
@@ -103,27 +106,34 @@
       }
     }
   },
-  "drivesDescription": "drivesDescription",
-  "drives": {
-    "lead": false,
-    "kissDanger": false,
-    "hitYouShouldnt": false,
-    "helpTeammate": false,
-    "endThreat": false,
-    "outperform": false,
-    "ridiculous": false,
-    "saveTeammateLife": false,
-    "drunkOrDrug": false,
-    "drive": false,
-    "newSuit": false,
-    "newName": false,
-    "gainRespect": false,
-    "kissTeammate": false,
-    "punchTeammate": false,
-    "breakRelation": false,
-    "stopFight": false,
-    "trueFeelings": false,
-    "placeOrTime": false,
-    "reject": false
+  "enemy": {
+    "name": "",
+    "respect": 0,
+    "advancement": false
+  },
+  "victim": {
+    "name": "",
+    "respect": 0,
+    "advancement": false
+  },
+  "idol": {
+    "name": "",
+    "respect": 0,
+    "advancement": false
+  },
+  "leader": {
+    "name": "",
+    "respect": 0,
+    "advancement": false
+  },
+  "hero": {
+    "name": "",
+    "respect": 0,
+    "advancement": false
+  },
+  "celebrity": {
+    "name": "",
+    "respect": 0,
+    "advancement": false
   }
 }

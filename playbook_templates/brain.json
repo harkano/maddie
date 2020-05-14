@@ -1,26 +1,26 @@
 {
   "characterName": "",
   "playerName": "",
-  "playbook": "beacon",
+  "playbook": "brain",
   "labels": {
     "freak": {
-      "value": -1,
-      "locked": false
-    },
-    "danger": {
-      "value": -1,
-      "locked": false
-    },
-    "savior": {
-      "value": 2,
-      "locked": false
-    },
-    "superior": {
       "value": 0,
       "locked": false
     },
-    "mundane": {
+    "danger": {
+      "value": 0,
+      "locked": false
+    },
+    "savior": {
+      "value": 1,
+      "locked": false
+    },
+    "superior": {
       "value": 2,
+      "locked": false
+    },
+    "mundane": {
+      "value": -1,
       "locked": false
     }
   },
@@ -34,33 +34,35 @@
     "insecure": false
   },
   "moves": [
-    { "id": 16, "picked": false },
-    { "id": 17, "picked": false },
-    { "id": 18, "picked": false },
-    { "id": 19, "picked": false },
-    { "id": 20, "picked": false },
-    { "id": 21, "picked": false }
+    { "id": 112, "picked": false },
+    { "id": 113, "picked": false },
+    { "id": 114, "picked": false },
+    { "id": 115, "picked": false },
+    { "id": 116, "picked": false },
+    { "id": 117, "picked": false },
+    { "id": 118, "picked": true },
+    { "id": 119, "picked": true }
   ],
   "advancement": {
     "basic": {
-      "otherPlaybookMove1": {
-        "description": "moveYouPlaybook",
-        "taken": false
-      },
-      "otherPlaybookMove2": {
-        "description": "moveYouPlaybook",
-        "taken": false
-      },
-      "otherPlaybookMove3": {
-        "description": "moveYouPlaybook",
-        "taken": false
-      },
       "yourPlaybookMove1": {
         "description": "moveOtherPlaybook",
         "taken": false
       },
       "yourPlaybookMove2": {
         "description": "moveOtherPlaybook",
+        "taken": false
+      },
+      "yourPlaybookMove3": {
+        "description": "moveOtherPlaybook",
+        "taken": false
+      },
+      "sanctuary": {
+        "description": "sanctuary",
+        "taken": false
+      },
+      "drives": {
+        "description": "drives",
         "taken": false
       },
       "deleteInfluence": {
@@ -81,6 +83,10 @@
         "description": "motAgain",
         "taken": false
       },
+      "shame": {
+        "description": "shame",
+        "taken": false
+      },
       "playbookChange": {
         "description": "playbookChange",
         "taken": false
@@ -97,33 +103,10 @@
         "description": "lock",
         "taken": false
       },
-      "retire": {
-        "description": "retire",
+      "paragon": {
+        "description": "paragon",
         "taken": false
       }
     }
-  },
-  "drivesDescription": "drivesDescription",
-  "drives": {
-    "lead": false,
-    "kissDanger": false,
-    "hitYouShouldnt": false,
-    "helpTeammate": false,
-    "endThreat": false,
-    "outperform": false,
-    "ridiculous": false,
-    "saveTeammateLife": false,
-    "drunkOrDrug": false,
-    "drive": false,
-    "newSuit": false,
-    "newName": false,
-    "gainRespect": false,
-    "kissTeammate": false,
-    "punchTeammate": false,
-    "breakRelation": false,
-    "stopFight": false,
-    "trueFeelings": false,
-    "placeOrTime": false,
-    "reject": false
   }
 }

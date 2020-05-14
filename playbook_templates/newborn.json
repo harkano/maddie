@@ -1,26 +1,26 @@
 {
   "characterName": "",
   "playerName": "",
-  "playbook": "beacon",
+  "playbook": "newborn",
   "labels": {
     "freak": {
-      "value": -1,
+      "value": 2,
       "locked": false
     },
     "danger": {
-      "value": -1,
+      "value": 1,
       "locked": false
     },
     "savior": {
-      "value": 2,
-      "locked": false
-    },
-    "superior": {
       "value": 0,
       "locked": false
     },
+    "superior": {
+      "value": 1,
+      "locked": false
+    },
     "mundane": {
-      "value": 2,
+      "value": -2,
       "locked": false
     }
   },
@@ -34,12 +34,14 @@
     "insecure": false
   },
   "moves": [
-    { "id": 16, "picked": false },
-    { "id": 17, "picked": false },
-    { "id": 18, "picked": false },
-    { "id": 19, "picked": false },
-    { "id": 20, "picked": false },
-    { "id": 21, "picked": false }
+    { "id": 77, "picked": false },
+    { "id": 78, "picked": false },
+    { "id": 79, "picked": false },
+    { "id": 80, "picked": false },
+    { "id": 81, "picked": false },
+    { "id": 82, "picked": true },
+    { "id": 83, "picked": true },
+    { "id": 84, "picked": true }
   ],
   "advancement": {
     "basic": {
@@ -48,10 +50,6 @@
         "taken": false
       },
       "otherPlaybookMove2": {
-        "description": "moveYouPlaybook",
-        "taken": false
-      },
-      "otherPlaybookMove3": {
         "description": "moveYouPlaybook",
         "taken": false
       },
@@ -74,6 +72,10 @@
       "momentOfTruth": {
         "description": "mot",
         "taken": false
+      },
+      "burn": {
+        "description": "burn",
+        "taken": false
       }
     },
     "advanced": {
@@ -81,8 +83,8 @@
         "description": "motAgain",
         "taken": false
       },
-      "playbookChange": {
-        "description": "playbookChange",
+      "lockLessons": {
+        "description": "lockLessons",
         "taken": false
       },
       "adultMove1": {
@@ -103,27 +105,10 @@
       }
     }
   },
-  "drivesDescription": "drivesDescription",
-  "drives": {
-    "lead": false,
-    "kissDanger": false,
-    "hitYouShouldnt": false,
-    "helpTeammate": false,
-    "endThreat": false,
-    "outperform": false,
-    "ridiculous": false,
-    "saveTeammateLife": false,
-    "drunkOrDrug": false,
-    "drive": false,
-    "newSuit": false,
-    "newName": false,
-    "gainRespect": false,
-    "kissTeammate": false,
-    "punchTeammate": false,
-    "breakRelation": false,
-    "stopFight": false,
-    "trueFeelings": false,
-    "placeOrTime": false,
-    "reject": false
+  "lessons": {
+    "iam": "",
+    "should": "",
+    "always": "",
+    "never": ""
   }
 }
