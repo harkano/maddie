@@ -803,7 +803,7 @@
             "shortName": "desahogo",
             "capital": "DESAHOGÁNDOTE",
             "phrase": "está desahogándose!",
-            "blob": "Cuando cometés algún delito menor o un crimen “sin víctimas” podés sacarte una condición de tu elección.",
+            "blob": "Cuando cometés algún delito menor o un crimen 'sin víctimas' podés sacarte una condición de tu elección.",
             "label": "",
             "description": " ",
             "img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
@@ -1512,7 +1512,7 @@
             "shortName": "estudios",
             "capital": "ESTUDIOS DEL SIGLO 21",
             "phrase": "learned that in grade school!",
-            "blob": "Cuando *evalúas la situación*, tirá +Superior. En un 10+, preguntá dos. En un 7 - 9, preguntá una. Tomá +1 cuando actuás sobre las respuestas.\n• ¿qué puedo usar aquí para ______?\n• ¿cuál es la mayor amenaza aquí?\n• ¿cuál es el mayor peligro?\n• ¿quién es aquí es el más vulnerable a mi?\n• ¿cómo podemos terminar esto rápido de la mejor manera?\n• ¿qué sabe el futuro sobre este momento?”\nLa última pregunta puede ser preguntada incluso en un fallo. Tomas +1 para actuar sobre las respuestas.",
+            "blob": "Cuando *evalúas la situación*, tirá +Superior. En un 10+, preguntá dos. En un 7 - 9, preguntá una. Tomá +1 cuando actuás sobre las respuestas.\n• ¿qué puedo usar aquí para ______?\n• ¿cuál es la mayor amenaza aquí?\n• ¿cuál es el mayor peligro?\n• ¿quién es aquí es el más vulnerable a mi?\n• ¿cómo podemos terminar esto rápido de la mejor manera?\n• ¿qué sabe el futuro sobre este momento?\nLa última pregunta puede ser preguntada incluso en un fallo. Tomas +1 para actuar sobre las respuestas.",
             "label": "savior",
             "description": " ",
             "img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
@@ -1646,7 +1646,7 @@
             "shortName": "moldeable",
             "capital": "MOLDEABLE",
             "phrase": "es moldeable!",
-            "blob": "Cuando *atraviesas la máscara de alguien cuyo respeto buscas*, tirá +Mundano. En un 10+ preguntá tres. En un 7 - 9, preguntá dos.\n• ¿qué estás planeando realmente?\n• ¿qué querés que haga?\n• ¿qué pretendés hacer?\n• ¿cómo puedo hacer que tu pj haga _______?\n• ¿cómo puedo ganar influencia sobre vos? Siempre podes preguntar “¿Cómo podría ganar Influencia sobre vos?” incluyo en un fallo. Toma +1 continuado para actuar sobre las respuestas.",
+            "blob": "Cuando *atraviesas la máscara de alguien cuyo respeto buscas*, tirá +Mundano. En un 10+ preguntá tres. En un 7 - 9, preguntá dos.\n• ¿qué estás planeando realmente?\n• ¿qué querés que haga?\n• ¿qué pretendés hacer?\n• ¿cómo puedo hacer que tu pj haga _______?\n• ¿cómo puedo ganar influencia sobre vos? Siempre podes preguntar '¿Cómo podría ganar Influencia sobre vos?' incluyo en un fallo. Toma +1 continuado para actuar sobre las respuestas.",
             "label": "mundane",
             "description": " ",
             "img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
@@ -1817,7 +1817,7 @@
     }, {
         "id": 18,
         "name": "harbinger",
-        "mot": "Todo lo que podes hacer afecta el futuro. En base a lo que sabes, el hecho de que hayas salvado a ese tipo aquella vez puede significar que el futuro está lleno de pterodáctilos. Las conexiones, las ondulaciones son tan difíciles de seguir. Todavía no estás seguro si ayudaste o lastimaste. Hasta ahora. Ahora, en este preciso momento, esta todo claro. Podes ver el fluir de los eventos ante tuyo como si fuera un rio, sabes exactamente que tenes que hacer acá, ahora, para asegurar el futuro que queres. Podes modificar el futuro con una certeza perfecta. Por supuesto, después de esto,  cambiaste lo suficiente de la línea de tiempo, como para invalidar toda tu investigación previa. Resetea todos los nombres de la sección “Atando cabos”.",
+        "mot": "Todo lo que podes hacer afecta el futuro. En base a lo que sabes, el hecho de que hayas salvado a ese tipo aquella vez puede significar que el futuro está lleno de pterodáctilos. Las conexiones, las ondulaciones son tan difíciles de seguir. Todavía no estás seguro si ayudaste o lastimaste. Hasta ahora. Ahora, en este preciso momento, esta todo claro. Podes ver el fluir de los eventos ante tuyo como si fuera un rio, sabes exactamente que tenes que hacer acá, ahora, para asegurar el futuro que queres. Podes modificar el futuro con una certeza perfecta. Por supuesto, después de esto,  cambiaste lo suficiente de la línea de tiempo, como para invalidar toda tu investigación previa. Resetea todos los nombres de la sección 'Atando cabos'.",
         "img": "",
         "source": "unbound"
     }, {

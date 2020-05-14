@@ -1631,7 +1631,7 @@
 		"shortName": "moldable",
 		"capital": "MOLDABLE",
 		"phrase": "is moldable!",
-		"blob": "When you *pierce the mask of someone whose respect you crave*, roll +Mundane.\nOn a _10+_, ask three. On a _7-9_, ask one.\n• what are you really planning?\n• what do you want me to do?\n• what do you intend to do?\n• how could I get your character to \\_\\_\\_?\n• how could I gain Influence over you?\nYou can always ask “How could I gain Influence over you?”, even on a miss. Take +1 ongoing to acting on the answer.",
+		"blob": "When you *pierce the mask of someone whose respect you crave*, roll +Mundane.\nOn a _10+_, ask three. On a _7-9_, ask one.\n• What are you really planning?\n• What do you want me to do?\n• What do you intend to do?\n• How could I get your character to \\_\\_\\_?\n• How could I gain Influence over you?\nYou can always ask How could I gain Influence over you?, even on a miss. Take +1 ongoing to acting on the answer.",
 		"label": "mundane",
 		"description": " ",
 		"img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",

@@ -154,7 +154,7 @@ en = {
       "mask": "Take The Mask and a secret identity from the Janus playbook"
     },
     "beacon": {
-      "drivesDescription": "Choose four drives to mark at the start of play. When you fulfill a marked drive, strike it out, and choose one: mark potential, clear a condition, take Influence over someone involved.\nWhen your four marked drives are all struck out, choose and mark four new drives. When all drives are struck out, change playbooks, retire from the life, or become a paragon of the city."
+      "drivesDescription": "Choose four drives to mark at the start of play. When you fulfill a marked drive, strike it out, and choose one: mark potential, clear a condition, take Influence over someone involved.\nWhen your four marked drives are all struck out, choose and mark four new drives. When all drives are struck out, change playbooks, retire from the life, or become a paragon of the city.",
       "lead": "lead the team successfull in battle",
       "kissDanger": "kiss someone dangerous",
       "hitYouShouldnt": "punch someone you probably shouldn't",
@@ -196,7 +196,7 @@ en = {
           "enabler": "When you provoke your love or rival, roll +Danger if you are trying to provke them to rash or poorly thought out action."
         }
       }
-    }
+    },
     "doomed": {
       "nemesis": {
         "title": "Nemesis",
@@ -312,7 +312,7 @@ en = {
       "retired": "is retired and quite judgemental.",
       "possible": "is the next possible member of your legacy",
       "opponent": "is the greatest opponent of your legacy ever faced... and is still at large."
-    }
+    },
     "nova": {
       "names": {
         "storm": "Reality storm",
@@ -384,7 +384,7 @@ en = {
       "title": "Your future self",
       "description": "Your future self is out there, an important figure in Halcyon City and the world beyond - and everything you'd hoped you'd never be. But finding out how they became who they are may be al it takes to push you along a similar path. Pick one step of your future self's path that you already know about and circle it.",
       "lost": "They lost someone they cared about deeply",
-      "failed": "They failed horrifically in a noble pursuit or cause"
+      "failed": "They failed horrifically in a noble pursuit or cause",
       "crime": "They committed a major crime",
       "betray": "They betrayed a close friend or ally",
       "cost": "They won a victory at enormous cost to the world around them",
@@ -394,7 +394,7 @@ en = {
     },
     "star": {
       "title": "Audience",
-      "description": "You are a celebrity in the city. By default, your audience is a limited group of interested fans, and you speak to them trough after-action interviews and infrequent press conferences.".
+      "description": "You are a celebrity in the city. By default, your audience is a limited group of interested fans, and you speak to them trough after-action interviews and infrequent press conferences.",
       "lovesDescription": "Why does your audience love you? Mark all that apply.",
       "loves": {
         "alike": "You're just like them",
@@ -413,7 +413,7 @@ en = {
         "endorsement": "You have a major hero's endorsement",
         "wider": "You have a much wider audience"
       },
-      "demandsDescription": "Choose two demands your audience makes on you:"
+      "demandsDescription": "Choose two demands your audience makes on you:",
       "demands": {
         "stimulation": "They require constant stimulation",
         "perfection": "They require - no mistakes",
@@ -473,7 +473,7 @@ en = {
       "martyr": "Martyr",
       "builder": "Builder",
       "leader": "Leader"
-    }
+    },
     "nomad": {
       "title": "Putting down roots",
       "description": "You’re here, but not, and it shows. Over time, you may be able to commit to this place, and find out why it is that some people choose to invest in others.\nAdults do not have Influence over you by default. No one does. You can only give out a total of 6 Influence. During play, you can only give out Influence by revealing a vulnerability or weakness to someone. You can still give out Influence through the end of session move. You cannot give Influence to somebody who already has Influence over you.\nOthers cannot take Influence over you; if they would, instead they can mark potential or inflict a condition on you, their choice. You reject Influence at -2 by default, instead of +0. When someone takes advantage of their Influence over you, they can choose two options from the list. At the end of every session, you can take back 1 Influence from someone of your choice.\nIf you have given out 0-Influence, you cannot comfort or support anyone. If you would trigger that move, instead mark a condition as you say exactly the wrong thing. If you have given out 0-Influence and someone tries to comfort or support you, you cannot open up to them.",

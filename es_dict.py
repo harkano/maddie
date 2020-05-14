@@ -153,7 +153,7 @@ es = {
       "mask": "Toma La Máscara y una identidad secreta del libreto Jano"
     },
     "beacon": {
-      "drivesDescription": "Elige cuatro impulsos para marcar al comienzo del juego. Cuando cumplas con un impulso marcado, tachalo y elegí una:\nMarcar potencial, eliminar una condición, tomar Influencia sobre alguien involucrado\nCuando los cuatro impulsos marcados estén tachados, elegí y marcá cuatro impulsos nuevos.\nCuando se hayan tachado todos los impulsos, cambiá de libreto, retirate de la vida de superhéroe o convertite en un parangón de la ciudad."
+      "drivesDescription": "Elige cuatro impulsos para marcar al comienzo del juego. Cuando cumplas con un impulso marcado, tachalo y elegí una:\nMarcar potencial, eliminar una condición, tomar Influencia sobre alguien involucrado\nCuando los cuatro impulsos marcados estén tachados, elegí y marcá cuatro impulsos nuevos.\nCuando se hayan tachado todos los impulsos, cambiá de libreto, retirate de la vida de superhéroe o convertite en un parangón de la ciudad.",
       "lead": "lidera el equipo exitosamente en la batalla",
       "kissDanger": "besa a alguien peligroso",
       "hitYouShouldnt": "golpea a alguien que probablemente no deberías",
@@ -311,7 +311,7 @@ es = {
       "retired": "está retirado y es bastante prejuicioso.",
       "possible": "es el siguiente posible miembro de tu legado.",
       "opponent": "es el mayor oponente al que se ha enfrentado tu legado... y aún está en libertad."
-    }
+    },
     "nova": {
       "names": {
         "storm": "Tormenta de realidad",
@@ -383,7 +383,7 @@ es = {
       "title": "Yo del futuro",
       "description": "Tu yo del futuro está ahí fuera, es una figura importante en Ciudad Halcyon y en el resto del mundo (también es todo lo que esperabas nunca ser). Pero enterarte de cómo se volvió quien es puede llevarte a seguir un camino similar. Elegí un paso del camino de tu Yo del Futuro que ya sepas y circúlalo.",
       "lost": "Perdió a alguien que le importaba mucho",
-      "failed": "Falló de forma horrible en una causa noble"
+      "failed": "Falló de forma horrible en una causa noble",
       "crime": "Cometió un crimen mayor",
       "betray": "Traicionó a un amigo o aliado cercano",
       "cost": "Consiguió una victoria  a un precio horrible para el mundo que los rodea",
@@ -393,7 +393,7 @@ es = {
     },
     "star": {
       "title": "Audiencia",
-      "description": "Sos una celebridad en la ciudad. Por defecto tu audiencia es un grupo limitado de fans interesados con quienes te comunicas a través de entrevistas luego de la acción y frecuentes conferencias de prensa.".
+      "description": "Sos una celebridad en la ciudad. Por defecto tu audiencia es un grupo limitado de fans interesados con quienes te comunicas a través de entrevistas luego de la acción y frecuentes conferencias de prensa.",
       "lovesDescription": "¿Por qué tu audiencia te ama? Marca todo lo que aplique",
       "loves": {
         "alike": "Sos como ellos",
@@ -412,7 +412,7 @@ es = {
         "endorsement": "Tenés el aval de un héroe importante",
         "wider": "Tenés una audiencia muy amplia"
       },
-      "demandsDescription": "Elegí 2 demandas de tu audiencia:"
+      "demandsDescription": "Elegí 2 demandas de tu audiencia:",
       "demands": {
         "stimulation": "Requieren estimulación constante",
         "perfection": "Requieren perdección, no admiten errores",
