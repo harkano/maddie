@@ -10,7 +10,7 @@ logger.setLevel(logging.INFO) #set logging level to INFO, DEBUG if we want the f
 def handle_help(message, _lang):
     log_line = message.guild.name + "|" + message.channel.name + "|" + message.author.name + "|" + message.content
     logger.info(log_line)
-    help_file = open("../../aws/help", "r")
+    help_file = open("help", "r")
     response = help_file.read()
     return response
 
