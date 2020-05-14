@@ -88,15 +88,6 @@ es = {
     "desesperanzado": "hopeless",
     "inseguro": "insecure"
   },
-  "playbooks": {
-    "the": "",
-    "list": ['emblema', 'toro', 'delincuente', 'condenado', 'jano', 'legado', 'nova', 'extranjero', 'protegido', 'transformado'],
-    "playbooks": "Libretos",
-    "available": "Los Libretos disponibles son - ",
-    "playbook_re": r"!mdlv ([a-z]+)",
-    "moment_of_truth": "MOMENTO DE LA VERDAD",
-    "this_is_mot": lambda usr: f"Este es el momento de la verdad de {usr}!"
-  },
   "configuration": {
     "settings": "Configuración\n",
     "language": "Lenguaje",
@@ -108,6 +99,13 @@ es = {
     "successfull_creation": "El archivo de configuración ha sido creado"
   },
   "playbooks": {
+    "the": "",
+    "list": ['emblema', 'toro', 'delincuente', 'condenado', 'jano', 'legado', 'nova', 'extranjero', 'protegido', 'transformado'],
+    "playbooks": "Libretos",
+    "available": "Los Libretos disponibles son - ",
+    "playbook_re": r"!mdlv ([a-z]+)",
+    "moment_of_truth": "MOMENTO DE LA VERDAD",
+    "this_is_mot": lambda usr: f"Este es el momento de la verdad de {usr}!",
     "advances": {
       "moveYouPlaybook": "Toma otro movimiento de tu libreto",
       "moveOtherPlaybook": "Toma un movimiento de otro libreto",
