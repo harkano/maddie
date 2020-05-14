@@ -100,7 +100,7 @@ es = {
   },
   "playbooks": {
     "the": "",
-    "list": ['emblema', 'toro', 'delincuente', 'condenado', 'jano', 'legado', 'nova', 'extranjero', 'protegido', 'transformado'],
+    "list": ['emblema', 'toro', 'delincuente', 'condenado', 'jano', 'legado', 'nova', 'extranjero', 'protegido', 'transformado', 'brain', ', harbinger', 'innocent', 'joined', 'newborn', 'nomad', 'reformed', 'scion', 'soldier'],
     "playbooks": "Libretos",
     "available": "Los Libretos disponibles son - ",
     "playbook_re": r"!mdlv ([a-z]+)",
