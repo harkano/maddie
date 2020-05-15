@@ -50,7 +50,7 @@ def format_labels(labels, lang):
     return response
 
 
-def format_conditions(conditions, language_handler):
+def format_conditions(conditions, lang):
     if not len(conditions):
         return get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.condition_not_marked')
 
@@ -122,7 +122,7 @@ def edit_labels(message, lang):
     key, content = get_key_and_content_from_message(message)
     label_to_increase_name_og, label_to_decrease_name_og = get_args_from_content(content)
 
-    if label_to_increase_name == label_to_decrease_name:
+    if label_to_increase_name_og == label_to_decrease_name_og:
         return get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.different_labels')
 
     label_to_increase_name = get_translation(lang, f'inverted_labels.{label_to_increase_name_og}')
@@ -142,11 +142,11 @@ def edit_labels(message, lang):
 
     if label_is_not_editable(label_to_increase, MAX_LABEL_VALUE):
         up = get_translation(lang,  f'{PLAYBOOK_INTERACTIONS}.up')
-        return get_label_has_border_value_text(label_to_increase_name, label_to_increase, up)
+        return get_label_has_border_value_text(label_to_increase_name, label_to_increase, up, lang)
 
     if label_is_not_editable(label_to_decrease, MIN_LABEL_VALUE):
         down = get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.down')
-        return get_label_has_border_value_text(label_to_decrease_name, label_to_decrease, down)
+        return get_label_has_border_value_text(label_to_decrease_name, label_to_decrease, down, lang)
 
     labels[label_to_increase_name][VALUE] = label_to_increase_value + 1
     labels[label_to_decrease_name][VALUE] = label_to_decrease_value - 1
@@ -246,7 +246,7 @@ def get_labels(message, lang):
     if not char_info:
         return get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.no_character')
 
-    return format_labels(char_info[LABELS])
+    return format_labels(char_info[LABELS], lang)
 
 
 def get_conditions(message, lang):
@@ -256,7 +256,7 @@ def get_conditions(message, lang):
     if not char_info:
         return get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.no_character')
 
-    return format_conditions(char_info[CONDITIONS])
+    return format_conditions(char_info[CONDITIONS], lang)
 
 
 def get_potential(message, lang):

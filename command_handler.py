@@ -26,7 +26,7 @@ plain_commands_dict = {
   "settings": get_settings,
   "language": get_language,
   "teamname": get_teamname,
-  "update_lang": lambda msg, _lang: update_lang(msg),
+  "update_lang": update_lang,
   "update_gm": lambda msg, _lang: update_gm(msg),
   "update_teamname": lambda msg, _lang: update_teamname(msg),
   "create_settings": lambda msg, _lang: create_settings(msg)

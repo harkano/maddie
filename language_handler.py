@@ -27,3 +27,7 @@ def get_translation(lang, accessor):
         partial_result = partial_result[key]
 
     return partial_result
+
+
+def is_invalid_lang(lang):
+    return lang not in ['en', 'es']
