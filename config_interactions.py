@@ -1,7 +1,7 @@
 import boto3
 import json
 from s3_utils import info_from_s3, get_s3_client, upload_to_s3, get_files_from_dir
-from language_handler import get_translation, get_for_all_langs
+from language_handler import get_translation, get_for_all_langs, is_invalid_lang
 
 LANGUAGE = 'language'
 GM = 'gm'
@@ -49,11 +49,11 @@ def generic_updater(message, field):
     return get_translation(settings[LANGUAGE], 'configuration.successfull_update')
 
 
-def update_lang(message):
+def update_lang(message, lang):
     new_lang = message.content.split(" ")[1]
 
     if is_invalid_lang(new_lang):
-        return get_translation()
+        return get_translation(lang, 'configuration.invalid_lang')
 
     return generic_updater(message, LANGUAGE)
 

@@ -8,7 +8,7 @@ es = {
     "bloquear": "lock",
     "editaretiquetas": "editlabels",
     "potencial": "potential",
-    "marcarpotencial": "markcondition",
+    "marcarcondicion": "markcondition",
     "borrarcondicion": "clearcondition",
     "crear": "create",
     "config": "settings",
@@ -48,7 +48,7 @@ es = {
     "condition_not_marked": "Esa condición no está marcada",
     "youre": "Estás:\n",
     "dont": " no",
-    "condition_status": lambda status: f"Oh,{status} tenés have that condition marked.",
+    "condition_status": lambda status: f"Oh,{status} tenés esa condición marcada.",
     "no_character": "Lo siento, pero parece que no tenés ningún personaje creado",
     "existing_character": "Lo siento, pero parece que ya tenés ningún personaje creado",
     "invalid_condition": lambda condition_name: f"Oh no, {condition_name} no es una condición válida",
@@ -96,7 +96,8 @@ es = {
     "no_file": "Este chat no tiene archivo de configuración. Para crearlo escribí el siguiente comando:\n!aventura es\nsi querés que esté en español.\n",
     "existing_settings": "Este chat ya tiene archivo de configuración.",
     "successfull_update": "El cambio se hizo con éxito",
-    "successfull_creation": "El archivo de configuración ha sido creado"
+    "successfull_creation": "El archivo de configuración ha sido creado",
+    "invalid_lang": lambda lang: f"{lang} no es un idioma válido, las opciones son: es (español), en (inglés)"
   },
   "playbooks": {
     "the": "",
