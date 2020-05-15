@@ -122,7 +122,7 @@ def edit_labels(message, lang):
     key, content = get_key_and_content_from_message(message)
     label_to_increase_name_og, label_to_decrease_name_og = get_args_from_content(content)
 
-    if label_to_increase_name == label_to_decrease_name:
+    if label_to_increase_name_og == label_to_decrease_name_og:
         return get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.different_labels')
 
     label_to_increase_name = get_translation(lang, f'inverted_labels.{label_to_increase_name_og}')
