@@ -2,6 +2,7 @@ import boto3
 import json
 from s3_utils import info_from_s3, get_s3_client, upload_to_s3, get_files_from_dir
 from language_handler import get_translation
+from utils import get_moves as get_moves_json_array
 
 LABELS = 'labels'
 VALUE = 'value'
@@ -263,6 +264,38 @@ def create_character(message, lang):
 
     formated_playbook_name = playbook_name.capitalize()
     return get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.congrats_on_creation')(character_name, formated_playbook_name)
+
+
+def add_move_from_your_playbook(message, lang):
+    key, content = get_key_and_content_from_message(message)
+    move_name = get_args_from_content(content)
+
+    # TODO get the move id
+    moves_array = get_moves_json_array(lang)['moves']
+    move_list = list(filter(lambda move_dict: move_dict['shortName'] == move_name, moves_array))
+
+    if not len(move_list):
+        # TODO add to dict
+        return get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.no_moves_pb')
+
+    id = move_list[0]['id']
+
+    s3_client = get_s3_client()
+    char_info = info_from_s3(f'adventures/{key}', s3_client)
+
+    if not char_info:
+        return get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.no_character')
+
+    move = list(filter(lambda dic: dic["id"] == id, char_info['moves']))[0]
+    if move['picked']:
+        return get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.move_already_taken')
+
+    move["picked"] = True
+
+    upload_to_s3(char_info, key, s3_client)
+
+    return 'format_conditions(char_info[CONDITIONS], lang)'
+
 
 # These are the functions that get the data in the characters s3 file
 

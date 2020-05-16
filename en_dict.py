@@ -23,7 +23,8 @@ en = {
     "conditions": "conditions",
     "get_potential": "get_potential",
     "pending_advancements": "pending_advancements",
-    "advancements": "advancements"
+    "advancements": "advancements",
+    "mov_my_playbook": "mov_my_playbook"
   },
   "dice_rolling": {
     "calculation_title": "Calculation",
@@ -64,10 +65,12 @@ en = {
     "no_template": lambda playbook_name: f"It seems I don't have a template for a playbook called {playbook_name}",
     "congrats_on_creation": lambda char, playbook: f"Congratulations {char}, The {playbook} on joining the team!",
     "potential": lambda potential: f"You have {potential} potential marked",
-    "congrats_pending_advancements": lambda adv_count: f"You can do {adv_count + 1} advancements",
     "basic": "\nBasic:",
     "advanced": "\nAdvanced:",
-    "taken": "[TOMADO] "
+    "taken": "[TOMADO] ",
+    "pending_advancements": lambda adv_count: f"You can do {adv_count + 1} advancements",
+    "no_moves_pb": "I'm sorry, but there are no moves from your playbook that match that name",
+    "no_moves": "I'm sorry, but there are no moves that match that name"
   },
   "labels": {
     "danger": "danger",

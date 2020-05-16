@@ -1,5 +1,5 @@
 import logging
-from playbook_interactions import lock_label, edit_labels, mark_potential, mark_condition, clear_condition, create_character, get_labels, get_conditions, get_potential, get_pending_advancements, get_advancements
+from playbook_interactions import lock_label, edit_labels, mark_potential, mark_condition, clear_condition, create_character, get_labels, get_conditions, get_potential, get_pending_advancements, get_advancements, add_move_from_your_playbook
 from config_interactions import get_settings, get_language, get_teamname, update_lang, update_gm, update_teamname, create_settings
 from playbooks import get_moment_of_truth, get_playbooks
 from language_handler import get_translation
@@ -34,7 +34,8 @@ plain_commands_dict = {
   "conditions": get_conditions, 
   "get_potential": get_potential, 
   "pending_advancements": get_pending_advancements, 
-  "advancements": get_advancements
+  "advancements": get_advancements,
+  "mov_my_playbook": add_move_from_your_playbook
 }
 
 
@@ -47,6 +48,7 @@ def plain_command_handler(message, lang):
     command = message.content.split(" ")[0][1:]
     handler = plain_commands_dict.get(get_translation(lang, f'plain_commands.{command}'), lambda _msg, _lang: '')
 
+    meme = get_translation(lang, f'plain_commands.{command}')
     return handler(message, lang)
 
 

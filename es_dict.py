@@ -23,7 +23,8 @@ es = {
     "condiciones": "conditions",
     "ver_potencial": "get_potential",
     "avances_pendientes": "pending_advancements",
-    "avances": "advancements"
+    "avances": "advancements",
+    "mov_mi_libreto": "mov_my_playbook"
   },
   "dice_rolling": {
     "calculation_title": "Cálculo",
@@ -66,7 +67,9 @@ es = {
     "pending_advancements": lambda adv_count: f"Podés hacer {adv_count} avances",
     "basic": "\nBásicos:",
     "advanced": "\nAvanzados:",
-    "taken": "[TOMADO] "
+    "taken": "[TOMADO] ",
+    "no_moves_pb": "Perdón, pero no hay movimientos de tu libreto que coincidan con ese nombre",
+    "no_moves": "Perdón, pero no hay movimientos que coincidan con ese nombre"
   },
   "labels": {
     "danger": "peligro",
