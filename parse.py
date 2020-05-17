@@ -71,7 +71,7 @@ def mad_parse(message):
         desc = get_translation(lang, 'description')
         if quiet == 0: embed.add_field(name=desc, value=f"{blob}") # don't include the blob if we're in quiet mode (!!)
         if roll:
-            add_result(embed, num_calc, mod)
+            add_result(embed, num_calc, mod, lang)
         embed.set_footer(text=" ")
 
         return embed
@@ -80,7 +80,7 @@ def mad_parse(message):
         return 0
 
 
-def add_result (embed, num_calc, mod):
+def add_result (embed, num_calc, mod, lang):
     #do dice rolling
     result1 = random.randrange(1,6) ##first d6
     result2 = random.randrange(1,6) ##second d6
