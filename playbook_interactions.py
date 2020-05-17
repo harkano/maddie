@@ -77,7 +77,7 @@ def invert_condition(message, compare_to, lang):
     condition_name = get_translation(lang, f'inverted_conditions.{condition_name_og}')
 
     s3_client = get_s3_client()
-    char_info = info_from_s3(f'adventures/{key}', s3_client)
+    char_info = info_from_s3(key, s3_client)
     if not char_info:
         return get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.no_character')
 
@@ -115,7 +115,7 @@ def get_args_from_content(content):
 def get_key_and_content_from_message(message):
     key = f'{message.channel.id}/{message.author.id}'
 
-    return key, message.content
+    return f'adventures/{key}', message.content
 
 # These are the functions that edit the data in the characters s3 file
 
@@ -130,7 +130,7 @@ def edit_labels(message, lang):
     label_to_decrease_name = get_translation(lang, f'inverted_labels.{label_to_decrease_name_og}')
 
     s3_client = get_s3_client()
-    char_info = info_from_s3(f'adventures/{key}', s3_client)
+    char_info = info_from_s3(key, s3_client)
     if not char_info:
         return get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.no_character')
 
@@ -163,7 +163,7 @@ def lock_label(message, lang):
     label_to_lock_name = get_translation(lang, f'inverted_labels.{label_to_lock_name_og}')
 
     s3_client = get_s3_client()
-    char_info = info_from_s3(f'adventures/{key}', s3_client)
+    char_info = info_from_s3(key, s3_client)
     if not char_info:
         return get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.no_character')
 
@@ -183,7 +183,7 @@ def lock_label(message, lang):
 def mark_potential(message, lang):
     key, _content = get_key_and_content_from_message(message)
     s3_client = get_s3_client()
-    char_info = info_from_s3(f'adventures/{key}', s3_client)
+    char_info = info_from_s3(key, s3_client)
     if not char_info:
         return get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.no_character')
 
@@ -214,7 +214,7 @@ def create_character(message, lang):
     key, content = get_key_and_content_from_message(message)
     s3_client = get_s3_client()
 
-    char_info = info_from_s3(f'adventures/{key}', s3_client)
+    char_info = info_from_s3(key, s3_client)
     if char_info:
         return get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.existing_character')
 
@@ -243,7 +243,7 @@ def create_character(message, lang):
 def get_labels(message, lang):
     key = get_key_and_content_from_message(message)
     s3_client = get_s3_client()
-    char_info = info_from_s3(f'adventures/{key}', s3_client)
+    char_info = info_from_s3(key, s3_client)
     if not char_info:
         return get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.no_character')
 
@@ -253,7 +253,7 @@ def get_labels(message, lang):
 def get_conditions(message, lang):
     key = get_key_and_content_from_message(message)
     s3_client = get_s3_client()
-    char_info = info_from_s3(f'adventures/{key}', s3_client)
+    char_info = info_from_s3(key, s3_client)
     if not char_info:
         return get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.no_character')
 
@@ -263,19 +263,19 @@ def get_conditions(message, lang):
 def get_potential(message, lang):
     key = get_key_and_content_from_message(message)
     s3_client = get_s3_client()
-    char_info = info_from_s3(f'adventures/{key}', s3_client)
+    char_info = info_from_s3(key, s3_client)
     if not char_info:
         return get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.no_character')
 
     potential = char_info[POTENTIAL]
 
-    return get_translation(lang,  f'{PLAYBOOK_INTERACTIONS}.potential')(potential)
+    return get_translation(lany,  f'{PLAYBOOK_INTERACTIONS}.potential')(potential)
 
 
 def get_moves(message, lang):
     key = get_key_and_content_from_message(message)
     s3_client = get_s3_client()
-    char_info = info_from_s3(f'adventures/{key}', s3_client)
+    char_info = info_from_s3(key, s3_client)
     if not char_info:
         return get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.no_character')
 
@@ -285,7 +285,7 @@ def get_moves(message, lang):
 def get_pending_advancements(message, lang):
     key = get_key_and_content_from_message(message)
     s3_client = get_s3_client()
-    char_info = info_from_s3(f'adventures/{key}', s3_client)
+    char_info = info_from_s3(key, s3_client)
     if not char_info:
         return get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.no_character')
     pending_advancements = char_info[PENDING_ADVANCEMENTS]
@@ -296,7 +296,7 @@ def get_pending_advancements(message, lang):
 def get_advancements(message, lang):
     key = get_key_and_content_from_message(message)
     s3_client = get_s3_client()
-    char_info = info_from_s3(f'adventures/{key}', s3_client)
+    char_info = info_from_s3(key, s3_client)
     if not char_info:
         return get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.no_character')
 

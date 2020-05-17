@@ -99,7 +99,8 @@ en = {
     "existing_settings": "This chat already has a configuration file.",
     "successfull_update": "The update was successfull",
     "successfull_creation": "The configuration file has been created",
-    "invalid_lang": lambda lang: f"{lang} is not a valid language, the options are: en (english), es (spanish)"
+    "invalid_lang": lambda lang: f"{lang} is not a valid language, the options are: en (english), es (spanish)",
+    "gm": "GM"
   },
   "playbooks": {
     "the": "The",

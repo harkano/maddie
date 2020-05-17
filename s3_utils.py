@@ -58,6 +58,6 @@ def get_bytes_from_json(json_to_parse):
 
 def upload_to_s3(content, key, s3_client):
     s3_client.put_object(
-        Body=get_bytes_from_json(content), Bucket=BUCKET, Key=f'adventures/{key}.json'
+        Body=get_bytes_from_json(content), Bucket=BUCKET, Key=f'{key}.json'
     )
     logger.info('Finished uploading')
