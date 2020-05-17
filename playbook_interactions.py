@@ -103,8 +103,9 @@ def format_moves(moves):
 
 
 def get_args_from_content(content):
-    splited = content.split(" ")
-
+    from tssplit import tssplit
+    #splited = content.split(" ")
+    splited = tssplit(content, quote='"', delimiter=' ')
     if len(splited) == 2:
         return splited[1]
 
