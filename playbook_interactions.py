@@ -116,6 +116,32 @@ def get_key_and_content_from_message(message):
 
     return key, message.content
 
+
+def format_advance_list(advance_list, list_name, lang):
+    response = get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.{list_name}') + '\n'
+
+    for advance_key in advance_list:
+        advance = advance_list[advance_key]
+        description = advance['description']
+        response = response + '• '
+        if advance['taken']:
+            response = response + get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.taken')
+
+        response = response + get_translation(lang, f'playbooks.advances.{description}') + '\n'
+
+    return response
+
+
+def format_advancements(advancements, lang):
+    basic = advancements['basic']
+    advanced = advancements['advanced']
+
+    formated_basic = format_advance_list(basic, 'basic', lang)
+    formated_advanced = format_advance_list(advanced, 'advanced', lang)
+
+    return formated_basic + formated_advanced
+
+
 # These are the functions that edit the data in the characters s3 file
 
 def edit_labels(message, lang):
@@ -240,7 +266,7 @@ def create_character(message, lang):
 # These are the functions that get the data in the characters s3 file
 
 def get_labels(message, lang):
-    key = get_key_and_content_from_message(message)
+    key, _content = get_key_and_content_from_message(message)
     s3_client = get_s3_client()
     char_info = info_from_s3(f'adventures/{key}', s3_client)
     if not char_info:
@@ -250,7 +276,7 @@ def get_labels(message, lang):
 
 
 def get_conditions(message, lang):
-    key = get_key_and_content_from_message(message)
+    key, _content = get_key_and_content_from_message(message)
     s3_client = get_s3_client()
     char_info = info_from_s3(f'adventures/{key}', s3_client)
     if not char_info:
@@ -260,7 +286,7 @@ def get_conditions(message, lang):
 
 
 def get_potential(message, lang):
-    key = get_key_and_content_from_message(message)
+    key, _content = get_key_and_content_from_message(message)
     s3_client = get_s3_client()
     char_info = info_from_s3(f'adventures/{key}', s3_client)
     if not char_info:
@@ -272,7 +298,7 @@ def get_potential(message, lang):
 
 
 def get_moves(message, lang):
-    key = get_key_and_content_from_message(message)
+    key, _content = get_key_and_content_from_message(message)
     s3_client = get_s3_client()
     char_info = info_from_s3(f'adventures/{key}', s3_client)
     if not char_info:
@@ -282,22 +308,21 @@ def get_moves(message, lang):
 
 
 def get_pending_advancements(message, lang):
-    key = get_key_and_content_from_message(message)
+    key, _content = get_key_and_content_from_message(message)
     s3_client = get_s3_client()
     char_info = info_from_s3(f'adventures/{key}', s3_client)
     if not char_info:
         return get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.no_character')
     pending_advancements = char_info[PENDING_ADVANCEMENTS]
 
-    return f"You have {pending_advancements} unresolved advancements"
+    return get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.pending_advancements')(pending_advancements)
 
 
 def get_advancements(message, lang):
-    key = get_key_and_content_from_message(message)
+    key, _content = get_key_and_content_from_message(message)
     s3_client = get_s3_client()
     char_info = info_from_s3(f'adventures/{key}', s3_client)
     if not char_info:
         return get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.no_character')
 
-    return ""
-    # return format_advancements(char_info[ADVANCEMENT])
+    return format_advancements(char_info[ADVANCEMENT], lang)
