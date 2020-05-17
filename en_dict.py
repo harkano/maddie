@@ -18,7 +18,12 @@ en = {
     "updatelang": "update_lang",
     "updategm": "update_gm",
     "updateteamname": "update_teamname",
-    "createsettings": "create_settings"
+    "createsettings": "create_settings",
+    "labels": "labels",
+    "conditions": "conditions",
+    "get_potential": "get_potential",
+    "pending_advancements": "pending_advancements",
+    "advancements": "advancements"
   },
   "dice_rolling": {
     "calculation_title": "Calculation",
@@ -59,7 +64,10 @@ en = {
     "no_template": lambda playbook_name: f"It seems I don't have a template for a playbook called {playbook_name}",
     "congrats_on_creation": lambda char, playbook: f"Congratulations {char}, The {playbook} on joining the team!",
     "potential": lambda potential: f"You have {potential} potential marked",
-    "congrats_pending_advancements": lambda adv_count: f"You can do {adv_count + 1} advancements"
+    "congrats_pending_advancements": lambda adv_count: f"You can do {adv_count + 1} advancements",
+    "basic": "\nBasic:",
+    "advanced": "\nAdvanced:",
+    "taken": "[TOMADO] "
   },
   "labels": {
     "danger": "danger",

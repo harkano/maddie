@@ -18,7 +18,12 @@ es = {
     "editarleng": "update_lang",
     "editargm": "update_gm",
     "editarnombre": "update_teamname",
-    "crearconfig": "create_settings"
+    "crearconfig": "create_settings",
+    "etiquetas": "labels",
+    "condiciones": "conditions",
+    "ver_potencial": "get_potential",
+    "avances_pendientes": "pending_advancements",
+    "avances": "advancements"
   },
   "dice_rolling": {
     "calculation_title": "Cálculo",
@@ -58,7 +63,10 @@ es = {
     "no_template": lambda playbook_name: f"Parece ser que no tengo una plantilla para un libreto llamado {playbook_name}",
     "congrats_on_creation": lambda char, playbook: f"Felicidades {char}, {playbook} por unirte al equipo!",
     "potential": lambda potential: f"Tenés {potential} potencial marcado",
-    "pending_advancements": lambda adv_count: f"Podés hacer {adv_count} avances"
+    "pending_advancements": lambda adv_count: f"Podés hacer {adv_count} avances",
+    "basic": "\nBásicos:",
+    "advanced": "\nAvanzados:",
+    "taken": "[TOMADO] "
   },
   "labels": {
     "danger": "peligro",
@@ -476,7 +484,7 @@ es = {
     },
     "nomad": {
       "title": "Echando raíces",
-      "description": "Estas acá, y a la vez no, y se nota. Con el tiempo vas a poder comprometerte con este lugar y encontrar porque esta gente elige invertir en los demás.\nLos adultos no tienen Influencia sobre vos por defecto. Nadie la tiene. Solo podes dar un total de 6 de Influencia. Durante la partida, solo podes dar Influencia revelando una vulnerabilidad o debilidad a alguien. Podes dar Influencia a través del movimiento de fin de sesión. No podes darle Influencia a alguien que ya tenga sobre vos.\nLos otros no pueden tomar Influencia sobre vos; si fueran a hacerlo, en vez de eso pueden marcar potencial o infligirte una condición, a su elección. Rechazas Influencia con -2 por defecto, en vez de +0. Cuando alguien toma ventaja de la Influencia sobre vos, pueden elegir dos opciones de la lista. Al final de cada sesión, podes tomar de vuelta 1 Influencia de alguien a tu elección.\nSi diste 0-Influencia, no podes reconfortar ni apoyar a nadie. Si fueras a activar ese movimiento, en vez de eso marca una condición mientras decís exactamente la cosa equivocada. Si diste 0-Influencia y alguien intenta reconfortarte o apoyarte a vos, no podes abrirte a ellos.",
+      "description": "Estás acá, y a la vez no, y se nota. Con el tiempo vas a poder comprometerte con este lugar y encontrar porque esta gente elige invertir en los demás.\nLos adultos no tienen Influencia sobre vos por defecto. Nadie la tiene. Solo podes dar un total de 6 de Influencia. Durante la partida, solo podes dar Influencia revelando una vulnerabilidad o debilidad a alguien. Podes dar Influencia a través del movimiento de fin de sesión. No podes darle Influencia a alguien que ya tenga sobre vos.\nLos otros no pueden tomar Influencia sobre vos; si fueran a hacerlo, en vez de eso pueden marcar potencial o infligirte una condición, a su elección. Rechazas Influencia con -2 por defecto, en vez de +0. Cuando alguien toma ventaja de la Influencia sobre vos, pueden elegir dos opciones de la lista. Al final de cada sesión, podes tomar de vuelta 1 Influencia de alguien a tu elección.\nSi diste 0-Influencia, no podes reconfortar ni apoyar a nadie. Si fueras a activar ese movimiento, en vez de eso marca una condición mientras decís exactamente la cosa equivocada. Si diste 0-Influencia y alguien intenta reconfortarte o apoyarte a vos, no podes abrirte a ellos.",
       "benefits": "You gain benefits based on how much Influence you have given out. These benefits stack.",
       "oneTwo": "Cuando defendes a alguien que tiene Influencia sobre vos podes ignorar la condición Inseguro. Cuando enfrentas de forma directa a alguien que tiene Influencia sobre vos, podes ignorar la condición Asustado.",
       "three": "Cuando recibís un golpe poderoso de alguien que tiene Influencia sobre vos, toma -2 a la tirada.",
