@@ -1,5 +1,5 @@
 import logging
-from playbook_interactions import lock_label, edit_labels, mark_potential, mark_condition, clear_condition, create_character
+from playbook_interactions import lock_label, edit_labels, mark_potential, mark_condition, clear_condition, create_character, get_labels, get_conditions, get_potential, get_pending_advancements, get_advancements
 from config_interactions import get_settings, get_language, get_teamname, update_lang, update_gm, update_teamname, create_settings
 from playbooks import get_moment_of_truth, get_playbooks
 from language_handler import get_translation
@@ -29,7 +29,12 @@ plain_commands_dict = {
   "update_lang": update_lang,
   "update_gm": lambda msg, _lang: update_gm(msg),
   "update_teamname": lambda msg, _lang: update_teamname(msg),
-  "create_settings": lambda msg, _lang: create_settings(msg)
+  "create_settings": lambda msg, _lang: create_settings(msg),
+  "labels": get_labels, 
+  "conditions": get_conditions, 
+  "get_potential": get_potential, 
+  "pending_advancements": get_pending_advancements, 
+  "advancements": get_advancements
 }
 
 
