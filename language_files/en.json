@@ -1695,7 +1695,40 @@
 		"requiresRolling": false,
 		"playbook": "scion",
 		"special": true
-	}],
+	}, {
+		"id": 152,
+		"shortName": "eos",
+		"capital": "END OF SESSION",
+		"phrase": "wonders how the team feels!",
+		"blob": "*At the end of every session*, choose one:\n• *Grow closer to the team*\n. Explain who made you feel welcome; give Influence to that character and clear\na condition or mark potential.\n• *Grow into your own image of yourself.*\nExplain how you see yourself and why; shift one Label up and another down.\n• *Grow away from the team.* Explain why you feel detached. Take Influence over you away from another character.",
+		"label": "",
+		"img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
+		"requiresRolling": false,
+		"playbook": "peripheral"
+		},
+		{
+		"id": 153,
+		"shortName": "battle",
+		"capital": "ENTER BATTLE",
+		"phrase": "and the team enter battle against a dangerous foe!",
+		"blob": "*When you enter battle against a dangerous foe as a team*, add two to the Team pool.\n• If the leader has Influence over every teammate, add another Team.\\n• If everyone has the same purpose in the fight, add another Team.\\n• If any team member mistrusts the leader or the team, remove a Team.\n• If your team is ill-prepared or offbalance, remove a Team.\n\nThe leader of the team can mark a condition to avoid\nremoving a Team from the pool.",
+		"label": "",
+		"img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
+		"requiresRolling": false,
+		"playbook": "peripheral"
+		},
+		{
+		"id": 154,
+		"shortName": "advantage",
+		"capital": "TAKES ADVANTAGE",
+		"phrase": "takes advantage of their influence!",
+		"blob": "When you *take advantage of your Influence over someone*, surrender the Influence you hold over them to choose one:\n• give them -2 on a move they just made (after the roll)\n• inflict a condition on them\n• take an additional +1 on a move targeting them (after the roll)",
+		"label": "",
+		"img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
+		"requiresRolling": false,
+		"playbook": "peripheral"
+		}
+	],
 	"playbooks": [{
 		"id": 1,
 		"name": "beacon",
