@@ -97,7 +97,8 @@ es = {
     "existing_settings": "Este chat ya tiene archivo de configuración.",
     "successfull_update": "El cambio se hizo con éxito",
     "successfull_creation": "El archivo de configuración ha sido creado",
-    "invalid_lang": lambda lang: f"{lang} no es un idioma válido, las opciones son: es (español), en (inglés)"
+    "invalid_lang": lambda lang: f"{lang} no es un idioma válido, las opciones son: es (español), en (inglés)",
+    "gm": "GM"
   },
   "playbooks": {
     "the": "",
