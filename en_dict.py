@@ -93,6 +93,7 @@ en = {
     "settings": "Settings\n",
     "language": "Language",
     "teamname": "Team name",
+    "gm": "GM",
     "customNames": "Custom names",
     "no_file": "This chat doesn't have a configuration file. To create it write the following command:\n!adventure en\nif you wish for it to be in english.\n",
     "existing_settings": "This chat already has a configuration file.",

@@ -92,6 +92,7 @@ es = {
     "settings": "Configuración\n",
     "language": "Lenguaje",
     "teamname": "Nombre de equipo",
+    "gm": "GM",
     "customNames": "Nombres customizados",
     "no_file": "Este chat no tiene archivo de configuración. Para crearlo escribí el siguiente comando:\n!aventura es\nsi querés que esté en español.\n",
     "existing_settings": "Este chat ya tiene archivo de configuración.",
