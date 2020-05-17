@@ -40,7 +40,6 @@ embed_commands_dict = {
 
 def plain_command_handler(message, lang):
     command = message.content.split(" ")[0][1:]
-
     handler = plain_commands_dict.get(get_translation(lang, f'plain_commands.{command}'), lambda _msg, _lang: '')
 
     return handler(message, lang)

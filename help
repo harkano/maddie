@@ -39,10 +39,10 @@ For more type `!adult`
 `!updategm Harkano` - makes Harkano the GM
 `!updateteamname The Revengers` - changes the team name
 
-`!create nova "Jean Grey" Harkano (Ross) savior` - Creates a Nova called Jean Grey, played by Harkano (Ross), with the initial label increase put into savior.
+`!create nova "Jean Grey" "Harkano (Ross)"" savior` - Creates a Nova called Jean Grey, played by Harkano (Ross), with the initial label increase put into savior.
 `!editlabels superior mundane` - shifts superior up and mundane down
 `!potential` - makes potential, tells you how many you have, and lets you know when you get an advancement
 `!markcondition guilty` - marks guilty
 `!clearcondition guilty` - clears guilty
 
-For any feedback, feature request or bug reports please contact 'Harkano (Ross) #7019' on https://discord.gg/2a4hbpD
+For any feedback, feature requests or bug reports please contact 'Harkano (Ross) #7019' on https://discord.gg/2a4hbpD

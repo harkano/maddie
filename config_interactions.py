@@ -41,7 +41,9 @@ def generic_updater(message, field):
     if not settings:
         return no_config_file()
 
-    new_value = message.content.split(" ")[1]
+    from tssplit import tssplit
+    new_value = tssplit(message.content, quote='"', delimiter=' ')[1]
+    #new_value = message.content.split(" ")[1]
     settings[field] = new_value
 
     upload_to_s3(settings, settings_key, s3_client)
