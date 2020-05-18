@@ -78,7 +78,9 @@ es = {
     "more": "más",
     "less": "menos",
     "equal": "igual",
-    "add_one_to_label": lambda difference, direction: f"Deberías agregarle uno a una de tus etiquetas, la diferencia en este caso da {difference} {direction} que la suma original"
+    "add_one_to_label": lambda difference, direction: f"Deberías agregarle uno a una de tus etiquetas, la diferencia en este caso da {difference} {direction} que la suma original",
+    "less_than_min": lambda min_allowed, intended: f"Lo siento, pero {intended} no es un valor válido para una etiqueta, el mínimo es {min_allowed}",
+    "greater_than_max": lambda max_allowed, intended: f"Lo siento, pero {intended} no es un valor válido para una etiqueta, el máximo es {max_allowed}"
   },
   "labels": {
     "danger": "peligro",

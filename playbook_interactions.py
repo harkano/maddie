@@ -2,19 +2,9 @@ import boto3
 import json
 from s3_utils import info_from_s3, get_s3_client, upload_to_s3, get_files_from_dir
 from language_handler import get_translation
-from utils import get_moves as get_moves_json_array
+from utils import get_moves as get_moves_json_array, get_key_and_content_from_message, get_args_from_content, format_labels
+from constants import  LABELS, VALUE, LOCKED, POTENTIAL, PENDING_ADVANCEMENTS, CONDITIONS, MOVES, ADVANCEMENT, MAX_LABEL_VALUE, MIN_LABEL_VALUE, PLAYBOOK_INTERACTIONS, DESCRIPTION, TAKEN
 
-LABELS = 'labels'
-VALUE = 'value'
-LOCKED = 'locked'
-POTENTIAL = 'potential'
-PENDING_ADVANCEMENTS = 'pendingAdvancements'
-CONDITIONS = 'conditions'
-MOVES = 'moves'
-ADVANCEMENT = 'advancement'
-MAX_LABEL_VALUE = 3
-MIN_LABEL_VALUE = -2
-PLAYBOOK_INTERACTIONS = 'playbook_interactions'
 # These are the auxiliar functions
 
 def label_is_not_editable(label, border_value):
@@ -32,23 +22,6 @@ def get_label_has_border_value_text(label_name, label, direction, lang):
         return get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.is_locked')(get_translation(lang, f'labels.{label_name}'))
 
     return get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.value_is_in_border')(value, get_translation(lang, f'labels.{label_name}'), direction)
-
-
-def format_labels(labels, lang):
-    response = get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.labels_base')
-
-    for label in labels:
-        name = get_translation(lang, f'labels.{label}').capitalize()
-        value = labels[label][VALUE]
-
-        if labels[label][LOCKED]:
-            is_locked = get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.locked')
-        else:
-            is_locked = ''
-
-        response = response + f'{name}: {value} {is_locked}\n'
-
-    return response
 
 
 def format_conditions(conditions, lang):
@@ -103,30 +76,14 @@ def format_moves(moves):
     return ''
 
 
-def get_args_from_content(content):
-    from tssplit import tssplit
-    #splited = content.split(" ")
-    splited = tssplit(content, quote='"', delimiter=' ')
-    if len(splited) == 2:
-        return splited[1]
-
-    return splited[1:]
-
-
-def get_key_and_content_from_message(message):
-    key = f'{message.channel.id}/{message.author.id}'
-
-    return f'adventures/{key}', message.content
-
-
 def format_advance_list(advance_list, list_name, lang):
     response = get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.{list_name}') + '\n'
 
     for advance_key in advance_list:
         advance = advance_list[advance_key]
-        description = advance['description']
+        description = advance[DESCRIPTION]
         response = response + '• '
-        if advance['taken']:
+        if advance[TAKEN]:
             response = response + get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.taken')
 
         response = response + get_translation(lang, f'playbooks.advances.{description}') + '\n'
@@ -265,111 +222,6 @@ def create_character(message, lang):
     formated_playbook_name = playbook_name.capitalize()
     return get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.congrats_on_creation')(character_name, formated_playbook_name)
 
-
-def add_move_from_your_playbook(message, lang):
-    key, content = get_key_and_content_from_message(message)
-    s3_client = get_s3_client()
-    char_info = info_from_s3(key, s3_client)
-
-    if not char_info:
-        return get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.no_character')
-
-    move_name = get_args_from_content(content)
-
-    # TODO get the move id
-    moves_array = get_moves_json_array(lang)[MOVES]
-    move_list = list(filter(lambda move_dict: move_dict['shortName'] == move_name and not move_dict['special'], moves_array))
-
-    if not len(move_list):
-        # TODO add to dict
-        return get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.no_moves_pb')
-
-    id = move_list[0]['id']
-
-    move = list(filter(lambda dic: dic["id"] == id, char_info[MOVES]))[0]
-
-    if move['picked']:
-        return get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.move_already_taken')
-
-    char_info[PENDING_ADVANCEMENTS] = char_info[PENDING_ADVANCEMENTS] - 1
-    move['picked'] = True
-    upload_to_s3(char_info, key, s3_client)
-
-    return get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.successfully_added_move')(move_name)
-
-
-def add_move_from_other_playbook(message, lang):
-    key, content = get_key_and_content_from_message(message)
-    s3_client = get_s3_client()
-    char_info = info_from_s3(key, s3_client)
-
-    if not char_info:
-        return get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.no_character')
-    move_name = get_args_from_content(content)
-
-    # TODO get the move id
-    moves_array = get_moves_json_array(lang)[MOVES]
-    move_list = list(filter(lambda move_dict: move_dict['shortName'] == move_name, moves_array))
-
-    if not len(move_list):
-        # TODO add to dict
-        return get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.no_moves_pb')
-
-    move = move_list[0]
-
-    if move['playbook'] == char_info['playbook']:
-        return get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.your_playbook')
-
-    id = move_list[0]['id']
-
-    move = list(filter(lambda dic: dic["id"] == id, char_info[MOVES]))
-
-    if len(move):
-        return get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.move_already_taken')
-
-    char_info[PENDING_ADVANCEMENTS] = char_info[PENDING_ADVANCEMENTS] - 1
-    char_info[MOVES].append({ "id": id, "picked": True })
-    upload_to_s3(char_info, key, s3_client)
-
-    return get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.successfully_added_move')(move_name)
-
-
-def rearrange_labels(message, lang):
-    key, content = get_key_and_content_from_message(message)
-    s3_client = get_s3_client()
-    char_info = info_from_s3(key, s3_client)
-    new_label_values = get_args_from_content(content)
-    labels = char_info[LABELS]
-
-    total_sum = 0
-    new_sum = 0
-
-    for label in labels:
-        total_sum = total_sum + int(labels[label][VALUE])
-
-    for value in new_label_values:
-        new_sum = new_sum + int(value)
-
-    if total_sum + 1 != new_sum:
-        difference = abs(new_sum - total_sum)
-        if new_sum - total_sum > 0:
-            direction = get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.more')
-        elif total_sum == new_sum:
-            difference = ''
-            direction = get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.equal')
-        else:
-            direction = get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.less')
-
-        return get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.add_one_to_label')(difference, direction)
-
-    index = 0
-    for label in labels:
-        labels[label][VALUE] = int(new_label_values[index])
-        index += 1
-
-    upload_to_s3(char_info, key, s3_client)
-    return format_labels(labels, lang)
-    
 
 # These are the functions that get the data in the characters s3 file
 

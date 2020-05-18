@@ -79,7 +79,9 @@ en = {
     "more": "more",
     "less": "less",
     "equal": "equal",
-    "add_one_to_label": lambda difference, direction: f"You should add one to a label, the difference with these values has {difference} {direction} than the original sum"
+    "add_one_to_label": lambda difference, direction: f"You should add one to a label, the difference with these values has {difference} {direction} than the original sum",
+    "less_than_min": lambda min_allowed, intended: f"I'm sorry, but {intended} is not a valid label value. The minimum is {min_allowed}",
+    "greater_than_max": lambda max_allowed, intended: f"I'm sorry, but {intended} is not a valid label value. The maximum is {max_allowed}"
   },
   "labels": {
     "danger": "danger",

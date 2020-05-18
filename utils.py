@@ -1,9 +1,5 @@
 import json
-
-MAX_POSITIVE_MOD = 4
-MIN_NEGATIVE_MOD = 3
-SUM = '+'
-SUB = '-'
+from constants import MAX_POSITIVE_MOD, MIN_NEGATIVE_MOD, SUM, SUB, PLAYBOOK_INTERACTIONS, VALUE, LOCKED
 
 def get_modified_num(mod, num):
     if mod == SUM: return min(num, MAX_POSITIVE_MOD)
@@ -17,3 +13,38 @@ def get_moves(language = 'en'):
     json_array = json.load(input_file)
 
     return json_array
+
+
+def get_key_and_content_from_message(message):
+    key = f'{message.channel.id}/{message.author.id}'
+
+    return f'adventures/{key}', message.content
+
+
+def get_args_from_content(content):
+    from tssplit import tssplit
+    #splited = content.split(" ")
+    splited = tssplit(content, quote='"', delimiter=' ')
+    if len(splited) == 2:
+        return splited[1]
+
+    return splited[1:]
+
+
+def format_labels(labels, lang):
+    response = get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.labels_base')
+
+    for label in labels:
+        name = get_translation(lang, f'labels.{label}').capitalize()
+        value = labels[label][VALUE]
+
+        if labels[label][LOCKED]:
+            is_locked = get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.locked')
+        else:
+            is_locked = ''
+
+        response = response + f'{name}: {value} {is_locked}\n'
+
+    return response
+
+
