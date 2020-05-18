@@ -69,7 +69,9 @@ es = {
     "advanced": "\nAvanzados:",
     "taken": "[TOMADO] ",
     "no_moves_pb": "Perdón, pero no hay movimientos de tu libreto que coincidan con ese nombre",
-    "no_moves": "Perdón, pero no hay movimientos que coincidan con ese nombre"
+    "no_moves": "Perdón, pero no hay movimientos que coincidan con ese nombre",
+    "move_already_taken": "Ya conseguiste este movimiento, elegí otro",
+    "successfully_added_move": lambda move_name: f"Genial, ahora podes usar el movimiento {move_name}"
   },
   "labels": {
     "danger": "peligro",

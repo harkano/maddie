@@ -70,7 +70,9 @@ en = {
     "taken": "[TOMADO] ",
     "pending_advancements": lambda adv_count: f"You can do {adv_count + 1} advancements",
     "no_moves_pb": "I'm sorry, but there are no moves from your playbook that match that name",
-    "no_moves": "I'm sorry, but there are no moves that match that name"
+    "no_moves": "I'm sorry, but there are no moves that match that name",
+    "move_already_taken": "You already have this move, choose another one",
+    "successfully_added_move": lambda move_name: f"Nice, you can now use the move {move_name}"
   },
   "labels": {
     "danger": "danger",

@@ -281,20 +281,21 @@ def add_move_from_your_playbook(message, lang):
     id = move_list[0]['id']
 
     s3_client = get_s3_client()
-    char_info = info_from_s3(f'adventures/{key}', s3_client)
+    char_info = info_from_s3(key, s3_client)
 
     if not char_info:
         return get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.no_character')
 
     move = list(filter(lambda dic: dic["id"] == id, char_info['moves']))[0]
+    print(move)
     if move['picked']:
         return get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.move_already_taken')
 
-    move["picked"] = True
-
+    char_info[PENDING_ADVANCEMENTS] = char_info[PENDING_ADVANCEMENTS] - 1
+    move['picked'] = True
     upload_to_s3(char_info, key, s3_client)
 
-    return 'format_conditions(char_info[CONDITIONS], lang)'
+    return get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.successfully_added_move')(move_name)
 
 
 # These are the functions that get the data in the characters s3 file
