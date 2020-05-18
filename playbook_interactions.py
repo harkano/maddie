@@ -268,11 +268,17 @@ def create_character(message, lang):
 
 def add_move_from_your_playbook(message, lang):
     key, content = get_key_and_content_from_message(message)
+    s3_client = get_s3_client()
+    char_info = info_from_s3(key, s3_client)
+
+    if not char_info:
+        return get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.no_character')
+
     move_name = get_args_from_content(content)
 
     # TODO get the move id
-    moves_array = get_moves_json_array(lang)['moves']
-    move_list = list(filter(lambda move_dict: move_dict['shortName'] == move_name, moves_array))
+    moves_array = get_moves_json_array(lang)[MOVES]
+    move_list = list(filter(lambda move_dict: move_dict['shortName'] == move_name and not move_dict['special'], moves_array))
 
     if not len(move_list):
         # TODO add to dict
@@ -280,19 +286,49 @@ def add_move_from_your_playbook(message, lang):
 
     id = move_list[0]['id']
 
-    s3_client = get_s3_client()
-    char_info = info_from_s3(key, s3_client)
+    move = list(filter(lambda dic: dic["id"] == id, char_info[MOVES]))[0]
 
-    if not char_info:
-        return get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.no_character')
-
-    move = list(filter(lambda dic: dic["id"] == id, char_info['moves']))[0]
-    print(move)
     if move['picked']:
         return get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.move_already_taken')
 
     char_info[PENDING_ADVANCEMENTS] = char_info[PENDING_ADVANCEMENTS] - 1
     move['picked'] = True
+    upload_to_s3(char_info, key, s3_client)
+
+    return get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.successfully_added_move')(move_name)
+
+
+def add_move_from_other_playbook(message, lang):
+    key, content = get_key_and_content_from_message(message)
+    s3_client = get_s3_client()
+    char_info = info_from_s3(key, s3_client)
+
+    if not char_info:
+        return get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.no_character')
+    move_name = get_args_from_content(content)
+
+    # TODO get the move id
+    moves_array = get_moves_json_array(lang)[MOVES]
+    move_list = list(filter(lambda move_dict: move_dict['shortName'] == move_name, moves_array))
+
+    if not len(move_list):
+        # TODO add to dict
+        return get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.no_moves_pb')
+
+    move = move_list[0]
+
+    if move['playbook'] == char_info['playbook']:
+        return get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.your_playbook')
+
+    id = move_list[0]['id']
+
+    move = list(filter(lambda dic: dic["id"] == id, char_info[MOVES]))
+
+    if len(move):
+        return get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.move_already_taken')
+
+    char_info[PENDING_ADVANCEMENTS] = char_info[PENDING_ADVANCEMENTS] - 1
+    char_info[MOVES].append({ "id": id, "picked": True })
     upload_to_s3(char_info, key, s3_client)
 
     return get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.successfully_added_move')(move_name)

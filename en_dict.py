@@ -24,7 +24,8 @@ en = {
     "get_potential": "get_potential",
     "pending_advancements": "pending_advancements",
     "advancements": "advancements",
-    "mov_my_playbook": "mov_my_playbook"
+    "mov_my_playbook": "mov_my_playbook",
+    "mov_other_playbook": "mov_other_playbook"
   },
   "dice_rolling": {
     "calculation_title": "Calculation",
@@ -72,7 +73,8 @@ en = {
     "no_moves_pb": "I'm sorry, but there are no moves from your playbook that match that name",
     "no_moves": "I'm sorry, but there are no moves that match that name",
     "move_already_taken": "You already have this move, choose another one",
-    "successfully_added_move": lambda move_name: f"Nice, you can now use the move {move_name}"
+    "successfully_added_move": lambda move_name: f"Nice, you can now use the move {move_name}",
+    "your_playbook": "You can't add a move from your playbook with this advancement"
   },
   "labels": {
     "danger": "danger",

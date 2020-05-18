@@ -24,7 +24,8 @@ es = {
     "ver_potencial": "get_potential",
     "avances_pendientes": "pending_advancements",
     "avances": "advancements",
-    "mov_mi_libreto": "mov_my_playbook"
+    "mov_mi_libreto": "mov_my_playbook",
+    "mov_otro_libreto": "mov_other_playbook"
   },
   "dice_rolling": {
     "calculation_title": "Cálculo",
@@ -71,7 +72,8 @@ es = {
     "no_moves_pb": "Perdón, pero no hay movimientos de tu libreto que coincidan con ese nombre",
     "no_moves": "Perdón, pero no hay movimientos que coincidan con ese nombre",
     "move_already_taken": "Ya conseguiste este movimiento, elegí otro",
-    "successfully_added_move": lambda move_name: f"Genial, ahora podes usar el movimiento {move_name}"
+    "successfully_added_move": lambda move_name: f"Genial, ahora podes usar el movimiento {move_name}",
+    "your_playbook": "No podés agregar un movimiento de tu libreto con este avance"
   },
   "labels": {
     "danger": "peligro",
