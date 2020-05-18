@@ -334,6 +334,43 @@ def add_move_from_other_playbook(message, lang):
     return get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.successfully_added_move')(move_name)
 
 
+def rearrange_labels(message, lang):
+    key, content = get_key_and_content_from_message(message)
+    s3_client = get_s3_client()
+    char_info = info_from_s3(key, s3_client)
+    new_label_values = get_args_from_content(content)
+    labels = char_info[LABELS]
+
+    total_sum = 0
+    new_sum = 0
+
+    for label in labels:
+        total_sum = total_sum + int(labels[label][VALUE])
+
+    for value in new_label_values:
+        new_sum = new_sum + int(value)
+
+    if total_sum + 1 != new_sum:
+        difference = abs(new_sum - total_sum)
+        if new_sum - total_sum > 0:
+            direction = get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.more')
+        elif total_sum == new_sum:
+            difference = ''
+            direction = get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.equal')
+        else:
+            direction = get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.less')
+
+        return get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.add_one_to_label')(difference, direction)
+
+    index = 0
+    for label in labels:
+        labels[label][VALUE] = int(new_label_values[index])
+        index += 1
+
+    upload_to_s3(char_info, key, s3_client)
+    return format_labels(labels, lang)
+    
+
 # These are the functions that get the data in the characters s3 file
 
 def get_labels(message, lang):

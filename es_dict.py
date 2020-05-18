@@ -25,7 +25,8 @@ es = {
     "avances_pendientes": "pending_advancements",
     "avances": "advancements",
     "mov_mi_libreto": "mov_my_playbook",
-    "mov_otro_libreto": "mov_other_playbook"
+    "mov_otro_libreto": "mov_other_playbook",
+    "reorganizar": "rearrange"
   },
   "dice_rolling": {
     "calculation_title": "Cálculo",
@@ -73,7 +74,11 @@ es = {
     "no_moves": "Perdón, pero no hay movimientos que coincidan con ese nombre",
     "move_already_taken": "Ya conseguiste este movimiento, elegí otro",
     "successfully_added_move": lambda move_name: f"Genial, ahora podes usar el movimiento {move_name}",
-    "your_playbook": "No podés agregar un movimiento de tu libreto con este avance"
+    "your_playbook": "No podés agregar un movimiento de tu libreto con este avance",
+    "more": "más",
+    "less": "menos",
+    "equal": "igual",
+    "add_one_to_label": lambda difference, direction: f"Deberías agregarle uno a una de tus etiquetas, la diferencia en este caso da {difference} {direction} que la suma original"
   },
   "labels": {
     "danger": "peligro",

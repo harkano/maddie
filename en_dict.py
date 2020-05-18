@@ -25,7 +25,8 @@ en = {
     "pending_advancements": "pending_advancements",
     "advancements": "advancements",
     "mov_my_playbook": "mov_my_playbook",
-    "mov_other_playbook": "mov_other_playbook"
+    "mov_other_playbook": "mov_other_playbook",
+    "rearrange": "rearrange"
   },
   "dice_rolling": {
     "calculation_title": "Calculation",
@@ -74,7 +75,11 @@ en = {
     "no_moves": "I'm sorry, but there are no moves that match that name",
     "move_already_taken": "You already have this move, choose another one",
     "successfully_added_move": lambda move_name: f"Nice, you can now use the move {move_name}",
-    "your_playbook": "You can't add a move from your playbook with this advancement"
+    "your_playbook": "You can't add a move from your playbook with this advancement",
+    "more": "more",
+    "less": "less",
+    "equal": "equal",
+    "add_one_to_label": lambda difference, direction: f"You should add one to a label, the difference with these values has {difference} {direction} than the original sum"
   },
   "labels": {
     "danger": "danger",
