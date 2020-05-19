@@ -80,7 +80,11 @@ es = {
     "equal": "igual",
     "add_one_to_label": lambda difference, direction: f"Deberías agregarle uno a una de tus etiquetas, la diferencia en este caso da {difference} {direction} que la suma original",
     "less_than_min": lambda min_allowed, intended: f"Lo siento, pero {intended} no es un valor válido para una etiqueta, el mínimo es {min_allowed}",
-    "greater_than_max": lambda max_allowed, intended: f"Lo siento, pero {intended} no es un valor válido para una etiqueta, el máximo es {max_allowed}"
+    "greater_than_max": lambda max_allowed, intended: f"Lo siento, pero {intended} no es un valor válido para una etiqueta, el máximo es {max_allowed}",
+    "no_bull": "Para realizar este avance debes tener el libreto Toro",
+    "invalid_roles": "Los roles válidos son: defensor, amigo, confidente y habilitador. A continuación los roles no válidos:",
+    "successfull_update": "El cambio se hizo con éxito",
+    "role_is_picked": lambda role: f"El rol {role} ya fue elegido, debes elegir dos nuevos"
   },
   "labels": {
     "danger": "peligro",
@@ -126,6 +130,27 @@ es = {
   "playbooks": {
     "the": "",
     "list": ['emblema', 'toro', 'delincuente', 'condenado', 'jano', 'legado', 'nova', 'extranjero', 'protegido', 'transformado', 'brain', ', harbinger', 'innocent', 'joined', 'newborn', 'nomad', 'reformed', 'scion', 'soldier'],
+    "names": {
+      "emblema": "beacon",
+      "toro": "bull",
+      "delincuente": "delinquent",
+      "condenado": "doomed",
+      "jano": "janus",
+      "legado": "legacy",
+      "nova": "nova",
+      "extranjero": "outsider",
+      "protegido": "protege",
+      "transformado": "transformed",
+      "brain": "brain",
+      "harbinger": "harbinger",
+      "innocent": "innocent",
+      "joined": "joined",
+      "newborn": "newborn",
+      "nomad": "nomad",
+      "reformed": "reformed",
+      "scion": "scion",
+      "soldier": "soldier"
+    },
     "playbooks": "Libretos",
     "available": "Los Libretos disponibles son - ",
     "playbook_re": r"!mdlv ([a-z]+)",
@@ -205,6 +230,13 @@ es = {
       "explanation": "Siempre tienes exatamente un amor y un rival. Puedes cambiar tu amor o rival en cualquier momento; dale al nuevo objeto de tus afectos o desdén Influencia sobre tí. Toma +1 continuado (ongoing) a cualquier acción que impresione a tu amor o frustre a tu rival",
       "description": "Elige un rol que normalmente cumples para tu amor o rival:",
       "roles": {
+        "list": ["defensor", "amigo", "confidente", "habilitador"],
+        "titles_dict": {
+          "defensor": "defender",
+          "amigo": "friend",
+          "confidente": "listener",
+          "habilitador": "enabler"
+        },
         "titles": {
           "defender": "Defensor",
           "friend": "Amigo",

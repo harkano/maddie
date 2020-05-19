@@ -104,7 +104,12 @@
     }
   },
   "heart": {
-    "role": "",
+    "roles": {
+      "defender": false,
+      "friend": false,
+      "listener": false,
+      "enabler": false
+    },
     "love": "",
     "rival": ""
   }

@@ -21,3 +21,4 @@ MAX_POSITIVE_MOD = 4
 MIN_NEGATIVE_MOD = 3
 SUM = '+'
 SUB = '-'
+HEART = 'heart'

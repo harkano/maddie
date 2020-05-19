@@ -81,7 +81,11 @@ en = {
     "equal": "equal",
     "add_one_to_label": lambda difference, direction: f"You should add one to a label, the difference with these values has {difference} {direction} than the original sum",
     "less_than_min": lambda min_allowed, intended: f"I'm sorry, but {intended} is not a valid label value. The minimum is {min_allowed}",
-    "greater_than_max": lambda max_allowed, intended: f"I'm sorry, but {intended} is not a valid label value. The maximum is {max_allowed}"
+    "greater_than_max": lambda max_allowed, intended: f"I'm sorry, but {intended} is not a valid label value. The maximum is {max_allowed}",
+    "no_bull": "To take this advancement you must have the Bull playbook",
+    "invalid_roles": "The valid roles are: defender, friend, listener and enabler. The following ones are invalid:",
+    "successfull_update": "The update was successfull",
+    "role_is_picked": lambda role: f"The role {role} has already been chosen, you must pick two new ones"
   },
   "labels": {
     "danger": "danger",
@@ -127,6 +131,27 @@ en = {
   "playbooks": {
     "the": "The",
     "list": ['beacon', 'bull', 'delinquent', 'doomed', 'janus', 'legacy', 'nova', 'outsider', 'protege', 'transformed', 'brain', 'harbinger', 'innocent', 'joined', 'newborn', 'nomad', 'reformed', 'scion', 'soldier'],
+    "names": {
+      "beacon": "beacon",
+      "bull": "bull",
+      "delinquent": "delinquent",
+      "doomed": "doomed",
+      "janus": "janus",
+      "legacy": "legacy",
+      "nova": "nova",
+      "outsider": "outsider",
+      "protege": "protege",
+      "transformed": "transformed",
+      "brain": "brain",
+      "harbinger": "harbinger",
+      "innocent": "innocent",
+      "joined": "joined",
+      "newborn": "newborn",
+      "nomad": "nomad",
+      "reformed": "reformed",
+      "scion": "scion",
+      "soldier": "soldier"
+    },
     "playbooks": "Playbooks",
     "available": "Available Playbooks are - ",
     "playbook_re": r"!mot ([a-z]+)",
@@ -206,6 +231,13 @@ en = {
       "explanation": "You always have exactly one love and one rival. You can change your love or rival at any time; give the new subject of your affections or disdain Influence over you. Take +1 ongoing to any action that impress your love or frustrates your rival.",
       "description": "Choose a role you commonly fulfill with your love or rival",
       "roles": {
+        "list": ["defender", "friend", "listener", "enabler"],
+        "titles_dict": {
+          "defender": "defender",
+          "friend": "friend",
+          "listener": "listener",
+          "enabler": "enabler"
+        },
         "titles": {
           "defender": "Defender",
           "friend": "Friend",
