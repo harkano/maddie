@@ -26,7 +26,8 @@ es = {
     "avances": "advancements",
     "mov_mi_libreto": "mov_my_playbook",
     "mov_otro_libreto": "mov_other_playbook",
-    "reorganizar": "rearrange"
+    "reorganizar": "rearrange",
+    "mas_roles": "more_roles"
   },
   "dice_rolling": {
     "calculation_title": "Cálculo",

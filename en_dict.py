@@ -26,7 +26,8 @@ en = {
     "advancements": "advancements",
     "mov_my_playbook": "mov_my_playbook",
     "mov_other_playbook": "mov_other_playbook",
-    "rearrange": "rearrange"
+    "rearrange": "rearrange",
+    "more_roles": "more_roles"
   },
   "dice_rolling": {
     "calculation_title": "Calculation",

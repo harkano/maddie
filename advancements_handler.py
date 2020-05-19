@@ -1,7 +1,7 @@
 # advancement_dict = {
 #   "loseInfluence": ,
-
 #   "mot": ,
+
 #   "moreRoles": ,
 #   "motAgain": ,
 #   "playbookChange": ,
@@ -43,7 +43,7 @@
 from utils import get_moves as get_moves_json_array, get_key_and_content_from_message, get_args_from_content, format_labels
 from s3_utils import info_from_s3, get_s3_client, upload_to_s3, get_files_from_dir
 from language_handler import get_translation
-from constants import PLAYBOOK_INTERACTIONS, MOVES, PENDING_ADVANCEMENTS, PICKED, SHORT_NAME, SPECIAL, ID, PLAYBOOK, LABELS, VALUE, MAX_LABEL_VALUE, MIN_LABEL_VALUE
+from constants import PLAYBOOK_INTERACTIONS, MOVES, PENDING_ADVANCEMENTS, PICKED, SHORT_NAME, SPECIAL, ID, PLAYBOOK, LABELS, VALUE, MAX_LABEL_VALUE, MIN_LABEL_VALUE, HEART, BULL, ROLES
 
 def add_move_from_your_playbook(message, lang):
     key, content = get_key_and_content_from_message(message)
@@ -154,3 +154,37 @@ def rearrange_labels(message, lang):
     return format_labels(labels, lang)
     
 
+def get_more_bull_roles(message, lang):
+    key, content = get_key_and_content_from_message(message)
+    s3_client = get_s3_client()
+    char_info = info_from_s3(key, s3_client)
+
+    if char_info[PLAYBOOK] != BULL:
+        return get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.no_bull')
+
+    new_roles = get_args_from_content(content)
+    already_picked = ''
+    acum = ''
+    roles = char_info[HEART][ROLES]
+    translated_roles = []
+
+    for role in new_roles:
+        translated_role = get_translation(lang, f'playbooks.bull.roles.titles_dict')[role]
+        translated_roles.append(translated_role)
+
+        if translated_role not in roles:
+            acum += f'\n• {role}'
+        elif roles[translated_role]:
+            already_picked = get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.role_is_picked')(role)
+
+
+    if len(acum):
+        return already_picked + '\n' + get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.invalid_roles') + acum
+    if already_picked:
+        return already_picked
+
+    for translated_role in translated_roles:
+        roles[translated_role] = True
+
+    upload_to_s3(char_info, key, s3_client)
+    return get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.successfull_update')
