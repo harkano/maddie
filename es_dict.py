@@ -27,7 +27,8 @@ es = {
     "mov_mi_libreto": "mov_my_playbook",
     "mov_otro_libreto": "mov_other_playbook",
     "reorganizar": "rearrange",
-    "mas_roles": "more_roles"
+    "mas_roles": "more_roles",
+    "mov_adulto": "add_adult"
   },
   "dice_rolling": {
     "calculation_title": "Cálculo",
@@ -85,7 +86,8 @@ es = {
     "no_bull": "Para realizar este avance debes tener el libreto Toro",
     "invalid_roles": "Los roles válidos son: defensor, amigo, confidente y habilitador. A continuación los roles no válidos:",
     "successfull_update": "El cambio se hizo con éxito",
-    "role_is_picked": lambda role: f"El rol {role} ya fue elegido, debes elegir dos nuevos"
+    "role_is_picked": lambda role: f"El rol {role} ya fue elegido, debes elegir dos nuevos",
+    "not_adult": lambda name: f"El movimiento {name} no es adulto"
   },
   "labels": {
     "danger": "peligro",

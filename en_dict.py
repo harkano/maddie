@@ -27,7 +27,8 @@ en = {
     "mov_my_playbook": "mov_my_playbook",
     "mov_other_playbook": "mov_other_playbook",
     "rearrange": "rearrange",
-    "more_roles": "more_roles"
+    "more_roles": "more_roles",
+    "add_adult": "add_adult"
   },
   "dice_rolling": {
     "calculation_title": "Calculation",
@@ -86,7 +87,8 @@ en = {
     "no_bull": "To take this advancement you must have the Bull playbook",
     "invalid_roles": "The valid roles are: defender, friend, listener and enabler. The following ones are invalid:",
     "successfull_update": "The update was successfull",
-    "role_is_picked": lambda role: f"The role {role} has already been chosen, you must pick two new ones"
+    "role_is_picked": lambda role: f"The role {role} has already been chosen, you must pick two new ones",
+    "not_adult": lambda name: f"The move {name} is not adult"
   },
   "labels": {
     "danger": "danger",
