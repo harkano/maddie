@@ -84,11 +84,13 @@ en = {
     "add_one_to_label": lambda difference, direction: f"You should add one to a label, the difference with these values has {difference} {direction} than the original sum",
     "less_than_min": lambda min_allowed, intended: f"I'm sorry, but {intended} is not a valid label value. The minimum is {min_allowed}",
     "greater_than_max": lambda max_allowed, intended: f"I'm sorry, but {intended} is not a valid label value. The maximum is {max_allowed}",
-    "no_bull": "To take this advancement you must have the Bull playbook",
+    "no_playbook": lambda name: f"To take this advancement you must have the {name} playbook",
     "invalid_roles": "The valid roles are: defender, friend, listener and enabler. The following ones are invalid:",
     "successfull_update": "The update was successfull",
     "role_is_picked": lambda role: f"The role {role} has already been chosen, you must pick two new ones",
-    "not_adult": lambda name: f"The move {name} is not adult"
+    "not_adult": lambda name: f"The move {name} is not adult",
+    "already_max": lambda value, name: f"The {name} label already has the max value ({value})",
+    "invalid_label": lambda name: f"The label {name} does not exist. "
   },
   "labels": {
     "danger": "danger",
@@ -135,6 +137,27 @@ en = {
     "the": "The",
     "list": ['beacon', 'bull', 'delinquent', 'doomed', 'janus', 'legacy', 'nova', 'outsider', 'protege', 'transformed', 'brain', 'harbinger', 'innocent', 'joined', 'newborn', 'nomad', 'reformed', 'scion', 'soldier'],
     "names": {
+      "beacon": "beacon",
+      "bull": "bull",
+      "delinquent": "delinquent",
+      "doomed": "doomed",
+      "janus": "janus",
+      "legacy": "legacy",
+      "nova": "nova",
+      "outsider": "outsider",
+      "protege": "protege",
+      "transformed": "transformed",
+      "brain": "brain",
+      "harbinger": "harbinger",
+      "innocent": "innocent",
+      "joined": "joined",
+      "newborn": "newborn",
+      "nomad": "nomad",
+      "reformed": "reformed",
+      "scion": "scion",
+      "soldier": "soldier"
+    },
+    "inverted_names": {
       "beacon": "beacon",
       "bull": "bull",
       "delinquent": "delinquent",

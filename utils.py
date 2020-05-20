@@ -1,4 +1,5 @@
 import json
+from language_handler import get_translation
 from constants import MAX_POSITIVE_MOD, MIN_NEGATIVE_MOD, SUM, SUB, PLAYBOOK_INTERACTIONS, VALUE, LOCKED
 
 def get_modified_num(mod, num):
@@ -48,3 +49,13 @@ def format_labels(labels, lang):
     return response
 
 
+
+def validate_labels(lang, inputed_labels):
+    result = ''
+    labels = get_translation(lang, f'inverted_labels')
+
+    for label in inputed_labels:
+        if label not in labels:
+            result += get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.invalid_label')(label)
+
+    return result

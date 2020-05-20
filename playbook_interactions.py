@@ -2,7 +2,7 @@ import boto3
 import json
 from s3_utils import info_from_s3, get_s3_client, upload_to_s3, get_files_from_dir
 from language_handler import get_translation
-from utils import get_moves as get_moves_json_array, get_key_and_content_from_message, get_args_from_content, format_labels
+from utils import get_moves as get_moves_json_array, get_key_and_content_from_message, get_args_from_content, format_labels, validate_labels
 from constants import  LABELS, VALUE, LOCKED, POTENTIAL, PENDING_ADVANCEMENTS, CONDITIONS, MOVES, ADVANCEMENT, MAX_LABEL_VALUE, MIN_LABEL_VALUE, PLAYBOOK_INTERACTIONS, DESCRIPTION, TAKEN
 
 # These are the auxiliar functions
@@ -120,6 +120,10 @@ def edit_labels(message, lang):
 
     labels = char_info[LABELS]
 
+    labels_do_not_exist = validate_labels(lang, [label_to_increase_name_og, label_to_decrease_name_og])
+    if labels_do_not_exist:
+        return labels_do_not_exist
+
     label_to_increase = labels[label_to_increase_name]
     label_to_increase_value = label_to_increase[VALUE]
     label_to_decrease = labels[label_to_decrease_name]
@@ -152,6 +156,11 @@ def lock_label(message, lang):
         return get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.no_character')
 
     labels = char_info[LABELS]
+
+    label_does_not_exist = validate_labels(lang, [label_to_lock_name_og])
+    if label_does_not_exist:
+        return label_does_not_exist
+
     label_to_lock = labels[label_to_lock_name]
 
     if label_to_lock[LOCKED]:
@@ -203,6 +212,11 @@ def create_character(message, lang):
         return get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.existing_character')
 
     playbook_name, character_name, player_name, label_to_increase_og = get_args_from_content(content)
+
+    label_does_not_exist = validate_labels(lang, [label_to_increase_og])
+    if label_does_not_exist:
+        return label_does_not_exist
+
     label_to_increase = get_translation(lang, f'inverted_labels.{label_to_increase_og}')
     translated_name = get_translation(lang, f'playbooks.names.{playbook_name}')
     file_list = get_files_from_dir('playbooks', s3_client)
