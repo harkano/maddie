@@ -30,7 +30,8 @@ es = {
     "mas_roles": "more_roles",
     "mov_adulto": "add_adult",
     "mas_a_etiquetas": "more_to_labels",
-    "borrar_signo": "clear_sign"
+    "borrar_signo": "clear_sign",
+    "obtener_burns": "get_burns"
   },
   "dice_rolling": {
     "calculation_title": "Cálculo",
@@ -406,6 +407,7 @@ es = {
       "opponent": "es el mayor oponente al que se ha enfrentado tu legado... y aún está en libertad."
     },
     "nova": {
+      "yourFlares": "Tus bengalas son:",
       "names": {
         "storm": "Tormenta de realidad",
         "shield": "Blindaje",

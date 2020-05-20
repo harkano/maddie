@@ -96,18 +96,18 @@
         "description": "retire",
         "taken": false
       }
-    },
-    "flares": {
-      "storm": false,
-      "shield": false,
-      "constructs": false,
-      "moat": false,
-      "worship": false,
-      "move": false,
-      "boost": false,
-      "overcharge": false,
-      "elemental": false,
-      "snatch": false
     }
+  },
+  "flares": {
+    "storm": false,
+    "shield": false,
+    "constructs": false,
+    "moat": false,
+    "worship": false,
+    "move": false,
+    "boost": false,
+    "overcharge": false,
+    "elemental": false,
+    "snatch": false
   }
 }

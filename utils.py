@@ -59,3 +59,11 @@ def validate_labels(lang, inputed_labels):
             result += get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.invalid_label')(label)
 
     return result
+
+
+def format_flares(lang, flares):
+    response = get_translation(lang, 'playbooks.nova.yourFlares')
+    for flare in flares:
+        if flare:
+            translated_flare = get_translation(lang, f'playbooks.nova.names.{flare}').capitalize()
+            response += f'\n• {translated_flare}'

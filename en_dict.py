@@ -30,7 +30,8 @@ en = {
     "more_roles": "more_roles",
     "add_adult": "add_adult",
     "more_to_labels": "more_to_labels",
-    "clear_sign": "clear_sign"
+    "clear_sign": "clear_sign",
+    "get_burns": "get_burns"
   },
   "dice_rolling": {
     "calculation_title": "Calculation",
@@ -407,6 +408,7 @@ en = {
       "opponent": "is the greatest opponent of your legacy ever faced... and is still at large."
     },
     "nova": {
+      "yourFlares": "Your flares are:",
       "names": {
         "storm": "Reality storm",
         "shield": "Shielding",

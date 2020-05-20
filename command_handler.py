@@ -1,6 +1,6 @@
 import logging
 from playbook_interactions import lock_label, edit_labels, mark_potential, mark_condition, clear_condition, create_character, get_labels, get_conditions, get_potential, get_pending_advancements, get_advancements
-from advancements_handler import add_move_from_your_playbook, add_move_from_other_playbook, rearrange_labels, get_more_bull_roles, add_adult_move, add_one_to_two_labels, clear_doomsign
+from advancements_handler import add_move_from_your_playbook, add_move_from_other_playbook, rearrange_labels, get_more_bull_roles, add_adult_move, add_one_to_two_labels, clear_doomsign, get_burns
 from config_interactions import get_settings, get_language, get_teamname, update_lang, update_gm, update_teamname, create_settings
 from playbooks import get_moment_of_truth, get_playbooks
 from language_handler import get_translation
@@ -42,7 +42,8 @@ plain_commands_dict = {
   "more_roles": get_more_bull_roles,
   "add_adult": add_adult_move,
   "more_to_labels": add_one_to_two_labels,
-  "clear_sign": clear_doomsign
+  "clear_sign": clear_doomsign,
+  "get_burns": get_burns
 }
 
 
