@@ -29,7 +29,8 @@ en = {
     "rearrange": "rearrange",
     "more_roles": "more_roles",
     "add_adult": "add_adult",
-    "more_to_labels": "more_to_labels"
+    "more_to_labels": "more_to_labels",
+    "clear_sign": "clear_sign"
   },
   "dice_rolling": {
     "calculation_title": "Calculation",
@@ -91,7 +92,9 @@ en = {
     "role_is_picked": lambda role: f"The role {role} has already been chosen, you must pick two new ones",
     "not_adult": lambda name: f"The move {name} is not adult",
     "already_max": lambda value, name: f"The {name} label already has the max value ({value})",
-    "invalid_label": lambda name: f"The label {name} does not exist. "
+    "invalid_label": lambda name: f"The label {name} does not exist. ",
+    "invalid_doomsign": lambda doomsign: f"The doomsign {doomsign} does not exist, the valid ones are visions, infinite, portal, bright, bolstered and perish",
+    "doomsign_not_marked": lambda doomsign: f"The doomsign {doomsign} must be marked to be cleared"
   },
   "labels": {
     "danger": "danger",
@@ -300,6 +303,14 @@ en = {
       "doomsigns": {
         "title": "Doomsigns",
         "description": "These are abilities that come to you with your approaching doom. Once you have taken all five doomsigns above the line, you must take 'Your doom arrives' the next time your doom track fills. Choose one doomsign you already hold at character creation.",
+        "accessors": {
+          "visions": "visions",
+          "infinite": "infinite",
+          "portal": "portal",
+          "bright": "bright",
+          "bolstered": "bolstered",
+          "perish": "perish"
+        },
         "titles": {
           "visions": "Dark Visions",
           "infinite": "Infinite Powers",

@@ -29,7 +29,8 @@ es = {
     "reorganizar": "rearrange",
     "mas_roles": "more_roles",
     "mov_adulto": "add_adult",
-    "mas_a_etiquetas": "more_to_labels"
+    "mas_a_etiquetas": "more_to_labels",
+    "borrar_signo": "clear_sign"
   },
   "dice_rolling": {
     "calculation_title": "Cálculo",
@@ -90,7 +91,9 @@ es = {
     "role_is_picked": lambda role: f"El rol {role} ya fue elegido, debes elegir dos nuevos",
     "not_adult": lambda name: f"El movimiento {name} no es adulto",
     "already_max": lambda value, name: f"La etiqueta {name} ya tiene el valor máximo ({value})",
-    "invalid_label": lambda name: f"La etiqueta {name} no existe. "
+    "invalid_label": lambda name: f"La etiqueta {name} no existe. ",
+    "invalid_doomsign": lambda doomsign: f"El signo de perdición {doomsign} no existe, los válidos son visiones infinitos, portal, ardor, reforzado y morir",
+    "doomsign_not_marked": lambda doomsign: f"El signo de perdición {doomsign} debe estar marcado para poder borrarlo"
   },
   "labels": {
     "danger": "peligro",
@@ -299,6 +302,14 @@ es = {
       "doomsigns": {
         "title": "Señales de perdición",
         "description": "Estas son habilidades que adquieres a medida que te acercas a tu perdición. Una vez que hayas tomado las cinco Señales de perdición por encima de la línea, debes tomar 'Tu perdición llega' la próxima vez que la grilla de perdición se llene. Elige una señal de perdición inicial durante la creación del personaje.",
+        "accessors": {
+          "visiones": "visions",
+          "infinitos": "infinite",
+          "portal": "portal",
+          "ardor": "bright",
+          "reforzado": "bolstered",
+          "morir": "perish"
+        },
         "titles": {
           "visions": "Visiones oscuras",
           "infinite": "Poderes infinitos",

@@ -6,7 +6,6 @@
 
 #   "playbookChange": ,
 
-#   "plusOne": ,
 #   "clear": ,
 #   "burns": ,
 #   "confront": ,
@@ -41,7 +40,7 @@
 from utils import get_moves as get_moves_json_array, get_key_and_content_from_message, get_args_from_content, format_labels, validate_labels
 from s3_utils import info_from_s3, get_s3_client, upload_to_s3, get_files_from_dir
 from language_handler import get_translation
-from constants import PLAYBOOK_INTERACTIONS, MOVES, PENDING_ADVANCEMENTS, PICKED, SHORT_NAME, SPECIAL, ID, PLAYBOOK, LABELS, VALUE, MAX_LABEL_VALUE, MIN_LABEL_VALUE, HEART, BULL, ROLES, ADULT, DELINQUENT
+from constants import PLAYBOOK_INTERACTIONS, MOVES, PENDING_ADVANCEMENTS, PICKED, SHORT_NAME, SPECIAL, ID, PLAYBOOK, LABELS, VALUE, MAX_LABEL_VALUE, MIN_LABEL_VALUE, HEART, BULL, ROLES, ADULT, DELINQUENT, DOOMED, DOOMSIGNS
 
 def add_move_from_your_playbook(message, lang):
     key, content = get_key_and_content_from_message(message)
@@ -255,3 +254,25 @@ def add_one_to_two_labels(message, lang):
     return format_labels(labels, lang)
 
 
+def clear_doomsign(message, lang):
+    key, content = get_key_and_content_from_message(message)
+    s3_client = get_s3_client()
+    char_info = info_from_s3(key, s3_client)
+
+    if char_info[PLAYBOOK] != DOOMED:
+        return get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.no_playbook')(get_translation(lang, f'playbooks.inverted_names.{DOOMED}'))
+
+    doomsign_og = get_args_from_content(content)
+
+    doomsign = get_translation(lang, f'playbooks.doomed.doomsigns.accessors.{doomsign_og}')
+    if not doomsign:
+        return get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.invalid_doomsign')(doomsign_og)
+
+    char_doomsign = char_info[DOOMSIGNS][doomsign]
+    if not char_doomsign:
+        return get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.doomsign_not_marked')(doomsign_og)
+
+    char_doomsign = True
+    upload_to_s3(char_info, key, s3_client)
+    format_doomsigns(char_info[DOOMSIGNS])
+    return get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.successfull_update')
