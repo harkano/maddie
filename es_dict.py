@@ -28,7 +28,8 @@ es = {
     "mov_otro_libreto": "mov_other_playbook",
     "reorganizar": "rearrange",
     "mas_roles": "more_roles",
-    "mov_adulto": "add_adult"
+    "mov_adulto": "add_adult",
+    "mas_a_etiquetas": "more_to_labels"
   },
   "dice_rolling": {
     "calculation_title": "Cálculo",

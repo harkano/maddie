@@ -28,7 +28,8 @@ en = {
     "mov_other_playbook": "mov_other_playbook",
     "rearrange": "rearrange",
     "more_roles": "more_roles",
-    "add_adult": "add_adult"
+    "add_adult": "add_adult",
+    "more_to_labels": "more_to_labels"
   },
   "dice_rolling": {
     "calculation_title": "Calculation",

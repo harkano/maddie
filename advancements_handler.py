@@ -2,12 +2,10 @@
 #   "loseInfluence": ,
 #   "mot": ,
 #   "motAgain": ,
+#   "retire": ,
 
 #   "playbookChange": ,
 
-#   "adult": ,
-#   "lock": ,
-#   "retire": ,
 #   "plusOne": ,
 #   "clear": ,
 #   "burns": ,
@@ -40,10 +38,10 @@
 #   "depart": ,
 #   "mask": ,
 # }
-from utils import get_moves as get_moves_json_array, get_key_and_content_from_message, get_args_from_content, format_labels
+from utils import get_moves as get_moves_json_array, get_key_and_content_from_message, get_args_from_content, format_labels, validate_labels
 from s3_utils import info_from_s3, get_s3_client, upload_to_s3, get_files_from_dir
 from language_handler import get_translation
-from constants import PLAYBOOK_INTERACTIONS, MOVES, PENDING_ADVANCEMENTS, PICKED, SHORT_NAME, SPECIAL, ID, PLAYBOOK, LABELS, VALUE, MAX_LABEL_VALUE, MIN_LABEL_VALUE, HEART, BULL, ROLES, ADULT
+from constants import PLAYBOOK_INTERACTIONS, MOVES, PENDING_ADVANCEMENTS, PICKED, SHORT_NAME, SPECIAL, ID, PLAYBOOK, LABELS, VALUE, MAX_LABEL_VALUE, MIN_LABEL_VALUE, HEART, BULL, ROLES, ADULT, DELINQUENT
 
 def add_move_from_your_playbook(message, lang):
     key, content = get_key_and_content_from_message(message)
@@ -119,6 +117,10 @@ def rearrange_labels(message, lang):
     total_sum = 0
     new_sum = 0
 
+    labels_do_not_exist = validate_labels(lang, labels)
+    if labels_do_not_exist:
+        return labels_do_not_exist
+
     for value in new_label_values:
         int_value = int(value)
 
@@ -160,7 +162,7 @@ def get_more_bull_roles(message, lang):
     char_info = info_from_s3(key, s3_client)
 
     if char_info[PLAYBOOK] != BULL:
-        return get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.no_bull')
+        return get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.no_playbook')(get_translation(lang, f'playbooks.inverted_names.{BULL}'))
 
     new_roles = get_args_from_content(content)
     already_picked = ''
@@ -223,5 +225,33 @@ def add_adult_move(message, lang):
     upload_to_s3(char_info, key, s3_client)
 
     return get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.successfully_added_move')(move_name)
+
+
+def add_one_to_two_labels(message, lang):
+    key, content = get_key_and_content_from_message(message)
+    s3_client = get_s3_client()
+    char_info = info_from_s3(key, s3_client)
+
+    if char_info[PLAYBOOK] != DELINQUENT:
+        return get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.no_playbook')(get_translation(lang, f'playbooks.inverted_names.{DELINQUENT}'))
+
+    labels_to_upgrade = get_args_from_content(content)
+    labels = char_info[LABELS]
+
+    labels_do_not_exist = validate_labels(lang, labels_to_upgrade)
+    if labels_do_not_exist:
+        return labels_do_not_exist
+
+    for label_name in labels_to_upgrade:
+        label_to_increase = get_translation(lang, f'inverted_labels.{label_name}')
+        value = int(labels[label_to_increase][VALUE])
+
+        if value == MAX_LABEL_VALUE:
+            return get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.already_max')(value, label_name)
+
+        labels[label_to_increase][VALUE] = 1 + value
+
+    upload_to_s3(char_info, key, s3_client)
+    return format_labels(labels, lang)
 
 
