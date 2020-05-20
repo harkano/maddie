@@ -102,12 +102,12 @@
         "description": "retire",
         "taken": false
       }
-    },
-    "legacy": {
-      "active": "",
-      "retired": "",
-      "possible": "",
-      "opponent": ""
     }
+  },
+  "legacy": {
+    "active": "",
+    "retired": "",
+    "possible": "",
+    "opponent": ""
   }
 }
