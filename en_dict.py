@@ -31,7 +31,8 @@ en = {
     "add_adult": "add_adult",
     "more_to_labels": "more_to_labels",
     "clear_sign": "clear_sign",
-    "get_burns": "get_burns"
+    "get_burns": "get_burns",
+    "mask_label": "mask_label"
   },
   "dice_rolling": {
     "calculation_title": "Calculation",
@@ -95,7 +96,8 @@ en = {
     "already_max": lambda value, name: f"The {name} label already has the max value ({value})",
     "invalid_label": lambda name: f"The label {name} does not exist. ",
     "invalid_doomsign": lambda doomsign: f"The doomsign {doomsign} does not exist, the valid ones are visions, infinite, portal, bright, bolstered and perish",
-    "doomsign_not_marked": lambda doomsign: f"The doomsign {doomsign} must be marked to be cleared"
+    "doomsign_not_marked": lambda doomsign: f"The doomsign {doomsign} must be marked to be cleared",
+    "already_mask_label": lambda label_name: f"The label {label_name} is already your mask label, you must choose a new one"
   },
   "labels": {
     "danger": "danger",

@@ -31,7 +31,8 @@ es = {
     "mov_adulto": "add_adult",
     "mas_a_etiquetas": "more_to_labels",
     "borrar_signo": "clear_sign",
-    "obtener_burns": "get_burns"
+    "obtener_burns": "get_burns",
+    "etiqueta_mascara": "mask_label"
   },
   "dice_rolling": {
     "calculation_title": "Cálculo",
@@ -94,7 +95,8 @@ es = {
     "already_max": lambda value, name: f"La etiqueta {name} ya tiene el valor máximo ({value})",
     "invalid_label": lambda name: f"La etiqueta {name} no existe. ",
     "invalid_doomsign": lambda doomsign: f"El signo de perdición {doomsign} no existe, los válidos son visiones infinitos, portal, ardor, reforzado y morir",
-    "doomsign_not_marked": lambda doomsign: f"El signo de perdición {doomsign} debe estar marcado para poder borrarlo"
+    "doomsign_not_marked": lambda doomsign: f"El signo de perdición {doomsign} debe estar marcado para poder borrarlo",
+    "already_mask_label": lambda label_name: f"La etiqueta {label_name} ya corresponde a tu máscara, debes elegir una diferente"
   },
   "labels": {
     "danger": "peligro",

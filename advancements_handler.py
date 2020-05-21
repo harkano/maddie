@@ -5,10 +5,9 @@
 #   "retire": ,
 
 #   "playbookChange": ,
-
-#   "burns": ,
 #   "confront": ,
 #   "paragon": ,
+
 #   "maskLabel": ,
 #   "drives": ,
 #   "sanctuary": ,
@@ -39,7 +38,7 @@
 from utils import get_moves as get_moves_json_array, get_key_and_content_from_message, get_args_from_content, format_labels, validate_labels, format_flares
 from s3_utils import info_from_s3, get_s3_client, upload_to_s3, get_files_from_dir
 from language_handler import get_translation
-from constants import PLAYBOOK_INTERACTIONS, MOVES, PENDING_ADVANCEMENTS, PICKED, SHORT_NAME, SPECIAL, ID, PLAYBOOK, LABELS, VALUE, MAX_LABEL_VALUE, MIN_LABEL_VALUE, HEART, BULL, ROLES, ADULT, DELINQUENT, DOOMED, DOOMSIGNS, NOVA, FLARES
+from constants import PLAYBOOK_INTERACTIONS, MOVES, PENDING_ADVANCEMENTS, PICKED, SHORT_NAME, SPECIAL, ID, PLAYBOOK, LABELS, VALUE, MAX_LABEL_VALUE, MIN_LABEL_VALUE, HEART, BULL, ROLES, ADULT, DELINQUENT, DOOMED, DOOMSIGNS, NOVA, FLARES, JANUS, MASK_LABEL
 
 def add_move_from_your_playbook(message, lang):
     key, content = get_key_and_content_from_message(message)
@@ -289,3 +288,33 @@ def get_burns(message, lang):
     upload_to_s3(char_info, key, s3_client)
 
     return format_flares(lang, char_info[FLARES])
+
+
+def change_mask_label(message, lang):
+    key, content = get_key_and_content_from_message(message)
+    s3_client = get_s3_client()
+    char_info = info_from_s3(key, s3_client)
+    new_mask_label_og = get_args_from_content(content)
+
+    if char_info[PLAYBOOK] != JANUS:
+        return get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.no_playbook')(get_translation(lang, f'playbooks.inverted_names.{JANUS}'))
+
+    label_does_not_exist = validate_labels(lang, [new_mask_label_og])
+    if label_does_not_exist:
+        return label_does_not_exist
+
+    new_mask_label = get_translation(lang, f'inverted_labels.{new_mask_label_og}')
+
+    if new_mask_label == char_info[MASK_LABEL]:
+        return get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.already_mask_label')(new_mask_label_og)
+
+    new_label_value = char_info[LABELS][new_mask_label][VALUE]
+
+    if new_label_value == MAX_LABEL_VALUE:
+        return get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.already_max')(new_label_value, new_mask_label_og)
+
+    char_info[LABELS][new_mask_label][VALUE] = new_label_value + 1
+    char_info[MASK_LABEL] = new_mask_label
+    upload_to_s3(char_info, key, s3_client)
+    
+    return format_labels(char_info[LABELS], lang)
