@@ -37,11 +37,13 @@ For more type `!adult`
 ***Character Sheet/Server Management***
 `!createsettings en\es` - Make an English or Spanish settings file for this specific room, do this first.
 `!updategm Harkano` - makes Harkano the GM
-`!updateteamname The Revengers` - changes the team name
+`!updateteamname "The Revengers"` - changes the team name
 
-`!create nova "Jean Grey" "Harkano (Ross)"" savior` - Creates a Nova called Jean Grey, played by Harkano (Ross), with the initial label increase put into savior.
+`!create nova "Jean Grey" "Harkano (Ross)" savior` - Creates a Nova called Jean Grey, played by Harkano (Ross), with the initial label increase put into savior.  You don't need quotes if you don't have a space.
 `!editlabels superior mundane` - shifts superior up and mundane down
+`!labels` - shows your current labels
 `!potential` - makes potential, tells you how many you have, and lets you know when you get an advancement
+`!conditions` - shows your current conditions
 `!markcondition guilty` - marks guilty
 `!clearcondition guilty` - clears guilty
 
