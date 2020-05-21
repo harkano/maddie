@@ -35,7 +35,8 @@ es = {
     "etiqueta_mascara": "mask_label",
     "obtener_impulsos": "get_drives",
     "obtener_santuario": "get_sanctuary",
-    "mas_bengalas": "more_flares"
+    "mas_bengalas": "more_flares",
+    "obtener_corazon": "get_heart"
   },
   "dice_rolling": {
     "calculation_title": "Cálculo",

@@ -9,7 +9,6 @@
 #   "paragon": ,
 #   "powers": ,
 
-#   "flares": ,
 #   "heart": ,
 #   "abilities": ,
 #   "identity": ,
@@ -395,5 +394,23 @@ def get_more_flares(message, lang):
 
     upload_to_s3(char_info, key, s3_client)
     return format_flares(lang, flares)
+
+
+def get_heart(message, lang):
+    key, content = get_key_and_content_from_message(message)
+    s3_client = get_s3_client()
+    char_info = info_from_s3(key, s3_client)
+
+    if char_info[PLAYBOOK] != NOVA:
+        return get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.no_playbook')(get_translation(lang, f'playbooks.inverted_names.{NOVA}'))
+
+    if HEART in char_info:
+        return get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.already_have')(get_translation(lang, f'playbooks.bull.title'))
+
+    bull = info_from_s3(f'playbooks/{BULL}', s3_client)
+    char_info[HEART] = bull[HEART]
+    upload_to_s3(char_info, key, s3_client)
+
+    return get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.successfull_update')
 
 

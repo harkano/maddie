@@ -35,7 +35,8 @@ en = {
     "mask_label": "mask_label",
     "get_drives": "get_drives",
     "get_sanctuary": "get_sanctuary",
-    "more_flares": "more_flares"
+    "more_flares": "more_flares",
+    "get_heart": "get_heart"
   },
   "dice_rolling": {
     "calculation_title": "Calculation",
