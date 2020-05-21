@@ -8,9 +8,8 @@
 #   "confront": ,
 #   "paragon": ,
 #   "powers": ,
-
-#   "heart": ,
 #   "abilities": ,
+
 #   "identity": ,
 #   "mentorLabel": ,
 #   "resources": ,
@@ -34,7 +33,7 @@
 from utils import get_moves as get_moves_json_array, get_key_and_content_from_message, get_args_from_content, format_labels, validate_labels, format_flares
 from s3_utils import info_from_s3, get_s3_client, upload_to_s3, get_files_from_dir
 from language_handler import get_translation
-from constants import PLAYBOOK_INTERACTIONS, MOVES, PENDING_ADVANCEMENTS, PICKED, SHORT_NAME, SPECIAL, ID, PLAYBOOK, LABELS, VALUE, MAX_LABEL_VALUE, MIN_LABEL_VALUE, HEART, BULL, ROLES, ADULT, DELINQUENT, DOOMED, DOOMSIGNS, NOVA, FLARES, JANUS, MASK_LABEL, BEACON, DRIVES, DRIVES_DESCRIPTION, LEGACY, SANCTUARY
+from constants import PLAYBOOK_INTERACTIONS, MOVES, PENDING_ADVANCEMENTS, PICKED, SHORT_NAME, SPECIAL, ID, PLAYBOOK, LABELS, VALUE, MAX_LABEL_VALUE, MIN_LABEL_VALUE, HEART, BULL, ROLES, ADULT, DELINQUENT, DOOMED, DOOMSIGNS, NOVA, FLARES, JANUS, MASK_LABEL, BEACON, DRIVES, DRIVES_DESCRIPTION, LEGACY, SANCTUARY, OUTSIDER, SECRET_IDENTITY
 
 def add_move_from_your_playbook(message, lang):
     key, content = get_key_and_content_from_message(message)
@@ -409,6 +408,25 @@ def get_heart(message, lang):
 
     bull = info_from_s3(f'playbooks/{BULL}', s3_client)
     char_info[HEART] = bull[HEART]
+    upload_to_s3(char_info, key, s3_client)
+
+    return get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.successfull_update')
+
+
+def get_secret_identity(message, lang):
+    key, content = get_key_and_content_from_message(message)
+    s3_client = get_s3_client()
+    char_info = info_from_s3(key, s3_client)
+
+    if char_info[PLAYBOOK] != OUTSIDER:
+        return get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.no_playbook')(get_translation(lang, f'playbooks.inverted_names.{NOVA}'))
+
+    if SECRET_IDENTITY in char_info or MASK_LABEL in char_info:
+        return get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.already_have')(get_translation(lang, f'playbooks.janus.title'))
+
+    janus = info_from_s3(f'playbooks/{JANUS}', s3_client)
+    char_info[MASK_LABEL] = janus[MASK_LABEL]
+    char_info[SECRET_IDENTITY] = janus[SECRET_IDENTITY]
     upload_to_s3(char_info, key, s3_client)
 
     return get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.successfull_update')

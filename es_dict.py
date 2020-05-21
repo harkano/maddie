@@ -36,7 +36,8 @@ es = {
     "obtener_impulsos": "get_drives",
     "obtener_santuario": "get_sanctuary",
     "mas_bengalas": "more_flares",
-    "obtener_corazon": "get_heart"
+    "obtener_corazon": "get_heart",
+    "obtener_mascara": "get_mask"
   },
   "dice_rolling": {
     "calculation_title": "Cálculo",
