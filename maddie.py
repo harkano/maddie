@@ -43,12 +43,16 @@ async def on_message(message):
     response = plain_command_handler(message, lang)
 
     if response:
+        log_line = message.guild.name + "|" + message.channel.name + "|" + message.author.name + "|" + message.content
+        logger.info(log_line)
         await message.channel.send(response)
         return
 
     response = embed_command_handler(message, lang)
 
     if response:
+        log_line = message.guild.name + "|" + message.channel.name + "|" + message.author.name + "|" + message.content
+        logger.info(log_line)
         await message.channel.send(embed=response)
         return
 
