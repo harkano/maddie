@@ -33,7 +33,8 @@ es = {
     "borrar_signo": "clear_sign",
     "obtener_burns": "get_burns",
     "etiqueta_mascara": "mask_label",
-    "obtener_impulsos": "get_drives"
+    "obtener_impulsos": "get_drives",
+    "obtener_santuario": "get_sanctuary"
   },
   "dice_rolling": {
     "calculation_title": "Cálculo",
@@ -331,7 +332,8 @@ es = {
           "bright": "Marca tu grilla de perdición para ignorar uno de los requisitos establecidos por el GM al invocar los recursos de tu santuario.",
           "bolstered": "Marca tu grilla de perdición para usar un movimiento adulto una vez.",
           "perish": "Tu perdición llega. Enfréntala y perece."
-        },
+        }
+      },
         "sanctuary": {
           "title": "Santuario",
           "description": "Tienes un lugar donde puedes descansar, recuperarte y reflexionar sobre tus poderes. Elige y subraya tres características de tu santuario:",
@@ -367,7 +369,6 @@ es = {
             "obtain": "Necesitarás obtener ______________"
           }
         }
-      }
     },
     "janus": {
       "title": "Identidad secreta",

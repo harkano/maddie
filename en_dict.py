@@ -33,7 +33,8 @@ en = {
     "clear_sign": "clear_sign",
     "get_burns": "get_burns",
     "mask_label": "mask_label",
-    "get_drives": "get_drives"
+    "get_drives": "get_drives",
+    "get_sanctuary": "get_sanctuary"
   },
   "dice_rolling": {
     "calculation_title": "Calculation",
