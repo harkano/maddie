@@ -34,7 +34,8 @@ es = {
     "obtener_burns": "get_burns",
     "etiqueta_mascara": "mask_label",
     "obtener_impulsos": "get_drives",
-    "obtener_santuario": "get_sanctuary"
+    "obtener_santuario": "get_sanctuary",
+    "mas_bengalas": "more_flares"
   },
   "dice_rolling": {
     "calculation_title": "Cálculo",
@@ -90,7 +91,7 @@ es = {
     "less_than_min": lambda min_allowed, intended: f"Lo siento, pero {intended} no es un valor válido para una etiqueta, el mínimo es {min_allowed}",
     "greater_than_max": lambda max_allowed, intended: f"Lo siento, pero {intended} no es un valor válido para una etiqueta, el máximo es {max_allowed}",
     "no_playbook": lambda name: f"Para realizar este avance debes tener el libreto {name}",
-    "invalid_roles": "Los roles válidos son: defensor, amigo, confidente y habilitador. A continuación los roles no válidos:",
+    "invalid_roles": "Los roles válidos son: defensor, amigo, confidente y habilitador. A continuación los roles inválidos:",
     "successfull_update": "El cambio se hizo con éxito",
     "role_is_picked": lambda role: f"El rol {role} ya fue elegido, debes elegir dos nuevos",
     "not_adult": lambda name: f"El movimiento {name} no es adulto",
@@ -99,7 +100,10 @@ es = {
     "invalid_doomsign": lambda doomsign: f"El signo de perdición {doomsign} no existe, los válidos son visiones infinitos, portal, ardor, reforzado y morir",
     "doomsign_not_marked": lambda doomsign: f"El signo de perdición {doomsign} debe estar marcado para poder borrarlo",
     "already_mask_label": lambda label_name: f"La etiqueta {label_name} ya corresponde a tu máscara, debes elegir una diferente",
-    "already_have": lambda name: f"Ya tienes {name}"
+    "already_have": lambda name: f"Ya tienes {name}",
+    "invalid_flares": "Las bengalas válidas son: tormenta, blindaje, constructo, foso, adoracion, movimiento, impulso, sobrecarga, elemental y arrebato. A continuación las bengalas inválidas:",
+    "flare_is_picked": lambda name: f"La bengala {name} ya fue elegida, debes elegir tres nuevas",
+    "not_exactly_three_flares": lambda current_count: f"Debes elegir 3 bengalas nuevas, no {current_count}"
   },
   "labels": {
     "danger": "peligro",
@@ -415,6 +419,18 @@ es = {
     "nova": {
       "flares": "bengalas",
       "yourFlares": "Tus bengalas son:",
+      "accessors": {
+        "tormenta": "storm",
+        "blindaje": "shield",
+        "constructo": "constructs",
+        "foso": "moat",
+        "adoracion": "worship",
+        "movimiento": "move",
+        "impulso": "boost",
+        "sobrecarga": "overcharge",
+        "elemental": "elemental",
+        "arrebato": "snatch"
+      },
       "names": {
         "storm": "Tormenta de realidad",
         "shield": "Blindaje",

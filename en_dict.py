@@ -34,7 +34,8 @@ en = {
     "get_burns": "get_burns",
     "mask_label": "mask_label",
     "get_drives": "get_drives",
-    "get_sanctuary": "get_sanctuary"
+    "get_sanctuary": "get_sanctuary",
+    "more_flares": "more_flares"
   },
   "dice_rolling": {
     "calculation_title": "Calculation",
@@ -100,7 +101,10 @@ en = {
     "invalid_doomsign": lambda doomsign: f"The doomsign {doomsign} does not exist, the valid ones are visions, infinite, portal, bright, bolstered and perish",
     "doomsign_not_marked": lambda doomsign: f"The doomsign {doomsign} must be marked to be cleared",
     "already_mask_label": lambda label_name: f"The label {label_name} is already your mask label, you must choose a new one",
-    "already_have": lambda name: f"You already have {name}"
+    "already_have": lambda name: f"You already have {name}",
+    "invalid_flares": "The valid flares are: storm, shield, constructs, moat, worship, move, boost, overcharge, elemental and snatch. The following ones are invalid:",
+    "flare_is_picked": lambda name: f"The flare {name} has already been chosen, you must pick three new ones",
+    "not_exactly_three_flares": lambda current_count: f"You must choose 3 new flares, not {current_count}"
   },
   "labels": {
     "danger": "danger",
@@ -416,6 +420,18 @@ en = {
     "nova": {
       "flares": "flares",
       "yourFlares": "Your flares are:",
+      "accessors": {
+        "storm": "storm",
+        "shield": "shield",
+        "constructs": "constructs",
+        "moat": "moat",
+        "worship": "worship",
+        "move": "move",
+        "boost": "boost",
+        "overcharge": "overcharge",
+        "elemental": "elemental",
+        "snatch": "snatch"
+      },
       "names": {
         "storm": "Reality storm",
         "shield": "Shielding",

@@ -7,9 +7,8 @@
 #   "playbookChange": ,
 #   "confront": ,
 #   "paragon": ,
-
-#   "sanctuary": ,
 #   "powers": ,
+
 #   "flares": ,
 #   "heart": ,
 #   "abilities": ,
@@ -356,5 +355,45 @@ def get_sanctuary(message, lang):
     upload_to_s3(char_info, key, s3_client)
 
     return get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.successfull_update')
+
+
+def get_more_flares(message, lang):
+    key, content = get_key_and_content_from_message(message)
+    s3_client = get_s3_client()
+    char_info = info_from_s3(key, s3_client)
+
+    if char_info[PLAYBOOK] != NOVA:
+        return get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.no_playbook')(get_translation(lang, f'playbooks.inverted_names.{NOVA}'))
+
+    new_flares = get_args_from_content(content)
+
+    new_flares_count = len(new_flares)
+    if new_flares_count != 3:
+        return get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.not_exactly_three_flares')(new_flares_count)
+
+    already_picked = ''
+    acum = ''
+    flares = char_info[FLARES]
+    translated_flares = []
+
+    for flare in new_flares:
+        translated_flare = get_translation(lang, f'playbooks.nova.accessors.{flare}')
+        translated_flares.append(translated_flare)
+
+        if translated_flare not in flares:
+            acum += f'\n• {flare}'
+        elif flares[translated_flare]:
+            already_picked = get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.flare_is_picked')(flare)
+
+    if acum:
+        return already_picked + '\n' + get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.invalid_flares') + acum
+    if already_picked:
+        return already_picked
+
+    for translated_flare in translated_flares:
+        flares[translated_flare] = True
+
+    upload_to_s3(char_info, key, s3_client)
+    return format_flares(lang, flares)
 
 
