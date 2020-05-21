@@ -32,7 +32,8 @@ en = {
     "more_to_labels": "more_to_labels",
     "clear_sign": "clear_sign",
     "get_burns": "get_burns",
-    "mask_label": "mask_label"
+    "mask_label": "mask_label",
+    "get_drives": "get_drives"
   },
   "dice_rolling": {
     "calculation_title": "Calculation",
@@ -97,7 +98,8 @@ en = {
     "invalid_label": lambda name: f"The label {name} does not exist. ",
     "invalid_doomsign": lambda doomsign: f"The doomsign {doomsign} does not exist, the valid ones are visions, infinite, portal, bright, bolstered and perish",
     "doomsign_not_marked": lambda doomsign: f"The doomsign {doomsign} must be marked to be cleared",
-    "already_mask_label": lambda label_name: f"The label {label_name} is already your mask label, you must choose a new one"
+    "already_mask_label": lambda label_name: f"The label {label_name} is already your mask label, you must choose a new one",
+    "already_have": lambda name: f"You already have {name}"
   },
   "labels": {
     "danger": "danger",
@@ -235,6 +237,7 @@ en = {
       "mask": "Take The Mask and a secret identity from the Janus playbook"
     },
     "beacon": {
+      "drives": "drives",
       "drivesDescription": "Choose four drives to mark at the start of play. When you fulfill a marked drive, strike it out, and choose one: mark potential, clear a condition, take Influence over someone involved.\nWhen your four marked drives are all struck out, choose and mark four new drives. When all drives are struck out, change playbooks, retire from the life, or become a paragon of the city.",
       "lead": "lead the team successfull in battle",
       "kissDanger": "kiss someone dangerous",
@@ -410,6 +413,7 @@ en = {
       "opponent": "is the greatest opponent of your legacy ever faced... and is still at large."
     },
     "nova": {
+      "flares": "flares",
       "yourFlares": "Your flares are:",
       "names": {
         "storm": "Reality storm",

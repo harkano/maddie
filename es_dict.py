@@ -32,7 +32,8 @@ es = {
     "mas_a_etiquetas": "more_to_labels",
     "borrar_signo": "clear_sign",
     "obtener_burns": "get_burns",
-    "etiqueta_mascara": "mask_label"
+    "etiqueta_mascara": "mask_label",
+    "obtener_impulsos": "get_drives"
   },
   "dice_rolling": {
     "calculation_title": "Cálculo",
@@ -96,7 +97,8 @@ es = {
     "invalid_label": lambda name: f"La etiqueta {name} no existe. ",
     "invalid_doomsign": lambda doomsign: f"El signo de perdición {doomsign} no existe, los válidos son visiones infinitos, portal, ardor, reforzado y morir",
     "doomsign_not_marked": lambda doomsign: f"El signo de perdición {doomsign} debe estar marcado para poder borrarlo",
-    "already_mask_label": lambda label_name: f"La etiqueta {label_name} ya corresponde a tu máscara, debes elegir una diferente"
+    "already_mask_label": lambda label_name: f"La etiqueta {label_name} ya corresponde a tu máscara, debes elegir una diferente",
+    "already_have": lambda name: f"Ya tienes {name}"
   },
   "labels": {
     "danger": "peligro",
@@ -234,6 +236,7 @@ es = {
       "mask": "Toma La Máscara y una identidad secreta del libreto Jano"
     },
     "beacon": {
+      "drives": "impulsos",
       "drivesDescription": "Elige cuatro impulsos para marcar al comienzo del juego. Cuando cumplas con un impulso marcado, tachalo y elegí una:\nMarcar potencial, eliminar una condición, tomar Influencia sobre alguien involucrado\nCuando los cuatro impulsos marcados estén tachados, elegí y marcá cuatro impulsos nuevos.\nCuando se hayan tachado todos los impulsos, cambiá de libreto, retirate de la vida de superhéroe o convertite en un parangón de la ciudad.",
       "lead": "lidera el equipo exitosamente en la batalla",
       "kissDanger": "besa a alguien peligroso",
@@ -409,6 +412,7 @@ es = {
       "opponent": "es el mayor oponente al que se ha enfrentado tu legado... y aún está en libertad."
     },
     "nova": {
+      "flares": "bengalas",
       "yourFlares": "Tus bengalas son:",
       "names": {
         "storm": "Tormenta de realidad",
