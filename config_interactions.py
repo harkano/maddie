@@ -85,7 +85,7 @@ def create_settings(message):
         "customNames": []
     }
 
-    upload_to_s3(settings, f'{message.channel.id}/settings', s3_client)
+    upload_to_s3(settings, f'adventures/{message.channel.id}/settings', s3_client)
 
     return get_translation(lang, 'configuration.successfull_creation')
 
