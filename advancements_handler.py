@@ -10,7 +10,6 @@
 #   "powers": ,
 #   "abilities": ,
 
-#   "identity": ,
 #   "mentorLabel": ,
 #   "resources": ,
 #   "doom": ,
@@ -33,7 +32,7 @@
 from utils import get_moves as get_moves_json_array, get_key_and_content_from_message, get_args_from_content, format_labels, validate_labels, format_flares
 from s3_utils import info_from_s3, get_s3_client, upload_to_s3, get_files_from_dir
 from language_handler import get_translation
-from constants import PLAYBOOK_INTERACTIONS, MOVES, PENDING_ADVANCEMENTS, PICKED, SHORT_NAME, SPECIAL, ID, PLAYBOOK, LABELS, VALUE, MAX_LABEL_VALUE, MIN_LABEL_VALUE, HEART, BULL, ROLES, ADULT, DELINQUENT, DOOMED, DOOMSIGNS, NOVA, FLARES, JANUS, MASK_LABEL, BEACON, DRIVES, DRIVES_DESCRIPTION, LEGACY, SANCTUARY, OUTSIDER, SECRET_IDENTITY
+from constants import PLAYBOOK_INTERACTIONS, MOVES, PENDING_ADVANCEMENTS, PICKED, SHORT_NAME, SPECIAL, ID, PLAYBOOK, LABELS, VALUE, MAX_LABEL_VALUE, MIN_LABEL_VALUE, HEART, BULL, ROLES, ADULT, DELINQUENT, DOOMED, DOOMSIGNS, NOVA, FLARES, JANUS, MASK_LABEL, BEACON, DRIVES, DRIVES_DESCRIPTION, LEGACY, SANCTUARY, OUTSIDER, SECRET_IDENTITY, PROTEGE
 
 def add_move_from_your_playbook(message, lang):
     key, content = get_key_and_content_from_message(message)
@@ -429,6 +428,31 @@ def get_secret_identity(message, lang):
     char_info[SECRET_IDENTITY] = janus[SECRET_IDENTITY]
     upload_to_s3(char_info, key, s3_client)
 
+    return get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.successfull_update')
+
+
+def add_two_to_mentor_label(message, lang):
+    key, content = get_key_and_content_from_message(message)
+    s3_client = get_s3_client()
+    char_info = info_from_s3(key, s3_client)
+
+    if char_info[PLAYBOOK] != PROTEGE:
+        return get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.no_playbook')(get_translation(lang, f'playbooks.inverted_names.{PROTEGE}'))
+
+    label_type_og = get_args_from_content(content)
+    label_type = get_translation(lang, f'playbooks.protege.{label_type_og}')
+
+    if not label_type:
+        return get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.invalid_label_type')(label_type_og)
+
+    label_name = char_info['mentor'][label_type]
+    label_to_increase = char_info[LABELS][label_name]
+    if label_to_increase[VALUE] > MAX_LABEL_VALUE - 1:
+        return get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.max_mentor_label_value')(label_name, label_to_increase[VALUE])
+
+    label_to_increase[VALUE] += 2
+
+    upload_to_s3(char_info, key, s3_client)
     return get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.successfull_update')
 
 

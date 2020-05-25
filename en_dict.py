@@ -37,7 +37,8 @@ en = {
     "get_sanctuary": "get_sanctuary",
     "more_flares": "more_flares",
     "get_heart": "get_heart",
-    "get_mask": "get_mask"
+    "get_mask": "get_mask",
+    "mentor_label": "mentor_label"
   },
   "dice_rolling": {
     "calculation_title": "Calculation",
@@ -106,7 +107,9 @@ en = {
     "already_have": lambda name: f"You already have {name}",
     "invalid_flares": "The valid flares are: storm, shield, constructs, moat, worship, move, boost, overcharge, elemental and snatch. The following ones are invalid:",
     "flare_is_picked": lambda name: f"The flare {name} has already been chosen, you must pick three new ones",
-    "not_exactly_three_flares": lambda current_count: f"You must choose 3 new flares, not {current_count}"
+    "not_exactly_three_flares": lambda current_count: f"You must choose 3 new flares, not {current_count}",
+    "invalid_label_type": lambda invalid_name: f"The options are embodies and denies, {invalid_name} isn't a valid option",
+    "max_mentor_label_value": lambda name, current_value: f"The label {name} must have a value of 1 or less for the change to be valid, not {current_value}"
   },
   "labels": {
     "danger": "danger",
@@ -460,6 +463,8 @@ en = {
       }
     },
     "protege": {
+      "embodies": "embodies",
+      "denies": "denies",
       "mentor": {
         "title": "Mentor",
         "description": "You have a mentor, someone who's taught you, given you aid, or raised you up. Someone who might have confined you a bit too rigidly to a single path. Which label do they embody, and which do they deny? (circle one each)",
