@@ -39,7 +39,9 @@ es = {
     "obtener_corazon": "get_heart",
     "obtener_mascara": "get_mask",
     "etiqueta_mentor": "mentor_label",
-    "mas_recursos": "more_resources"
+    "mas_recursos": "more_resources",
+    "obtener_mentor": "get_mentor",
+    "obtener_legacy": "get_legacy"
   },
   "dice_rolling": {
     "calculation_title": "Cálculo",

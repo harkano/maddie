@@ -39,7 +39,9 @@ en = {
     "get_heart": "get_heart",
     "get_mask": "get_mask",
     "mentor_label": "mentor_label",
-    "mas_recursos": "more_resources"
+    "more_resources": "more_resources",
+    "get_mentor": "get_mentor",
+    "get_legacy": "get_legacy"
   },
   "dice_rolling": {
     "calculation_title": "Calculation",

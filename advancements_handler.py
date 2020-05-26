@@ -12,9 +12,8 @@
 #   "doom": ,
 #   "mutate": ,
 #   "lockLessons": ,
-
-#   "mentor": ,
 #   "pastParagon": ,
+
 #   "legacy": ,
 #   "joinAbilities": ,
 #   "advance": ,
@@ -526,6 +525,24 @@ def get_mentor(message, lang):
 
     protege = info_from_s3(f'playbooks/{PROTEGE}', s3_client)
     char_info[MENTOR] = protege[MENTOR]
+    upload_to_s3(char_info, key, s3_client)
+
+    return get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.successfull_update')
+
+
+def get_legacy(message, lang):
+    key, content = get_key_and_content_from_message(message)
+    s3_client = get_s3_client()
+    char_info = info_from_s3(key, s3_client)
+
+    if char_info[PLAYBOOK] != STAR:
+        return get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.no_playbook')(get_translation(lang, f'playbooks.inverted_names.{STAR}'))
+
+    if MENTOR in char_info:
+        return get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.already_have')(get_translation(lang, f'playbooks.protege.mentor.title'))
+
+    legacy = info_from_s3(f'playbooks/{LEGACY}', s3_client)
+    char_info[LEGACY] = protege[LEGACY]
     upload_to_s3(char_info, key, s3_client)
 
     return get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.successfull_update')
