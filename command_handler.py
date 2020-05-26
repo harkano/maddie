@@ -1,6 +1,6 @@
 import logging
 from playbook_interactions import lock_label, edit_labels, mark_potential, mark_condition, clear_condition, create_character, get_labels, get_conditions, get_potential, get_pending_advancements, get_advancements
-from advancements_handler import add_move_from_your_playbook, add_move_from_other_playbook, rearrange_labels, get_more_bull_roles, add_adult_move, add_one_to_two_labels, clear_doomsign, get_burns, change_mask_label, get_drives, get_sanctuary, get_more_flares, get_heart, get_secret_identity, add_two_to_mentor_label, add_resources, get_mentor, get_legacy
+from advancements_handler import add_move_from_your_playbook, add_move_from_other_playbook, rearrange_labels, get_more_bull_roles, add_adult_move, add_one_to_two_labels, clear_doomsign, get_burns, change_mask_label, get_drives, get_sanctuary, get_more_flares, get_heart, get_secret_identity, add_two_to_mentor_label, add_resources, get_mentor, get_legacy, lock_soldier
 from config_interactions import get_settings, get_language, get_teamname, update_lang, update_gm, update_teamname, create_settings
 from playbooks import get_moment_of_truth, get_playbooks
 from language_handler import get_translation
@@ -53,7 +53,8 @@ plain_commands_dict = {
   "mentor_label": add_two_to_mentor_label,
   "more_resources": add_resources,
   "get_mentor": get_mentor,
-  "get_legacy": get_legacy
+  "get_legacy": get_legacy,
+  "lock_soldier": lock_soldier
 }
 
 
