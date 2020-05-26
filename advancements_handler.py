@@ -13,12 +13,11 @@
 #   "mutate": ,
 #   "lockLessons": ,
 #   "pastParagon": ,
-
-#   "legacy": ,
 #   "joinAbilities": ,
 #   "advance": ,
 #   "shame": ,
 #   "enhancement": ,
+
 #   "lockSoldier": ,
 #   "noAegis": ,
 #   "civilian": ,
@@ -29,7 +28,7 @@
 from utils import get_moves as get_moves_json_array, get_key_and_content_from_message, get_args_from_content, format_labels, validate_labels, format_flares
 from s3_utils import info_from_s3, get_s3_client, upload_to_s3, get_files_from_dir
 from language_handler import get_translation
-from constants import PLAYBOOK_INTERACTIONS, MOVES, PENDING_ADVANCEMENTS, PICKED, SHORT_NAME, SPECIAL, ID, PLAYBOOK, LABELS, VALUE, MAX_LABEL_VALUE, MIN_LABEL_VALUE, HEART, BULL, ROLES, ADULT, DELINQUENT, DOOMED, DOOMSIGNS, NOVA, FLARES, JANUS, MASK_LABEL, BEACON, DRIVES, DRIVES_DESCRIPTION, LEGACY, SANCTUARY, OUTSIDER, SECRET_IDENTITY, PROTEGE, RESOURCES, MAX_RESOURCES_TO_ADD, MENTOR, SOLDIER
+from constants import PLAYBOOK_INTERACTIONS, MOVES, PENDING_ADVANCEMENTS, PICKED, SHORT_NAME, SPECIAL, ID, PLAYBOOK, LABELS, VALUE, MAX_LABEL_VALUE, MIN_LABEL_VALUE, HEART, BULL, ROLES, ADULT, DELINQUENT, DOOMED, DOOMSIGNS, NOVA, FLARES, JANUS, MASK_LABEL, BEACON, DRIVES, DRIVES_DESCRIPTION, LEGACY, SANCTUARY, OUTSIDER, SECRET_IDENTITY, PROTEGE, RESOURCES, MAX_RESOURCES_TO_ADD, MENTOR, SOLDIER, INNOCENT, INNOCENT, NEWBORN, REFORMED, LOCKED
 
 def add_move_from_your_playbook(message, lang):
     key, content = get_key_and_content_from_message(message)
@@ -271,7 +270,9 @@ def get_burns(message, lang):
     s3_client = get_s3_client()
     char_info = info_from_s3(key, s3_client)
 
-    if char_info[PLAYBOOK] != DOOMED:
+    # TODO fix multiple playbooks for the same restricted advancement
+    playbook = char_info[PLAYBOOK]
+    if playbook != DOOMED or playbook != NEWBORN:
         return get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.no_playbook')(get_translation(lang, f'playbooks.inverted_names.{DOOMED}'))
 
     if FLARES in char_info:
@@ -319,7 +320,9 @@ def get_drives(message, lang):
     s3_client = get_s3_client()
     char_info = info_from_s3(key, s3_client)
 
-    if char_info[PLAYBOOK] != JANUS:
+    playbook = char_info[PLAYBOOK]
+    # TODO fix multiple playbooks for the same restricted advancement
+    if playbook != JANUS or playbook != REFORMED:
         return get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.no_playbook')(get_translation(lang, f'playbooks.inverted_names.{JANUS}'))
 
     if DRIVES in char_info:
@@ -517,7 +520,7 @@ def get_mentor(message, lang):
     s3_client = get_s3_client()
     char_info = info_from_s3(key, s3_client)
 
-    if char_info[PLAYBOOK] != SOLDIER:
+    if char_info[PLAYBOOK] != INNOCENT:
         return get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.no_playbook')(get_translation(lang, f'playbooks.inverted_names.{SOLDIER}'))
 
     if MENTOR in char_info:
@@ -546,5 +549,22 @@ def get_legacy(message, lang):
     upload_to_s3(char_info, key, s3_client)
 
     return get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.successfull_update')
+
+
+def lock_soldier(message, lang):
+    key, content = get_key_and_content_from_message(message)
+    s3_client = get_s3_client()
+    char_info = info_from_s3(key, s3_client)
+
+    if char_info[PLAYBOOK] != SOLDIER:
+        return get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.no_playbook')(get_translation(lang, f'playbooks.inverted_names.{SOLDIER}'))
+
+    soldier = char_info[LABELS][SOLDIER]
+    if soldier[LOCKED]:
+        return get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.already_locked')(get_translation(lang, f'playbooks.inverted_names.{SOLDIER}'))
+
+    soldier[LOCKED] = True
+
+    return format_labels(labels, lang)
 
 

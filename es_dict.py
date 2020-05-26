@@ -41,7 +41,8 @@ es = {
     "etiqueta_mentor": "mentor_label",
     "mas_recursos": "more_resources",
     "obtener_mentor": "get_mentor",
-    "obtener_legacy": "get_legacy"
+    "obtener_legacy": "get_legacy",
+    "bloquear_soldado": "lock_soldier"
   },
   "dice_rolling": {
     "calculation_title": "Cálculo",

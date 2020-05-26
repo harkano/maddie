@@ -41,7 +41,8 @@ en = {
     "mentor_label": "mentor_label",
     "more_resources": "more_resources",
     "get_mentor": "get_mentor",
-    "get_legacy": "get_legacy"
+    "get_legacy": "get_legacy",
+    "lock_soldier": "lock_soldier"
   },
   "dice_rolling": {
     "calculation_title": "Calculation",

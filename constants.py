@@ -44,3 +44,6 @@ RESOURCES = 'resources'
 MENTOR = 'mentor'
 MAX_RESOURCES_TO_ADD = 4
 SOLDIER = 'soldier'
+INNOCENT = 'innocent'
+NEWBORN = 'newborn'
+REFORMED = 'reformed'
