@@ -38,7 +38,8 @@ en = {
     "more_flares": "more_flares",
     "get_heart": "get_heart",
     "get_mask": "get_mask",
-    "mentor_label": "mentor_label"
+    "mentor_label": "mentor_label",
+    "mas_recursos": "more_resources"
   },
   "dice_rolling": {
     "calculation_title": "Calculation",
@@ -109,7 +110,10 @@ en = {
     "flare_is_picked": lambda name: f"The flare {name} has already been chosen, you must pick three new ones",
     "not_exactly_three_flares": lambda current_count: f"You must choose 3 new flares, not {current_count}",
     "invalid_label_type": lambda invalid_name: f"The options are embodies and denies, {invalid_name} isn't a valid option",
-    "max_mentor_label_value": lambda name, current_value: f"The label {name} must have a value of 1 or less for the change to be valid, not {current_value}"
+    "max_mentor_label_value": lambda name, current_value: f"The label {name} must have a value of 1 or less for the change to be valid, not {current_value}",
+    "invalid_resource": lambda name: f"You can't have a {name} as a resource, the valid ones are:",
+    "resource_already_acquired": "You already have the following resources:",
+    "more_than_four_resources": lambda max_count, wanted_count: f"The maximum ammount of resources to add with this advancement is {max_count}, not {wanted_count}"
   },
   "labels": {
     "danger": "danger",
@@ -470,6 +474,21 @@ en = {
         "description": "You have a mentor, someone who's taught you, given you aid, or raised you up. Someone who might have confined you a bit too rigidly to a single path. Which label do they embody, and which do they deny? (circle one each)",
         "embodies": "Encarna",
         "denies": "Niega"
+      },
+      "resources_accessors": {
+        "base": "base",
+        "vehicle": "vehicle",
+        "supercomputer": "supercomputer",
+        "communicators": "communicators",
+        "surveillance": "surveillance",
+        "identities": "identities",
+        "badges": "badges",
+        "chem": "chem",
+        "med": "med",
+        "teleportal": "teleportal",
+        "weapon": "weapon",
+        "security": "security",
+        "robots": "robots"
       },
       "resources": {
         "base": "a hidden base",

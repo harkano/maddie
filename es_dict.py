@@ -38,7 +38,8 @@ es = {
     "mas_bengalas": "more_flares",
     "obtener_corazon": "get_heart",
     "obtener_mascara": "get_mask",
-    "etiqueta_mentor": "mentor_label"
+    "etiqueta_mentor": "mentor_label",
+    "mas_recursos": "more_resources"
   },
   "dice_rolling": {
     "calculation_title": "Cálculo",
@@ -108,8 +109,10 @@ es = {
     "flare_is_picked": lambda name: f"La bengala {name} ya fue elegida, debes elegir tres nuevas",
     "not_exactly_three_flares": lambda current_count: f"Debes elegir 3 bengalas nuevas, no {current_count}",
     "invalid_label_type": lambda invalid_name: f"Las opciones son encarna y niega, {invalid_name} no es una opción válida",
-    "max_mentor_label_value": lambda name, current_value: f"La etiqueta {name} debe valer 1 o menos para que el cambio sea válido, no {current_value}"
-
+    "max_mentor_label_value": lambda name, current_value: f"La etiqueta {name} debe valer 1 o menos para que el cambio sea válido, no {current_value}",
+    "invalid_resource": lambda name: f"No se puede elegir {name} como recurso, los válidos son:",
+    "resource_already_acquired": "Ya a cuentas con los siguientes recursos:",
+    "more_than_four_resources": lambda max_count, wanted_count: f"La cantidad máxima de recursos que se puede agregar con este avance es {max_count}, no {wanted_count}"
   },
   "labels": {
     "danger": "peligro",
@@ -470,6 +473,21 @@ es = {
         "description": "Tienes un mentor, alguien que te enseñó, te entrenó, te dio ayuda o te crió. Alguien que puede haberte confijado de forma demasiado rígida a un solo camino.\n¿Qué etiqueta encarna y cuál niega? (marca uno de cada uno)",
         "embodies": "Encarna",
         "denies": "Niega"
+      },
+      "resources_accessors": {
+        "base": "base",
+        "vehiculo": "vehicle",
+        "supercomputadora": "supercomputer",
+        "comunicadores": "communicators",
+        "vigilancia": "surveillance",
+        "identidades": "identities",
+        "insignias": "badges",
+        "quimica": "chem",
+        "medico": "med",
+        "teletransportador": "teleportal",
+        "arma": "weapon",
+        "seguridad": "security",
+        "robots": "robots"
       },
       "resources": {
         "base": "una base oculta",

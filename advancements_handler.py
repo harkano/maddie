@@ -10,7 +10,6 @@
 #   "powers": ,
 #   "abilities": ,
 
-#   "mentorLabel": ,
 #   "resources": ,
 #   "doom": ,
 #   "mutate": ,
@@ -32,7 +31,7 @@
 from utils import get_moves as get_moves_json_array, get_key_and_content_from_message, get_args_from_content, format_labels, validate_labels, format_flares
 from s3_utils import info_from_s3, get_s3_client, upload_to_s3, get_files_from_dir
 from language_handler import get_translation
-from constants import PLAYBOOK_INTERACTIONS, MOVES, PENDING_ADVANCEMENTS, PICKED, SHORT_NAME, SPECIAL, ID, PLAYBOOK, LABELS, VALUE, MAX_LABEL_VALUE, MIN_LABEL_VALUE, HEART, BULL, ROLES, ADULT, DELINQUENT, DOOMED, DOOMSIGNS, NOVA, FLARES, JANUS, MASK_LABEL, BEACON, DRIVES, DRIVES_DESCRIPTION, LEGACY, SANCTUARY, OUTSIDER, SECRET_IDENTITY, PROTEGE
+from constants import PLAYBOOK_INTERACTIONS, MOVES, PENDING_ADVANCEMENTS, PICKED, SHORT_NAME, SPECIAL, ID, PLAYBOOK, LABELS, VALUE, MAX_LABEL_VALUE, MIN_LABEL_VALUE, HEART, BULL, ROLES, ADULT, DELINQUENT, DOOMED, DOOMSIGNS, NOVA, FLARES, JANUS, MASK_LABEL, BEACON, DRIVES, DRIVES_DESCRIPTION, LEGACY, SANCTUARY, OUTSIDER, SECRET_IDENTITY, PROTEGE, RESOURCES, MAX_RESOURCES_TO_ADD, MENTOR
 
 def add_move_from_your_playbook(message, lang):
     key, content = get_key_and_content_from_message(message)
@@ -451,6 +450,65 @@ def add_two_to_mentor_label(message, lang):
         return get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.max_mentor_label_value')(label_name, label_to_increase[VALUE])
 
     label_to_increase[VALUE] += 2
+
+    upload_to_s3(char_info, key, s3_client)
+    return get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.successfull_update')
+
+
+def get_invaild_resource_response(lang, resource, current_resources):
+    response = get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.invalid_resource')(resource)
+    valid_resources = get_translation(lang, f'playbooks.protege.resources_accessors')
+    descriptions = get_translation(lang, f'playbooks.protege.resources')
+
+    for resource in valid_resources:
+        resource_name = valid_resources[resource]
+        resource_description = descriptions[resource_name]
+
+        if not current_resources[resource_name]:
+            response += f'\n• {resource} ({resource_description})'
+
+    return response    
+
+
+def add_resources(message, lang):
+    key, content = get_key_and_content_from_message(message)
+    s3_client = get_s3_client()
+    char_info = info_from_s3(key, s3_client)
+
+    if char_info[PLAYBOOK] != PROTEGE:
+        return get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.no_playbook')(get_translation(lang, f'playbooks.inverted_names.{PROTEGE}'))
+
+    resources_og = get_args_from_content(content)
+
+    resources_count = len(resources_og)
+    if resources_count > MAX_RESOURCES_TO_ADD:
+        return get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.more_than_four_resources')(MAX_RESOURCES_TO_ADD, resources_count)
+
+    current_resources = char_info[MENTOR][RESOURCES]
+    resource_count = 0
+    resources = []
+    alread_acquired = []
+
+    for resource_og in resources_og:
+        resource = get_translation(lang, f'playbooks.protege.resources_accessors.{resource_og}')
+        if not resource:
+            return get_invaild_resource_response(lang, resource_og, current_resources)
+
+        if current_resources[resource]:
+            alread_acquired.append(resource_og)
+        else:
+            resources.append(resource)
+
+    if alread_acquired:
+        response =  get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.resource_already_acquired')
+        
+        for resource in already_acquired:
+            response += f'\n• {resource}'
+
+        return response
+
+    for resource in resources:
+        current_resources[resource] = True
 
     upload_to_s3(char_info, key, s3_client)
     return get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.successfull_update')
