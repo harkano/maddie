@@ -82,8 +82,8 @@ def mad_parse(message):
 
 def add_result (embed, num_calc, mod, lang):
     #do dice rolling
-    result1 = random.randrange(1,6) ##first d6
-    result2 = random.randrange(1,6) ##second d6
+    result1 = random.randrange(1,7) ##first d6
+    result2 = random.randrange(1,7) ##second d6
     result_tot = result1 + result2 + num_calc
 
     if mod == '-':
