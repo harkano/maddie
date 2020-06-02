@@ -221,10 +221,12 @@ def create_character(message, lang):
     translated_name = get_translation(lang, f'playbooks.names.{playbook_name}')
     file_list = get_files_from_dir('playbooks', s3_client)
     template_key = f'playbooks/{translated_name}'
+    print(template_key)
 
     matching_files = list(filter(lambda file_info: file_info["Key"] == f'{template_key}.json', file_list["Contents"]))
 
-    if not len(matching_files):
+    print(matching_files)
+    if not matching_files:
         return get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.no_template')(playbook_name)
 
     template = info_from_s3(template_key, s3_client)

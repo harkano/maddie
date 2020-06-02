@@ -1,9 +1,4 @@
 # Missing advs
-#   "loseInfluence": ,
-#   "mot": ,
-#   "motAgain": ,
-#   "retire": ,
-#   "playbookChange": ,
 #   "confront": ,
 #   "paragon": ,
 #   "powers": ,
@@ -24,120 +19,8 @@
 from utils import get_moves as get_moves_json_array, get_key_and_content_from_message, get_args_from_content, format_labels, validate_labels, format_flares
 from s3_utils import info_from_s3, get_s3_client, upload_to_s3, get_files_from_dir
 from language_handler import get_translation
-from constants import PLAYBOOK_INTERACTIONS, MOVES, PENDING_ADVANCEMENTS, PICKED, SHORT_NAME, SPECIAL, ID, PLAYBOOK, LABELS, VALUE, MAX_LABEL_VALUE, MIN_LABEL_VALUE, HEART, BULL, ROLES, ADULT, DELINQUENT, DOOMED, DOOMSIGNS, NOVA, FLARES, JANUS, MASK_LABEL, BEACON, DRIVES, DRIVES_DESCRIPTION, LEGACY, SANCTUARY, OUTSIDER, SECRET_IDENTITY, PROTEGE, RESOURCES, MAX_RESOURCES_TO_ADD, MENTOR, SOLDIER, INNOCENT, INNOCENT, NEWBORN, REFORMED, LOCKED, SCION
-
-def add_move_from_your_playbook(message, lang):
-    key, content = get_key_and_content_from_message(message)
-    s3_client = get_s3_client()
-    char_info = info_from_s3(key, s3_client)
-
-    if not char_info:
-        return get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.no_character')
-
-    move_name = get_args_from_content(content)
-
-    moves_array = get_moves_json_array(lang)[MOVES]
-    move_list = list(filter(lambda move_dict: move_dict[SHORT_NAME] == move_name and not move_dict[SPECIAL], moves_array))
-
-    if not len(move_list):
-        return get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.no_moves_pb')
-
-    id = move_list[0][ID]
-
-    move = list(filter(lambda dic: dic[ID] == id, char_info[MOVES]))[0]
-
-    if move[PICKED]:
-        return get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.move_already_taken')
-
-    char_info[PENDING_ADVANCEMENTS] = char_info[PENDING_ADVANCEMENTS] - 1
-    move[PICKED] = True
-    upload_to_s3(char_info, key, s3_client)
-
-    return get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.successfully_added_move')(move_name)
-
-
-def add_move_from_other_playbook(message, lang):
-    key, content = get_key_and_content_from_message(message)
-    s3_client = get_s3_client()
-    char_info = info_from_s3(key, s3_client)
-
-    if not char_info:
-        return get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.no_character')
-    move_name = get_args_from_content(content)
-
-    moves_array = get_moves_json_array(lang)[MOVES]
-    move_list = list(filter(lambda move_dict: move_dict[SHORT_NAME] == move_name, moves_array))
-
-    if not len(move_list):
-        return get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.no_moves_pb')
-
-    move = move_list[0]
-
-    if move[PLAYBOOK] == char_info[PLAYBOOK]:
-        return get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.your_playbook')
-
-    id = move_list[0][ID]
-
-    move = list(filter(lambda dic: dic[ID] == id, char_info[MOVES]))
-
-    if len(move):
-        return get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.move_already_taken')
-
-    char_info[PENDING_ADVANCEMENTS] = char_info[PENDING_ADVANCEMENTS] - 1
-    char_info[MOVES].append({ "id": id, "picked": True })
-    upload_to_s3(char_info, key, s3_client)
-
-    return get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.successfully_added_move')(move_name)
-
-
-def rearrange_labels(message, lang):
-    key, content = get_key_and_content_from_message(message)
-    s3_client = get_s3_client()
-    char_info = info_from_s3(key, s3_client)
-    new_label_values = get_args_from_content(content)
-    labels = char_info[LABELS]
-
-    total_sum = 0
-    new_sum = 0
-
-    labels_do_not_exist = validate_labels(lang, labels)
-    if labels_do_not_exist:
-        return labels_do_not_exist
-
-    for value in new_label_values:
-        int_value = int(value)
-
-        if int_value < MIN_LABEL_VALUE:
-            return get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.less_than_min')(MIN_LABEL_VALUE, int_value)
-
-        if int_value > MAX_LABEL_VALUE:
-            return get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.greater_than_max')(MAX_LABEL_VALUE, int_value)
-
-        new_sum = new_sum + int_value
-
-    for label in labels:
-        total_sum = total_sum + int(labels[label][VALUE])
-
-    if total_sum + 1 != new_sum:
-        difference = abs(new_sum - total_sum)
-        if new_sum - total_sum > 0:
-            direction = get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.more')
-        elif total_sum == new_sum:
-            difference = ''
-            direction = get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.equal')
-        else:
-            direction = get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.less')
-
-        return get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.add_one_to_label')(difference, direction)
-
-    index = 0
-    for label in labels:
-        labels[label][VALUE] = int(new_label_values[index])
-        index += 1
-
-    upload_to_s3(char_info, key, s3_client)
-    return format_labels(labels, lang)
-    
+from constants import PLAYBOOK_INTERACTIONS, MOVES, PENDING_ADVANCEMENTS, SHORT_NAME, ID, PLAYBOOK, LABELS, VALUE, MAX_LABEL_VALUE, HEART, BULL, ROLES, ADULT, DELINQUENT, DOOMED, DOOMSIGNS, NOVA, FLARES, JANUS, MASK_LABEL, BEACON, DRIVES, DRIVES_DESCRIPTION, LEGACY, SANCTUARY, OUTSIDER, SECRET_IDENTITY, PROTEGE, RESOURCES, MAX_RESOURCES_TO_ADD, MENTOR, SOLDIER, INNOCENT, INNOCENT, NEWBORN, REFORMED, LOCKED, SCION, STAR
+from generic_advancements import add_moves
 
 def get_more_bull_roles(message, lang):
     key, content = get_key_and_content_from_message(message)
@@ -261,26 +144,6 @@ def clear_doomsign(message, lang):
     return get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.successfull_update')
 
 
-def get_burns(message, lang):
-    key, content = get_key_and_content_from_message(message)
-    s3_client = get_s3_client()
-    char_info = info_from_s3(key, s3_client)
-
-    # TODO fix multiple playbooks for the same restricted advancement
-    playbook = char_info[PLAYBOOK]
-    if playbook != DOOMED or playbook != NEWBORN:
-        return get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.no_playbook')(get_translation(lang, f'playbooks.inverted_names.{DOOMED}'))
-
-    if FLARES in char_info:
-        return get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.already_have')(get_translation(lang, f'playbooks.nova.flares'))
-
-    nova = info_from_s3(f'playbooks/{NOVA}', s3_client)
-    char_info[FLARES] = nova[FLARES]
-    upload_to_s3(char_info, key, s3_client)
-
-    return format_flares(lang, char_info[FLARES])
-
-
 def change_mask_label(message, lang):
     key, content = get_key_and_content_from_message(message)
     s3_client = get_s3_client()
@@ -309,45 +172,6 @@ def change_mask_label(message, lang):
     upload_to_s3(char_info, key, s3_client)
     
     return format_labels(char_info[LABELS], lang)
-
-
-def get_drives(message, lang):
-    key, content = get_key_and_content_from_message(message)
-    s3_client = get_s3_client()
-    char_info = info_from_s3(key, s3_client)
-
-    playbook = char_info[PLAYBOOK]
-    # TODO fix multiple playbooks for the same restricted advancement
-    if playbook != JANUS or playbook != REFORMED:
-        return get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.no_playbook')(get_translation(lang, f'playbooks.inverted_names.{JANUS}'))
-
-    if DRIVES in char_info:
-        return get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.already_have')(get_translation(lang, f'playbooks.beacon.drives'))
-
-    beacon = info_from_s3(f'playbooks/{BEACON}', s3_client)
-    char_info[DRIVES] = beacon[DRIVES]
-    char_info[DRIVES_DESCRIPTION] = beacon[DRIVES_DESCRIPTION]
-    upload_to_s3(char_info, key, s3_client)
-
-    return get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.successfull_update')
-
-
-def get_sanctuary(message, lang):
-    key, content = get_key_and_content_from_message(message)
-    s3_client = get_s3_client()
-    char_info = info_from_s3(key, s3_client)
-
-    if char_info[PLAYBOOK] != LEGACY:
-        return get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.no_playbook')(get_translation(lang, f'playbooks.inverted_names.{LEGACY}'))
-
-    if SANCTUARY in char_info:
-        return get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.already_have')(get_translation(lang, f'playbooks.doomed.sanctuary.title'))
-
-    doomed = info_from_s3(f'playbooks/{DOOMED}', s3_client)
-    char_info[SANCTUARY] = doomed[SANCTUARY]
-    upload_to_s3(char_info, key, s3_client)
-
-    return get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.successfull_update')
 
 
 def get_more_flares(message, lang):
@@ -388,45 +212,6 @@ def get_more_flares(message, lang):
 
     upload_to_s3(char_info, key, s3_client)
     return format_flares(lang, flares)
-
-
-def get_heart(message, lang):
-    key, content = get_key_and_content_from_message(message)
-    s3_client = get_s3_client()
-    char_info = info_from_s3(key, s3_client)
-
-    if char_info[PLAYBOOK] != NOVA:
-        return get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.no_playbook')(get_translation(lang, f'playbooks.inverted_names.{NOVA}'))
-
-    if HEART in char_info:
-        return get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.already_have')(get_translation(lang, f'playbooks.bull.title'))
-
-    bull = info_from_s3(f'playbooks/{BULL}', s3_client)
-    char_info[HEART] = bull[HEART]
-    upload_to_s3(char_info, key, s3_client)
-
-    return get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.successfull_update')
-
-
-def get_secret_identity(message, lang):
-    key, content = get_key_and_content_from_message(message)
-    s3_client = get_s3_client()
-    char_info = info_from_s3(key, s3_client)
-
-    # TODO multiple pbs
-    playbook = char_info[PLAYBOOK]
-    if playbook != OUTSIDER or playbook != SCION:
-        return get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.no_playbook')(get_translation(lang, f'playbooks.inverted_names.{OUTSIDER}'))
-
-    if SECRET_IDENTITY in char_info or MASK_LABEL in char_info:
-        return get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.already_have')(get_translation(lang, f'playbooks.janus.title'))
-
-    janus = info_from_s3(f'playbooks/{JANUS}', s3_client)
-    char_info[MASK_LABEL] = janus[MASK_LABEL]
-    char_info[SECRET_IDENTITY] = janus[SECRET_IDENTITY]
-    upload_to_s3(char_info, key, s3_client)
-
-    return get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.successfull_update')
 
 
 def add_two_to_mentor_label(message, lang):
@@ -513,42 +298,6 @@ def add_resources(message, lang):
     return get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.successfull_update')
 
 
-def get_mentor(message, lang):
-    key, content = get_key_and_content_from_message(message)
-    s3_client = get_s3_client()
-    char_info = info_from_s3(key, s3_client)
-
-    if char_info[PLAYBOOK] != INNOCENT:
-        return get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.no_playbook')(get_translation(lang, f'playbooks.inverted_names.{SOLDIER}'))
-
-    if MENTOR in char_info:
-        return get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.already_have')(get_translation(lang, f'playbooks.protege.mentor.title'))
-
-    protege = info_from_s3(f'playbooks/{PROTEGE}', s3_client)
-    char_info[MENTOR] = protege[MENTOR]
-    upload_to_s3(char_info, key, s3_client)
-
-    return get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.successfull_update')
-
-
-def get_legacy(message, lang):
-    key, content = get_key_and_content_from_message(message)
-    s3_client = get_s3_client()
-    char_info = info_from_s3(key, s3_client)
-
-    if char_info[PLAYBOOK] != STAR:
-        return get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.no_playbook')(get_translation(lang, f'playbooks.inverted_names.{STAR}'))
-
-    if MENTOR in char_info:
-        return get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.already_have')(get_translation(lang, f'playbooks.protege.mentor.title'))
-
-    legacy = info_from_s3(f'playbooks/{LEGACY}', s3_client)
-    char_info[LEGACY] = protege[LEGACY]
-    upload_to_s3(char_info, key, s3_client)
-
-    return get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.successfull_update')
-
-
 def lock_soldier(message, lang):
     key, content = get_key_and_content_from_message(message)
     s3_client = get_s3_client()
@@ -566,3 +315,55 @@ def lock_soldier(message, lang):
     return format_labels(labels, lang)
 
 
+# Here are the take X from Y playbook advances
+# Example: _take sanctuary from the doomed playbook_
+
+def get_legacy(message, lang):
+    return get_part_of_playbook(message, lang, LEGACY, [STAR], [LEGACY], [LEGACY], f'playbooks.inverted_names.{LEGACY}')
+
+def get_mentor(message, lang):
+    return get_part_of_playbook(message, lang, PROTEGE, [INNOCENT], [MENTOR], [], 'playbooks.protege.mentor.title')
+
+def get_secret_identity(message, lang):
+    return get_part_of_playbook(message, lang, JANUS, [OUTSIDER, SCION], [MASK_LABEL, SECRET_IDENTITY], ['obligations'], 'playbooks.janus.title')
+
+def get_heart(message, lang):
+    return get_part_of_playbook(message, lang, BULL, [NOVA], [HEART], [], 'playbooks.bull.title')
+
+def get_sanctuary(message, lang):
+    return get_part_of_playbook(message, lang, DOOMED, [LEGACY], [SANCTUARY], [], 'playbooks.doomed.sanctuary.title')
+
+def get_drives(message, lang):
+    return get_part_of_playbook(message, lang, BEACON, [JANUS, REFORMED], [DRIVES, DRIVES_DESCRIPTION], [], 'playbooks.beacon.drives')
+
+def get_burns(message, lang):
+    return get_part_of_playbook(message, lang, NOVA, [DOOMED, NEWBORN], [FLARES], ['chargeburn'], 'playbooks.nova.flares')
+
+
+def get_part_of_playbook(message, lang, playbook_to_take_from, your_playbook_must_be, what_to_take, moves, cant_take_message):
+    key, content = get_key_and_content_from_message(message)
+    s3_client = get_s3_client()
+    char_info = info_from_s3(key, s3_client)
+
+    print(char_info[PLAYBOOK])
+    print(your_playbook_must_be)
+    if char_info[PLAYBOOK] not in your_playbook_must_be:
+        return get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.no_playbook')(get_translation(lang, f'playbooks.inverted_names.{your_playbook_must_be[0]}'))
+
+    playbook_template = info_from_s3(f'playbooks/{playbook_to_take_from}', s3_client)
+
+    already_taken = False
+    for take_this in what_to_take:
+        if take_this in char_info:
+            return get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.already_have')(get_translation(lang, cant_take_message))
+
+        char_info[take_this] = playbook_template[take_this]
+
+    for move in moves:
+        success, response = add_moves(char_info, lang, move, s3_client)
+
+        if not success:
+            return response
+
+    upload_to_s3(char_info, key, s3_client)
+    return get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.successfull_update')
