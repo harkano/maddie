@@ -98,7 +98,7 @@ en = {
     "add_one_to_label": lambda difference, direction: f"You should add one to a label, the difference with these values has {difference} {direction} than the original sum",
     "less_than_min": lambda min_allowed, intended: f"I'm sorry, but {intended} is not a valid label value. The minimum is {min_allowed}",
     "greater_than_max": lambda max_allowed, intended: f"I'm sorry, but {intended} is not a valid label value. The maximum is {max_allowed}",
-    "no_playbook": lambda name: f"To take this advancement you must have the {name} playbook",
+    "no_playbook": lambda name: f"To take this advancement you must have one of the following playbooks:{name}",
     "invalid_roles": "The valid roles are: defender, friend, listener and enabler. The following ones are invalid:",
     "successfull_update": "The update was successfull",
     "role_is_picked": lambda role: f"The role {role} has already been chosen, you must pick two new ones",

@@ -345,10 +345,13 @@ def get_part_of_playbook(message, lang, playbook_to_take_from, your_playbook_mus
     s3_client = get_s3_client()
     char_info = info_from_s3(key, s3_client)
 
-    print(char_info[PLAYBOOK])
-    print(your_playbook_must_be)
     if char_info[PLAYBOOK] not in your_playbook_must_be:
-        return get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.no_playbook')(get_translation(lang, f'playbooks.inverted_names.{your_playbook_must_be[0]}'))
+        allowed_playbooks = ''
+        for playbook in your_playbook_must_be:
+            translated_playbook = get_translation(lang, f'playbooks.inverted_names.{playbook}')
+            allowed_playbooks += f'\n• {translated_playbook}'
+
+        return get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.no_playbook')(allowed_playbooks)
 
     playbook_template = info_from_s3(f'playbooks/{playbook_to_take_from}', s3_client)
 
