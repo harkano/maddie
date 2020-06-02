@@ -128,3 +128,10 @@ def rearrange_labels(message, lang):
 
     upload_to_s3(char_info, key, s3_client)
     return format_labels(labels, lang)
+
+
+generic_advancements_dict = {
+  "mov_my_playbook": add_move_from_your_playbook,
+  "mov_other_playbook": add_move_from_other_playbook,
+  "rearrange": rearrange_labels
+}

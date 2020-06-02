@@ -302,3 +302,18 @@ def get_advancements(message, lang):
         return get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.no_character')
 
     return format_advancements(char_info[ADVANCEMENT], lang)
+
+
+generic_playbook_dict = {
+  "lock": lock_label,
+  "editlabels": edit_labels,
+  "potential": mark_potential,
+  "markcondition": mark_condition,
+  "clearcondition": clear_condition,
+  "create": create_character,
+  "labels": get_labels, 
+  "conditions": get_conditions, 
+  "get_potential": get_potential, 
+  "pending_advancements": get_pending_advancements, 
+  "advancements": get_advancements
+}

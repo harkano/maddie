@@ -22,6 +22,7 @@ from language_handler import get_translation
 from constants import PLAYBOOK_INTERACTIONS, MOVES, PENDING_ADVANCEMENTS, SHORT_NAME, ID, PLAYBOOK, LABELS, VALUE, MAX_LABEL_VALUE, HEART, BULL, ROLES, ADULT, DELINQUENT, DOOMED, DOOMSIGNS, NOVA, FLARES, JANUS, MASK_LABEL, BEACON, DRIVES, DRIVES_DESCRIPTION, LEGACY, SANCTUARY, OUTSIDER, SECRET_IDENTITY, PROTEGE, RESOURCES, MAX_RESOURCES_TO_ADD, MENTOR, SOLDIER, INNOCENT, INNOCENT, NEWBORN, REFORMED, LOCKED, SCION, STAR
 from generic_advancements import add_moves
 
+
 def get_more_bull_roles(message, lang):
     key, content = get_key_and_content_from_message(message)
     s3_client = get_s3_client()
@@ -321,20 +322,26 @@ def lock_soldier(message, lang):
 def get_legacy(message, lang):
     return get_part_of_playbook(message, lang, LEGACY, [STAR], [LEGACY], [LEGACY], f'playbooks.inverted_names.{LEGACY}')
 
+
 def get_mentor(message, lang):
     return get_part_of_playbook(message, lang, PROTEGE, [INNOCENT], [MENTOR], [], 'playbooks.protege.mentor.title')
+
 
 def get_secret_identity(message, lang):
     return get_part_of_playbook(message, lang, JANUS, [OUTSIDER, SCION], [MASK_LABEL, SECRET_IDENTITY], ['obligations'], 'playbooks.janus.title')
 
+
 def get_heart(message, lang):
     return get_part_of_playbook(message, lang, BULL, [NOVA], [HEART], [], 'playbooks.bull.title')
+
 
 def get_sanctuary(message, lang):
     return get_part_of_playbook(message, lang, DOOMED, [LEGACY], [SANCTUARY], [], 'playbooks.doomed.sanctuary.title')
 
+
 def get_drives(message, lang):
     return get_part_of_playbook(message, lang, BEACON, [JANUS, REFORMED], [DRIVES, DRIVES_DESCRIPTION], [], 'playbooks.beacon.drives')
+
 
 def get_burns(message, lang):
     return get_part_of_playbook(message, lang, NOVA, [DOOMED, NEWBORN], [FLARES], ['chargeburn'], 'playbooks.nova.flares')
@@ -370,3 +377,23 @@ def get_part_of_playbook(message, lang, playbook_to_take_from, your_playbook_mus
 
     upload_to_s3(char_info, key, s3_client)
     return get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.successfull_update')
+
+
+playbook_specific_advancements_dict = {
+  "more_roles": get_more_bull_roles,
+  "add_adult": add_adult_move,
+  "more_to_labels": add_one_to_two_labels,
+  "clear_sign": clear_doomsign,
+  "get_burns": get_burns,
+  "mask_label": change_mask_label,
+  "get_drives": get_drives,
+  "get_sanctuary": get_sanctuary,
+  "more_flares": get_more_flares,
+  "get_heart": get_heart,
+  "get_mask": get_secret_identity,
+  "mentor_label": add_two_to_mentor_label,
+  "more_resources": add_resources,
+  "get_mentor": get_mentor,
+  "get_legacy": get_legacy,
+  "lock_soldier": lock_soldier
+}

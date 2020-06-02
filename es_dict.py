@@ -1,16 +1,23 @@
 es = {
-  "embed_commands": {
+  "embed_commands_dict": {
     "mdlv": "mot",
     "libretos": "playbooks"
   },
-  "plain_commands": {
-    "ayudaaqui": "helphere",
+  "generic_playbook_dict": {
     "bloquear": "lock",
     "editaretiquetas": "editlabels",
     "potencial": "potential",
     "marcarcondicion": "markcondition",
     "borrarcondicion": "clearcondition",
     "crear": "create",
+    "etiquetas": "labels",
+    "condiciones": "conditions",
+    "ver_potencial": "get_potential",
+    "avances_pendientes": "pending_advancements",
+    "avances": "advancements"
+  },
+  "settings_dict": {
+    "ayudaaqui": "helphere",
     "config": "settings",
     "cambiarconfig": "change_settings",
     "lenguaje": "language",
@@ -18,15 +25,14 @@ es = {
     "editarleng": "update_lang",
     "editargm": "update_gm",
     "editarnombre": "update_teamname",
-    "crearconfig": "create_settings",
-    "etiquetas": "labels",
-    "condiciones": "conditions",
-    "ver_potencial": "get_potential",
-    "avances_pendientes": "pending_advancements",
-    "avances": "advancements",
+    "crearconfig": "create_settings"
+  },
+  "generic_advancements_dict": {
     "mov_mi_libreto": "mov_my_playbook",
     "mov_otro_libreto": "mov_other_playbook",
-    "reorganizar": "rearrange",
+    "reorganizar": "rearrange"
+  },
+  "playbook_specific_advancements_dict": {
     "mas_roles": "more_roles",
     "mov_adulto": "add_adult",
     "mas_a_etiquetas": "more_to_labels",

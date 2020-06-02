@@ -1,16 +1,23 @@
 en = {
-  "embed_commands": {
+  "embed_commands_dict": {
     "mot": "mot",
     "playbooks": "playbooks"
   },
-  "plain_commands": {
-    "helphere": "helphere",
+  "generic_playbook_dict": {
     "lock": "lock",
     "editlabels": "editlabels",
     "potential": "potential",
     "markcondition": "markcondition",
     "clearcondition": "clearcondition",
     "create": "create",
+    "labels": "labels",
+    "conditions": "conditions",
+    "get_potential": "get_potential",
+    "pending_advancements": "pending_advancements",
+    "advancements": "advancements"
+  },
+  "settings_dict": {
+    "helphere": "helphere",
     "settings": "settings",
     "changesettings": "change_settings",
     "language": "language",
@@ -18,15 +25,14 @@ en = {
     "updatelang": "update_lang",
     "updategm": "update_gm",
     "updateteamname": "update_teamname",
-    "createsettings": "create_settings",
-    "labels": "labels",
-    "conditions": "conditions",
-    "get_potential": "get_potential",
-    "pending_advancements": "pending_advancements",
-    "advancements": "advancements",
+    "createsettings": "create_settings"
+  },
+  "generic_advancements_dict": {
     "mov_my_playbook": "mov_my_playbook",
     "mov_other_playbook": "mov_other_playbook",
-    "rearrange": "rearrange",
+    "rearrange": "rearrange"
+  },
+  "playbook_specific_advancements_dict": {
     "more_roles": "more_roles",
     "add_adult": "add_adult",
     "more_to_labels": "more_to_labels",
