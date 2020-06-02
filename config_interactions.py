@@ -31,6 +31,14 @@ def get_field_from_config(message, field):
     return f'{name}: {settings[field]}'
 
 
+def handle_help(message, _lang):
+    log_line = message.guild.name + "|" + message.channel.name + "|" + message.author.name + "|" + message.content
+    logger.info(log_line)
+    help_file = open("help", "r")
+    response = help_file.read()
+    return response
+
+
 # Updaters
 
 def generic_updater(message, field):
@@ -129,3 +137,15 @@ def get_language(message, _lang):
 
 def get_teamname(message, _lang):
     return get_field_from_config(message, TEAMNAME)
+
+
+settings_dict = {
+  "helphere": handle_help,
+  "settings": get_settings,
+  "language": get_language,
+  "teamname": get_teamname,
+  "update_lang": update_lang,
+  "update_gm": lambda msg, _lang: update_gm(msg),
+  "update_teamname": lambda msg, _lang: update_teamname(msg),
+  "create_settings": lambda msg, _lang: create_settings(msg)
+}

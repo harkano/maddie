@@ -1,16 +1,23 @@
 es = {
-  "embed_commands": {
+  "embed_commands_dict": {
     "mdlv": "mot",
     "libretos": "playbooks"
   },
-  "plain_commands": {
-    "ayudaaqui": "helphere",
+  "generic_playbook_dict": {
     "bloquear": "lock",
     "editaretiquetas": "editlabels",
     "potencial": "potential",
     "marcarcondicion": "markcondition",
     "borrarcondicion": "clearcondition",
     "crear": "create",
+    "etiquetas": "labels",
+    "condiciones": "conditions",
+    "ver_potencial": "get_potential",
+    "avances_pendientes": "pending_advancements",
+    "avances": "advancements"
+  },
+  "settings_dict": {
+    "ayudaaqui": "helphere",
     "config": "settings",
     "cambiarconfig": "change_settings",
     "lenguaje": "language",
@@ -18,12 +25,30 @@ es = {
     "editarleng": "update_lang",
     "editargm": "update_gm",
     "editarnombre": "update_teamname",
-    "crearconfig": "create_settings",
-    "etiquetas": "labels",
-    "condiciones": "conditions",
-    "ver_potencial": "get_potential",
-    "avances_pendientes": "pending_advancements",
-    "avances": "advancements"
+    "crearconfig": "create_settings"
+  },
+  "generic_advancements_dict": {
+    "mov_mi_libreto": "mov_my_playbook",
+    "mov_otro_libreto": "mov_other_playbook",
+    "reorganizar": "rearrange"
+  },
+  "playbook_specific_advancements_dict": {
+    "mas_roles": "more_roles",
+    "mov_adulto": "add_adult",
+    "mas_a_etiquetas": "more_to_labels",
+    "borrar_signo": "clear_sign",
+    "obtener_burns": "get_burns",
+    "etiqueta_mascara": "mask_label",
+    "obtener_impulsos": "get_drives",
+    "obtener_santuario": "get_sanctuary",
+    "mas_bengalas": "more_flares",
+    "obtener_corazon": "get_heart",
+    "obtener_mascara": "get_mask",
+    "etiqueta_mentor": "mentor_label",
+    "mas_recursos": "more_resources",
+    "obtener_mentor": "get_mentor",
+    "obtener_legado": "get_legacy",
+    "bloquear_soldado": "lock_soldier"
   },
   "dice_rolling": {
     "calculation_title": "Cálculo",
@@ -66,7 +91,37 @@ es = {
     "pending_advancements": lambda adv_count: f"Podés hacer {adv_count} avances",
     "basic": "\nBásicos:",
     "advanced": "\nAvanzados:",
-    "taken": "[TOMADO] "
+    "taken": "[TOMADO] ",
+    "no_moves_pb": "Perdón, pero no hay movimientos de tu libreto que coincidan con ese nombre",
+    "no_moves": "Perdón, pero no hay movimientos que coincidan con ese nombre",
+    "move_already_taken": "Ya conseguiste este movimiento, elegí otro",
+    "successfully_added_move": lambda move_name: f"Genial, ahora podes usar el movimiento {move_name}",
+    "your_playbook": "No podés agregar un movimiento de tu libreto con este avance",
+    "more": "más",
+    "less": "menos",
+    "equal": "igual",
+    "add_one_to_label": lambda difference, direction: f"Deberías agregarle uno a una de tus etiquetas, la diferencia en este caso da {difference} {direction} que la suma original",
+    "less_than_min": lambda min_allowed, intended: f"Lo siento, pero {intended} no es un valor válido para una etiqueta, el mínimo es {min_allowed}",
+    "greater_than_max": lambda max_allowed, intended: f"Lo siento, pero {intended} no es un valor válido para una etiqueta, el máximo es {max_allowed}",
+    "no_playbook": lambda name: f"Para realizar este avance debes tener uno de los siguientes libretos:{name}",
+    "invalid_roles": "Los roles válidos son: defensor, amigo, confidente y habilitador. A continuación los roles inválidos:",
+    "successfull_update": "El cambio se hizo con éxito",
+    "role_is_picked": lambda role: f"El rol {role} ya fue elegido, debes elegir dos nuevos",
+    "not_adult": lambda name: f"El movimiento {name} no es adulto",
+    "already_max": lambda value, name: f"La etiqueta {name} ya tiene el valor máximo ({value})",
+    "invalid_label": lambda name: f"La etiqueta {name} no existe. ",
+    "invalid_doomsign": lambda doomsign: f"El signo de perdición {doomsign} no existe, los válidos son visiones infinitos, portal, ardor, reforzado y morir",
+    "doomsign_not_marked": lambda doomsign: f"El signo de perdición {doomsign} debe estar marcado para poder borrarlo",
+    "already_mask_label": lambda label_name: f"La etiqueta {label_name} ya corresponde a tu máscara, debes elegir una diferente",
+    "already_have": lambda name: f"Ya tienes {name}",
+    "invalid_flares": "Las bengalas válidas son: tormenta, blindaje, constructo, foso, adoracion, movimiento, impulso, sobrecarga, elemental y arrebato. A continuación las bengalas inválidas:",
+    "flare_is_picked": lambda name: f"La bengala {name} ya fue elegida, debes elegir tres nuevas",
+    "not_exactly_three_flares": lambda current_count: f"Debes elegir 3 bengalas nuevas, no {current_count}",
+    "invalid_label_type": lambda invalid_name: f"Las opciones son encarna y niega, {invalid_name} no es una opción válida",
+    "max_mentor_label_value": lambda name, current_value: f"La etiqueta {name} debe valer 1 o menos para que el cambio sea válido, no {current_value}",
+    "invalid_resource": lambda name: f"No se puede elegir {name} como recurso, los válidos son:",
+    "resource_already_acquired": "Ya a cuentas con los siguientes recursos:",
+    "more_than_four_resources": lambda max_count, wanted_count: f"La cantidad máxima de recursos que se puede agregar con este avance es {max_count}, no {wanted_count}"
   },
   "labels": {
     "danger": "peligro",
@@ -112,6 +167,49 @@ es = {
   "playbooks": {
     "the": "",
     "list": ['emblema', 'toro', 'delincuente', 'condenado', 'jano', 'legado', 'nova', 'extranjero', 'protegido', 'transformado', 'brain', ', harbinger', 'innocent', 'joined', 'newborn', 'nomad', 'reformed', 'scion', 'soldier'],
+    "names": {
+      "emblema": "beacon",
+      "toro": "bull",
+      "delincuente": "delinquent",
+      "condenado": "doomed",
+      "jano": "janus",
+      "legado": "legacy",
+      "nova": "nova",
+      "extranjero": "outsider",
+      "protegido": "protege",
+      "transformado": "transformed",
+      "brain": "brain",
+      "harbinger": "harbinger",
+      "innocent": "innocent",
+      "joined": "joined",
+      "newborn": "newborn",
+      "nomad": "nomad",
+      "reformed": "reformed",
+      "scion": "scion",
+      "star": "star",
+      "soldier": "soldier"
+    },
+    "inverted_names": {
+      "beacon": "emblema",
+      "bull": "toro",
+      "delinquent": "delincuente",
+      "doomed": "condenado",
+      "janus": "jano",
+      "legacy": "legado",
+      "nova": "nova",
+      "outsider": "extranjero",
+      "protege": "protegido",
+      "transformed": "transformado",
+      "brain": "brain",
+      "harbinger": "harbinger",
+      "innocent": "innocent",
+      "joined": "joined",
+      "newborn": "newborn",
+      "nomad": "nomad",
+      "reformed": "reformed",
+      "scion": "scion",
+      "soldier": "soldier"
+    },
     "playbooks": "Libretos",
     "available": "Los Libretos disponibles son - ",
     "playbook_re": r"!mdlv ([a-z]+)",
@@ -162,6 +260,7 @@ es = {
       "mask": "Toma La Máscara y una identidad secreta del libreto Jano"
     },
     "beacon": {
+      "drives": "impulsos",
       "drivesDescription": "Elige cuatro impulsos para marcar al comienzo del juego. Cuando cumplas con un impulso marcado, tachalo y elegí una:\nMarcar potencial, eliminar una condición, tomar Influencia sobre alguien involucrado\nCuando los cuatro impulsos marcados estén tachados, elegí y marcá cuatro impulsos nuevos.\nCuando se hayan tachado todos los impulsos, cambiá de libreto, retirate de la vida de superhéroe o convertite en un parangón de la ciudad.",
       "lead": "lidera el equipo exitosamente en la batalla",
       "kissDanger": "besa a alguien peligroso",
@@ -191,6 +290,13 @@ es = {
       "explanation": "Siempre tienes exatamente un amor y un rival. Puedes cambiar tu amor o rival en cualquier momento; dale al nuevo objeto de tus afectos o desdén Influencia sobre tí. Toma +1 continuado (ongoing) a cualquier acción que impresione a tu amor o frustre a tu rival",
       "description": "Elige un rol que normalmente cumples para tu amor o rival:",
       "roles": {
+        "list": ["defensor", "amigo", "confidente", "habilitador"],
+        "titles_dict": {
+          "defensor": "defender",
+          "amigo": "friend",
+          "confidente": "listener",
+          "habilitador": "enabler"
+        },
         "titles": {
           "defender": "Defensor",
           "friend": "Amigo",
@@ -226,6 +332,14 @@ es = {
       "doomsigns": {
         "title": "Señales de perdición",
         "description": "Estas son habilidades que adquieres a medida que te acercas a tu perdición. Una vez que hayas tomado las cinco Señales de perdición por encima de la línea, debes tomar 'Tu perdición llega' la próxima vez que la grilla de perdición se llene. Elige una señal de perdición inicial durante la creación del personaje.",
+        "accessors": {
+          "visiones": "visions",
+          "infinitos": "infinite",
+          "portal": "portal",
+          "ardor": "bright",
+          "reforzado": "bolstered",
+          "morir": "perish"
+        },
         "titles": {
           "visions": "Visiones oscuras",
           "infinite": "Poderes infinitos",
@@ -241,7 +355,8 @@ es = {
           "bright": "Marca tu grilla de perdición para ignorar uno de los requisitos establecidos por el GM al invocar los recursos de tu santuario.",
           "bolstered": "Marca tu grilla de perdición para usar un movimiento adulto una vez.",
           "perish": "Tu perdición llega. Enfréntala y perece."
-        },
+        }
+      },
         "sanctuary": {
           "title": "Santuario",
           "description": "Tienes un lugar donde puedes descansar, recuperarte y reflexionar sobre tus poderes. Elige y subraya tres características de tu santuario:",
@@ -277,7 +392,6 @@ es = {
             "obtain": "Necesitarás obtener ______________"
           }
         }
-      }
     },
     "janus": {
       "title": "Identidad secreta",
@@ -322,6 +436,20 @@ es = {
       "opponent": "es el mayor oponente al que se ha enfrentado tu legado... y aún está en libertad."
     },
     "nova": {
+      "flares": "bengalas",
+      "yourFlares": "Tus bengalas son:",
+      "accessors": {
+        "tormenta": "storm",
+        "blindaje": "shield",
+        "constructo": "constructs",
+        "foso": "moat",
+        "adoracion": "worship",
+        "movimiento": "move",
+        "impulso": "boost",
+        "sobrecarga": "overcharge",
+        "elemental": "elemental",
+        "arrebato": "snatch"
+      },
       "names": {
         "storm": "Tormenta de realidad",
         "shield": "Blindaje",
@@ -348,11 +476,28 @@ es = {
       }
     },
     "protege": {
+      "encarna": "embodies",
+      "niega": "denies",
       "mentor": {
         "title": "Mentor",
         "description": "Tienes un mentor, alguien que te enseñó, te entrenó, te dio ayuda o te crió. Alguien que puede haberte confijado de forma demasiado rígida a un solo camino.\n¿Qué etiqueta encarna y cuál niega? (marca uno de cada uno)",
         "embodies": "Encarna",
         "denies": "Niega"
+      },
+      "resources_accessors": {
+        "base": "base",
+        "vehiculo": "vehicle",
+        "supercomputadora": "supercomputer",
+        "comunicadores": "communicators",
+        "vigilancia": "surveillance",
+        "identidades": "identities",
+        "insignias": "badges",
+        "quimica": "chem",
+        "medico": "med",
+        "teletransportador": "teleportal",
+        "arma": "weapon",
+        "seguridad": "security",
+        "robots": "robots"
       },
       "resources": {
         "base": "una base oculta",

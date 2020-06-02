@@ -2,18 +2,9 @@ import boto3
 import json
 from s3_utils import info_from_s3, get_s3_client, upload_to_s3, get_files_from_dir
 from language_handler import get_translation
+from utils import get_moves as get_moves_json_array, get_key_and_content_from_message, get_args_from_content, format_labels, validate_labels
+from constants import  LABELS, VALUE, LOCKED, POTENTIAL, PENDING_ADVANCEMENTS, CONDITIONS, MOVES, ADVANCEMENT, MAX_LABEL_VALUE, MIN_LABEL_VALUE, PLAYBOOK_INTERACTIONS, DESCRIPTION, TAKEN
 
-LABELS = 'labels'
-VALUE = 'value'
-LOCKED = 'locked'
-POTENTIAL = 'potential'
-PENDING_ADVANCEMENTS = 'pendingAdvancements'
-CONDITIONS = 'conditions'
-MOVES = 'moves'
-ADVANCEMENT = 'advancement'
-MAX_LABEL_VALUE = 3
-MIN_LABEL_VALUE = -2
-PLAYBOOK_INTERACTIONS = 'playbook_interactions'
 # These are the auxiliar functions
 
 def label_is_not_editable(label, border_value):
@@ -31,23 +22,6 @@ def get_label_has_border_value_text(label_name, label, direction, lang):
         return get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.is_locked')(get_translation(lang, f'labels.{label_name}'))
 
     return get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.value_is_in_border')(value, get_translation(lang, f'labels.{label_name}'), direction)
-
-
-def format_labels(labels, lang):
-    response = get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.labels_base')
-
-    for label in labels:
-        name = get_translation(lang, f'labels.{label}').capitalize()
-        value = labels[label][VALUE]
-
-        if labels[label][LOCKED]:
-            is_locked = get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.locked')
-        else:
-            is_locked = ''
-
-        response = response + f'{name}: {value} {is_locked}\n'
-
-    return response
 
 
 def format_conditions(conditions, lang):
@@ -102,30 +76,14 @@ def format_moves(moves):
     return ''
 
 
-def get_args_from_content(content):
-    from tssplit import tssplit
-    #splited = content.split(" ")
-    splited = tssplit(content, quote='"', delimiter=' ')
-    if len(splited) == 2:
-        return splited[1]
-
-    return splited[1:]
-
-
-def get_key_and_content_from_message(message):
-    key = f'{message.channel.id}/{message.author.id}'
-
-    return f'adventures/{key}', message.content
-
-
 def format_advance_list(advance_list, list_name, lang):
     response = get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.{list_name}') + '\n'
 
     for advance_key in advance_list:
         advance = advance_list[advance_key]
-        description = advance['description']
+        description = advance[DESCRIPTION]
         response = response + '• '
-        if advance['taken']:
+        if advance[TAKEN]:
             response = response + get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.taken')
 
         response = response + get_translation(lang, f'playbooks.advances.{description}') + '\n'
@@ -162,6 +120,10 @@ def edit_labels(message, lang):
 
     labels = char_info[LABELS]
 
+    labels_do_not_exist = validate_labels(lang, [label_to_increase_name_og, label_to_decrease_name_og])
+    if labels_do_not_exist:
+        return labels_do_not_exist
+
     label_to_increase = labels[label_to_increase_name]
     label_to_increase_value = label_to_increase[VALUE]
     label_to_decrease = labels[label_to_decrease_name]
@@ -194,6 +156,11 @@ def lock_label(message, lang):
         return get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.no_character')
 
     labels = char_info[LABELS]
+
+    label_does_not_exist = validate_labels(lang, [label_to_lock_name_og])
+    if label_does_not_exist:
+        return label_does_not_exist
+
     label_to_lock = labels[label_to_lock_name]
 
     if label_to_lock[LOCKED]:
@@ -244,14 +211,21 @@ def create_character(message, lang):
     if char_info:
         return get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.existing_character')
 
-    playbook_name, character_name, player_name, label_to_increase = get_args_from_content(content)
+    playbook_name, character_name, player_name, label_to_increase_og = get_args_from_content(content)
+
+    label_does_not_exist = validate_labels(lang, [label_to_increase_og])
+    if label_does_not_exist:
+        return label_does_not_exist
+
+    label_to_increase = get_translation(lang, f'inverted_labels.{label_to_increase_og}')
+    translated_name = get_translation(lang, f'playbooks.names.{playbook_name}')
     file_list = get_files_from_dir('playbooks', s3_client)
-    template_key = f'playbooks/{playbook_name}'
+    template_key = f'playbooks/{translated_name}'
 
     matching_files = list(filter(lambda file_info: file_info["Key"] == f'{template_key}.json', file_list["Contents"]))
 
-    if not len(matching_files):
-        return get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.no_template')
+    if not matching_files:
+        return get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.no_template')(playbook_name)
 
     template = info_from_s3(template_key, s3_client)
 
@@ -263,6 +237,7 @@ def create_character(message, lang):
 
     formated_playbook_name = playbook_name.capitalize()
     return get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.congrats_on_creation')(character_name, formated_playbook_name)
+
 
 # These are the functions that get the data in the characters s3 file
 
@@ -327,3 +302,18 @@ def get_advancements(message, lang):
         return get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.no_character')
 
     return format_advancements(char_info[ADVANCEMENT], lang)
+
+
+generic_playbook_dict = {
+  "lock": lock_label,
+  "editlabels": edit_labels,
+  "potential": mark_potential,
+  "markcondition": mark_condition,
+  "clearcondition": clear_condition,
+  "create": create_character,
+  "labels": get_labels, 
+  "conditions": get_conditions, 
+  "get_potential": get_potential, 
+  "pending_advancements": get_pending_advancements, 
+  "advancements": get_advancements
+}

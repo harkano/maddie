@@ -40,7 +40,12 @@
     { "id": 88, "picked": false },
     { "id": 89, "picked": false },
     { "id": 90, "picked": false },
-    { "id": 91, "picked": true }
+    { "id": 91, "picked": true },
+    { "id": 92, "picked": false },
+    { "id": 93, "picked": false },
+    { "id": 94, "picked": false },
+    { "id": 95, "picked": false },
+    { "id": 96, "picked": false }
   ],
   "advancement": {
     "basic": {

@@ -103,15 +103,15 @@
         "description": "retire",
         "taken": false
       }
-    },
-    "memories": -1,
-    "roles": {
-      "monster": "",
-      "traitor": "",
-      "corruptor": "",
-      "martyr": "",
-      "builder": "",
-      "leader": ""
     }
+  },
+  "memories": -1,
+  "roles": {
+    "monster": "",
+    "traitor": "",
+    "corruptor": "",
+    "martyr": "",
+    "builder": "",
+    "leader": ""
   }
 }

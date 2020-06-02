@@ -60,3 +60,9 @@ def get_playbooks(lang):
         embed.set_footer(text=" ")
         response = embed
     return response
+
+
+embed_commands_dict = {
+  "mot": get_moment_of_truth,
+  "playbooks": lambda _msg, lang: get_playbooks(lang)
+}

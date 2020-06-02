@@ -1,16 +1,23 @@
 en = {
-  "embed_commands": {
+  "embed_commands_dict": {
     "mot": "mot",
     "playbooks": "playbooks"
   },
-  "plain_commands": {
-    "helphere": "helphere",
+  "generic_playbook_dict": {
     "lock": "lock",
     "editlabels": "editlabels",
     "potential": "potential",
     "markcondition": "markcondition",
     "clearcondition": "clearcondition",
     "create": "create",
+    "labels": "labels",
+    "conditions": "conditions",
+    "get_potential": "get_potential",
+    "pending_advancements": "pending_advancements",
+    "advancements": "advancements"
+  },
+  "settings_dict": {
+    "helphere": "helphere",
     "settings": "settings",
     "changesettings": "change_settings",
     "language": "language",
@@ -18,12 +25,30 @@ en = {
     "updatelang": "update_lang",
     "updategm": "update_gm",
     "updateteamname": "update_teamname",
-    "createsettings": "create_settings",
-    "labels": "labels",
-    "conditions": "conditions",
-    "get_potential": "get_potential",
-    "pending_advancements": "pending_advancements",
-    "advancements": "advancements"
+    "createsettings": "create_settings"
+  },
+  "generic_advancements_dict": {
+    "mov_my_playbook": "mov_my_playbook",
+    "mov_other_playbook": "mov_other_playbook",
+    "rearrange": "rearrange"
+  },
+  "playbook_specific_advancements_dict": {
+    "more_roles": "more_roles",
+    "add_adult": "add_adult",
+    "more_to_labels": "more_to_labels",
+    "clear_sign": "clear_sign",
+    "get_burns": "get_burns",
+    "mask_label": "mask_label",
+    "get_drives": "get_drives",
+    "get_sanctuary": "get_sanctuary",
+    "more_flares": "more_flares",
+    "get_heart": "get_heart",
+    "get_mask": "get_mask",
+    "mentor_label": "mentor_label",
+    "more_resources": "more_resources",
+    "get_mentor": "get_mentor",
+    "get_legacy": "get_legacy",
+    "lock_soldier": "lock_soldier"
   },
   "dice_rolling": {
     "calculation_title": "Calculation",
@@ -64,10 +89,40 @@ en = {
     "no_template": lambda playbook_name: f"It seems I don't have a template for a playbook called {playbook_name}",
     "congrats_on_creation": lambda char, playbook: f"Congratulations {char}, The {playbook} on joining the team!",
     "potential": lambda potential: f"You have {potential} potential marked",
-    "congrats_pending_advancements": lambda adv_count: f"You can do {adv_count + 1} advancements",
     "basic": "\nBasic:",
     "advanced": "\nAdvanced:",
-    "taken": "[TOMADO] "
+    "taken": "[TOMADO] ",
+    "pending_advancements": lambda adv_count: f"You can do {adv_count + 1} advancements",
+    "no_moves_pb": "I'm sorry, but there are no moves from your playbook that match that name",
+    "no_moves": "I'm sorry, but there are no moves that match that name",
+    "move_already_taken": "You already have this move, choose another one",
+    "successfully_added_move": lambda move_name: f"Nice, you can now use the move {move_name}",
+    "your_playbook": "You can't add a move from your playbook with this advancement",
+    "more": "more",
+    "less": "less",
+    "equal": "equal",
+    "add_one_to_label": lambda difference, direction: f"You should add one to a label, the difference with these values has {difference} {direction} than the original sum",
+    "less_than_min": lambda min_allowed, intended: f"I'm sorry, but {intended} is not a valid label value. The minimum is {min_allowed}",
+    "greater_than_max": lambda max_allowed, intended: f"I'm sorry, but {intended} is not a valid label value. The maximum is {max_allowed}",
+    "no_playbook": lambda name: f"To take this advancement you must have one of the following playbooks:{name}",
+    "invalid_roles": "The valid roles are: defender, friend, listener and enabler. The following ones are invalid:",
+    "successfull_update": "The update was successfull",
+    "role_is_picked": lambda role: f"The role {role} has already been chosen, you must pick two new ones",
+    "not_adult": lambda name: f"The move {name} is not adult",
+    "already_max": lambda value, name: f"The {name} label already has the max value ({value})",
+    "invalid_label": lambda name: f"The label {name} does not exist. ",
+    "invalid_doomsign": lambda doomsign: f"The doomsign {doomsign} does not exist, the valid ones are visions, infinite, portal, bright, bolstered and perish",
+    "doomsign_not_marked": lambda doomsign: f"The doomsign {doomsign} must be marked to be cleared",
+    "already_mask_label": lambda label_name: f"The label {label_name} is already your mask label, you must choose a new one",
+    "already_have": lambda name: f"You already have {name}",
+    "invalid_flares": "The valid flares are: storm, shield, constructs, moat, worship, move, boost, overcharge, elemental and snatch. The following ones are invalid:",
+    "flare_is_picked": lambda name: f"The flare {name} has already been chosen, you must pick three new ones",
+    "not_exactly_three_flares": lambda current_count: f"You must choose 3 new flares, not {current_count}",
+    "invalid_label_type": lambda invalid_name: f"The options are embodies and denies, {invalid_name} isn't a valid option",
+    "max_mentor_label_value": lambda name, current_value: f"The label {name} must have a value of 1 or less for the change to be valid, not {current_value}",
+    "invalid_resource": lambda name: f"You can't have a {name} as a resource, the valid ones are:",
+    "resource_already_acquired": "You already have the following resources:",
+    "more_than_four_resources": lambda max_count, wanted_count: f"The maximum ammount of resources to add with this advancement is {max_count}, not {wanted_count}"
   },
   "labels": {
     "danger": "danger",
@@ -113,6 +168,48 @@ en = {
   "playbooks": {
     "the": "The",
     "list": ['beacon', 'bull', 'delinquent', 'doomed', 'janus', 'legacy', 'nova', 'outsider', 'protege', 'transformed', 'brain', 'harbinger', 'innocent', 'joined', 'newborn', 'nomad', 'reformed', 'scion', 'soldier'],
+    "names": {
+      "beacon": "beacon",
+      "bull": "bull",
+      "delinquent": "delinquent",
+      "doomed": "doomed",
+      "janus": "janus",
+      "legacy": "legacy",
+      "nova": "nova",
+      "outsider": "outsider",
+      "protege": "protege",
+      "transformed": "transformed",
+      "brain": "brain",
+      "harbinger": "harbinger",
+      "innocent": "innocent",
+      "joined": "joined",
+      "newborn": "newborn",
+      "nomad": "nomad",
+      "reformed": "reformed",
+      "scion": "scion",
+      "soldier": "soldier"
+    },
+    "inverted_names": {
+      "beacon": "beacon",
+      "bull": "bull",
+      "delinquent": "delinquent",
+      "doomed": "doomed",
+      "janus": "janus",
+      "legacy": "legacy",
+      "nova": "nova",
+      "outsider": "outsider",
+      "protege": "protege",
+      "transformed": "transformed",
+      "brain": "brain",
+      "harbinger": "harbinger",
+      "innocent": "innocent",
+      "joined": "joined",
+      "newborn": "newborn",
+      "nomad": "nomad",
+      "reformed": "reformed",
+      "scion": "scion",
+      "soldier": "soldier"
+    },
     "playbooks": "Playbooks",
     "available": "Available Playbooks are - ",
     "playbook_re": r"!mot ([a-z]+)",
@@ -163,6 +260,7 @@ en = {
       "mask": "Take The Mask and a secret identity from the Janus playbook"
     },
     "beacon": {
+      "drives": "drives",
       "drivesDescription": "Choose four drives to mark at the start of play. When you fulfill a marked drive, strike it out, and choose one: mark potential, clear a condition, take Influence over someone involved.\nWhen your four marked drives are all struck out, choose and mark four new drives. When all drives are struck out, change playbooks, retire from the life, or become a paragon of the city.",
       "lead": "lead the team successfull in battle",
       "kissDanger": "kiss someone dangerous",
@@ -192,6 +290,13 @@ en = {
       "explanation": "You always have exactly one love and one rival. You can change your love or rival at any time; give the new subject of your affections or disdain Influence over you. Take +1 ongoing to any action that impress your love or frustrates your rival.",
       "description": "Choose a role you commonly fulfill with your love or rival",
       "roles": {
+        "list": ["defender", "friend", "listener", "enabler"],
+        "titles_dict": {
+          "defender": "defender",
+          "friend": "friend",
+          "listener": "listener",
+          "enabler": "enabler"
+        },
         "titles": {
           "defender": "Defender",
           "friend": "Friend",
@@ -227,6 +332,14 @@ en = {
       "doomsigns": {
         "title": "Doomsigns",
         "description": "These are abilities that come to you with your approaching doom. Once you have taken all five doomsigns above the line, you must take 'Your doom arrives' the next time your doom track fills. Choose one doomsign you already hold at character creation.",
+        "accessors": {
+          "visions": "visions",
+          "infinite": "infinite",
+          "portal": "portal",
+          "bright": "bright",
+          "bolstered": "bolstered",
+          "perish": "perish"
+        },
         "titles": {
           "visions": "Dark Visions",
           "infinite": "Infinite Powers",
@@ -323,6 +436,20 @@ en = {
       "opponent": "is the greatest opponent of your legacy ever faced... and is still at large."
     },
     "nova": {
+      "flares": "flares",
+      "yourFlares": "Your flares are:",
+      "accessors": {
+        "storm": "storm",
+        "shield": "shield",
+        "constructs": "constructs",
+        "moat": "moat",
+        "worship": "worship",
+        "move": "move",
+        "boost": "boost",
+        "overcharge": "overcharge",
+        "elemental": "elemental",
+        "snatch": "snatch"
+      },
       "names": {
         "storm": "Reality storm",
         "shield": "Shielding",
@@ -349,11 +476,28 @@ en = {
       }
     },
     "protege": {
+      "embodies": "embodies",
+      "denies": "denies",
       "mentor": {
         "title": "Mentor",
         "description": "You have a mentor, someone who's taught you, given you aid, or raised you up. Someone who might have confined you a bit too rigidly to a single path. Which label do they embody, and which do they deny? (circle one each)",
         "embodies": "Encarna",
         "denies": "Niega"
+      },
+      "resources_accessors": {
+        "base": "base",
+        "vehicle": "vehicle",
+        "supercomputer": "supercomputer",
+        "communicators": "communicators",
+        "surveillance": "surveillance",
+        "identities": "identities",
+        "badges": "badges",
+        "chem": "chem",
+        "med": "med",
+        "teleportal": "teleportal",
+        "weapon": "weapon",
+        "security": "security",
+        "robots": "robots"
       },
       "resources": {
         "base": "a hidden base",
