@@ -59,41 +59,6 @@ def get_more_bull_roles(message, lang):
     return get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.successfull_update')
 
 
-def add_adult_move(message, lang):
-    key, content = get_key_and_content_from_message(message)
-    s3_client = get_s3_client()
-    char_info = info_from_s3(key, s3_client)
-
-    if not char_info:
-        return get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.no_character')
-
-    move_name = get_args_from_content(content)
-
-    moves_array = get_moves_json_array(lang)[MOVES]
-    move_list = list(filter(lambda move_dict: move_dict[SHORT_NAME] == move_name, moves_array))
-
-    if not len(move_list):
-        return get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.no_moves_pb')
-
-    move = move_list[0]
-
-    if move[PLAYBOOK] != ADULT:
-        return get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.not_adult')(move_name)
-
-    id = move_list[0][ID]
-
-    move = list(filter(lambda dic: dic[ID] == id, char_info[MOVES]))
-
-    if len(move):
-        return get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.move_already_taken')
-
-    char_info[PENDING_ADVANCEMENTS] = char_info[PENDING_ADVANCEMENTS] - 1
-    char_info[MOVES].append({ "id": id, "picked": True })
-    upload_to_s3(char_info, key, s3_client)
-
-    return get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.successfully_added_move')(move_name)
-
-
 def add_one_to_two_labels(message, lang):
     key, content = get_key_and_content_from_message(message)
     s3_client = get_s3_client()
@@ -272,7 +237,7 @@ def add_resources(message, lang):
     current_resources = char_info[MENTOR][RESOURCES]
     resource_count = 0
     resources = []
-    alread_acquired = []
+    already_acquired = []
 
     for resource_og in resources_og:
         resource = get_translation(lang, f'playbooks.protege.resources_accessors.{resource_og}')
@@ -280,11 +245,11 @@ def add_resources(message, lang):
             return get_invaild_resource_response(lang, resource_og, current_resources)
 
         if current_resources[resource]:
-            alread_acquired.append(resource_og)
+            already_acquired.append(resource_og)
         else:
             resources.append(resource)
 
-    if alread_acquired:
+    if already_acquired:
         response =  get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.resource_already_acquired')
         
         for resource in already_acquired:
@@ -362,7 +327,6 @@ def get_part_of_playbook(message, lang, playbook_to_take_from, your_playbook_mus
 
     playbook_template = info_from_s3(f'playbooks/{playbook_to_take_from}', s3_client)
 
-    already_taken = False
     for take_this in what_to_take:
         if take_this in char_info:
             return get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.already_have')(get_translation(lang, cant_take_message))
@@ -381,7 +345,6 @@ def get_part_of_playbook(message, lang, playbook_to_take_from, your_playbook_mus
 
 playbook_specific_advancements_dict = {
   "more_roles": get_more_bull_roles,
-  "add_adult": add_adult_move,
   "more_to_labels": add_one_to_two_labels,
   "clear_sign": clear_doomsign,
   "get_burns": get_burns,
