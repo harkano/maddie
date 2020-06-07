@@ -1,8 +1,9 @@
 import re
 
 from playbooks import get_playbook_names, get_playbook_list
-from language_handler import get_translation
+from language_handler import get_translation, LANG_LIST
 from utils import get_moves as get_moves_json_array
+from config_interactions import get_raw_lang
 
 COMMA_SEPARATOR = ', '
 PLUS = '+'
@@ -66,6 +67,7 @@ def parse_command(command):
 
     return raw_command, False
 
+
 def get_unknown_playbook_response(lang):
     response = get_translation(lang, 'moves.non_existent_playbook_intro')
     for playbook in get_playbook_names(lang):
@@ -77,23 +79,26 @@ def get_unknown_playbook_response(lang):
     return 0
 
 
-def get_moves(message, lang):
+def get_moves(message):
     content = message.content
-    moves_array = get_moves_json_array(lang)
-    type_of_command, show_detail = parse_command(content)
 
-    playbook_field = get_playbook_field(type_of_command, lang)
+    for lang in LANG_LIST:
+        moves_array = get_moves_json_array(lang)
+        type_of_command, show_detail = parse_command(content)
 
-    if playbook_field:
-        moves_by_playbook = list(filter(lambda move_dict: compare_move_to_playbook(
-            move_dict, playbook_field), moves_array['moves']))
+        playbook_field = get_playbook_field(type_of_command, lang)
 
-        if not len(moves_by_playbook):
-            return get_unknown_playbook_response(lang)
+        if playbook_field:
+            raw_lang = get_raw_lang(message)
+            moves_by_playbook = list(filter(lambda move_dict: compare_move_to_playbook(
+                move_dict, playbook_field), moves_array['moves']))
 
-        if show_detail:
-            return join_with_detail(moves_by_playbook, lang)
+            if not len(moves_by_playbook):
+                return get_unknown_playbook_response(raw_lang)
 
-        return join_with_commas(moves_by_playbook, 'shortName')
+            if show_detail:
+                return join_with_detail(moves_by_playbook, raw_lang)
+
+            return join_with_commas(moves_by_playbook, 'shortName')
 
     return None
