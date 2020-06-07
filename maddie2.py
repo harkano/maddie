@@ -14,7 +14,6 @@ from utils import get_modified_num, get_moves as get_moves_array
 from moves import get_moves
 from command_handler import plain_command_handler, embed_command_handler
 from parse import mad_parse, add_result
-from config_interactions import get_raw_lang
 
 logger = logging.getLogger('discord')
 logger.setLevel(logging.INFO) #set logging level to INFO, DEBUG if we want the full dump
@@ -75,24 +74,24 @@ async def on_message(message):
     if message.author == client.user:
         return
 
-    lang = get_raw_lang(message)
-
-    #list moves
-    move_list = get_moves(message, lang)
-    if move_list:
-        await message.channel.send(move_list)
-        return
     # handle help and all of the playbook interactions
-    response = plain_command_handler(message, lang)
+    response = plain_command_handler(message)
 
     if response:
         await message.channel.send(response)
         return
 
-    response = embed_command_handler(message, lang)
+    response = embed_command_handler(message)
 
     if response:
         await message.channel.send(embed=response)
+        return
+
+    #list moves
+    move_list = get_moves(message)
+
+    if move_list:
+        await message.channel.send(move_list)
         return
 
     #remember generic ! should always be last in the tree

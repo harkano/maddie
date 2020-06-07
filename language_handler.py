@@ -1,6 +1,8 @@
 from en_dict import get_en_dict
 from es_dict import get_es_dict
 
+LANG_LIST = ['en', 'es']
+
 lang_dicts = {
   "en": get_en_dict(),
   "es": get_es_dict()
@@ -30,4 +32,4 @@ def get_translation(lang, accessor):
 
 
 def is_invalid_lang(lang):
-    return lang not in ['en', 'es']
+    return lang not in LANG_LIST
