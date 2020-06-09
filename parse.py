@@ -9,7 +9,7 @@ from utils import get_modified_num, get_moves
 from language_handler import get_translation
 from config_interactions import get_raw_lang
 from playbook_interactions import get_character
-from constants import LABELS, CONDITIONS
+from constants import LABELS, CONDITIONS, VALUE
 
 
 ##Setup the big sub
@@ -50,7 +50,6 @@ def mad_parse(message):
     json_array = get_moves(lang)
 
  # figure out which type of modifier it is#
-    num_calc = get_modified_num(mod, num)
  # lookup a table for the big blob of text and a wee blob#
     for p in json_array['moves']:
         if p['shortName'] == word:
@@ -75,7 +74,7 @@ def mad_parse(message):
         desc = get_translation(lang, 'description')
         if quiet == 0: embed.add_field(name=desc, value=f"{blob}") # don't include the blob if we're in quiet mode (!!)
         if roll:
-            handle_roll(message, embed, num_calc, mod, lang, label, condition)
+            handle_roll(message, embed, num, mod, lang, label, condition)
         embed.set_footer(text=" ")
 
         return embed
@@ -91,17 +90,19 @@ def get_modifier_from_character(labels, conditions, label, condition):
         mod = -2
 
     if label not in ['adult', 'basic']:
-        mod += labels[label]
+        mod += labels[label][VALUE]
 
     return mod
 
 
-def handle_roll(message, embed, num_calc, mod, lang, label, condition):
+def handle_roll(message, embed, num, mod, lang, label, condition):
     character = get_character(message)
 
+    char_mod = 0
     if character:
         char_mod = get_modifier_from_character(character[LABELS], character[CONDITIONS], label, condition)
-        mod += char_mod
+
+    num_calc = get_modified_num(mod, num + char_mod)
 
     add_result(embed, num_calc, mod, lang)
 
