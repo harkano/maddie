@@ -8,6 +8,8 @@ import logging
 from utils import get_modified_num, get_moves
 from language_handler import get_translation
 from config_interactions import get_raw_lang
+from playbook_interactions import get_character
+from constants import LABELS, CONDITIONS
 
 
 ##Setup the big sub
@@ -57,6 +59,8 @@ def mad_parse(message):
             phrase = p['phrase']
             img = p['img']
             roll = p['requiresRolling']
+            label = p['label']
+            condition = p.get('condition', '')
             match = 1
     #Quiet mode
     searchStr4 = r'!!'
@@ -71,13 +75,35 @@ def mad_parse(message):
         desc = get_translation(lang, 'description')
         if quiet == 0: embed.add_field(name=desc, value=f"{blob}") # don't include the blob if we're in quiet mode (!!)
         if roll:
-            add_result(embed, num_calc, mod, lang)
+            handle_roll(message, embed, num_calc, mod, lang, label, condition)
         embed.set_footer(text=" ")
 
         return embed
 
     else:
         return 0
+
+
+def get_modifier_from_character(labels, conditions, label, condition):
+    mod = 0
+
+    if condition and conditions[condition]:
+        mod = -2
+
+    if label not in ['adult', 'basic']:
+        mod += labels[label]
+
+    return mod
+
+
+def handle_roll(message, embed, num_calc, mod, lang, label, condition):
+    character = get_character(message)
+
+    if character:
+        char_mod = get_modifier_from_character(character[LABELS], character[CONDITIONS], label, condition)
+        mod += char_mod
+
+    add_result(embed, num_calc, mod, lang)
 
 
 def add_result (embed, num_calc, mod, lang):

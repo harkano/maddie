@@ -9,7 +9,8 @@
             "description": " ",
             "img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
             "requiresRolling": true,
-            "playbook": "basic"
+            "playbook": "basic",
+            "condition": "afraid"
         },
         {
             "id": 2,
@@ -21,7 +22,8 @@
             "description": " ",
             "img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
             "requiresRolling": true,
-            "playbook": "basic"
+            "playbook": "basic",
+            "condition": "hopeless"
         },
         {
             "id": 3,
@@ -33,7 +35,8 @@
             "description": " ",
             "img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
             "requiresRolling": true,
-            "playbook": "basic"
+            "playbook": "basic",
+            "condition": "angry"
         },
         {
             "id": 4,
@@ -45,7 +48,8 @@
             "description": " ",
             "img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
             "requiresRolling": true,
-            "playbook": "basic"
+            "playbook": "basic",
+            "condition": "angry"
         },
         {
             "id": 5,
@@ -57,7 +61,8 @@
             "description": " ",
             "img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
             "requiresRolling": true,
-            "playbook": "basic"
+            "playbook": "basic",
+            "condition": "insecure"
         },
         {
             "id": 6,
@@ -69,7 +74,8 @@
             "description": " ",
             "img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
             "requiresRolling": true,
-            "playbook": "basic"
+            "playbook": "basic",
+            "condition": "guilty"
         },
         {
             "id": 7,
@@ -81,7 +87,8 @@
             "description": " ",
             "img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
             "requiresRolling": true,
-            "playbook": "basic"
+            "playbook": "basic",
+            "condition": "guilty"
         },
         {
             "id": 8,
@@ -116,7 +123,8 @@
             "description": " ",
             "img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
             "requiresRolling": true,
-            "playbook": "adult"
+            "playbook": "adult",
+            "condition": "insecure"
         },
         {
             "id": 11,
