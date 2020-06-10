@@ -241,6 +241,12 @@ def create_character(message, lang):
 
 # These are the functions that get the data in the characters s3 file
 
+def get_character(message):
+    key, _content = get_key_and_content_from_message(message)
+    s3_client = get_s3_client()
+    return info_from_s3(key, s3_client)
+
+
 def get_labels(message, lang):
     key, _content = get_key_and_content_from_message(message)
     s3_client = get_s3_client()
@@ -270,7 +276,7 @@ def get_potential(message, lang):
 
     potential = char_info[POTENTIAL]
 
-    return get_translation(lany,  f'{PLAYBOOK_INTERACTIONS}.potential')(potential)
+    return get_translation(lang,  f'{PLAYBOOK_INTERACTIONS}.potential')(potential)
 
 
 def get_moves(message, lang):
