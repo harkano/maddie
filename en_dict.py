@@ -55,7 +55,8 @@ en = {
     "calculation": lambda result1, result2, mod, calc: f"Dice **{result1}** + **{result2}**, Label{mod} **{calc}**",
     "dice": "Dice",
     "label": "Label",
-    "result": "Result"
+    "result": "Result",
+    "condition_text": "Roll is -2 due to condition "
   },
   "description": "Description",
   "moves": {
@@ -167,7 +168,7 @@ en = {
   },
   "playbooks": {
     "the": "The",
-    "list": ['beacon', 'bull', 'delinquent', 'doomed', 'janus', 'legacy', 'nova', 'outsider', 'protege', 'transformed', 'brain', 'harbinger', 'innocent', 'joined', 'newborn', 'nomad', 'reformed', 'scion', 'soldier'],
+    "list": ['beacon', 'bull', 'delinquent', 'doomed', 'janus', 'legacy', 'nova', 'outsider', 'protege', 'transformed', 'brain', 'harbinger', 'innocent', 'joined', 'newborn', 'nomad', 'reformed', 'scion', 'soldier', 'star'],
     "names": {
       "beacon": "beacon",
       "bull": "bull",
@@ -187,7 +188,8 @@ en = {
       "nomad": "nomad",
       "reformed": "reformed",
       "scion": "scion",
-      "soldier": "soldier"
+      "soldier": "soldier",
+      "star": "star"
     },
     "inverted_names": {
       "beacon": "beacon",
@@ -208,7 +210,8 @@ en = {
       "nomad": "nomad",
       "reformed": "reformed",
       "scion": "scion",
-      "soldier": "soldier"
+      "soldier": "soldier",
+      "star": "star"
     },
     "playbooks": "Playbooks",
     "available": "Available Playbooks are - ",
