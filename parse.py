@@ -89,6 +89,14 @@ def get_modifier_from_character(labels, conditions, label, condition):
     if condition and conditions[condition]:
         mod = -2
 
+    if label == CONDITIONS:
+        conditions_count = 0
+        for condition in conditions:
+            if condition:
+                conditions_count += 1
+
+        return mod + conditions_count
+
     if label not in ['adult', 'basic']:
         mod += labels[label][VALUE]
 
