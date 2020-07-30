@@ -97,7 +97,7 @@ def get_modifier_from_character(labels, conditions, label, condition):
 
         return mod + conditions_count
 
-    if label not in ['adult', 'basic']:
+    if label not in ['adult', 'basic', 'flat']:
         mod += labels[label][VALUE]
 
     return mod
