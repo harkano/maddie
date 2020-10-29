@@ -30,6 +30,12 @@ async def on_ready():
     for x in range(len(servers)):
         logger.info('   ' + servers[x-1].name)
 
+def msg_log_line(message):
+    if message.guild is not None:
+        return message.guild.name + "|" + message.channel.name + "|" + message.author.name + "|" + message.content
+    else:
+        return "[Direct Message]" + "|" + message.author.name + "|" + message.content
+
 #Listen for messages
 @client.event
 async def on_message(message):
@@ -40,7 +46,7 @@ async def on_message(message):
     response = plain_command_handler(message)
 
     if response:
-        log_line = message.guild.name + "|" + message.channel.name + "|" + message.author.name + "|" + message.content
+        log_line = msg_log_line(message)
         logger.info(log_line)
         await message.channel.send(response)
         return
@@ -48,14 +54,14 @@ async def on_message(message):
     response = embed_command_handler(message)
 
     if response:
-        log_line = message.guild.name + "|" + message.channel.name + "|" + message.author.name + "|" + message.content
+        log_line = msg_log_line(message)
         logger.info(log_line)
         await message.channel.send(embed=response)
         return
 
     #answer a call for help
     if message.content.startswith("!help"):
-        log_line = message.guild.name + "|" + message.channel.name + "|" + message.author.name + "|" + message.content
+        log_line = msg_log_line(message)
         logger.info(log_line)
         help_file = open("help", "r")
         response = help_file.read()
@@ -69,7 +75,7 @@ async def on_message(message):
         await message.channel.send(move_list)
     #remember generic ! should always be last in the tree#
     elif message.content.startswith("!"):
-        log_line = message.guild.name + "|" + message.channel.name + "|" + message.author.name + "|" + message.content
+        log_line = msg_log_line(message)
         logger.info(log_line)
         response =  mad_parse(message)
         if response: 
