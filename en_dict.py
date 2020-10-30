@@ -2,6 +2,7 @@ en = {
   "embed_commands_dict": {
     "mot": "mot",
     "celebrate": "celebrate",
+    "weakness": "weakness",
     "playbooks": "playbooks"
   },
   "generic_playbook_dict": {
