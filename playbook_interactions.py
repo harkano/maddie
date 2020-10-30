@@ -309,6 +309,24 @@ def get_advancements(message, lang):
 
     return format_advancements(char_info[ADVANCEMENT], lang)
 
+def get_sheet(message, lang):
+    key, _content = get_key_and_content_from_message(message)
+    s3_client = get_s3_client()
+    char_info = info_from_s3(key, s3_client)
+    if not char_info:
+        return get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.no_character')
+
+    return char#format_advancements(char_info[C], lang)
+
+
+def print_playbook(message, lang):
+    key, _content = get_key_and_content_from_message(message)
+    s3_client = get_s3_client()
+    char_info = info_from_s3(key, s3_client)
+    if not char_info:
+        return get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.no_character')
+
+    return format_advancements(char_info[ADVANCEMENT], lang)
 
 generic_playbook_dict = {
   "lock": lock_label,
@@ -321,5 +339,6 @@ generic_playbook_dict = {
   "conditions": get_conditions, 
   "get_potential": get_potential, 
   "pending_advancements": get_pending_advancements, 
-  "advancements": get_advancements
+  "advancements": get_advancements,
+  "me": get_sheet
 }

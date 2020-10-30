@@ -1742,6 +1742,8 @@
 		"name": "beacon",
 		"mot": "This is the moment when you show them exactly why you belong here. You do any one thing, take out any one enemy, no matter how insane, no matter how ridiculous, because that’s you. Their jaws are gonna drop when you’re done. Of course, pulling off a stunt like this tends to bring unwanted attention and a dangerous reputation...",
 		"img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
+		"celebrate": "When you share a triumphant celebration with someone, tell them how they’re awesome and add a Team to the pool. If they tell you how you’re awesome in return, add another Team to the pool.",
+		"weakness": "When you share a vulnerability or weakness with someone, ask them to confirm or deny that you should be here. If they confirm it, mark potential and give them Influence over you. If they deny it, mark Angry and shift one Label up and one Label down, your choice.",
 		"source": "core"
 	}, {
 		"id": 2,
