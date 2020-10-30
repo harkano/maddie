@@ -1,6 +1,7 @@
 en = {
   "embed_commands_dict": {
     "mot": "mot",
+    "celebrate": "celebrate",
     "playbooks": "playbooks"
   },
   "generic_playbook_dict": {
@@ -216,8 +217,14 @@ en = {
     "playbooks": "Playbooks",
     "available": "Available Playbooks are - ",
     "playbook_re": r"!mot ([a-z]+)",
+    "celebrate_re": r"!celebrate ([a-z]+)",
+    "weakness_re": r"!weakness ([a-z]+)",
     "moment_of_truth": "MOMENT OF TRUTH",
+    "celebrate": "Triumphant Celebration",
+    "weakness": "Vulnerabiility or Weakness",
     "this_is_mot": lambda usr: f"This is {usr}'s moment!",
+    "this_is_celebrate": lambda usr: f"{usr} celebrates a triumph!",
+    "this_is_weakness": lambda usr: f"{usr} opens up and shares!",
     "advances": {
       "moveYouPlaybook": "Take another move from your playbook",
       "moveOtherPlaybook": "Take a move from another playbook",
