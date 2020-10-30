@@ -44,6 +44,57 @@ def get_moment_of_truth(message, lang):
 
     return response
 
+def get_celebrate(message, lang):
+    msg = message.content
+    usr = message.author.display_name
+    json_array = get_moves(lang)
+    found = 0
+    msg = msg.lower()
+    celebrate_re = get_translation(lang, 'playbooks.celebrate_re')
+    result1 = re.search(celebrate_re, msg)
+    for p in json_array['playbooks']:
+        if p['name'] == result1.group(1):
+            celebrate = p['celebrate']
+            img = p['img']
+            found = 1
+    if found == 1:
+        embed = discord.Embed(title=get_translation(lang, 'playbooks.celebrate'))
+        embed.set_author(name=get_translation(lang, 'playbooks.this_is_celebrate')(usr))
+        embed.set_thumbnail(url=img)
+        description = get_translation(lang, 'description')
+        embed.add_field(name=description, value=celebrate)
+        embed.set_footer(text=" ")
+        response = embed
+    else: response = 0
+
+    return response
+
+def get_weakness(message, lang):
+    msg = message.content
+    usr = message.author.display_name
+    json_array = get_moves(lang)
+    found = 0
+    msg = msg.lower()
+    weakness_re = get_translation(lang, 'playbooks.weakness_re')
+    result1 = re.search(weakness_re, msg)
+    for p in json_array['playbooks']:
+        if p['name'] == result1.group(1):
+            weakness = p['weakness']
+            img = p['img']
+            found = 1
+    if found == 1:
+        embed = discord.Embed(title=get_translation(lang, 'playbooks.weakness'))
+        embed.set_author(name=get_translation(lang, 'playbooks.this_is_weakness')(usr))
+        embed.set_thumbnail(url=img)
+        description = get_translation(lang, 'description')
+        embed.add_field(name=description, value=weakness)
+        embed.set_footer(text=" ")
+        response = embed
+    else: response = 0
+
+    return response
+
+
 def get_playbooks(lang):
     json_array = get_moves(lang)
     playbooks = get_translation(lang, 'playbooks.playbooks')
@@ -64,5 +115,9 @@ def get_playbooks(lang):
 
 embed_commands_dict = {
   "mot": get_moment_of_truth,
-  "playbooks": lambda _msg, lang: get_playbooks(lang)
+  "playbooks": lambda _msg, lang: get_playbooks(lang),
+  "celebrate": get_celebrate,
+  "weakness": get_weakness
+
+
 }
