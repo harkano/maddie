@@ -1,12 +1,13 @@
 import boto3
 import json
-from s3_utils import info_from_s3, get_s3_client, upload_to_s3, get_files_from_dir
+from s3_utils import info_from_s3, get_s3_client, upload_to_s3, get_files_from_dir, s3_delete
 from language_handler import get_translation, get_for_all_langs, is_invalid_lang
 
 LANGUAGE = 'language'
 GM = 'gm'
 TEAMNAME = 'teamname'
 CUSTOM_NAMES = 'customNames'
+TEAM = 'team'
 
 # Aux functions
 
@@ -32,8 +33,8 @@ def get_field_from_config(message, field):
 
 
 def handle_help(message, _lang):
-    log_line = message.guild.name + "|" + message.channel.name + "|" + message.author.name + "|" + message.content
-    logger.info(log_line)
+    #log_line = message.guild.name + "|" + message.channel.name + "|" + message.author.name + "|" + message.content
+    #logger.info(log_line)
     help_file = open("help", "r")
     response = help_file.read()
     return response
@@ -90,13 +91,24 @@ def create_settings(message):
         "language": lang,
         "gm": "",
         "teamname": "",
-        "customNames": []
+        "customNames": [],
+        "team": 1
     }
 
     upload_to_s3(settings, f'adventures/{message.channel.id}/settings', s3_client)
 
     return get_translation(lang, 'configuration.successfull_creation')
 
+def delete_settings(message):
+    settings_key = get_settings_path(message)
+    s3_client = get_s3_client()
+    settings = info_from_s3(settings_key, s3_client)
+
+    if not settings:
+        return no_config_file()
+    if settings:
+        s3_delete(settings_key, s3_client)
+        return get_translation(settings[LANGUAGE], 'configuration.successfull_deletion')
 
 # Getters
 
@@ -138,6 +150,14 @@ def get_language(message, _lang):
 def get_teamname(message, _lang):
     return get_field_from_config(message, TEAMNAME)
 
+def add_team(message, _lang):
+    settings_key = get_settings_path(message)
+    s3_client = get_s3_client()
+    settings = info_from_s3(settings_key, s3_client)
+
+    if not settings:
+        return no_config_file()
+
 
 settings_dict = {
   "helphere": handle_help,
@@ -147,5 +167,7 @@ settings_dict = {
   "update_lang": update_lang,
   "update_gm": lambda msg, _lang: update_gm(msg),
   "update_teamname": lambda msg, _lang: update_teamname(msg),
-  "create_settings": lambda msg, _lang: create_settings(msg)
+  "create_settings": lambda msg, _lang: create_settings(msg),
+  "delete_settings": lambda msg, _lang: delete_settings(msg),
+  "team": lambda msg, _lang: add_team(msg)
 }
