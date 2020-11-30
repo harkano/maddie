@@ -1719,7 +1719,7 @@
 		"shortName": "battle",
 		"capital": "ENTER BATTLE",
 		"phrase": "and the team enter battle against a dangerous foe!",
-		"blob": "*When you enter battle against a dangerous foe as a team*, add two to the Team pool.\n• If the leader has Influence over every teammate, add another Team.\\n• If everyone has the same purpose in the fight, add another Team.\\n• If any team member mistrusts the leader or the team, remove a Team.\n• If your team is ill-prepared or offbalance, remove a Team.\n\nThe leader of the team can mark a condition to avoid\nremoving a Team from the pool.",
+		"blob": "*When you enter battle against a dangerous foe as a team*, add two to the Team pool.\n• If the leader has Influence over every teammate, add another Team.\n• If everyone has the same purpose in the fight, add another Team.\n• If any team member mistrusts the leader or the team, remove a Team.\n• If your team is ill-prepared or offbalance, remove a Team.\n\nThe leader of the team can mark a condition to avoid removing a Team from the pool.",
 		"label": "",
 		"img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
 		"requiresRolling": false,
