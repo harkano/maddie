@@ -16,7 +16,9 @@ en = {
     "conditions": "conditions",
     "get_potential": "get_potential",
     "pending_advancements": "pending_advancements",
-    "advancements": "advancements"
+    "advancements": "advancements",
+    "print": "print",
+    "deletecharacter": "deletecharacter"
   },
   "settings_dict": {
     "helphere": "helphere",
@@ -27,7 +29,9 @@ en = {
     "updatelang": "update_lang",
     "updategm": "update_gm",
     "updateteamname": "update_teamname",
-    "createsettings": "create_settings"
+    "createsettings": "create_settings",
+    "deletesettings": "delete_settings",
+    "addteam": "add_team"
   },
   "generic_advancements_dict": {
     "mov_my_playbook": "mov_my_playbook",
@@ -125,7 +129,8 @@ en = {
     "max_mentor_label_value": lambda name, current_value: f"The label {name} must have a value of 1 or less for the change to be valid, not {current_value}",
     "invalid_resource": lambda name: f"You can't have a {name} as a resource, the valid ones are:",
     "resource_already_acquired": "You already have the following resources:",
-    "more_than_four_resources": lambda max_count, wanted_count: f"The maximum ammount of resources to add with this advancement is {max_count}, not {wanted_count}"
+    "more_than_four_resources": lambda max_count, wanted_count: f"The maximum ammount of resources to add with this advancement is {max_count}, not {wanted_count}",
+    "character_deletion": lambda char, playbook: f"Goodbye {char}, the {playbook} - You have deleted your character in this channel."
   },
   "labels": {
     "danger": "danger",
@@ -161,10 +166,11 @@ en = {
     "teamname": "Team name",
     "gm": "GM",
     "customNames": "Custom names",
-    "no_file": "This chat doesn't have a configuration file. To create it write the following command:\n!adventure en\nif you wish for it to be in english.\n",
+    "no_file": "This chat doesn't have a configuration file. To create it write the following command:\n!createsettings en\nif you wish for it to be in english.\n",
     "existing_settings": "This chat already has a configuration file.",
-    "successfull_update": "The update was successfull",
+    "successfull_update": "The update was successful",
     "successfull_creation": "The configuration file has been created",
+    "successfull_deletion": "The configuration file has been deleted",
     "invalid_lang": lambda lang: f"{lang} is not a valid language, the options are: en (english), es (spanish)",
     "gm": "GM"
   },
