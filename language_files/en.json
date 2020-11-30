@@ -1742,122 +1742,160 @@
 		"name": "beacon",
 		"mot": "This is the moment when you show them exactly why you belong here. You do any one thing, take out any one enemy, no matter how insane, no matter how ridiculous, because that’s you. Their jaws are gonna drop when you’re done. Of course, pulling off a stunt like this tends to bring unwanted attention and a dangerous reputation...",
 		"img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
-		"celebrate": "When you share a triumphant celebration with someone, tell them how they’re awesome and add a Team to the pool. If they tell you how you’re awesome in return, add another Team to the pool.",
-		"weakness": "When you share a vulnerability or weakness with someone, ask them to confirm or deny that you should be here. If they confirm it, mark potential and give them Influence over you. If they deny it, mark Angry and shift one Label up and one Label down, your choice.",
+		"celebrate": "When you *share a triumphant celebration with someone*, tell them how they’re awesome and add a Team to the pool. \nIf they tell you how you’re awesome in return, add another Team to the pool.",
+		"weakness": "When you *share a vulnerability or weakness with someone*, ask them to confirm or deny that you should be here. \nIf they confirm it, mark potential and give them Influence over you. \nIf they deny it, mark Angry and shift one Label up and one Label down, your choice.",
 		"source": "core"
 	}, {
 		"id": 2,
 		"name": "bull",
 		"mot": "This is what you do best. You let loose, all the pent up strength and rage and glee, and you break whatever stands in your way. You are a walking demolition crew. What can stand up to you? Nothing. Not buildings. Not structures. Not enemies. Nothing. Of course, now the people who changed you know exactly where to find you...",
 		"img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
+		"celebrate": "When you *share a triumphant celebration with someone*, make them your love or rival immediately to mark potential. If they are already your love or rival, take Influence over them and mark potential.",
+		"weakness": "When you *share a vulnerability or weakness with someone*, give them Influence and hold 2. Spend that hold to help them as if it were Team in the pool.",
 		"source": "core"
 	}, {
 		"id": 3,
 		"name": "delinquent",
 		"mot": "This is when you show them what you really are. Whether you’re the hero underneath the rebel facade...or the one who can make the hard choices heroes can’t make. You do whatever it takes to show that truth, whether it’s saving the day from a terrible villain or stopping a bad guy once and for all. Of course, once you’ve shown what you really are, there’s no going back to playing the clown...",
 		"img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
+		"celebrate": "When you *share a triumphant celebration with someone*, ask them if they think you’re cool. \nIf they say yes, give them Influence and take Influence over them. \nIf they say no, mark a condition or spurn them immediately. If they’re a teammate, then either way, add a Team to the pool.",
+		"weakness": "When you *share a vulnerability or weakness with someone*, give them Influence over you, and ask them who they’d like you to be. Mark potential if you show them that person. If they’re a teammate, add a Team to the pool no matter what.",
 		"source": "core"
 	}, {
 		"id": 4,
 		"name": "doomed",
 		"mot": "The prickly tingling fear of your doom, always in your head—it holds you back most of the time.  But right here, right now? It gives you the confidence to do anything. After all, what’s the worst that could happen? Is it worse than your doom? Do impossible things. Do anything. But mark a doomsign after you’re finished. ",
 		"img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
+		"celebrate": "When you *share a triumphant celebration with someone*, give them Influence over you and spend 1 Team from the pool to clear one box on your doom track.",
+		"weakness": "When you *share a vulnerability or weakness with someone*, give them Influence over you and ask if they honestly think there’s hope for you. If they say yes, mark potential or clear one box of your doom track. If they say no, mark a condition or mark your doom track.",
 		"source": "core"
 	}, {
 		"id": 5,
 		"name": "janus",
 		"mot": "The mask is a lie, and some piece of you has always known that. Doesn’t matter if others can see it. You’re the one that can do the impossible. Mask off. Costume on. And you’re going to save the damn day. Of course, you better hope nobody nasty is watching…",
 		"img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
+		"celebrate": "When you *share a triumphant celebration with someone*, ask them if they see you as the person wearing the mask or the person underneath. \nIf the former, mark potential and clear a condition. \nIf the latter, take Influence over them if you reveal yourself.",
+		"weakness": "When you *share a vulnerability or weakness with someone*, tell them a secret about who you really are. Give them Influence, and shift your Mundane up and your mask’s Label down.",
 		"source": "core"
 	}, {
 		"id": 6,
 		"name": "legacy",
 		"mot": "This is the moment when you prove how much the mantle belongs to you. You seize control of all your powers, and you defeat even impossible odds to prove you are worthy of the name you carry. You accomplish feats even your predecessors couldn’t do. Of course, after you prove something like that, you can expect still more responsibilities to be placed on your shoulders...",
 		"img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
+		"celebrate": "When you *share a triumphant celebration with someone*, tell them whether you see them as an equal. \nIf you do, give them Influence over you and mark potential. \nIf you don’t, shift Superior up and any other Label down.",
+		"weakness": "When you *share a vulnerability or weakness with someone*, tell them a secret about your legacy (including your own true feelings about it) to clear a condition and give them Influence over you.",
 		"source": "core"
 	}, {
 		"id": 7,
 		"name": "nova",
 		"mot": "Your mind’s eye opens, and you can see the world around you like never before. You can control it, at will, with ease. Of course, warping reality tends to have ramifications down the line, but in your moment of godhood...how could you possibly be worried? ",
 		"img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
+		"celebrate": "When you *share a triumphant celebration with someone*, ask them if there is any fear in their eyes when they look at you. \nIf they say no, take +1 forward and mark potential. \nIf they say yes, immediately shift your Danger up and Savior down.",
+		"weakness": "When you *share a vulnerability or weakness with someone*, tell them how they could stop you, if it came down to it. Give them Influence over you and clear a condition.",
 		"source": "core"
 	}, {
 		"id": 8,
 		"name": "outsider",
 		"mot": "You embrace your home and call them for aid. They will answer your call—in force! —arriving exactly when you need them to turn the tide. They fight and serve you for the rest of the battle. Of course, when all is said and done...they’d probably like to take you home with them. You did, after all, just prove yourself worthy.",
 		"img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
+		"celebrate": "When you *share a triumphant celebration with someone*, take Influence over them if you show them meaningful affection, physical or emotional. They decide if it’s meaningful.",
+		"weakness": "When you *share a vulnerability or weakness with someone*, they tell you what you should do to fit in more. Take +1 forward to do it, and mark potential if you do.",
 		"source": "core"
 	}, {
 		"id": 9,
 		"name": "protege",
 		"mot": "The moment that you show who you really are: your mentor, or something different. You can do whatever your mentor could do and more. You can do the incredible, even the things they always failed to accomplish. Of course, they’re not going to see you the same way, no matter which path you choose… ",
 		"img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
+		"celebrate": "When you *share a triumphant celebration with someone*, ask them if you’ve been a good leader or effective teammate. \nIf they say yes, your mentor loses Influence over you and you mark potential. \nIf they say no, your mentor gains Influence over you, and you take +1 forward on using the Label your mentor embodies.",
+		"weakness": "When you *share a vulnerability or weakness with someone*, tell them a secret about your mentor (including your feelings towards them). Give them Influence over you and add 1 Team to the pool.",
 		"source": "core"
 	}, {
 		"id": 10,
 		"name": "transformed",
 		"mot": "It’s so easy to forget that you’re not your body, and you’re not the voice in your head—you’re both. Be the monster, and save them anyway. Smash down walls, and speak softly. Because when you embrace it, you can do anything. Of course, putting on a display like this is sure to rile up those who see only the monster when they look at you…",
 		"img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
+		"celebrate": "When you *share a triumphant celebration with someone*, clear one condition if they treat you like a perfectly normal person and mark potential if they praise your power or abilities.",
+		"weakness": "When you *share a vulnerability or weakness with someone*, ask them if they think you’re losing or gaining humanity. \nIf they say losing, mark a condition and mark potential. \nIf they say gaining,clear a condition and shift Mundane up and any other Label down.",
 		"source": "core"
 	}, {
 		"id": 11,
 		"name": "brain",
 		"mot": "Sooner or later, all the super powers, elite training, and experience are helpless in the face of evil or disaster. That’s when somebody like you, gifted as you are with a peerless intellect, can rise to the occasion. Your plan, your invention, or your lightning-fast thought processes save the day, in a way no one else could have foreseen. Of course, after you’ve shown how different you are from them, that distance between you and the others is now that much greater. And the world is only going to pull you farther apart...",
 		"img": "",
+		"celebrate": "When you *share a triumphant celebration with someone*, ask them if they felt they could have done it without you. \nIf they say yes, give Influence to them and mark a condition. \nIf they say no, they give Influence to you.",
+		"weakness": "When you *share a vulnerability or weakness with someone*, hold 2. \nSpend the hold 1-for-1 to clear a condition or add 1 Team to the pool when you are with them.",
 		"source": "aegis"
 	}, {
 		"id": 12,
 		"name": "soldier",
 		"mot": "Freedom isn’t free. But not every mission ends in tragedy. When things look bleakest, when your back is against the wall, when it seems like the dawn will never come...you find a way without violence. Your enemies lay down their arms and surrender; your allies step back from the brink of chaos. Of course, the people you’ve saved aren’t going to forget what you’ve done here today; they may even come to see you as a symbol of the higher cause you claim to serve...",
 		"img": "",
+		"celebrate": "When you *share a triumphant celebration with someone*, tell them what they need to do to achieve their full potential. \nIf they accept your advice, take Influence over them and add two Team to the pool. \nIf they reject what you have to say, mark a condition.",
+		"weakness": "When you *share a vulnerability or weakness with someone*, ask them what cause they serve. \nIf you find it to be a worthy cause, tell them how you will fight for it, clear a condition, and add a Team to the pool. \nIf they don’t have a cause (or you find it unworthy), mark a condition.",
 		"source": "aegis"
 	}, {
 		"id": 13,
 		"name": "reformed",
 		"mot": "You’ve seen your greatest mistakes, and the rest of the world has, too. They’re all watching you now, judging every move you make. When everything is on the line and your back is against the wall, though, you’ll show them what you’re made of—that being a hero is a choice. An act of will. And you’ve got what it takes to save the day. Of course, afterward, you can expect both sides, hero and villain, to deeply question where your loyalties truly lie...",
 		"img": "",
+		"celebrate": "When you *share a moment of triumph with someone*, ask them what gives them hope for a brighter day and give them Influence.",
+		"weakness": "When you *share a vulnerability or weakness with someone*, ask them what they would do something dark for and gain Influence over them.",
 		"source": "herald"
 	}, {
 		"id": 14,
 		"name": "newborn",
 		"mot": "Something snaps into focus, and suddenly you’re a full thing, true and complete. You’d never have known how fragmented you were before, if not for here, this moment. You’re not a series of individual lessons. You’re not a series of subroutines and programs. You’re...a person. This must be what it’s like to be...human. And this fullness? It gives you a control over yourself, a unity of purpose you’ve never experienced before. Of course, now that you’re showing off all your potential, it’s only a matter of time before someone comes forward to reduce you to a machine again...",
 		"img": "",
+		"celebrate": "When you *share a triumphant celebration with someone*, ask them what makes them proud or happy about the actions they took and write a lesson based on it, either filling an empty slot or replacing an existing lesson.",
+		"weakness": "When you *share a vulnerability or weakness with someone*, \nif their response helps you understand human feelings and problems, mark potential. \nIf their response confuses or offends you, shift your Freak up and your Mundane down.",
 		"source": "herald"
 	}, {
 		"id": 15,
 		"name": "innocent",
 		"mot": "You’ve fought, struggled, and worked so hard to figure out who you are, whether you’re just the same as your future self or whether you’re different...but right now, that’s all out the window. The distinction between your future self and your present self vanishes in the face of the trial before you, and you become exactly the powerful, adamant figure that everyone fears or hopes you will one day become. You can do exactly what your future self could do, and everyone around you sees them in you more clearly than ever. Of course, after this it’s going to be hard to treat you as two different people...",
 		"img": "",
+		"celebrate": "When you *share a triumphant celebration with someone*, ask whether they think your future self could’ve won this victory. \nIf they do, mark potential and the GM shifts your Labels. \nIf they do not, clear a condition and they shift your Labels.",
+		"weakness": "When you *share a vulnerability or weakness with someone*, ask them if they think you could turn into your future self. \nIf they do, mark potential and the GM shifts your Labels. \nIf they do not,clear a condition and they shift your Labels.",
 		"source": "herald"
 	}, {
 		"id": 16,
 		"name": "star",
 		"mot": "Sometimes it can be hard to tell where the show stops and where you begin—but not today. Not now. Because right now, there is no show. Right now, you are the thing you pretend to be—bold and bright and beautiful and amazing and powerful and confident. Right now, you draw strength from your audience, comfort from their belief in you, and you can do anything they think you can. Of course, after such an impassioned performance, your audience will just have even more demands..",
 		"img": "",
+		"celebrate": "When you *share a triumphant celebration with someone*, say whether it’s part of the show or not. \nIf it is, then you can shift your Labels as you choose. \nIf it is not, then they shift your Labels, and you can clear a condition or mark potential.",
+		"weakness": "When you *share a vulnerability or weakness with someone*, ask them if they will tell anyone the truth about you. \nIf they agree to keep it a secret, clear a condition or mark potential. \nIf they don’t agree, the GM shifts your Labels.",
 		"source": "herald"
 	}, {
 		"id": 17,
 		"name": "joined",
 		"mot": "When you trigger your Moment of Truth, choose—are you working with your other half, or are you on your own?\n  If you’re working with your other half, use the text of their Moment of Truth and treat it as if it applies to both of you. Remember to lock your Label and switch a bond to a distinction because you’ll probably never reach these heights of perfect connection, of being one, ever again…\n If you’re on your own, use the following text:\n You’re on your own. It’s like missing an arm. Like fighting naked. Like holding your breath. You’re missing something vital...but you’re moving faster than ever, thinking faster than ever, doing things you couldn’t even do while relying on both of your strength combined. And it’s hitting you, hard—you can do this. Without them. And you can win. It’s going to be hard to come down off this high and rejoin with them afterwards, isn’t it?\n Remember to lock a Label and switch a bond to a distinction, afterward.",
 		"img": "",
+		"celebrate": "When one of you *shares moment of vulnerability or shares a triumphant celebration without the other one present*, mark a condition to mark a potential.",
+		"weakness": "When one of you *shares moment of vulnerability or shares a triumphant celebration without the other one present*, mark a condition to mark a potential.",
 		"source": "herald"
 	}, {
 		"id": 18,
 		"name": "harbinger",
 		"mot": "Everything you do could affect the future. For all you know, the fact that you saved that one guy that one time means that now the future is full of pterodactyls. The connections, the ripples, they’re always so hard to track, and you’re still not sure if you’ve helped or hurt—not really. Until now. Now, in this moment, it’s all clear. You can see the course of events laid out before you like a river, and you know exactly what you have to do here, now, to ensure the future outcome you want. You can reshape the future with perfect certainty. Of course, after this, you’ve changed enough of the timeline to invalidate your prior research—reset all the names in your 'Connecting the dots' section.",
 		"img": "",
+		"celebrate": "When you *confess to a teammate the difference between what you thought they would be and what they really are*, add a Team to the pool, and ask them if you represent a future they’d want.\nIf they say yes, mark potential. \nIf they say no, mark a condition.",
+		"weakness": "When you *share a tale of future loss with someone*, ask them if they think you have the ability to avert that loss. \nIf they believe you do, mark potential and give them Influence over you. \nIf they don’t, mark Guilty and shift one Label up and one Label down (your choice).",
 		"source": "unbound"
 	}, {
 		"id": 19,
 		"name": "nomad",
 		"mot": "You basically exist with one foot out the door, ready to leave this place, to go back out into the wide expanse of the universe. You’ve never fully committed. That is, until today. Until right now. Now, you pour everything you have and everything you are into this moment. You pull off tricks no one from this planet has ever seen before. You use your tools in ways no one here could have ever imagined. You devote yourself, here and now, to a cause, and you achieve your goal in ways that you never could’ve if you’d only stayed home. Of course, now you’ve proved to everyone that you really don’t belong here, and the very skills that let you succeed are the ones you earned from out there...",
 		"img": "",
+		"celebrate": "When you *share a triumphant celebration with someone*, ask them what they admire about you. The GM will shift one of your Labels up and one down based on what they say.",
+		"weakness": "When you *share a vulnerability or weakness with someone*, mark a condition, give them Influence over you, and mark potential.",
 		"source": "unbound"
 	}, {
 		"id": 20,
 		"name": "scion",
 		"mot": "People have always tried to define you by your lineage. As if from the moment you were born, you were meant to be some villain to be defeated. But...they’re right, aren’t they? That darkness is in you. So right here, right now, you’re not fighting it—you’re embracing it. Both hero and villain, and greater besides. You’re overcoming impossible odds in ways no hero would approve of, and no villain could comprehend. Of course, after seeing what you can really do when you embrace the whole of yourself, the rest of the world isn’t going to forget who you really are...",
 		"img": "",
+		"celebrate": "When you *share a triumphant celebration with someone*, ask them if you have earned their respect. \nIf you have, take Influence over them and mark potential. \nIf you have not, give them Influence over you and mark potential.",
+		"weakness": "When you *share a vulnerability or weakness with someone*, ask them if they would defend you against those who mistrust you. \nIf they say yes, clear a condition and shift Savior up and any other Label down. \nIf they say no, mark a condition and shift Danger up and any other Label down.",
 		"source": "unbound"
 	}],
 	"sources": [{
