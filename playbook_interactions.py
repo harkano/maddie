@@ -1,6 +1,6 @@
 import boto3
 import json
-from s3_utils import info_from_s3, get_s3_client, upload_to_s3, get_files_from_dir
+from s3_utils import info_from_s3, get_s3_client, upload_to_s3, get_files_from_dir, s3_delete
 from language_handler import get_translation
 from utils import get_moves as get_moves_json_array, get_key_and_content_from_message, get_args_from_content, format_labels, validate_labels
 from constants import  LABELS, VALUE, LOCKED, POTENTIAL, PENDING_ADVANCEMENTS, CONDITIONS, MOVES, ADVANCEMENT, MAX_LABEL_VALUE, MIN_LABEL_VALUE, PLAYBOOK_INTERACTIONS, DESCRIPTION, TAKEN
@@ -99,6 +99,12 @@ def format_advancements(advancements, lang):
     formated_advanced = format_advance_list(advanced, 'advanced', lang)
 
     return formated_basic + formated_advanced
+
+def format_character(char, lang):
+    name = char[characterName]
+    player = char(playerName)
+    text = char[characterName] + char[playerName] + ' the ' + char[playbook]
+    return char[characterName] + char[playerName] + ' the ' + char[playbook]
 
 
 # These are the functions that edit the data in the characters s3 file
@@ -238,6 +244,15 @@ def create_character(message, lang):
     formated_playbook_name = playbook_name.capitalize()
     return get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.congrats_on_creation')(character_name, formated_playbook_name)
 
+def delete_character(message, lang):
+    key, content = get_key_and_content_from_message(message)
+    s3_client = get_s3_client()
+    char_info = info_from_s3(key, s3_client)
+    if char_info:
+        s3_delete(key, s3_client)
+        return get_translations(lang, f'{PLAYBOOK_INTERACTIONS}.character_deletion')(character_name, formated_playbook_name)
+    if not char_info:
+        return get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.no_character')
 
 # These are the functions that get the data in the characters s3 file
 
@@ -325,8 +340,8 @@ def print_playbook(message, lang):
     char_info = info_from_s3(key, s3_client)
     if not char_info:
         return get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.no_character')
-
-    return format_advancements(char_info[ADVANCEMENT], lang)
+    char_text = f'You are {char_info["characterName"]}, a {char_info["playbook"].capitalize()}.'
+    return char_text
 
 generic_playbook_dict = {
   "lock": lock_label,
@@ -340,5 +355,7 @@ generic_playbook_dict = {
   "get_potential": get_potential, 
   "pending_advancements": get_pending_advancements, 
   "advancements": get_advancements,
-  "me": get_sheet
+  "me": get_sheet,
+  "print": print_playbook,
+  "deletecharacter": delete_character
 }
