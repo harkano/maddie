@@ -10,7 +10,7 @@ def get_modified_num(mod, num):
 
 def get_moves(language = 'en'):
     ##Load in the existing moves
-    input_file = open (f'language_files/{language}.json')
+    input_file = open (f'language_files/{language}.json', encoding='utf-8')
     json_array = json.load(input_file)
 
     return json_array
