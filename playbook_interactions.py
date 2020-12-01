@@ -90,7 +90,6 @@ def format_advance_list(advance_list, list_name, lang):
 
     return response
 
-
 def format_advancements(advancements, lang):
     basic = advancements['basic']
     advanced = advancements['advanced']
@@ -99,13 +98,6 @@ def format_advancements(advancements, lang):
     formated_advanced = format_advance_list(advanced, 'advanced', lang)
 
     return formated_basic + formated_advanced
-
-def format_character(char, lang):
-    name = char[characterName]
-    player = char(playerName)
-    text = char[characterName] + char[playerName] + ' the ' + char[playbook]
-    return char[characterName] + char[playerName] + ' the ' + char[playbook]
-
 
 # These are the functions that edit the data in the characters s3 file
 
@@ -250,7 +242,7 @@ def delete_character(message, lang):
     char_info = info_from_s3(key, s3_client)
     if char_info:
         s3_delete(key, s3_client)
-        return get_translations(lang, f'{PLAYBOOK_INTERACTIONS}.character_deletion')(character_name, formated_playbook_name)
+        return get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.character_deletion')(character_name, formated_playbook_name)
     if not char_info:
         return get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.no_character')
 
