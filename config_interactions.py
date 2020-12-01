@@ -2,6 +2,7 @@ import boto3
 import json
 from s3_utils import info_from_s3, get_s3_client, upload_to_s3, get_files_from_dir, s3_delete
 from language_handler import get_translation, get_for_all_langs, is_invalid_lang
+from constants import CONFIGURATION
 
 LANGUAGE = 'language'
 GM = 'gm'
@@ -150,14 +151,31 @@ def get_language(message, _lang):
 def get_teamname(message, _lang):
     return get_field_from_config(message, TEAMNAME)
 
-def add_team(message, _lang):
+#Team Pool Handling
+
+def add_team(message, _lang, action):
     settings_key = get_settings_path(message)
     s3_client = get_s3_client()
     settings = info_from_s3(settings_key, s3_client)
-
+    lang = settings[LANGUAGE]
     if not settings:
         return no_config_file()
-
+    team = settings[TEAM]
+    if action == 'increase':
+        team = team + 1 #increment!
+    elif action == 'decrease':
+        if team > 0:
+            team = team - 1 #spend!
+        else: return get_translation(lang, 'configuration.insufficient_team')
+    elif action == 'empty':
+        team = 1
+    settings[TEAM] = team #update team
+    upload_to_s3(settings, settings_key, s3_client)
+    response = get_translation(lang, f'{CONFIGURATION}.team_pool')(team)
+    #return get_translation(lang, 'configuration.team_pool')
+    #return get_translation(lang, f'{team}.configuration.team_pool')(team)
+    #return team
+    return response
 
 settings_dict = {
   "helphere": handle_help,
@@ -169,5 +187,8 @@ settings_dict = {
   "update_teamname": lambda msg, _lang: update_teamname(msg),
   "create_settings": lambda msg, _lang: create_settings(msg),
   "delete_settings": lambda msg, _lang: delete_settings(msg),
-  "team": lambda msg, _lang: add_team(msg)
+  "add_team": lambda msg, _lang: add_team(msg, _lang, 'increase'),
+  "spend_team": lambda msg, _lang: add_team(msg, _lang, 'decrease'),
+  "check_team": lambda msg, _lang: add_team(msg, _lang, 'check'),
+  "empty_team": lambda msg, _lang: add_team(msg, _lang, 'empty')
 }

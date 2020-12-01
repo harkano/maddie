@@ -31,7 +31,10 @@ en = {
     "updateteamname": "update_teamname",
     "createsettings": "create_settings",
     "deletesettings": "delete_settings",
-    "addteam": "add_team"
+    "team": "add_team",
+    "spend": "spend_team",
+    "pool": "check_team",
+    "empty": "empty_team"
   },
   "generic_advancements_dict": {
     "mov_my_playbook": "mov_my_playbook",
@@ -172,7 +175,10 @@ en = {
     "successfull_creation": "The configuration file has been created",
     "successfull_deletion": "The configuration file has been deleted",
     "invalid_lang": lambda lang: f"{lang} is not a valid language, the options are: en (english), es (spanish)",
-    "gm": "GM"
+    "gm": "GM",
+    #"team_pool": lambda team: f"You have {team} in the team pool",
+    "team_pool": lambda team: f"You have {team} in the team pool",
+    "insufficient_team": "You don't have enough team for that!"
   },
   "playbooks": {
     "the": "The",
