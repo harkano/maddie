@@ -15,6 +15,7 @@ ADVANCEMENT = 'advancement'
 MAX_LABEL_VALUE = 3
 MIN_LABEL_VALUE = -2
 PLAYBOOK_INTERACTIONS = 'playbook_interactions'
+CONFIGURATION = 'configuration'
 DESCRIPTION = 'description'
 TAKEN = 'taken'
 MAX_POSITIVE_MOD = 4
