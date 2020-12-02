@@ -241,6 +241,8 @@ def delete_character(message, lang):
     s3_client = get_s3_client()
     char_info = info_from_s3(key, s3_client)
     if char_info:
+        character_name = char_info['characterName']
+        formated_playbook_name = char_info['playbook'].capitalize()
         s3_delete(key, s3_client)
         return get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.character_deletion')(character_name, formated_playbook_name)
     if not char_info:
