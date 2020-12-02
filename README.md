@@ -48,7 +48,7 @@ etc.
 `!mot beacon` will display your playbook's Moment of Truth text.
 
 # Change the character sheet!
-- `!create beacon Beacon-man Maddie mundane` will create a new character, _Beacon-man_, that is played by _Maddie_, that is a _beacon_ and has the initial labels plus one in _mundane_ (The following playbooks are supported: Beacon).
+- `!create beacon Beacon-man Maddie mundane` will create a new character, _Beacon-man_, that is played by _Maddie_, that is a _beacon_ and has the initial labels plus one in _mundane_ (All 20 core game and expansion playbooks are supported).
 - `!editlabels mundane freak` will shift mundane up and freak(if _mundane_ isn't in +3 and _freak_ in -2 and neither of them is blocked) for the character of the player that sent the message.
 - `!lock mundane` will lock mundane if it wasn't already.
 - `!potential` will add a potential to you pool. If you reach 5 of them m.a.d.d.i.e. will tell you how many unresolved advances you have.
