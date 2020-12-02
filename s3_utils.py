@@ -64,4 +64,4 @@ def upload_to_s3(content, key, s3_client):
 
 def s3_delete(key, s3_client):
     s3_client.delete_object(Bucket=BUCKET, Key=f'{key}.json')
-    logger.info('Deleting channel file ' + key + ' ' + message.content)
+    logger.info('Deleting channel file ' + key )
