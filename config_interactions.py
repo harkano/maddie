@@ -172,9 +172,6 @@ def add_team(message, _lang, action):
     settings[TEAM] = team #update team
     upload_to_s3(settings, settings_key, s3_client)
     response = get_translation(lang, f'{CONFIGURATION}.team_pool')(team)
-    #return get_translation(lang, 'configuration.team_pool')
-    #return get_translation(lang, f'{team}.configuration.team_pool')(team)
-    #return team
     return response
 
 settings_dict = {
