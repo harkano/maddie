@@ -1,16 +1,12 @@
 import re
-import json
 import discord
 import random
-import logging
-
 
 from utils import get_modified_num, get_moves
 from language_handler import get_translation
 from config_interactions import get_raw_lang
 from playbook_interactions import get_character
-from constants import LABELS, CONDITIONS, VALUE
-
+from constants import LABELS, CONDITIONS, VALUE, dice
 
 ##Setup the big sub
 def mad_parse(message):
@@ -68,7 +64,7 @@ def mad_parse(message):
 
     #Ugly format blob!#
     if match == 1 : #lets us ignore ! prefix commands that aren't in our list
-        embed=discord.Embed(title=f"{capital}")
+        embed=discord.Embed(title=f"{capital}", colour=5450873)
         embed.set_author(name=f"{user} {phrase}")
         embed.set_thumbnail(url=img)
         desc = get_translation(lang, 'description')
@@ -111,14 +107,14 @@ def handle_roll(message, embed, num, mod, lang, label, condition):
         char_mod = get_modifier_from_character(character[LABELS], character[CONDITIONS], label, condition)
 
     num_calc = get_modified_num(mod, num + char_mod)
-
     add_result(embed, num_calc, mod, lang)
-
 
 def add_result (embed, num_calc, mod, lang):
     #do dice rolling
     result1 = random.randrange(1,7) ##first d6
     result2 = random.randrange(1,7) ##second d6
+    die1 = get_die(result1)
+    die2 = get_die(result2)
     result_tot = result1 + result2 + num_calc
 
     if mod == '-':
@@ -132,3 +128,9 @@ def add_result (embed, num_calc, mod, lang):
 
     embed.add_field(name=calculation_title, value=calculation, inline=False)
     embed.add_field(name=result, value=f"**{result_tot}**")
+
+def get_die (result):
+    for d in dice:
+        if d[0] == result:
+            emoji = f'<:{d[1]}:{d[2]}>'
+    return emoji
