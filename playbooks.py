@@ -71,33 +71,6 @@ def get_playbook_component(component, message, lang):
     else:
         response = 0
 
-def get_moment_of_truth(message, lang):
-    msg = message.content
-    usr = message.author.display_name
-    json_array = get_moves(lang)
-    found = 0
-    msg = msg.lower()
-    playbook_re = get_translation(lang, 'playbooks.playbook_re')
-    result1 = re.search(playbook_re, msg)
-    for p in json_array['playbooks']:
-        if p['name'] == result1.group(1):
-            mot = p['mot']
-            img = p['img']
-            found = 1
-    if found == 1:
-        embed = discord.Embed(title=get_translation(lang, 'playbooks.moment_of_truth'))
-        embed.set_author(name=get_translation(lang, 'playbooks.this_is_mot')(usr))
-        embed.set_thumbnail(url=img)
-        description = get_translation(lang, 'description')
-        embed.add_field(name=description, value=mot)
-        embed.set_footer(text=" ")
-        response = embed
-    else: response = 0
-
-    return response
-
-
-
 embed_commands_dict = {
   "mot": lambda msg, lang: get_playbook_component('mot', msg, lang),
   "playbooks": lambda _msg, lang: get_playbooks(lang),
