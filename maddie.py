@@ -7,7 +7,6 @@ import logging
 
 from dotenv import load_dotenv
 from moves import get_moves
-from playbooks import get_moment_of_truth
 from parse import mad_parse
 from command_handler import plain_command_handler, embed_command_handler
 
@@ -77,7 +76,7 @@ async def on_message(message):
     elif message.content.startswith("!"):
         log_line = msg_log_line(message)
         logger.info(log_line)
-        response =  mad_parse(message)
+        response = mad_parse(message)
         if response: 
             logger.info(response)
             await message.channel.send(embed=response)
