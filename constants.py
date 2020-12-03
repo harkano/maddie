@@ -50,3 +50,11 @@ NEWBORN = 'newborn'
 REFORMED = 'reformed'
 SCION = 'scion'
 STAR = 'star'
+dice = [
+    (1, 'maddie1', 784076924216934430),
+    (2, 'maddie2', 784076967049166848),
+    (3, 'maddie3', 784076999739834399),
+    (4, 'maddie4', 784077034216882196),
+    (5, 'maddie5', 784077062301941771),
+    (6, 'maddie6', 784077092681285713)
+]
