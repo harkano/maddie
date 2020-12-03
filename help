@@ -22,8 +22,18 @@ To see moves type the name of the playbook e.g. `!beacon`
 e.g.
 `!creepin` - STRAIGHT UP CREEPIN
 
-***Moment of Truth***
+***Team Pool***
+`!team` - Add a team to the pool
+`!spend` - Spend a team from the pool
+`!pool` - See what's in the team pool
+`!empty` - Reset the team pool to 1
+
+***Team moves***
+For these 3 if you don't provide a playbook it will use whatever character you have setup. -
+
 `!mot beacon` will display your playbook's 'Moment of Truth' text.
+`!celebrate beacon` will display your 'share a moment of triumph with someone' move.
+`!weakness beacon` will display your 'share a vulnerability or weakness with someone' move.
 
 ***Peripheral Moves***
 `!eos` - END OF SESSION
@@ -36,6 +46,7 @@ For more type `!adult`
 
 ***Character Sheet/Server Management***
 `!createsettings en\es` - Make an English or Spanish settings file for this specific room, do this first.
+`!deletesettings` - Clears your settings file
 `!updategm Harkano` - makes Harkano the GM
 `!updateteamname "The Revengers"` - changes the team name
 
