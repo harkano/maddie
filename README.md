@@ -51,11 +51,11 @@ etc.
 NB if you have a character created in the channel you don't need to provide the playbook name, it will pick it up.
 
 # Team Pool!
-To use the team pool you'll need to have a settings file created as described below - 
-`!team` - Add a team to the pool
-`!spend` - Spend a team from the pool
-`!pool` - See what's in the team pool
-`!empty` - Reset the team pool to 1
+To use the team pool you'll need to have a settings file created as described below - then you can use these commands to manage it -
+- `!team` - Add a team to the pool
+- `!spend` - Spend a team from the pool
+- `!pool` - See what's in the team pool
+- `!empty` - Reset the team pool to 1
 
 # Change the character sheet!
 - `!create beacon Beacon-man Maddie mundane` will create a new character, _Beacon-man_, that is played by _Maddie_, that is a _beacon_ and has the initial labels plus one in _mundane_ (All 20 core game and expansion playbooks are supported).
