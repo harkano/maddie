@@ -50,7 +50,7 @@ etc.
 `!weakness beacon` will display your playbook's Share a vulnerability or weakness move
 NB if you have a character created in the channel you don't need to provide the playbook name, it will pick it up.
 
-#Team Pool!
+# Team Pool!
 To use the team pool you'll need to have a settings file created as described below - 
 `!team` - Add a team to the pool
 `!spend` - Spend a team from the pool
