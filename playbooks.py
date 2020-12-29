@@ -48,12 +48,12 @@ def get_playbook_component(component, message, lang):
                     cel = p['celebrate']
                     wek = p['weakness']
                     img = p['img']
-                    user = charactername
+                    usr = charactername
                     found = 1
     if found == 1:
         description = get_translation(lang, 'description')
         if component == 'mot':
-            embed = discord.Embed(title=get_translation(lang, 'playbooks.moment_of_truth'))
+            embed = discord.Embed(title=get_translation(lang, 'playbooks.moment_of_truth'), colour=5450873)
             embed.set_author(name=get_translation(lang, 'playbooks.this_is_mot')(usr))
             embed.add_field(name=description, value=mot)
         elif component == 'celebrate':
@@ -70,6 +70,23 @@ def get_playbook_component(component, message, lang):
         return response
     else:
         response = 0
+
+def get_playbooks(lang):
+    json_array = get_moves(lang)
+    playbooks = get_translation(lang, 'playbooks.playbooks')
+    embed = discord.Embed(title=playbooks)
+    available = get_translation(lang, 'playbooks.available')
+    embed.set_author(name=available)
+    for s in json_array['sources']:
+        line = ""
+        for p in json_array['playbooks']:
+            if s['source'] == p['source']:
+                line = line + p['name'].capitalize() + ", "
+        line = line.rstrip(', ')
+        embed.add_field(name=f"{s['name']}", value=f"{line}", inline=False)
+        embed.set_footer(text=" ")
+        response = embed
+    return response
 
 embed_commands_dict = {
   "mot": lambda msg, lang: get_playbook_component('mot', msg, lang),
