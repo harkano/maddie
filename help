@@ -5,12 +5,6 @@ Syntax is as follows - `move+/-label`
 `!support-2`
 If you're using a playbook or custom move not covered here you can use `!other+1`
 
-I will be quieter on moves if you prefix with !! (once you're comfortable with the detailed results) e.g. `!!unleash+2`
-
-Type `!moves` to see the short version of help.
-Type `!moves+` to get a more detailed explanation of all moves (labels etc.).
-Type `!playbooks` to see all supported playbooks
-
 ***Basic moves***
 e.g.
 `!engage` - DIRECTLY ENGAGE A THREAT
@@ -46,9 +40,6 @@ For more type `!adult`
 
 ***Character Sheet/Server Management***
 `!createsettings en\es` - Make an English or Spanish settings file for this specific room, do this first.
-`!deletesettings` - Clears your settings file
-`!updategm Harkano` - makes Harkano the GM
-`!updateteamname "The Revengers"` - changes the team name
 
 `!create nova "Jean Grey" "Harkano (Ross)" savior` - Creates a Nova called Jean Grey, played by Harkano (Ross), with the initial label increase put into savior.  You don't need quotes if you don't have a space.
 `!editlabels superior mundane` - shifts superior up and mundane down
