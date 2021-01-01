@@ -61,6 +61,9 @@ def mad_parse(message):
     searchStr4 = r'!!'
     result4 = re.search(searchStr4, msg)
     if result4: quiet = 1
+    if "?" in msg:
+        roll = False
+        quiet = 0
 
     #Ugly format blob!#
     if match == 1 : #lets us ignore ! prefix commands that aren't in our list
