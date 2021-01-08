@@ -73,7 +73,7 @@ def mad_parse(message):
         desc = get_translation(lang, 'description')
         if quiet == 0: embed.add_field(name=desc, value=f"{blob}") # don't include the blob if we're in quiet mode (!!)
         if roll:
-            handle_roll(message, embed, num, mod, lang, label, condition)
+            handle_roll(message, embed, num, mod, lang, label, condition, user)
         embed.set_footer(text=" ")
 
         return embed
@@ -102,12 +102,13 @@ def get_modifier_from_character(labels, conditions, label, condition):
     return mod
 
 
-def handle_roll(message, embed, num, mod, lang, label, condition):
+def handle_roll(message, embed, num, mod, lang, label, condition, user):
     character = get_character(message)
 
     char_mod = 0
     if character:
         char_mod = get_modifier_from_character(character[LABELS], character[CONDITIONS], label, condition)
+        user = character['characterName']
 
     num_calc = get_modified_num(mod, num + char_mod)
     add_result(embed, num_calc, mod, lang)
@@ -137,3 +138,4 @@ def get_die (result):
         if d[0] == result:
             emoji = f'<:{d[1]}:{d[2]}>'
     return emoji
+

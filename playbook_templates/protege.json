@@ -104,6 +104,7 @@
     }
   },
   "mentor": {
+    "name": "",
     "embodies": "",
     "denies": "",
     "resources": {

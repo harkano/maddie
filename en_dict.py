@@ -418,7 +418,7 @@ en = {
     },
     "janus": {
       "title": "Secret identity",
-      "description": "Your mundane life coes with a series of obligations. Choose a total of three obligations.",
+      "description": "Your mundane life comes with a series of obligations. Choose a total of three obligations.",
       "jobs": {
         "barista": "barista",
         "intern": "intern",
@@ -446,7 +446,7 @@ en = {
       },
       "social": {
         "significant": "significant other",
-        "friend": "best frient",
+        "friend": "best friend",
         "popularity": "popularity",
         "relative": "close relative",
         "teacher": "coach/teacher"
