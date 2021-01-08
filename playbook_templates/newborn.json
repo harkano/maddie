@@ -3,12 +3,12 @@
   "playerName": "",
   "playbook": "newborn",
   "labels": {
-    "freak": {
-      "value": 2,
-      "locked": false
-    },
     "danger": {
       "value": 1,
+      "locked": false
+    },
+    "freak": {
+      "value": 2,
       "locked": false
     },
     "savior": {

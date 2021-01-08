@@ -3,12 +3,12 @@
   "playerName": "",
   "playbook": "delinquent",
   "labels": {
-    "freak": {
-      "value": 2,
-      "locked": false
-    },
     "danger": {
       "value": 0,
+      "locked": false
+    },
+    "freak": {
+      "value": 2,
       "locked": false
     },
     "savior": {

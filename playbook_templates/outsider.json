@@ -3,12 +3,12 @@
   "playerName": "",
   "playbook": "outsider",
   "labels": {
-    "freak": {
-      "value": 1,
-      "locked": false
-    },
     "danger": {
       "value": -1,
+      "locked": false
+    },
+    "freak": {
+      "value": 1,
       "locked": false
     },
     "savior": {

@@ -3,12 +3,12 @@
   "playerName": "",
   "playbook": "transformed",
   "labels": {
-    "freak": {
-      "value": 3,
-      "locked": false
-    },
     "danger": {
       "value": 1,
+      "locked": false
+    },
+    "freak": {
+      "value": 3,
       "locked": false
     },
     "savior": {

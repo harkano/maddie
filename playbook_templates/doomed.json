@@ -3,11 +3,11 @@
   "playerName": "",
   "playbook": "doomed",
   "labels": {
-    "freak": {
+    "danger": {
       "value": 1,
       "locked": false
     },
-    "danger": {
+    "freak": {
       "value": 1,
       "locked": false
     },

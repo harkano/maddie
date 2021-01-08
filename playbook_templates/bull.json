@@ -3,12 +3,12 @@
   "playerName": "",
   "playbook": "bull",
   "labels": {
-    "freak": {
-      "value": 1,
-      "locked": false
-    },
     "danger": {
       "value": 2,
+      "locked": false
+    },
+    "freak": {
+      "value": 1,
       "locked": false
     },
     "savior": {
