@@ -4,15 +4,15 @@
   "playbook": "star",
   "labels": {
     "freak": {
-      "value": 0,
+      "value": 1,
       "locked": false
     },
     "danger": {
-      "value": 0,
+      "value": -1,
       "locked": false
     },
     "savior": {
-      "value": -1,
+      "value": 1,
       "locked": false
     },
     "superior": {
@@ -20,7 +20,7 @@
       "locked": false
     },
     "mundane": {
-      "value": 1,
+      "value": -1,
       "locked": false
     }
   },
