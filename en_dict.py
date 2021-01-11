@@ -9,6 +9,7 @@ en = {
     "lock": "lock",
     "editlabels": "editlabels",
     "potential": "potential",
+    "removepotential": "removepotential",
     "markcondition": "markcondition",
     "clearcondition": "clearcondition",
     "create": "create",
@@ -18,7 +19,10 @@ en = {
     "pending_advancements": "pending_advancements",
     "advancements": "advancements",
     "print": "print",
-    "deletecharacter": "deletecharacter"
+    "deletecharacter": "deletecharacter",
+    "el": "editlabels",
+    "cc": "clearcondition",
+    "mc": "markcondition"
   },
   "settings_dict": {
     "helphere": "helphere",
@@ -95,10 +99,11 @@ en = {
     "invalid_condition": lambda condition_name: f"Oh no, {condition_name} is not a valid condition",
     "different_labels": "The labels must be different",
     "congrats_pending_advancements": lambda adv_count: f"Nice, you can now do {adv_count + 1} advancements",
-    "congrats_potential": lambda potential: f"Nice, you have {potential + 1} potential marked",
+    "congrats_potential": lambda potential: f"Nice, you have {potential} potential marked",
     "no_template": lambda playbook_name: f"It seems I don't have a template for a playbook called {playbook_name}",
     "congrats_on_creation": lambda char, playbook: f"Congratulations {char}, The {playbook} on joining the team!",
     "potential": lambda potential: f"You have {potential} potential marked",
+    "nopotential": "Sorry, you have no potential marked",
     "basic": "\nBasic:",
     "advanced": "\nAdvanced:",
     "taken": "[TOMADO] ",
