@@ -183,14 +183,32 @@ def mark_potential(message, lang):
     if potential == 4:
         char_info[POTENTIAL] = 0
         char_info[PENDING_ADVANCEMENTS] = char_info[PENDING_ADVANCEMENTS] + 1
-
+        potential = 0
         upload_to_s3(char_info, key, s3_client)
         return get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.congrats_pending_advancements')(char_info[PENDING_ADVANCEMENTS])
 
-    char_info[POTENTIAL] = potential + 1
+    potential = potential + 1
+    char_info[POTENTIAL] = potential
 
     upload_to_s3(char_info, key, s3_client)
     return get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.congrats_potential')(potential)
+
+def remove_potential(message, lang):
+    key, _content = get_key_and_content_from_message(message)
+    s3_client = get_s3_client()
+    char_info = info_from_s3(key, s3_client)
+    if not char_info:
+        return get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.no_character')
+
+    potential = char_info[POTENTIAL]
+    if potential > 0:
+        potential = potential - 1
+        char_info[POTENTIAL] = potential
+        upload_to_s3(char_info, key, s3_client)
+        return get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.congrats_potential')(potential)
+    elif potential == 0:
+        return get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.nopotential')
+
 
 
 def mark_condition(message, lang):
@@ -341,6 +359,7 @@ generic_playbook_dict = {
   "lock": lock_label,
   "editlabels": edit_labels,
   "potential": mark_potential,
+  "removepotential": remove_potential,
   "markcondition": mark_condition,
   "clearcondition": clear_condition,
   "create": create_character,
@@ -351,5 +370,8 @@ generic_playbook_dict = {
   "advancements": get_advancements,
   "me": get_sheet,
   "print": print_playbook,
-  "deletecharacter": delete_character
+  "deletecharacter": delete_character,
+  "el": edit_labels,
+  "cc": clear_condition,
+  "mc": mark_condition
 }
