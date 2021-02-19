@@ -109,6 +109,30 @@ def clear_doomsign(message, lang):
     upload_to_s3(char_info, key, s3_client)
     return get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.successfull_update')
 
+def mark_doomsign(message, lang):
+    key, content = get_key_and_content_from_message(message)
+    s3_client = get_s3_client()
+    char_info = info_from_s3(key, s3_client)
+
+    if char_info[PLAYBOOK] != DOOMED:
+        return get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.no_playbook')(get_translation(lang, f'playbooks.inverted_names.{DOOMED}'))
+
+    doomsign_og = get_args_from_content(content)
+
+    doomsign = get_translation(lang, f'playbooks.doomed.doomsigns.accessors.{doomsign_og}')
+    if not doomsign:
+        return get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.invalid_doomsign')(doomsign_og)
+
+    char_doomsign = char_info[DOOMSIGNS][doomsign]
+    if not char_doomsign:
+        char_info[DOOMSIGNS][doomsign] = True
+        upload_to_s3(char_info, key, s3_client)
+        return get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.doomsign_marked')(doomsign_og)
+
+    char_doomsign = True
+    upload_to_s3(char_info, key, s3_client)
+    return get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.successfull_update')
+
 
 def change_mask_label(message, lang):
     key, content = get_key_and_content_from_message(message)
@@ -346,6 +370,7 @@ def get_part_of_playbook(message, lang, playbook_to_take_from, your_playbook_mus
 playbook_specific_advancements_dict = {
   "more_roles": get_more_bull_roles,
   "more_to_labels": add_one_to_two_labels,
+  "mark_sign": mark_doomsign,
   "clear_sign": clear_doomsign,
   "get_burns": get_burns,
   "mask_label": change_mask_label,
