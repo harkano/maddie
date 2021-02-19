@@ -80,7 +80,7 @@ def mad_parse(message):
         return (embed, addendum)
 
     else:
-        return 0
+        return None
 
 
 def get_modifier_from_character(labels, conditions, label, condition):
