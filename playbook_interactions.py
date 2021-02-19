@@ -1,6 +1,6 @@
 # import boto3 # This is unused in this file.
 import json
-from s3_utils import info_from_s3, get_s3_client, upload_to_s3, get_files_from_dir, s3_delete
+from storage import info_from_s3, get_s3_client, upload_to_s3, get_files_from_dir, s3_delete
 from language_handler import get_translation
 from utils import get_moves as get_moves_json_array, get_key_and_content_from_message, get_args_from_content, format_labels, validate_labels
 from constants import  LABELS, VALUE, LOCKED, POTENTIAL, PENDING_ADVANCEMENTS, CONDITIONS, MOVES, ADVANCEMENT, MAX_LABEL_VALUE, MIN_LABEL_VALUE, PLAYBOOK_INTERACTIONS, DESCRIPTION, TAKEN

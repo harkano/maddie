@@ -6,7 +6,7 @@
 #   "playbookChange": ,
 
 from utils import get_moves as get_moves_json_array, get_key_and_content_from_message, get_args_from_content, format_labels, validate_labels
-from s3_utils import info_from_s3, get_s3_client, upload_to_s3
+from storage import info_from_s3, get_s3_client, upload_to_s3
 from language_handler import get_translation
 from constants import PLAYBOOK_INTERACTIONS, MOVES, PENDING_ADVANCEMENTS, PICKED, SHORT_NAME, SPECIAL, ID, PLAYBOOK, LABELS, VALUE, MAX_LABEL_VALUE, MIN_LABEL_VALUE
 
