@@ -123,3 +123,26 @@ Special Graphics thanks to - Chordial#6969
 For any feedback, feature request or bug reports please visit our Discord @ https://discord.gg/7p8g8H5 'Harkano (Ross) #7019'
 
 Masks The New Generation is a Powered by the Apocalypse RPG designed by Brendan Conway and team @ http://magpiegames.com
+
+# Setup
+First, make sure you've got [Poetry](https://python-poetry.org/) installed.
+It's not technically necessary, but it will make your life easier.
+
+## Configuration
+Create a `.env` file with contents like this, in your current working directory.
+```sh
+DISCORD_TOKEN="your bot token"
+
+# Either write these lines:
+ACCESS_KEY="your s3 access key"
+SECRET_KEY="your s3 secret key"
+# Or this one:
+USE_FAKE_S3="true"
+```
+
+## Execution
+```sh
+poetry install
+poetry shell
+python maddie.py
+```
