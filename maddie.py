@@ -76,10 +76,12 @@ async def on_message(message):
     elif message.content.startswith("!"):
         log_line = msg_log_line(message)
         logger.info(log_line)
-        response = mad_parse(message)
+        (response, addendum) = mad_parse(message)
         if response: 
             logger.info(response)
             await message.channel.send(embed=response)
+            if addendum is not None:
+                await message.channel.send(content = addendum)
         else : logger.info('no match found for '+message.content)
 
 client.run(TOKEN)
