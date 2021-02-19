@@ -2,7 +2,7 @@ import re
 import discord
 from utils import get_moves, get_key_and_content_from_message
 from language_handler import get_translation
-from s3_utils import info_from_s3, get_s3_client
+from storage import info_from_s3, get_s3_client
 
 def get_playbook_list(lang):
     return get_translation(lang, 'playbooks.list')
