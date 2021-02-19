@@ -72,14 +72,15 @@ def mad_parse(message):
         embed.set_thumbnail(url=img)
         desc = get_translation(lang, 'description')
         if quiet == 0: embed.add_field(name=desc, value=f"{blob}") # don't include the blob if we're in quiet mode (!!)
+        addendum = None
         if roll:
-            handle_roll(message, embed, num, mod, lang, label, condition, user)
+            addendum = handle_roll(message, embed, num, mod, lang, label, condition, user)
         embed.set_footer(text=" ")
 
-        return embed
+        return (embed, addendum)
 
     else:
-        return 0
+        return None
 
 
 def get_modifier_from_character(labels, conditions, label, condition):
@@ -111,9 +112,13 @@ def handle_roll(message, embed, num, mod, lang, label, condition, user):
         user = character['characterName']
 
     num_calc = get_modified_num(mod, num + char_mod)
-    add_result(embed, num_calc, mod, lang)
+    return add_result(embed, num_calc, mod, lang)
 
 def add_result (embed, num_calc, mod, lang):
+    """
+    Rolls dice, mutates embed with result, returns emoji
+    corresponding to the dice components of the result.
+    """
     #do dice rolling
     result1 = random.randrange(1,7) ##first d6
     result2 = random.randrange(1,7) ##second d6
@@ -132,6 +137,7 @@ def add_result (embed, num_calc, mod, lang):
 
     embed.add_field(name=calculation_title, value=calculation, inline=False)
     embed.add_field(name=result, value=f"**{result_tot}**")
+    return die1 + " " + die2
 
 def get_die (result):
     for d in dice:

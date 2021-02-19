@@ -77,9 +77,12 @@ async def on_message(message):
         log_line = msg_log_line(message)
         logger.info(log_line)
         response = mad_parse(message)
-        if response: 
+        if response:
             logger.info(response)
+            (response, addendum) = response
             await message.channel.send(embed=response)
+            if addendum is not None:
+                await message.channel.send(content = addendum)
         else : logger.info('no match found for '+message.content)
 
 client.run(TOKEN)
