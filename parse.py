@@ -109,9 +109,11 @@ def handle_roll(message, embed, num, mod, lang, label, condition, user):
     if character:
         char_mod = get_modifier_from_character(character[LABELS], character[CONDITIONS], label, condition)
         user = character['characterName']
-
-    num_calc = get_modified_num(mod, num + char_mod)
-    add_result(embed, num_calc, mod, lang)
+        num_calc = get_modified_num(mod, num + char_mod)
+        add_result(embed, num_calc, mod, lang)
+    else:
+        num_calc = get_modified_num(mod, num)
+        add_result(embed, num_calc, mod, lang)
 
 def add_result (embed, num_calc, mod, lang):
     #do dice rolling
