@@ -1,4 +1,4 @@
-import boto3
+# import boto3 # This is unused in this file.
 import json
 from s3_utils import info_from_s3, get_s3_client, upload_to_s3, get_files_from_dir, s3_delete
 from language_handler import get_translation
