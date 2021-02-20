@@ -7,6 +7,12 @@ def get_modified_num(mod, num):
     if mod == SUB: return -1 * min(num, MIN_NEGATIVE_MOD)
     return num
 
+def get_cap(num):
+    if num >= MAX_POSITIVE_MOD:
+        return MAX_POSITIVE_MOD
+    if num <= (-1 * MIN_NEGATIVE_MOD):
+        return (-1 * MIN_NEGATIVE_MOD)
+    return num
 
 def get_moves(language = 'en'):
     ##Load in the existing moves
