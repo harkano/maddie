@@ -6,7 +6,7 @@ from utils import get_modified_num, get_moves, get_cap
 from language_handler import get_translation
 from config_interactions import get_raw_lang
 from playbook_interactions import get_character
-from constants import LABELS, CONDITIONS, VALUE, dice
+from constants import LABELS, CONDITIONS, VALUE, dice, modifier_emojis
 
 ##Setup the big sub
 def mad_parse(message):
@@ -131,6 +131,7 @@ def add_result (embed, num_calc, mod, lang, character_label, character_condition
     result2 = random.randrange(1,7) ##second d6
     die1 = get_die(result1)
     die2 = get_die(result2)
+    mod_emoji = get_mod_emoji(num_calc)
     result_tot = result1 + result2 + num_calc
 
     if mod == '-':
@@ -147,7 +148,7 @@ def add_result (embed, num_calc, mod, lang, character_label, character_condition
     if command_mod: calculation = get_translation(lang, 'dice_rolling.command_modifier')(command_mod) + calculation
     embed.add_field(name=calculation_title, value=calculation, inline=False)
     embed.add_field(name=result, value=f"**{result_tot}**")
-    return die1 + " " + die2
+    return die1 + " " + die2 + " " + mod_emoji
 
 def get_die (result):
     """
@@ -160,3 +161,13 @@ def get_die (result):
             emoji = f'<:{d[1]}:{d[2]}>'
     return emoji
 
+def get_mod_emoji(mod_num):
+    """
+    :param mod_num: result form earlier command, lookup after being limited by cap and floor
+    :return: modifier emoji
+    """
+    mod_emoji = ''
+    for e in modifier_emojis:
+        if e[0] == mod_num:
+            mod_emoji = f'<:{e[1]}:{e[2]}>'
+    return mod_emoji
