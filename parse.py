@@ -2,7 +2,7 @@ import re
 import discord
 import random
 
-from utils import get_modified_num, get_moves
+from utils import get_modified_num, get_moves, get_cap
 from language_handler import get_translation
 from config_interactions import get_raw_lang
 from playbook_interactions import get_character
@@ -67,54 +67,61 @@ def mad_parse(message):
 
     #Ugly format blob!#
     if match == 1 : #lets us ignore ! prefix commands that aren't in our list
+        character = get_character(message)
         embed=discord.Embed(title=f"{capital}", colour=5450873)
-        embed.set_author(name=f"{user} {phrase}")
+        #embed.set_author(name=f"{user} {phrase}")
         embed.set_thumbnail(url=img)
         desc = get_translation(lang, 'description')
         if quiet == 0: embed.add_field(name=desc, value=f"{blob}") # don't include the blob if we're in quiet mode (!!)
         addendum = None
         if roll:
-            addendum = handle_roll(message, embed, num, mod, lang, label, condition, user)
+            addendum = handle_roll(character, message, embed, num, mod, lang, label, condition, user)
         embed.set_footer(text=" ")
-
+        embed.set_author(name=f"{user} {phrase}")
         return (embed, addendum)
 
     else:
         return None
 
 
-def get_modifier_from_character(labels, conditions, label, condition):
+def get_modifier_from_character(labels, conditions, label, condition, user, lang):
     mod = 0
-
+    character_label = ''
+    character_condition = ''
     if condition and conditions[condition]:
         mod = -2
+        character_condition = get_translation(lang, 'dice_rolling.condition_text')(condition, user)
 
     if label == CONDITIONS:
         conditions_count = 0
         for condition in conditions:
             if conditions[condition]:
                 conditions_count += 1
-
-        return mod + conditions_count
+        character_condition = get_translation(lang, 'dice_rolling.conditions_marked')(conditions_count, user)
+        return (mod + conditions_count, character_condition, character_label)
 
     if label not in ['adult', 'basic', 'flat']:
         mod += labels[label][VALUE]
+        character_label = get_translation(lang, 'dice_rolling.label')(label.title(), labels[label][VALUE])
+    return (mod, character_condition, character_label)
 
-    return mod
 
-
-def handle_roll(message, embed, num, mod, lang, label, condition, user):
-    character = get_character(message)
-
+def handle_roll(character, message, embed, num, mod, lang, label, condition, user):
+    #character = get_character(message) #get it higher up instead
+    character_label = ''
+    character_condition = ''
     char_mod = 0
+    command_mod = ''
+
     if character:
-        char_mod = get_modifier_from_character(character[LABELS], character[CONDITIONS], label, condition)
         user = character['characterName']
+        (char_mod, character_condition, character_label) = get_modifier_from_character(character[LABELS], character[CONDITIONS], label, condition, user, lang)
+    num_calc = get_modified_num(mod, num)
+    command_mod = num_calc #before the character mod is applied but after it's capped
+    num_calc = get_cap(num_calc + char_mod)
+    return add_result(embed, num_calc, mod, lang, character_label, character_condition, user, command_mod)
 
-    num_calc = get_modified_num(mod, num + char_mod)
-    return add_result(embed, num_calc, mod, lang)
-
-def add_result (embed, num_calc, mod, lang):
+def add_result (embed, num_calc, mod, lang, character_label, character_condition, user, command_mod):
     """
     Rolls dice, mutates embed with result, returns emoji
     corresponding to the dice components of the result.
@@ -132,14 +139,22 @@ def add_result (embed, num_calc, mod, lang):
         modifier_to_show = f' {mod}'
 
     calculation_title = get_translation(lang, 'dice_rolling.calculation_title')
-    calculation = get_translation(lang, 'dice_rolling.calculation')(result1, result2, modifier_to_show, num_calc)
-    result = get_translation(lang, 'dice_rolling.result')
 
+    calculation = get_translation(lang, 'dice_rolling.calculation')(result1, result2, modifier_to_show, num_calc)
+    if character_condition: calculation = character_condition + calculation
+    if character_label: calculation = character_label + calculation
+    result = get_translation(lang, 'dice_rolling.result')
+    if command_mod: calculation = get_translation(lang, 'dice_rolling.command_modifier')(command_mod) + calculation
     embed.add_field(name=calculation_title, value=calculation, inline=False)
     embed.add_field(name=result, value=f"**{result_tot}**")
     return die1 + " " + die2
 
 def get_die (result):
+    """
+    Just does some sweet emoji lookups in the dictionary
+    :param result: is the side of a 6 sided die you're looking for
+    :return: is the id of the relevant emoji
+    """
     for d in dice:
         if d[0] == result:
             emoji = f'<:{d[1]}:{d[2]}>'

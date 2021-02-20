@@ -80,6 +80,8 @@ async def on_message(message):
         if response:
             logger.info(response)
             (response, addendum) = response
+#            if addendum is not None:  ##testing if going first made a difference
+#                await message.channel.send(content = addendum)
             await message.channel.send(embed=response)
             if addendum is not None:
                 await message.channel.send(content = addendum)

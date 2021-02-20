@@ -66,11 +66,13 @@ en = {
   },
   "dice_rolling": {
     "calculation_title": "Calculation",
-    "calculation": lambda result1, result2, mod, calc: f"Dice **{result1}** + **{result2}**, Label{mod} **{calc}**",
+    "calculation": lambda result1, result2, mod, calc: f"Dice **{result1}** + **{result2}**, Modifier {mod} **{calc}**",
     "dice": "Dice",
-    "label": "Label",
+    "label": lambda label_name, label_value: f"**{label_name}** is **{label_value}**\n",
     "result": "Result",
-    "condition_text": "Roll is -2 due to condition "
+    "condition_text": lambda condition, name: f"-2 as **{name}** is **{condition}**!\n",
+    "conditions_marked": lambda conditions, name: f"**{name}** has {conditions} conditions marked!\n",
+    "command_modifier": lambda mod: f"Modifier from command is **{mod}**\n"
   },
   "description": "Description",
   "moves": {
