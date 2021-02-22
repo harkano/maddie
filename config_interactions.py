@@ -200,7 +200,8 @@ def get_dicedisplay(message, _lang):
     s3_client = get_s3_client()
     settings = info_from_s3(settings_key, s3_client)
     if not settings:
-        return no_config_file()
+        #return no_config_file()  ##need to fix this so it displays the message properly
+        return True
     dicedisplay = settings[DICEDISPLAY]
     return dicedisplay
 
