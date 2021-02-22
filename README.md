@@ -44,6 +44,10 @@ etc.
 `!wield`     - WIELD YOUR POWERS
 `!adult` for more.
 
+# Advanced Functionality
+
+Maddie also supports creating characters and managing them. Currently she treats each channel seperatly, and to use things like the Team pool you have to create a settings file as below.  For now you can have 1 character per channel.
+
 # Moment of Truth and Team moves!
 `!mot beacon` will display your playbook's Moment of Truth text.
 `!celebrate beacon` will display your playbook's Share a triumphant celebration move
@@ -66,13 +70,14 @@ To use the team pool you'll need to have a settings file created as described be
 - `!clearcondition` will clear _angry_ if it was marked.
 
 # Configure settings for the chat!
-- `!create_settings en` will create a configuration file in english. The other language supported is spanish (es).
+- `!create_settings en` will create a configuration file in english. The other language supported is spanish (es).  The is required for any of the below, or for team to work
 - `!update_lang es` will change the language to the language sent. 
 - `!update_gm` will set or update a gm for the adventure played in the chat.
 - `!update_teamname` will set or update the team name of young heroes.
 - `!settings` will return all the current settings saved.
 - `!language` will return the language that is set (just the short name, like en or es).
 - `!teamname` will return the name of the team.
+- `!dicetoggle` will turn the dice emoji that come along with a roll on/off (as requested) DEFAULT: True
 
 # Make advancements!
 - `mov_my_playbook move_name` will add the name with the accessor move_name (if it is from your playbook) to your moves.
