@@ -30,6 +30,7 @@ en = {
     "changesettings": "change_settings",
     "language": "language",
     "teamname": "teamname",
+    "dicedisplay": "dicedisplay",
     "updatelang": "update_lang",
     "updategm": "update_gm",
     "updateteamname": "update_teamname",
@@ -38,7 +39,8 @@ en = {
     "team": "add_team",
     "spend": "spend_team",
     "pool": "check_team",
-    "empty": "empty_team"
+    "empty": "empty_team",
+    "dicetoggle": "toggle_dice"
   },
   "generic_advancements_dict": {
     "mov_my_playbook": "mov_my_playbook",
@@ -178,6 +180,7 @@ en = {
     "teamname": "Team name",
     "gm": "GM",
     "customNames": "Custom names",
+    "dicetoggle": "Dice toggle",
     "no_file": "This chat doesn't have a configuration file. To create it write the following command:\n!createsettings en\nif you wish for it to be in english.\n",
     "existing_settings": "This chat already has a configuration file.",
     "successfull_update": "The update was successful",
@@ -187,7 +190,9 @@ en = {
     "gm": "GM",
     #"team_pool": lambda team: f"You have {team} in the team pool",
     "team_pool": lambda team: f"You have {team} in the team pool",
-    "insufficient_team": "You don't have enough team for that!"
+    "insufficient_team": "You don't have enough team for that!",
+    "dicedisplay": "dicedisplay",
+    "dicedisplayswitched": lambda dice: f"Dice display toggled, currently set to {dice}"
   },
   "playbooks": {
     "the": "The",

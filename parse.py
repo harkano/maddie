@@ -1,10 +1,11 @@
 import re
 import discord
 import random
+import logging
 
 from utils import get_modified_num, get_moves, get_cap
 from language_handler import get_translation
-from config_interactions import get_raw_lang
+from config_interactions import get_raw_lang, get_dicedisplay
 from playbook_interactions import get_character
 from constants import LABELS, CONDITIONS, VALUE, dice, modifier_emojis
 
@@ -64,11 +65,16 @@ def mad_parse(message):
     if "?" in msg:
         roll = False
         quiet = 0
+    #Find out if user has dicedisplay set to false
+    dicedisplay = True
+    dicedisplay = get_dicedisplay(message, lang)
 
     #Ugly format blob!#
     if match == 1 : #lets us ignore ! prefix commands that aren't in our list
         character = get_character(message)
         embed=discord.Embed(title=f"{capital}", colour=5450873)
+        embed.set_footer(text=" ")
+        embed.set_author(name=f"{user} {phrase}")
         #embed.set_author(name=f"{user} {phrase}")
         embed.set_thumbnail(url=img)
         desc = get_translation(lang, 'description')
@@ -76,9 +82,11 @@ def mad_parse(message):
         addendum = None
         if roll:
             addendum = handle_roll(character, message, embed, num, mod, lang, label, condition, user)
-        embed.set_footer(text=" ")
-        embed.set_author(name=f"{user} {phrase}")
-        return (embed, addendum)
+#        embed.set_footer(text=" ")
+#       embed.set_author(name=f"{user} {phrase}")
+        if dicedisplay:
+            return (embed, addendum)
+        return (embed, '')
 
     else:
         return None
@@ -116,6 +124,7 @@ def handle_roll(character, message, embed, num, mod, lang, label, condition, use
     if character:
         user = character['characterName']
         (char_mod, character_condition, character_label) = get_modifier_from_character(character[LABELS], character[CONDITIONS], label, condition, user, lang)
+#        logger.info("Accessing " + character['characterName'])
     num_calc = get_modified_num(mod, num)
     command_mod = num_calc #before the character mod is applied but after it's capped
     num_calc = get_cap(num_calc + char_mod)
@@ -148,6 +157,7 @@ def add_result (embed, num_calc, mod, lang, character_label, character_condition
     if command_mod: calculation = get_translation(lang, 'dice_rolling.command_modifier')(command_mod) + calculation
     embed.add_field(name=calculation_title, value=calculation, inline=False)
     embed.add_field(name=result, value=f"**{result_tot}**")
+
     return die1 + " " + die2 + " " + mod_emoji
 
 def get_die (result):

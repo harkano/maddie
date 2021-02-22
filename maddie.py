@@ -9,6 +9,7 @@ from dotenv import load_dotenv
 from moves import get_moves
 from parse import mad_parse
 from command_handler import plain_command_handler, embed_command_handler
+from config_interactions import get_dicedisplay
 
 logger = logging.getLogger('discord')
 logger.setLevel(logging.INFO) #set logging level to INFO, DEBUG if we want the full dump
