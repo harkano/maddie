@@ -48,6 +48,8 @@ etc.
 
 Maddie also supports creating characters and managing them. Currently she treats each channel seperatly, and to use things like the Team pool you have to create a settings file as below.  For now you can have 1 character per channel.
 
+Maddie will respect your characters labels and conditions when she rolls, she will show the details of what is in the calculation.
+
 # Moment of Truth and Team moves!
 `!mot beacon` will display your playbook's Moment of Truth text.
 `!celebrate beacon` will display your playbook's Share a triumphant celebration move
