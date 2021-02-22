@@ -23,7 +23,7 @@ You can be pretty messy with the command as it uses regular expression matches, 
 
 ![Loud Mode](https://i.imgur.com/MtVp1KM.png "Loud Mode")
 
-I will be quieter if you prefix with !! (once you're comfortable with the detailed results) e.g. `!!unleash+2`
+It will be quieter if you prefix with !! (once you're comfortable with the detailed results) e.g. `!!unleash+2`
 
 ![Quiet Mode](https://i.imgur.com/5iVp7FK.png "Quiet Mode")
 
@@ -48,13 +48,13 @@ etc.
 
 Maddie also supports creating characters and managing them. Currently she treats each channel seperatly, and to use things like the Team pool you have to create a settings file as below.  For now you can have 1 character per channel.
 
-Maddie will respect your characters labels and conditions when she rolls, she will show the details of what is in the calculation.
+Maddie will respect your characters labels and conditions when she rolls, she will show the details of what is in the calculation.  She will still take modifiers from the command though (though it will cap as per the rules at +4 and -3).
 
 # Moment of Truth and Team moves!
 `!mot beacon` will display your playbook's Moment of Truth text.
 `!celebrate beacon` will display your playbook's Share a triumphant celebration move
 `!weakness beacon` will display your playbook's Share a vulnerability or weakness move
-NB if you have a character created in the channel you don't need to provide the playbook name, it will pick it up.
+NB if you have a character created in the channel you don't need to provide the playbook name, it will pick it up from your character.
 
 # Team Pool!
 To use the team pool you'll need to have a settings file created as described below - then you can use these commands to manage it -
@@ -65,11 +65,13 @@ To use the team pool you'll need to have a settings file created as described be
 
 # Change the character sheet!
 - `!create beacon Beacon-man Maddie mundane` will create a new character, _Beacon-man_, that is played by _Maddie_, that is a _beacon_ and has the initial labels plus one in _mundane_ (All 20 core game and expansion playbooks are supported).
-- `!editlabels mundane freak` will shift mundane up and freak(if _mundane_ isn't in +3 and _freak_ in -2 and neither of them is blocked) for the character of the player that sent the message.
+- `!editlabels mundane freak` will shift mundane up and freak(if _mundane_ isn't in +3 and _freak_ in -2 and neither of them is blocked) for the character of the player that sent the message. 
 - `!lock mundane` will lock mundane if it wasn't already.
 - `!potential` will add a potential to you pool. If you reach 5 of them m.a.d.d.i.e. will tell you how many unresolved advances you have.
 - `!markcondition angry` will mark _angry_ if it wasn't alread.
 - `!clearcondition` will clear _angry_ if it was marked.
+
+- `el` `mc` and `cc` are shortcuts which will edit labels, mark conditions and clear conditions slightly faster
 
 # Configure settings for the chat!
 - `!create_settings en` will create a configuration file in english. The other language supported is spanish (es).  The is required for any of the below, or for team to work
