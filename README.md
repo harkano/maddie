@@ -74,7 +74,7 @@ To use the team pool you'll need to have a settings file created as described be
 - `!el` `!mc` and `!cc` are shortcuts which will edit labels, mark conditions and clear conditions slightly faster
 
 # Configure settings for the chat!
-- `!create_settings en` will create a configuration file in english. The other language supported is spanish (es).  The is required for any of the below, or for team to work
+- `!createsettings en` will create a configuration file in english. The other language supported is spanish (es).  The is required for any of the below, or for team to work
 - `!update_lang es` will change the language to the language sent. 
 - `!update_gm` will set or update a gm for the adventure played in the chat.
 - `!update_teamname` will set or update the team name of young heroes.
