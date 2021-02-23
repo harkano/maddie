@@ -202,7 +202,10 @@ def get_dicedisplay(message, _lang):
     if not settings:
         #return no_config_file()  ##need to fix this so it displays the message properly
         return True
-    dicedisplay = settings[DICEDISPLAY]
+    try:
+        dicedisplay = settings[DICEDISPLAY]
+    except:
+        dicedisplay = True
     return dicedisplay
 
 settings_dict = {
