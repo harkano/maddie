@@ -43,21 +43,22 @@ async def on_message(message):
         return
 
     # handle help and all of the playbook interactions
-    response = plain_command_handler(message)
+    if message.content.startswith("!"):
+        response = plain_command_handler(message)
 
-    if response:
-        log_line = msg_log_line(message)
-        logger.info(log_line)
-        await message.channel.send(response)
-        return
+        if response:
+            log_line = msg_log_line(message)
+            logger.info(log_line)
+            await message.channel.send(response)
+            return
 
-    response = embed_command_handler(message)
+        response = embed_command_handler(message)
 
-    if response:
-        log_line = msg_log_line(message)
-        logger.info(log_line)
-        await message.channel.send(embed=response)
-        return
+        if response:
+            log_line = msg_log_line(message)
+            logger.info(log_line)
+            await message.channel.send(embed=response)
+            return
 
     #answer a call for help
     if message.content.startswith("!help"):
@@ -70,22 +71,23 @@ async def on_message(message):
         await message.channel.send("I have sent help to your PMs.")
 
     #list moves#
-    move_list = get_moves(message)
-    if move_list:
-        await message.channel.send(move_list)
-    #remember generic ! should always be last in the tree#
-    elif message.content.startswith("!"):
-        log_line = msg_log_line(message)
-        logger.info(log_line)
-        response = mad_parse(message)
-        if response:
-            logger.info(response)
-            (response, addendum) = response
+    if message.content.startswith("!"):
+        move_list = get_moves(message)
+        if move_list:
+            await message.channel.send(move_list)
+        #remember generic ! should always be last in the tree#
+        else:
+            log_line = msg_log_line(message)
+            logger.info(log_line)
+            response = mad_parse(message)
+            if response:
+                logger.info(response)
+                (response, addendum) = response
 #            if addendum is not None:  ##testing if going first made a difference
 #                await message.channel.send(content = addendum)
-            await message.channel.send(embed=response)
-            if addendum is not None:
-                await message.channel.send(content = addendum)
-        else : logger.info('no match found for '+message.content)
+                await message.channel.send(embed=response)
+                if addendum is not None:
+                    await message.channel.send(content = addendum)
+            else : logger.info('no match found for '+message.content)
 
 client.run(TOKEN)
