@@ -341,7 +341,7 @@
 		"shortName": "criminal",
 		"capital": "CRIMINAL MIND",
 		"phrase": "has a criminal mind!",
-		"blob": "When you *assess the situation*, you can always ask one of the following questions, even on a miss:\n- what here is useful or valuable to me?\n- how could I best infuriate or provoke \\_\\_\\_\\_?\n- what’s the best way in/way past?",
+		"blob": "When you *assess the situation*, you can always ask one of the following questions, even on a miss:\n• what here is useful or valuable to me?\n• how could I best infuriate or provoke \\_\\_\\_\\_?\n• what’s the best way in/way past?",
 		"label": "superior",
 		"description": " ",
 		"img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
