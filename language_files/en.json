@@ -341,11 +341,11 @@
 		"shortName": "criminal",
 		"capital": "CRIMINAL MIND",
 		"phrase": "has a criminal mind!",
-		"blob": "When you *assess the situation*, roll + Superior. \nOn a 10+, ask two. On a 7-9, ask one. Take +1 while acting on the answers.\n• what here can I use to ________?\n• what here is the biggest threat?\n• what here is in the greatest danger?\n• who here is most vulnerable to me?\n• how could we best end this quickly?\n• what here is useful or valuable to me?\n• how could I best infuriate or provoke __________?\n• what's the best way in/way past?\nOn a miss, you can ask one of the last three questions.",
+		"blob": "When you *assess the situation*, you can always ask one of the following questions, even on a miss:\n- what here is useful or valuable to me?\n- how could I best infuriate or provoke \_\_\_\_?\n- what’s the best way in/way past?",
 		"label": "superior",
 		"description": " ",
 		"img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
-		"requiresRolling": true,
+		"requiresRolling": false,
 		"playbook": "delinquent"
 	}, {
 		"id": 32,
