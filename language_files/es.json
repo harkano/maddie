@@ -360,7 +360,7 @@
             "shortName": "criminal",
             "capital": "MENTE CRIMINAL",
             "phrase": "tiene una mente criminal!",
-            "blob": "Cuando *evaluás la situación*, tira +Superior. En un 10+, preguntá dos. En un 7 - 9, preguntá una. Tomá +1 cuando actuás sobre las respuestas.\n• ¿qué puedo usar aquí para ______?\n• ¿cuál es la mayor amenaza aquí?\n• ¿cuál es el mayor peligro?\n• ¿quién es aquí es el más vulnerable a mi?\n• ¿cómo podemos terminar esto rápido de la mejor manera?\n• ¿qué aquí, es útil o valioso para mí?\n• ¿cómo podría enfurecer o provocar mejor a __________?\n• ¿cuál es a mejor manera de entrar/pasar?\nEn un fallo, podés preguntar una de las últimas tres preguntas.",
+            "blob": "Cuando *evalúas la situación* puedes agregar una de las siguientes preguntas a la lista de evaluar, incluso si fallas podrás hacer una de estas preguntas.\n• ¿Qué es útil o valioso para mí aquí?\n• ¿Cuál es la mejor manera  para exasperar o provocar \\_\\_\\_\\_?\n• ¿Cuál es el mejor camino para entrar/evitar?",
             "label": "superior",
             "description": " ",
             "img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
