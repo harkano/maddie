@@ -151,14 +151,16 @@ en = {
     "freak": "freak",
     "superior": "superior",
     "savior": "savior",
-    "mundane": "mundane"
+    "mundane": "mundane",
+    "soldier": "soldier"
   },
   "inverted_labels": {
     "danger": "danger",
     "freak": "freak",
     "superior": "superior",
     "savior": "savior",
-    "mundane": "mundane"
+    "mundane": "mundane",
+    "soldier": "soldier"
   },
   "conditions": {
     "afraid": "afraid",
