@@ -128,14 +128,16 @@ es = {
     "freak": "fenómeno",
     "superior": "superior",
     "savior": "salvador",
-    "mundane": "mundano"
+    "mundane": "mundano",
+    "soldier": "soldado"
   },
   "inverted_labels": {
     "peligro": "danger",
     "fenomeno": "freak",
     "superior": "superior",
     "salvador": "savior",
-    "mundano": "mundane"
+    "mundano": "mundane",
+    "soldado": "soldier"
   },
   "conditions": {
     "afraid": "asustado",
