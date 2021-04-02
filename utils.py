@@ -27,6 +27,16 @@ def get_key_and_content_from_message(message):
 
     return f'adventures/{key}', message.content
 
+def get_replicate_key_and_content_from_message(message):
+    link_channel = get_args_from_content(message.content)
+    key = f'{link_channel}/{message.author.id}'
+
+    return f'adventures/{key}', message.content
+
+
+def get_folder_from_message(message):
+    key = f'{message.channel.id}/'
+    return f'adventures/{key}', message.content
 
 def get_args_from_content(content):
     from tssplit import tssplit
