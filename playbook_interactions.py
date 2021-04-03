@@ -2,7 +2,7 @@
 import json
 from storage import info_from_s3, get_s3_client, upload_to_s3, get_files_from_dir, s3_delete
 from language_handler import get_translation
-from utils import get_moves as get_moves_json_array, get_key_and_content_from_message, get_args_from_content, format_labels, validate_labels
+from utils import get_moves as get_moves_json_array, get_key_and_content_from_message, get_args_from_content, format_labels, validate_labels, get_folder_from_message
 from constants import  LABELS, VALUE, LOCKED, POTENTIAL, PENDING_ADVANCEMENTS, CONDITIONS, MOVES, ADVANCEMENT, MAX_LABEL_VALUE, MIN_LABEL_VALUE, PLAYBOOK_INTERACTIONS, DESCRIPTION, TAKEN
 
 # These are the auxiliar functions
@@ -218,6 +218,19 @@ def mark_condition(message, lang):
 def clear_condition(message, lang):
     return invert_condition(message, False, lang)
 
+def replicate_character(message, lang):
+    key, content = get_key_and_content_from_message(message)
+    s3_client = get_s3_client()
+    char_info = info_from_s3(key, s3_client)
+    if char_info:
+        return get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.existing_character')
+    link_server = get_args_from_content(content)
+    file_list = get_files_from_dir('playbooks', s3_client)
+    template_key = f'playbooks/blank'
+    matching_files = list(filter(lambda file_info: file_info["Key"] == f'{template_key}.json', file_list["Contents"]))
+    template = info_from_s3(template_key, s3_client)
+    upload_to_s3(template, key, s3_client)
+    return get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.character_replication')(character_name, formated_playbook_name)
 
 def create_character(message, lang):
     key, content = get_key_and_content_from_message(message)
@@ -273,6 +286,10 @@ def get_character(message):
     s3_client = get_s3_client()
     return info_from_s3(key, s3_client)
 
+#def get_all_characters(message):
+#    key, _content = get_folder_from_message(message)
+#    s3_client = get_s3_client()
+#    return info_from_s3(key, s3_client)
 
 def get_labels(message, lang):
     key, _content = get_key_and_content_from_message(message)
@@ -353,6 +370,11 @@ def print_playbook(message, lang):
     if not char_info:
         return get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.no_character')
     char_text = f'You are {char_info["characterName"]}, a {char_info["playbook"].capitalize()}.'
+    #this case handles if the character is a replica
+    if char_info.get('replicate_key'):
+#        repl_id = char_info.get('replicate_key').split('/')[1]
+#        this_id = message.channel.get("id")
+        char_text = f'You are a copy of {char_info["characterName"]}, a {char_info["playbook"].capitalize()}.'
     return char_text
 
 generic_playbook_dict = {
@@ -371,6 +393,7 @@ generic_playbook_dict = {
   "me": get_sheet,
   "print": print_playbook,
   "deletecharacter": delete_character,
+    "replicate": replicate_character,
   "el": edit_labels,
   "cc": clear_condition,
   "mc": mark_condition

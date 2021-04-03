@@ -20,6 +20,7 @@ en = {
     "advancements": "advancements",
     "print": "print",
     "deletecharacter": "deletecharacter",
+    "replicate": "replicate",
     "el": "editlabels",
     "cc": "clearcondition",
     "mc": "markcondition"
@@ -100,7 +101,7 @@ en = {
     "dont": "don't ",
     "condition_status": lambda status: f"Oh, you {status}have that condition marked.",
     "no_character": "I'm sorry but it appears you have no character created",
-    "existing_character": "I'm sorry but it appears you already have character created",
+    "existing_character": "I'm sorry but it appears you already have character created in this channel",
     "invalid_condition": lambda condition_name: f"Oh no, {condition_name} is not a valid condition",
     "different_labels": "The labels must be different",
     "congrats_pending_advancements": lambda adv_count: f"Nice, you can now do {adv_count + 1} advancements",
@@ -144,7 +145,8 @@ en = {
     "invalid_resource": lambda name: f"You can't have a {name} as a resource, the valid ones are:",
     "resource_already_acquired": "You already have the following resources:",
     "more_than_four_resources": lambda max_count, wanted_count: f"The maximum ammount of resources to add with this advancement is {max_count}, not {wanted_count}",
-    "character_deletion": lambda char, playbook: f"Goodbye {char}, the {playbook} - You have deleted your character in this channel."
+    "character_deletion": lambda char, playbook: f"Goodbye {char}, the {playbook} - You have deleted your character in this channel.",
+    "character_replication": lambda char, playbook: f"Successfully replicated {char}, the {playbook}.  This character now exists in 2 places at once."
   },
   "labels": {
     "danger": "danger",

@@ -32,7 +32,26 @@ def info_from_s3(key, s3_client):
             Bucket=BUCKET,
             Key=f'{key}.json'
         )
+#Handle Replicate functionality
+        if file.get('Metadata','replicate'):
+            key = file['Metadata']['replicate']
+            try:
+                file = s3_client.get_object(
+                    Bucket=BUCKET,
+                    Key=f'{key}.json'
+                )
+                if file.get('Body'):
+                    file_body = file.get('Body')
+                    return_dict = json.loads(file_body.read())
+                    return_dict['replicate_key'] = key
+                    return return_dict
+            except Exception as e:
+                if f'{e}' == EXISTING_KEY_ERROR_MESSAGE:
+                    return None
+                logger.error(f'An error occurred while interacting with s3:\n{e}')
 
+            raise e
+#Handles normal case
         if file.get('Body'):
             file_body = file.get('Body')
             return json.loads(file_body.read())
@@ -57,9 +76,17 @@ def get_bytes_from_json(json_to_parse):
 
 
 def upload_to_s3(content, key, s3_client):
-    s3_client.put_object(
+    #Take the replicate key from the json, kill it and move it to metadata
+    if content.get('replicate_key'):
+        key = content['replicate_key']
+        content.pop('replicate_key')
+        s3_client.put_object(
+            Body=get_bytes_from_json(content), Bucket=BUCKET, Key=f'{key}.json', Metadata={'replicate': key}
+        )
+    else: #normal case for any other json updates
+        s3_client.put_object(
         Body=get_bytes_from_json(content), Bucket=BUCKET, Key=f'{key}.json'
-    )
+        )
     logger.info('Finished uploading')
 
 def s3_delete(key, s3_client):
