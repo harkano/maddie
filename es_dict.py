@@ -1,6 +1,8 @@
 es = {
   "embed_commands_dict": {
     "mdlv": "mot",
+    "celebrar": "celebrate",
+    "debilidad": "weakness",
     "libretos": "playbooks"
   },
   "generic_playbook_dict": {
@@ -14,7 +16,10 @@ es = {
     "condiciones": "conditions",
     "ver_potencial": "get_potential",
     "avances_pendientes": "pending_advancements",
-    "avances": "advancements"
+    "avances": "advancements",
+    "imprimir": "print",
+    "borrarpersonaje": "deletecharacter"
+
   },
   "settings_dict": {
     "ayudaaqui": "helphere",
@@ -25,7 +30,15 @@ es = {
     "editarleng": "update_lang",
     "editargm": "update_gm",
     "editarnombre": "update_teamname",
-    "crearconfig": "create_settings"
+    "crearconfig": "create_settings",
+    "borrarconfig": "delete_settings",
+    "equipo": "add_team",
+    "reserva": "check_team",
+    "vacuo": "empty_team",
+    "dicetoggle": "toggle_dice"
+
+
+
   },
   "generic_advancements_dict": {
     "mov_mi_libreto": "mov_my_playbook",
@@ -53,7 +66,12 @@ es = {
   "dice_rolling": {
     "calculation_title": "Cálculo",
     "calculation": lambda result1, result2, mod, calc: f"Dados **{result1}** + **{result2}**, Etiqueta{mod} **{calc}**",
-    "result": "Resultado"
+    "dice": "Dados",
+    "label": lambda label_name, label_value: f"**{label_name}** es **{label_value}**\n",
+    "result": "Resultado",
+    "condition_text": lambda condition, name: f"-2 como **{name}** es **{condition}**!\n",
+    "conditions_marked": lambda conditions, name: f"**{name}** tiene {conditions} condiciones marcadas!\n",
+    "command_modifier": lambda mod: f"El modificador del comando es **{mod}**\n"
   },
   "description": "Descripción",
   "moves": {
@@ -164,7 +182,12 @@ es = {
     "successfull_update": "El cambio se hizo con éxito",
     "successfull_creation": "El archivo de configuración ha sido creado",
     "invalid_lang": lambda lang: f"{lang} no es un idioma válido, las opciones son: es (español), en (inglés)",
-    "gm": "GM"
+    "gm": "GM",
+    "team_pool": lambda team: f"Tienes {team} equipos en la reserva",
+    "insufficient_team": "No tienes suficientes reservas para eso!",
+    "dicedisplay": "dicedisplay",
+    "dicedisplayswitched": lambda dice: f"Dice display toggled, currently set to {dice}"
+
   },
   "playbooks": {
     "the": "",
@@ -217,6 +240,8 @@ es = {
     "playbook_re": r"!mdlv ([a-z]+)",
     "moment_of_truth": "MOMENTO DE LA VERDAD",
     "this_is_mot": lambda usr: f"Este es el momento de la verdad de {usr}!",
+    "this_is_celebrate": lambda usr: f"{usr} celebra un triunfo!",
+    "this_is_weakness": lambda usr: f"{usr} se abre y comparte!",
     "advances": {
       "moveYouPlaybook": "Toma otro movimiento de tu libreto",
       "moveOtherPlaybook": "Toma un movimiento de otro libreto",
