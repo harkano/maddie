@@ -33,6 +33,7 @@ es = {
     "crearconfig": "create_settings",
     "borrarconfig": "delete_settings",
     "equipo": "add_team",
+    "gastar": "spend_team",
     "reserva": "check_team",
     "vacuo": "empty_team",
     "dicetoggle": "toggle_dice"
