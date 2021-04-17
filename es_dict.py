@@ -70,7 +70,7 @@ es = {
     "dice": "Dados",
     "label": lambda label_name, label_value: f"**{label_name}** es **{label_value}**\n",
     "result": "Resultado",
-    "condition_text": lambda condition, name: f"-2 como **{name}** es **{condition}**!\n",
+    "condition_text": lambda condition, name: f"-2 porqué **{name}** esta **{condition}**!\n",
     "conditions_marked": lambda conditions, name: f"**{name}** tiene {conditions} condiciones marcadas!\n",
     "command_modifier": lambda mod: f"El modificador del comando es **{mod}**\n"
   },
