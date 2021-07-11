@@ -27,6 +27,11 @@ def info_from_s3(key, s3_client):
         with file:
             return json.load(file)
 
+def bulk_get_from_s3(key, s3_client):
+    try
+        file
+
+
 # Yep, just listing files.
 def get_files_from_dir(key, s3_client):
     # Since the usage of this thing doesn't perform any indexing,
