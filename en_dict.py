@@ -172,14 +172,16 @@ en = {
     "angry": "angry",
     "guilty": "guilty",
     "hopeless": "hopeless",
-    "insecure": "insecure"
+    "insecure": "insecure",
+    "damaged": "damaged"
   },
   "inverted_conditions": {
     "afraid": "afraid",
     "angry": "angry",
     "guilty": "guilty",
     "hopeless": "hopeless",
-    "insecure": "insecure"
+    "insecure": "insecure",
+    "damaged": "damaged"
   },
   "configuration": {
     "settings": "Settings\n",

@@ -31,7 +31,8 @@
     "angry": false,
     "guilty": false,
     "hopeless": false,
-    "insecure": false
+    "insecure": false,
+    "damaged": false
   },
   "moves": [
     { "id": 77, "picked": false },
