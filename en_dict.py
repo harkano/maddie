@@ -252,7 +252,7 @@ en = {
     #"weakness_re": r"!weakness ([a-z]+)",
     "moment_of_truth": "MOMENT OF TRUTH",
     "celebrate": "Triumphant Celebration",
-    "weakness": "Vulnerabiility or Weakness",
+    "weakness": "Vulnerability or Weakness",
     "this_is_mot": lambda usr: f"This is {usr}'s moment!",
     "this_is_celebrate": lambda usr: f"{usr} celebrates a triumph!",
     "this_is_weakness": lambda usr: f"{usr} opens up and shares!",
