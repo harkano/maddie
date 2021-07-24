@@ -28,7 +28,7 @@
 		"shortName": "comfort",
 		"capital": "COMFORT OR SUPPORT",
 		"phrase": "comforts or supports!",
-		"blob": "When you *comfort or support someone*, roll + Mundane. \nOn a hit, they hear you: they mark potential, clear a condition, or shift Labels if they open up to you. On a _10+_, you can also add a Team to the pool or clear a condition yourself.",
+		"blob": "When you *comfort or support someone*, roll + Mundane. \nOn a hit, they hear you, if they open up, they choose one: \n•mark potential. \n•clear a condition. \n•shift Labels. \n\nOn a _10+_, you can also add a Team to the pool or clear a condition yourself.",
 		"label": "mundane",
 		"description": " ",
 		"img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
