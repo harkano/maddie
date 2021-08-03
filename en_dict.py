@@ -107,7 +107,7 @@ en = {
     "existing_character": "I'm sorry but it appears you already have character created in this channel",
     "invalid_condition": lambda condition_name: f"Oh no, {condition_name} is not a valid condition",
     "different_labels": "The labels must be different",
-    "congrats_pending_advancements": lambda adv_count: f"Nice, you can now do {adv_count + 1} advancements",
+    "congrats_pending_advancements": lambda adv_count: f"Nice, you can now do {adv_count} advancements",
     "congrats_potential": lambda potential: f"Nice, you have {potential} potential marked",
     "no_template": lambda playbook_name: f"It seems I don't have a template for a playbook called {playbook_name}",
     "congrats_on_creation": lambda char, playbook: f"Congratulations {char}, The {playbook} on joining the team!",
