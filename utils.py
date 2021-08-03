@@ -27,6 +27,10 @@ def get_key_and_content_from_message(message):
 
     return f'adventures/{key}', message.content
 
+def get_key_from_ctx(ctx):
+    key = f'{ctx.channel_id}/{ctx.author.id}'
+    return f'adventures/{key}'
+
 def get_replicate_key_and_content_from_message(message):
     link_channel = get_args_from_content(message.content)
     key = f'{link_channel}/{message.author.id}'

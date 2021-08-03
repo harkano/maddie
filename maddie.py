@@ -10,6 +10,9 @@ from moves import get_moves
 from parse import mad_parse
 from command_handler import plain_command_handler, embed_command_handler
 from config_interactions import get_dicedisplay
+from discord_slash import SlashCommand
+from discord_slash.utils.manage_commands import create_choice, create_option
+from discord.ext import commands
 
 logger = logging.getLogger('discord')
 logger.setLevel(logging.INFO) #set logging level to INFO, DEBUG if we want the full dump

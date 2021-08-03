@@ -123,12 +123,17 @@ async def createcharacter(ctx,playbook_name,character_name,player_name,label_to_
     description="Interact with Team Pool",
     guild_ids=[696999350726819931],
     options=[
-        create_option()
-        ]
+        create_option(name='action', description="What's going on with team?", required=True, option_type=3, choices=[
+            create_choice(name="Check team pool", value="check"),
+            create_choice(name="Add to team pool", value="increase"),
+            create_choice(name="Spend from team pool", value="decrease"),
+            create_choice(name="Empty team pool", value="empty"),
+        ])
+    ]
 )
-async def team(ctx):
+async def team(ctx, action):
     from config_interactions import team_slash
-    await ctx.send(team_slash(ctx, 'en', playbook_name, character_name, player_name, label_to_increase_og))
+    await ctx.send(team_slash(ctx, 'en', action))
 
 
 bot.run(TOKEN)

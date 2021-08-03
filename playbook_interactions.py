@@ -2,7 +2,7 @@
 import json
 from storage import info_from_s3, get_s3_client, upload_to_s3, get_files_from_dir, s3_delete
 from language_handler import get_translation
-from utils import get_moves as get_moves_json_array, get_key_and_content_from_message, get_args_from_content, format_labels, validate_labels, get_folder_from_message
+from utils import get_moves as get_moves_json_array, get_key_and_content_from_message, get_args_from_content, format_labels, validate_labels, get_folder_from_message, get_key_from_ctx
 from constants import  LABELS, VALUE, LOCKED, POTENTIAL, PENDING_ADVANCEMENTS, CONDITIONS, MOVES, ADVANCEMENT, MAX_LABEL_VALUE, MIN_LABEL_VALUE, PLAYBOOK_INTERACTIONS, DESCRIPTION, TAKEN
 
 # These are the auxiliar functions
@@ -44,7 +44,6 @@ def get_condition_is_unchangable(is_marked, lang):
     
     return get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.condition_status')(dont)
 
-
 def invert_condition(message, compare_to, lang):
     key, content = get_key_and_content_from_message(message)
     condition_name_og = get_args_from_content(content)
@@ -70,6 +69,33 @@ def invert_condition(message, compare_to, lang):
     upload_to_s3(char_info, key, s3_client)
 
     return format_conditions(char_info[CONDITIONS], lang)
+
+def invert_condition_slash(ctx, compare_to, lang, condition):
+    key = get_key_from_ctx(ctx)
+    condition_name_og = condition
+    condition_name = get_translation(lang, f'inverted_conditions.{condition_name_og}')
+
+    s3_client = get_s3_client()
+    char_info = info_from_s3(key, s3_client)
+    if not char_info:
+        return get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.no_character')
+
+    conditions = char_info[CONDITIONS]
+
+    if condition_name not in conditions:
+        return get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.invalid_condition')
+
+    condition_to_mark = conditions[condition_name]
+
+    if condition_to_mark == compare_to:
+        return get_condition_is_unchangable(compare_to, lang)
+
+    char_info[CONDITIONS][condition_name] = compare_to
+
+    upload_to_s3(char_info, key, s3_client)
+
+    return format_conditions(char_info[CONDITIONS], lang)
+
 
 
 def format_moves(moves):
@@ -142,6 +168,47 @@ def edit_labels(message, lang):
 
     return format_labels(labels, lang)
 
+def edit_labels_slash(ctx, lang, labelup, labeldown):
+    key = get_key_from_ctx(ctx)
+    label_to_increase_name_og = labelup
+    label_to_decrease_name_og = labeldown
+
+    if label_to_increase_name_og == label_to_decrease_name_og:
+        return get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.different_labels')
+
+    label_to_increase_name = get_translation(lang, f'inverted_labels.{label_to_increase_name_og}')
+    label_to_decrease_name = get_translation(lang, f'inverted_labels.{label_to_decrease_name_og}')
+
+    s3_client = get_s3_client()
+    char_info = info_from_s3(key, s3_client)
+    if not char_info:
+        return get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.no_character')
+
+    labels = char_info[LABELS]
+
+    labels_do_not_exist = validate_labels(lang, [label_to_increase_name_og, label_to_decrease_name_og])
+    if labels_do_not_exist:
+        return labels_do_not_exist
+
+    label_to_increase = labels[label_to_increase_name]
+    label_to_increase_value = label_to_increase[VALUE]
+    label_to_decrease = labels[label_to_decrease_name]
+    label_to_decrease_value = label_to_decrease[VALUE]
+
+    if label_is_not_editable(label_to_increase, MAX_LABEL_VALUE):
+        up = get_translation(lang,  f'{PLAYBOOK_INTERACTIONS}.up')
+        return get_label_has_border_value_text(label_to_increase_name, label_to_increase, up, lang)
+
+    if label_is_not_editable(label_to_decrease, MIN_LABEL_VALUE):
+        down = get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.down')
+        return get_label_has_border_value_text(label_to_decrease_name, label_to_decrease, down, lang)
+
+    labels[label_to_increase_name][VALUE] = label_to_increase_value + 1
+    labels[label_to_decrease_name][VALUE] = label_to_decrease_value - 1
+
+    upload_to_s3(char_info, key, s3_client)
+
+    return format_labels(labels, lang)
 
 def lock_label(message, lang):
     key, content = get_key_and_content_from_message(message)
@@ -214,9 +281,14 @@ def remove_potential(message, lang):
 def mark_condition(message, lang):
     return invert_condition(message, True, lang)
 
+def mark_condition_slash(ctx, lang,condition):
+    return invert_condition_slash(ctx, True, lang, condition)
 
 def clear_condition(message, lang):
     return invert_condition(message, False, lang)
+
+def clear_condition_slash(ctx, lang,condition):
+    return invert_condition_slash(ctx, False, lang, condition)
 
 def replicate_character(message, lang):
     key, content = get_key_and_content_from_message(message)
@@ -241,6 +313,39 @@ def create_character(message, lang):
         return get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.existing_character')
 
     playbook_name, character_name, player_name, label_to_increase_og = get_args_from_content(content)
+
+    label_does_not_exist = validate_labels(lang, [label_to_increase_og])
+    if label_does_not_exist:
+        return label_does_not_exist
+
+    label_to_increase = get_translation(lang, f'inverted_labels.{label_to_increase_og}')
+    translated_name = get_translation(lang, f'playbooks.names.{playbook_name}')
+    file_list = get_files_from_dir('playbooks', s3_client)
+    template_key = f'playbooks/{translated_name}'
+
+    matching_files = list(filter(lambda file_info: file_info["Key"] == f'{template_key}.json', file_list["Contents"]))
+
+    if not matching_files:
+        return get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.no_template')(playbook_name)
+
+    template = info_from_s3(template_key, s3_client)
+
+    template[LABELS][label_to_increase][VALUE] = template[LABELS][label_to_increase][VALUE] + 1
+    template['characterName'] = character_name
+    template['playerName'] = player_name
+
+    upload_to_s3(template, key, s3_client)
+
+    formated_playbook_name = playbook_name.capitalize()
+    return get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.congrats_on_creation')(character_name, formated_playbook_name)
+
+def create_character_slash(ctx, lang, playbook_name, character_name, player_name, label_to_increase_og):
+    key = get_key_from_ctx(ctx)
+    s3_client = get_s3_client()
+
+    char_info = info_from_s3(key, s3_client)
+    if char_info:
+        return get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.existing_character')
 
     label_does_not_exist = validate_labels(lang, [label_to_increase_og])
     if label_does_not_exist:
@@ -360,8 +465,7 @@ def get_sheet(message, lang):
     if not char_info:
         return get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.no_character')
 
-    return char#format_advancements(char_info[C], lang)
-
+    return char  #format_advancements(char_info[C], lang)
 
 def print_playbook(message, lang):
     key, _content = get_key_and_content_from_message(message)

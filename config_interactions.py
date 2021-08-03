@@ -21,6 +21,10 @@ def get_settings_path(message):
     return f'adventures/{message.channel.id}/settings'
 
 
+def get_settings_path_ctx(ctx):
+    return f'adventures/{ctx.channel_id}/settings'
+
+
 def get_field_from_config(message, field):
     settings_key = get_settings_path(message)
     s3_client = get_s3_client()
@@ -158,6 +162,27 @@ def get_teamname(message, _lang):
 
 def add_team(message, _lang, action):
     settings_key = get_settings_path(message)
+    s3_client = get_s3_client()
+    settings = info_from_s3(settings_key, s3_client)
+    lang = settings[LANGUAGE]
+    if not settings:
+        return no_config_file()
+    team = settings[TEAM]
+    if action == 'increase':
+        team = team + 1 #increment!
+    elif action == 'decrease':
+        if team > 0:
+            team = team - 1 #spend!
+        else: return get_translation(lang, 'configuration.insufficient_team')
+    elif action == 'empty':
+        team = 1
+    settings[TEAM] = team #update team
+    upload_to_s3(settings, settings_key, s3_client)
+    response = get_translation(lang, f'{CONFIGURATION}.team_pool')(team)
+    return response
+
+def team_slash(ctx, lang, action):
+    settings_key = get_settings_path_ctx(ctx)
     s3_client = get_s3_client()
     settings = info_from_s3(settings_key, s3_client)
     lang = settings[LANGUAGE]
