@@ -52,9 +52,9 @@ Maddie will respect your characters labels and conditions when she rolls, she wi
 
 # Moment of Truth and Team moves!
 `!mot beacon` will display your playbook's Moment of Truth text.
-`!celebrate beacon` will display your playbook's Share a triumphant celebration move
-`!weakness beacon` will display your playbook's Share a vulnerability or weakness move
-NB if you have a character created in the channel you don't need to provide the playbook name, it will pick it up from your character.
+`!celebrate beacon` will display your playbook's Share a triumphant celebration move.
+`!weakness beacon` will display your playbook's Share a vulnerability or weakness move.
+- NB if you have a character created in the channel you don't need to provide the playbook name, it will pick it up from your character.
 
 # Team Pool!
 To use the team pool you'll need to have a settings file created as described below - then you can use these commands to manage it -
@@ -65,11 +65,12 @@ To use the team pool you'll need to have a settings file created as described be
 
 # Change the character sheet!
 - `!create beacon Beacon-man Maddie mundane` will create a new character, _Beacon-man_, that is played by _Maddie_, that is a _beacon_ and has the initial labels plus one in _mundane_ (All 20 core game and expansion playbooks are supported).
-- `!editlabels mundane freak` will shift mundane up and freak(if _mundane_ isn't in +3 and _freak_ in -2 and neither of them is blocked) for the character of the player that sent the message. 
+- `!editlabels mundane freak` will shift mundane up and freak (if _mundane_ isn't in +3 and _freak_ in -2 and neither of them is blocked) for the character of the player that sent the message. 
 - `!lock mundane` will lock mundane if it wasn't already.
-- `!potential` will add a potential to you pool. If you reach 5 of them m.a.d.d.i.e. will tell you how many unresolved advances you have.
+- `!potential` will add a potential to your pool. If you reach 5 of them m.a.d.d.i.e. will tell you how many unresolved advances you have.
 - `!markcondition angry` will mark _angry_ if it wasn't alread.
 - `!clearcondition` will clear _angry_ if it was marked.
+- `!labels` will display the labels for your current character.
 
 - `!el` `!mc` and `!cc` are shortcuts which will edit labels, mark conditions and clear conditions slightly faster
 
