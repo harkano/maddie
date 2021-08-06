@@ -4,11 +4,18 @@ from discord_slash import SlashCommand
 from discord_slash.utils.manage_commands import create_choice, create_option
 from discord.ext import commands
 from dotenv import load_dotenv
+import logging
 
 load_dotenv()
 TOKEN = os.getenv('DISCORD_TOKEN')
 bot = commands.Bot(command_prefix="!!!!!!?")
 slash = SlashCommand(bot, sync_commands=True)
+
+logger = logging.getLogger('discord')
+logger.setLevel(logging.INFO) #set logging level to INFO, DEBUG if we want the full dump
+handler = logging.FileHandler(filename='discord.log', encoding='utf-8', mode='a') #open log file in append mode
+handler.setFormatter(logging.Formatter('%(asctime)s:%(levelname)s:%(name)s: %(message)s'))
+logger.addHandler(handler)
 
 @slash.slash(
     name="editlabels",
@@ -35,6 +42,7 @@ slash = SlashCommand(bot, sync_commands=True)
 )
 async def editlabels(ctx, labelup: str, labeldown: str):
     from playbook_interactions import edit_labels_slash
+    logger.info(str(ctx.author.guild) + str(ctx.author.display_name) + str(ctx.data))
     await ctx.send(edit_labels_slash(ctx, 'en', labelup, labeldown))
 
 @slash.slash(
@@ -58,6 +66,7 @@ async def editlabels(ctx, labelup: str, labeldown: str):
 )
 async def condition(ctx,condition:str,what:str):
     from playbook_interactions import condition_slash
+    logger.info(str(ctx.author.guild) + str(ctx.author.display_name) + str(ctx.data))
     await ctx.send(condition_slash(ctx, 'en', condition, what))
 
 # @slash.slash(
@@ -120,6 +129,7 @@ async def condition(ctx,condition:str,what:str):
 )
 async def createcharacter(ctx,playbook_name,character_name,player_name,label_to_increase_og):
     from playbook_interactions import create_character_slash
+    logger.info(str(ctx.author.guild) + str(ctx.author.display_name) + str(ctx.data))
     await ctx.send(create_character_slash(ctx, 'en', playbook_name, character_name, player_name, label_to_increase_og))
 
 @slash.slash(
@@ -137,6 +147,7 @@ async def createcharacter(ctx,playbook_name,character_name,player_name,label_to_
 )
 async def team(ctx, action):
     from config_interactions import team_slash
+    logger.info(str(ctx.author.guild) + str(ctx.author.display_name) + str(ctx.data))
     await ctx.send(team_slash(ctx, 'en', action))
 
 
@@ -176,6 +187,7 @@ async def team(ctx, action):
 )
 async def playbooks(ctx, choice, playbook=None):
     from playbooks import get_playbook_component_slash
+    logger.info(str(ctx.author.guild) + str(ctx.author.display_name) + str(ctx.data))
     await ctx.send(embed=get_playbook_component_slash(choice, ctx, 'en', playbook))
 
 
@@ -194,6 +206,7 @@ async def playbooks(ctx, choice, playbook=None):
 )
 async def me(ctx, choice):
     from playbook_interactions import print_playbook_slash, get_conditions_slash, get_labels_slash
+    logger.info(str(ctx.author.guild) + str(ctx.author.display_name) + str(ctx.data))
     if choice == 'print':
         await ctx.send(print_playbook_slash(ctx, 'en'))
     if choice == 'labels':
