@@ -13,7 +13,7 @@ slash = SlashCommand(bot, sync_commands=True)
 @slash.slash(
     name="editlabels",
     description="Adjust your labels, one up, one down",
-    guild_ids=[696999350726819931],
+    #guild_ids=[696999350726819931],
     options=[
         create_option(name='labelup', description="Label to increase", required=True, option_type=3, choices = [
             create_choice(name="danger", value="danger"),
@@ -38,47 +38,51 @@ async def editlabels(ctx, labelup: str, labeldown: str):
     await ctx.send(edit_labels_slash(ctx, 'en', labelup, labeldown))
 
 @slash.slash(
-    name="markcondition",
-    description="Mark a condition",
-    guild_ids=[696999350726819931],
+    name="condition",
+    description="Mark or clear a condition",
+    #guild_ids=[696999350726819931],
     options=[
-        create_option(name='condition', description="Condition to mark", required=True, option_type=3, choices=[
+        create_option(name='condition', description="Condition", required=True, option_type=3, choices=[
             create_choice(name="afraid", value="afraid"),
             create_choice(name="angry", value="angry"),
             create_choice(name="guilty", value="guilty"),
             create_choice(name="hopeless", value="hopeless"),
             create_choice(name="insecure", value="insecure"),
             create_choice(name="damaged", value="damaged")
-        ])
+        ]),
+        create_option(name='what', description="Mark or Clear", required=True, option_type=3, choices=[
+            create_choice(name="Mark", value="mark"),
+            create_choice(name="Clear", value="clear")
+            ])
     ]
 )
-async def clearcondition(ctx,condition:str):
-    from playbook_interactions import clear_condition_slash
-    await ctx.send(clear_condition_slash(ctx, 'en', condition))
+async def condition(ctx,condition:str,what:str):
+    from playbook_interactions import condition_slash
+    await ctx.send(condition_slash(ctx, 'en', condition, what))
 
-@slash.slash(
-    name="clearcondition",
-    description="Clear a condition",
-    guild_ids=[696999350726819931],
-    options=[
-        create_option(name='condition', description="Condition to mark", required=True, option_type=3, choices = [
-            create_choice(name="afraid", value="afraid"),
-            create_choice(name="angry", value="angry"),
-            create_choice(name="guilty", value="guilty"),
-            create_choice(name="hopeless", value="hopeless"),
-            create_choice(name="insecure", value="insecure"),
-            create_choice(name="damaged", value="damaged")
-        ])
-    ]
-)
-async def markcondition(ctx,condition:str):
-    from playbook_interactions import clear_condition_slash
-    await ctx.send(clear_condition_slash(ctx, 'en', condition))
+# @slash.slash(
+#     name="clearcondition",
+#     description="Clear a condition",
+#     guild_ids=[696999350726819931],
+#     options=[
+#         create_option(name='condition', description="Condition to mark", required=True, option_type=3, choices = [
+#             create_choice(name="afraid", value="afraid"),
+#             create_choice(name="angry", value="angry"),
+#             create_choice(name="guilty", value="guilty"),
+#             create_choice(name="hopeless", value="hopeless"),
+#             create_choice(name="insecure", value="insecure"),
+#             create_choice(name="damaged", value="damaged")
+#         ])
+#     ]
+# )
+# async def markcondition(ctx,condition:str):
+#     from playbook_interactions import clear_condition_slash
+#     await ctx.send(clear_condition_slash(ctx, 'en', condition))
 
 @slash.slash(
     name="createcharacter",
     description="Create a character",
-    guild_ids=[696999350726819931],
+    #guild_ids=[696999350726819931],
     options=[
         create_option(name='playbook_name', description='Choose a playbook', required=True, option_type=3, choices= [
             create_choice(name="beacon", value="beacon"),
@@ -121,19 +125,81 @@ async def createcharacter(ctx,playbook_name,character_name,player_name,label_to_
 @slash.slash(
     name="team",
     description="Interact with Team Pool",
-    guild_ids=[696999350726819931],
+    #guild_ids=[696999350726819931],
     options=[
         create_option(name='action', description="What's going on with team?", required=True, option_type=3, choices=[
             create_choice(name="Check team pool", value="check"),
             create_choice(name="Add to team pool", value="increase"),
             create_choice(name="Spend from team pool", value="decrease"),
-            create_choice(name="Empty team pool", value="empty"),
+            create_choice(name="Empty team pool", value="empty")
         ])
     ]
 )
 async def team(ctx, action):
     from config_interactions import team_slash
     await ctx.send(team_slash(ctx, 'en', action))
+
+
+@slash.slash(
+    name="playbooks",
+    description="Playbook team moves, Moment of Truth etc.",
+    #guild_ids=[696999350726819931],
+    options=[
+        create_option(name='choice', description='Which piece', required=True, option_type=3, choices=[
+            create_choice(name='Share a triumphant celebration with someone', value='celebrate'),
+            create_choice(name='Share a vulnerability or weakness with someone', value='weakness'),
+            create_choice(name='Moment of Truth!', value='mot')
+        ]),
+        create_option(name='playbook', description="Playbook (optional)", required=False, option_type=3, choices=[
+            create_choice(name="beacon", value="beacon"),
+            create_choice(name="brain", value="brain"),
+            create_choice(name="bull", value="bull"),
+            create_choice(name="delinquent", value="delinquent"),
+            create_choice(name="doomed", value="doomed"),
+            create_choice(name="harbinger", value="harbinger"),
+            create_choice(name="innocent", value="innocent"),
+            create_choice(name="janus", value="janus"),
+            create_choice(name="joined", value="joined"),
+            create_choice(name="legacy", value="legacy"),
+            create_choice(name="newborn", value="newborn"),
+            create_choice(name="nomad", value="nomad"),
+            create_choice(name="nova", value="nova"),
+            create_choice(name="outsider", value="outsider"),
+            create_choice(name="protege", value="protege"),
+            create_choice(name="reformed", value="reformed"),
+            create_choice(name="scion", value="scion"),
+            create_choice(name="soldier", value="soldier"),
+            create_choice(name="star", value="star"),
+            create_choice(name="transformed", value="transformed")
+        ])
+    ]
+)
+async def playbooks(ctx, choice, playbook=None):
+    from playbooks import get_playbook_component_slash
+    await ctx.send(embed=get_playbook_component_slash(choice, ctx, 'en', playbook))
+
+
+
+@slash.slash(
+    name="me",
+    description="Retrieve character information",
+    #guild_ids=[696999350726819931],
+    options=[
+        create_option(name='choice', description='Choose which one to display', required=True, option_type=3, choices=[
+            create_choice(name='Print Character', value='print'),
+            create_choice(name='Show Labels', value= 'labels'),
+            create_choice(name='Show Conditions', value= 'conditions')
+        ])
+    ]
+)
+async def me(ctx, choice):
+    from playbook_interactions import print_playbook_slash, get_conditions_slash, get_labels_slash
+    if choice == 'print':
+        await ctx.send(print_playbook_slash(ctx, 'en'))
+    if choice == 'labels':
+        await ctx.send(get_conditions_slash(ctx, 'en'))
+    if choice == 'conditions':
+        await ctx.send(get_labels_slash(ctx, 'en'))
 
 
 bot.run(TOKEN)

@@ -1,6 +1,6 @@
 import re
 import discord
-from utils import get_moves, get_key_and_content_from_message
+from utils import get_moves, get_key_and_content_from_message, get_key_from_ctx
 from language_handler import get_translation
 from storage import info_from_s3, get_s3_client
 
@@ -70,6 +70,53 @@ def get_playbook_component(component, message, lang):
         return response
     else:
         response = 0
+
+def get_playbook_component_slash(component, ctx, lang, playbook):
+    key = get_key_from_ctx(ctx)
+    usr = ctx.author.display_name
+    s3_client = get_s3_client()
+    char_info = info_from_s3(key, s3_client)
+    json_array = get_moves(lang)
+    playbook_re = get_translation(lang, 'playbooks.playbook_re')
+    #this case deals with if we have a character created, but waits to make sure they haven't passed a playbook in anyway
+
+    if playbook is not None:
+        for p in json_array['playbooks']:
+            if p['name'] == playbook:
+                mot = p['mot']
+                cel = p['celebrate']
+                wek = p['weakness']
+                img = p['img']
+                found = 1
+    elif char_info:
+        playbook = char_info['playbook']
+        charactername = char_info['characterName']
+        for p in json_array['playbooks']:
+            if p['name'] == playbook:
+                mot = p['mot']
+                cel = p['celebrate']
+                wek = p['weakness']
+                img = p['img']
+                usr = charactername
+                found = 1
+    description = get_translation(lang, 'description')
+    if component == 'mot':
+        embed = discord.Embed(title=get_translation(lang, 'playbooks.moment_of_truth'), colour=5450873)
+        embed.set_author(name=get_translation(lang, 'playbooks.this_is_mot')(usr))
+        embed.add_field(name=description, value=mot)
+    if component == 'celebrate':
+        embed = discord.Embed(title=get_translation(lang, 'playbooks.celebrate'))
+        embed.set_author(name=get_translation(lang, 'playbooks.this_is_celebrate')(usr))
+        embed.add_field(name=description, value=cel)
+    if component == 'weakness':
+        embed = discord.Embed(title=get_translation(lang, 'playbooks.weakness'))
+        embed.set_author(name=get_translation(lang, 'playbooks.this_is_weakness')(usr))
+        embed.add_field(name=description, value=wek)
+    embed.set_thumbnail(url=img)
+    embed.set_footer(text=" ")
+    response = embed
+    return response
+
 
 def get_playbooks(lang):
     json_array = get_moves(lang)

@@ -70,7 +70,7 @@ def invert_condition(message, compare_to, lang):
 
     return format_conditions(char_info[CONDITIONS], lang)
 
-def invert_condition_slash(ctx, compare_to, lang, condition):
+def invert_condition_slash(ctx, compare_to, lang, condition, what):
     key = get_key_from_ctx(ctx)
     condition_name_og = condition
     condition_name = get_translation(lang, f'inverted_conditions.{condition_name_og}')
@@ -281,14 +281,17 @@ def remove_potential(message, lang):
 def mark_condition(message, lang):
     return invert_condition(message, True, lang)
 
-def mark_condition_slash(ctx, lang,condition):
-    return invert_condition_slash(ctx, True, lang, condition)
+
+def condition_slash(ctx, lang, condition, what):
+    return invert_condition_slash(ctx, what, lang, condition, what)
+
 
 def clear_condition(message, lang):
     return invert_condition(message, False, lang)
 
-def clear_condition_slash(ctx, lang,condition):
-    return invert_condition_slash(ctx, False, lang, condition)
+# def clear_condition_slash(ctx, lang,condition):
+#     return invert_condition_slash(ctx, False, lang, condition)
+
 
 def replicate_character(message, lang):
     key, content = get_key_and_content_from_message(message)
@@ -406,8 +409,28 @@ def get_labels(message, lang):
     return format_labels(char_info[LABELS], lang)
 
 
+def get_labels_slash(ctx, lang):
+    key = get_key_from_ctx(ctx)
+    s3_client = get_s3_client()
+    char_info = info_from_s3(key, s3_client)
+    if not char_info:
+        return get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.no_character')
+
+    return format_labels(char_info[LABELS], lang)
+
+
 def get_conditions(message, lang):
     key, _content = get_key_and_content_from_message(message)
+    s3_client = get_s3_client()
+    char_info = info_from_s3(key, s3_client)
+    if not char_info:
+        return get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.no_character')
+
+    return format_conditions(char_info[CONDITIONS], lang)
+
+
+def get_conditions_slash(ctx, lang):
+    key = get_key_from_ctx(ctx)
     s3_client = get_s3_client()
     char_info = info_from_s3(key, s3_client)
     if not char_info:
@@ -480,6 +503,21 @@ def print_playbook(message, lang):
 #        this_id = message.channel.get("id")
         char_text = f'You are a copy of {char_info["characterName"]}, a {char_info["playbook"].capitalize()}.'
     return char_text
+
+def print_playbook_slash(ctx, lang):
+    key = get_key_from_ctx(ctx)
+    s3_client = get_s3_client()
+    char_info = info_from_s3(key, s3_client)
+    if not char_info:
+        return get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.no_character')
+    char_text = f'You are {char_info["characterName"]}, a {char_info["playbook"].capitalize()}.'
+    #this case handles if the character is a replica
+    if char_info.get('replicate_key'):
+#        repl_id = char_info.get('replicate_key').split('/')[1]
+#        this_id = message.channel.get("id")
+        char_text = f'You are a copy of {char_info["characterName"]}, a {char_info["playbook"].capitalize()}.'
+    return char_text
+
 
 generic_playbook_dict = {
   "lock": lock_label,

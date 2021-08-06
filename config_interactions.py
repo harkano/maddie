@@ -107,6 +107,31 @@ def create_settings(message):
 
     return get_translation(lang, 'configuration.successfull_creation')
 
+def create_settings_ctx(ctx):
+    settings_key = get_settings_path_ctx(ctx)
+    s3_client = get_s3_client()
+    settings = info_from_s3(settings_key, s3_client)
+
+    if settings:
+        return get_translation(settings[LANGUAGE], 'configuration.existing_settings')
+
+    lang = "en"  #message.content.split(" ")[1]
+
+    settings = {
+        "language": lang,
+        "gm": "",
+        "teamname": "",
+        "customNames": [],
+        "team": 1,
+        "dicedisplay": True
+
+    }
+
+    upload_to_s3(settings, f'adventures/{ctx.channel_id}/settings', s3_client)
+
+    return get_translation(lang, 'configuration.successfull_creation')
+
+
 def delete_settings(message):
     settings_key = get_settings_path(message)
     s3_client = get_s3_client()
@@ -164,9 +189,9 @@ def add_team(message, _lang, action):
     settings_key = get_settings_path(message)
     s3_client = get_s3_client()
     settings = info_from_s3(settings_key, s3_client)
-    lang = settings[LANGUAGE]
     if not settings:
         return no_config_file()
+    lang = settings[LANGUAGE]
     team = settings[TEAM]
     if action == 'increase':
         team = team + 1 #increment!
@@ -185,9 +210,11 @@ def team_slash(ctx, lang, action):
     settings_key = get_settings_path_ctx(ctx)
     s3_client = get_s3_client()
     settings = info_from_s3(settings_key, s3_client)
-    lang = settings[LANGUAGE]
     if not settings:
-        return no_config_file()
+        create_settings_ctx(ctx)
+        settings = info_from_s3(settings_key, s3_client)
+        #return no_config_file()
+    lang = settings[LANGUAGE]
     team = settings[TEAM]
     if action == 'increase':
         team = team + 1 #increment!
