@@ -209,9 +209,9 @@ async def me(ctx, choice):
     logger.info(str(ctx.author.guild) + str(ctx.author.display_name) + str(ctx.data))
     if choice == 'print':
         await ctx.send(print_playbook_slash(ctx, 'en'))
-    if choice == 'labels':
-        await ctx.send(get_conditions_slash(ctx, 'en'))
     if choice == 'conditions':
+        await ctx.send(get_conditions_slash(ctx, 'en'))
+    if choice == 'labels':
         await ctx.send(get_labels_slash(ctx, 'en'))
 
 
