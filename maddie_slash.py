@@ -136,7 +136,7 @@ async def team(ctx, action):
     await ctx.send(team_slash(ctx, 'en', action))
 
 # include generated slash commands file as if it's written inside this one:
-with open(os.path.join(os.normpath(os.path.join(os.path.realpath(__file__), os.pardir)), "generated_slash_commands.py") as generated_code:
+with open(os.path.join(os.path.normpath(os.path.join(os.path.realpath(__file__), os.pardir)), "generated_slash_commands.py")) as generated_code:
           exec(generated_code.read())
 
 bot.run(TOKEN)
