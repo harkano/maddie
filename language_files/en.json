@@ -1661,7 +1661,7 @@
 		"shortName": "lies",
 		"capital": "WHITE LIES",
 		"phrase": "knows how to tell a white lie!",
-		"blob": "When you *comfort or support someone by telling them how they are your role model as a hero*, roll + Savior.\nOn a hit, they hear you: they mark potential, clear a condition, or shift Labels if they open up to you. If they open up to you, take Influence over them. On a _10+_, you can also add a Team to the pool or clear a condition yourself.",
+		"blob": "When you *comfort or support someone by telling them lies they want to hear*, roll + Savior.\nOn a hit, if they open up to you, take Influence over them.",
 		"label": "savior",
 		"description": " ",
 		"img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
