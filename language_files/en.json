@@ -1,5 +1,7 @@
 {
 	"moves": [{
+		"id": 0
+	},	{
 		"id": 1,
 		"shortName": "engage",
 		"capital": "DIRECTLY ENGAGE A THREAT",
