@@ -1,6 +1,8 @@
 {
 	"moves": [{
-		"id": 0
+		"id": 0,
+		"shortName": "nothing",
+		"capital": "NOTHING"
 	},	{
 		"id": 1,
 		"shortName": "engage",
