@@ -4,6 +4,7 @@ from discord_slash import SlashCommand
 from discord_slash.utils.manage_commands import create_choice, create_option
 from discord.ext import commands
 from dotenv import load_dotenv
+from parse import slash_parse
 import logging
 
 load_dotenv()
@@ -214,5 +215,8 @@ async def me(ctx, choice):
     if choice == 'labels':
         await ctx.send(get_labels_slash(ctx, 'en'))
 
+# include generated slash commands file as if it's written inside this one:
+with open(os.path.join(os.path.normpath(os.path.join(os.path.realpath(__file__), os.pardir)), "generated_commands.py")) as generated_code:
+          exec(generated_code.read())
 
 bot.run(TOKEN)

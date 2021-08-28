@@ -2,7 +2,7 @@
 import json
 from storage import info_from_s3, get_s3_client, upload_to_s3, get_files_from_dir, s3_delete
 from language_handler import get_translation
-from utils import get_moves as get_moves_json_array, get_key_and_content_from_message, get_args_from_content, format_labels, validate_labels, get_folder_from_message, get_key_from_ctx
+from utils import get_moves as get_moves_json_array, get_key_and_content_from_message, get_args_from_content, format_labels, validate_labels, get_folder_from_message, get_key_from_ctx, get_key_and_content_from_ctx
 from constants import  LABELS, VALUE, LOCKED, POTENTIAL, PENDING_ADVANCEMENTS, CONDITIONS, MOVES, ADVANCEMENT, MAX_LABEL_VALUE, MIN_LABEL_VALUE, PLAYBOOK_INTERACTIONS, DESCRIPTION, TAKEN
 
 # These are the auxiliar functions
@@ -393,6 +393,12 @@ def get_character(message):
     key, _content = get_key_and_content_from_message(message)
     s3_client = get_s3_client()
     return info_from_s3(key, s3_client)
+
+def get_character_ctx(ctx):
+    key = get_key_and_content_from_ctx(ctx)
+    s3_client = get_s3_client()
+    return info_from_s3(key, s3_client)
+
 
 #def get_all_characters(message):
 #    key, _content = get_folder_from_message(message)
