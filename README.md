@@ -68,6 +68,7 @@ To use the team pool you'll need to have a settings file created as described be
 - `!editlabels mundane freak` will shift mundane up and freak (if _mundane_ isn't in +3 and _freak_ in -2 and neither of them is blocked) for the character of the player that sent the message. 
 - `!lock mundane` will lock mundane if it wasn't already.
 - `!potential` will add a potential to your pool. If you reach 5 of them m.a.d.d.i.e. will tell you how many unresolved advances you have.
+- `!removepotential` will remove a potential to your pool. If have no potential, m.a.d.d.i.e. will provide a warning.
 - `!markcondition angry` will mark _angry_ if it wasn't alread.
 - `!clearcondition` will clear _angry_ if it was marked.
 - `!labels` will display the labels for your current character.
