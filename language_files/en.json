@@ -1639,7 +1639,7 @@
 		"shortName": "moldable",
 		"capital": "MOLDABLE",
 		"phrase": "is moldable!",
-		"blob": "When you *pierce the mask of someone whose respect you crave*, You can always ask \"How could I gain Influence over you?\", even on a miss. Take +1 ongoing to acting on the answer.",
+		"blob": "When you *pierce the mask of someone whose respect you crave*, You can always ask **How could I gain Influence over you?**, even on a miss. Take +1 ongoing to acting on the answer.",
 		"label": "",
 		"description": " ",
 		"img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
