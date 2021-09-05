@@ -835,7 +835,7 @@
 		"capital": "VILLAIN OBLIGATIONS",
 		"phrase": "is in debt with villains!",
 		"blob": "When *time pases*, roll + your highest obligation. On a 10+, they come crashing into your life with a crisis. On a 7 - 9, they call for a favor. On a miss, they don't come knocking yet, but mark obligation with them - the debts are getting heavier.",
-		"label": "",
+		"label": "flat",
 		"description": " ",
 		"img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
 		"requiresRolling": true,
