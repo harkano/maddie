@@ -161,7 +161,7 @@ def handle_roll_ctx(character, embed, modifier, lang, ctx, move_data):
 
     if character:
         user = character['characterName']
-        (char_mod, character_condition, character_label) = get_modifier_from_character(character[LABELS], character[CONDITIONS], move_data['label'], move_data['condition'], user, lang)
+        (char_mod, character_condition, character_label) = get_modifier_from_character(character[LABELS], character[CONDITIONS], move_data.get('label'), move_data.get('condition'), user, lang)
 #        logger.info("Accessing " + character['characterName'])
     num_calc = get_modified_num_ctx(modifier)
     command_mod = num_calc #before the character mod is applied but after it's capped
