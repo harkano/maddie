@@ -332,7 +332,7 @@
 	}, {
 		"id": 30,
 		"shortName": "whatteam",
-		"capital": "TEAM? THAT TEAM?",
+		"capital": "TEAM? WHAT TEAM?",
 		"phrase": "doesn't know what team you are talking about!",
 		"blob": "When you *use Team selflishly*, clear a condition or mark potential. The first time in a session that you use Team to help a teammate, take +1 forward.",
 		"label": "",
@@ -1644,7 +1644,7 @@
 		"capital": "MOLDABLE",
 		"phrase": "is moldable!",
 		"blob": "When you *pierce the mask of someone whose respect you crave*, You can always ask **How could I gain Influence over you?**, even on a miss. Take +1 ongoing to acting on the answer.",
-		"label": "",
+		"label": "mundane",
 		"description": " ",
 		"img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
 		"requiresRolling": true,
