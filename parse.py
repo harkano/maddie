@@ -184,10 +184,11 @@ def add_result (embed, num_calc, mod, lang, character_label, character_condition
 
     if mod == '-':
         modifier_to_show = ''
-    elif mod > -1:
-        modifier_to_show = '+'
-    elif mod <= -1:
-        modifier_to_show = ''
+    elif type(mod) == int: # dumb case as when the slash verion runs this is a number, but for normal it's a +/- modifier
+        if mod > -1:
+            modifier_to_show = '+'
+        elif mod <= -1:
+            modifier_to_show = ''
     else:
         modifier_to_show = f' {mod}'
 
