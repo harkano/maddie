@@ -84,6 +84,7 @@ def generate_code(top_commands):
     
 async def slash_${name}(ctx, move:str, modifier:int=0):
     from parse import slash_parse
+    logger.info(str(ctx.author.guild) + str(ctx.author.display_name) + str(ctx.data))
     embed, addendum = slash_parse(ctx, move, modifier)
     await ctx.send(embed=embed, content=addendum)
     # this is incomplete
