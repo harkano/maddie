@@ -9,7 +9,7 @@ def get_modified_num(mod, num):
 
 def get_modified_num_ctx(modifier):
     if modifier >= MAX_POSITIVE_MOD: return MAX_POSITIVE_MOD
-    if modifier <= MIN_NEGATIVE_MOD: return MIN_NEGATIVE_MOD
+    if modifier <= -1 * MIN_NEGATIVE_MOD: return -1 * MIN_NEGATIVE_MOD
     return modifier
 
 
@@ -18,6 +18,13 @@ def get_cap(num):
         return MAX_POSITIVE_MOD
     if num <= (-1 * MIN_NEGATIVE_MOD):
         return (-1 * MIN_NEGATIVE_MOD)
+    return num
+
+def get_cap_ctx(num):
+    if num >= MAX_POSITIVE_MOD:
+        return MAX_POSITIVE_MOD
+    if num <= -1 * MIN_NEGATIVE_MOD:
+        return -1 * MIN_NEGATIVE_MOD
     return num
 
 def get_moves(language = 'en'):

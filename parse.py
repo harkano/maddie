@@ -3,7 +3,7 @@ import discord
 import random
 import logging
 
-from utils import get_modified_num, get_moves, get_cap, get_move, get_modified_num_ctx
+from utils import get_modified_num, get_moves, get_cap, get_move, get_modified_num_ctx, get_cap_ctx
 from language_handler import get_translation
 from config_interactions import get_raw_lang, get_dicedisplay
 from playbook_interactions import get_character, get_character_ctx
@@ -165,7 +165,7 @@ def handle_roll_ctx(character, embed, modifier, lang, ctx, move_data):
 #        logger.info("Accessing " + character['characterName'])
     num_calc = get_modified_num_ctx(modifier)
     command_mod = num_calc #before the character mod is applied but after it's capped
-    num_calc = get_cap(num_calc + char_mod)
+    num_calc = get_cap_ctx(num_calc + char_mod)
     return add_result(embed, num_calc, modifier, lang, character_label, character_condition, command_mod)
 
 
@@ -183,6 +183,10 @@ def add_result (embed, num_calc, mod, lang, character_label, character_condition
     result_tot = result1 + result2 + num_calc
 
     if mod == '-':
+        modifier_to_show = ''
+    elif mod > -1:
+        modifier_to_show = '+'
+    elif mod <= -1:
         modifier_to_show = ''
     else:
         modifier_to_show = f' {mod}'
