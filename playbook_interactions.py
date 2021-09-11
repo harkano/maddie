@@ -70,7 +70,7 @@ def invert_condition(message, compare_to, lang):
 
     return format_conditions(char_info[CONDITIONS], lang)
 
-def invert_condition_slash(ctx, compare_to, lang, condition, what):
+def invert_condition_slash(ctx, lang, condition, what):
     key = get_key_from_ctx(ctx)
     condition_name_og = condition
     condition_name = get_translation(lang, f'inverted_conditions.{condition_name_og}')
@@ -87,10 +87,15 @@ def invert_condition_slash(ctx, compare_to, lang, condition, what):
 
     condition_to_mark = conditions[condition_name]
 
-    if condition_to_mark == compare_to:
-        return get_condition_is_unchangable(compare_to, lang)
+    if conditions[condition] == False:
+        conditions[condition] = True
+    elif conditions[condition] == True:
+        conditions[condition] = False
 
-    char_info[CONDITIONS][condition_name] = compare_to
+    #if condition_to_mark == compare_to:
+        #return get_condition_is_unchangable(compare_to, lang)
+
+    #char_info[CONDITIONS][condition_name] = compare_to
 
     upload_to_s3(char_info, key, s3_client)
 
@@ -283,7 +288,7 @@ def mark_condition(message, lang):
 
 
 def condition_slash(ctx, lang, condition, what):
-    return invert_condition_slash(ctx, what, lang, condition, what)
+    return invert_condition_slash(ctx, lang, condition, what)
 
 
 def clear_condition(message, lang):
