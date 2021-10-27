@@ -2043,7 +2043,7 @@
 		"shortName": "breakingout",
 		"capital": "BREAKING OUT",
 		"phrase": "defies the opposition!",
-		"blob": "Whenever you *break through an impediment* placed upon you or *subvert a Hero’s expectations* of your Heroic Tradition, you may roll + Danger. \nOn a miss, you escape but you leave something behind and mark a Condition. \nOn a hit, choose one. \nOn a 10+ choose two. \n•You may ask one question as if you’d rolled a hit on Pierce the Mask \n•Clear a Condition or Mark Potential \n•Place your captor in chains \n•Create an opportunity for your teammates",
+		"blob": "Whenever you *break through an impediment* placed upon you or *subvert a Hero's expectations* of your Heroic Tradition, you may roll + Danger. \nOn a miss, you escape but you leave something behind and mark a Condition. \nOn a hit, choose one. \nOn a 10+ choose two. \n•You may ask one question as if you'd rolled a hit on Pierce the Mask \n•Clear a Condition or Mark Potential \n•Place your captor in chains \n•Create an opportunity for your teammates",
 		"label": "danger",
 		"description": " ",
 		"img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
@@ -2080,7 +2080,7 @@
 		"label": "",
 		"description": " ",
 		"img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
-		"requiresRolling": ,
+		"requiresRolling": false,
 		"playbook": "inheritor"
 	}, {
 		"id": 185,
@@ -2537,7 +2537,7 @@
 		"shortName": "frompain",
 		"capital": "FROM PAIN TO FAILURE",
 		"phrase": "tries to compensate!",
-		"blob": "Whenever you'd mark a Condition you may instead clear one from your Quirk Track. You may do this only once per scene. \nAdditionally, once per scene, you may take a 10+ on Take a Powerful Blow to Clear a Condition. You may not choose the option “take two conditions” if you do so.",
+		"blob": "Whenever you'd mark a Condition you may instead clear one from your Quirk Track. You may do this only once per scene. \nAdditionally, once per scene, you may take a 10+ on Take a Powerful Blow to Clear a Condition. You may not choose the option *take two conditions* if you do so.",
 		"label": "",
 		"description": " ",
 		"img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
@@ -2768,7 +2768,7 @@
 		"mot": "You were told all your life that you were special, not just over those without powers but even over those lucky (or unlucky) sorts who share powers like yours. But then they started to put chains on you and draped their burdens on your shoulders. It wasn’t until this moment  that you finally became free, free to be who you really are. When you move, the world steps out of your way. Solve an insurmountable problem, overcome an immovable obstacle, or defeat an undefeatable foe. When the dust settles the world will know you’re more than your bloodline and begin to see the real you. No matter what everyone else thinks, however, your family is still going to try and control you and for every hook you shed, those that remain are only going to dig deeper. Unlike other Playbooks, when you use your Moment of Truth you may clear a Fetter instead of locking a Label. After all, you are always going to be open to the world’s opinions when you are the standard-bearer of your house. If you clear both your Fetters, change playbooks.",
 		"img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
 		"celebrate": "When you *share a triumphant celebration with someone*, ask if you were your real self or who your family expects you to be. If they answer the former, gain potential or shift labels of their choosing. If the latter, lower Scorn by 1 and clear a Condition.",
-		"weakness": "When you *share a vulnerability or weakness with someone*, ask them if they feel you’re really part of the team. If they say yes, both of you may clear a Condition and add a Team to the pool. If they say no, ask what it would take to “truly” belong and take +1 forward in reaching that goal.",
+		"weakness": "When you *share a vulnerability or weakness with someone*, ask them if they feel you’re really part of the team. If they say yes, both of you may clear a Condition and add a Team to the pool. If they say no, ask what it would take to *truly* belong and take +1 forward in reaching that goal.",
 		"source": "worst"
 	}, {
 		"id": 29,
@@ -2797,11 +2797,11 @@
 		"name": "Unbound"
 	},	{
 		 "id": 5,
-		 "source": "war"
+		 "source": "war",
 		 "name": "The WAR Book (3rd party/Five Points Games)"
 	},	{
 		 "id": 6,
-		 "source": "worst"
+		 "source": "worst",
 		 "name": "The Worst Generation (3rd party/Five Points Games)"
 	}]
 }
