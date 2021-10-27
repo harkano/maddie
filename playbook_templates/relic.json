@@ -1,26 +1,30 @@
 {
   "characterName": "",
   "playerName": "",
-  "playbook": "joined",
+  "playbook": "relic",
   "labels": {
     "danger": {
-      "value": 0,
+      "value": 1,
       "locked": false
     },
     "freak": {
-      "value": 0,
-      "locked": false
-    },
-    "savior": {
-      "value": -1,
-      "locked": false
-    },
-    "superior": {
       "value": 2,
       "locked": false
     },
+    "savior": {
+      "value": 0,
+      "locked": false
+    },
+    "superior": {
+      "value": -1,
+      "locked": false
+    },
     "mundane": {
-      "value": 1,
+      "value": 0,
+      "locked": false
+    },
+    "adaptability": {
+      "value": -1,
       "locked": false
     }
   },
@@ -34,28 +38,26 @@
     "insecure": false
   },
   "moves": [
-    { "id": 101, "picked": true }
+    { "id": 202, "picked": true },
+    { "id": 203, "picked": false },
+    { "id": 204, "picked": false },
+    { "id": 205, "picked": false },
+    { "id": 206, "picked": false },
+    { "id": 207, "picked": false },
+    { "id": 208, "picked": true }
   ],
   "advancement": {
     "basic": {
-      "bond": {
-        "description": "bond",
-        "taken": false
-      },
-      "distinction": {
-        "description": "distinction",
-        "taken": false
-      },
       "otherPlaybookMove1": {
         "description": "moveYouPlaybook",
         "taken": false
       },
-      "joinAbilities": {
-        "description": "joinAbilities",
+      "yourPlaybookMove1": {
+        "description": "moveOtherPlaybook",
         "taken": false
       },
-      "advance": {
-        "description": "advance",
+      "yourPlaybookMove2": {
+        "description": "moveOtherPlaybook",
         "taken": false
       },
       "deleteInfluence": {
@@ -64,6 +66,14 @@
       },
       "rearrange": {
         "description": "rearrange",
+        "taken": false
+      },
+	    "drives": {
+        "description": "drives",
+        "taken": false
+      },
+		"doom": {
+        "description": "doom",
         "taken": false
       },
       "momentOfTruth": {
@@ -97,6 +107,5 @@
         "taken": false
       }
     }
-  },
-  "otherHalf": ""
+  }
 }

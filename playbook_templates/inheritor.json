@@ -1,0 +1,188 @@
+{
+  "characterName": "",
+  "playerName": "",
+  "playbook": "inheritor",
+  "labels": {
+    "danger": {
+      "value": 1,
+      "locked": false
+    },
+    "freak": {
+      "value": 0,
+      "locked": false
+    },
+    "savior": {
+      "value": 2,
+      "locked": false
+    },
+    "superior": {
+      "value": 0,
+      "locked": false
+    },
+    "mundane": {
+      "value": -1,
+      "locked": false
+    }
+  },
+  "potential": 0,
+  "pendingAdvancements": 0,
+  "conditions": {
+    "afraid": false,
+    "angry": false,
+    "guilty": false,
+    "hopeless": false,
+    "insecure": false
+  },
+  "moves": [
+    { "id": 180, "picked": false },
+    { "id": 181, "picked": false },
+    { "id": 182, "picked": false },
+    { "id": 183, "picked": false },
+    { "id": 184, "picked": false },
+    { "id": 185, "picked": false },
+	{ "id": 186, "picked": true }
+  ],
+  "advancement": {
+    "basic": {
+      "otherPlaybookMove1": {
+        "description": "moveYouPlaybook",
+        "taken": false
+      },
+      "otherPlaybookMove2": {
+        "description": "moveYouPlaybook",
+        "taken": false
+      },
+      "yourPlaybookMove1": {
+        "description": "moveOtherPlaybook",
+        "taken": false
+      },
+	   "yourPlaybookMove2": {
+        "description": "moveOtherPlaybook",
+        "taken": false
+      },
+      "deleteInfluence": {
+        "description": "loseInfluence",
+        "taken": false
+      },
+      "rearrange": {
+        "description": "rearrange",
+        "taken": false
+      },
+	    "sanctuary": {
+        "description": "sanctuary",
+        "taken": false
+      },
+      "momentOfTruth": {
+        "description": "mot",
+        "taken": false
+      }
+    },
+    "advanced": {
+      "momentOfTruth": {
+        "description": "motAgain",
+        "taken": false
+      },
+      "playbookChange": {
+        "description": "playbookChange",
+        "taken": false
+      },
+      "adultMove1": {
+        "description": "adult",
+        "taken": false
+      },
+      "adultMove2": {
+        "description": "adult",
+        "taken": false
+      },
+      "blockLabel": {
+        "description": "lock",
+        "taken": false
+      },
+      "retire": {
+        "description": "retire",
+        "taken": false
+      }
+    }
+  },
+  "tradition": {
+    "fall": {
+	  "villains": false,
+	  "crime": false,
+	  "wither": false,
+	  "diminished": false
+	},
+	"atonement": {
+	  "innocents": false,
+	  "repay": false,
+	  "interests": false,
+	  "mercy": false,
+	  "exemplify": false
+	  }
+   },
+  "inheritanceTrack": 0,
+  "boons": {
+    "basic": {
+      "powers1": {
+        "description": "powers",
+        "taken": false
+      },
+      "powers2": {
+        "description": "powers",
+        "taken": false
+      },
+      "traditionMember": {
+        "description": "member",
+        "taken": false
+      },
+	   "standInDefence": {
+        "description": "defence",
+        "taken": false
+      },
+      "lableEmbodied": {
+        "description": "embody",
+        "taken": false
+      }
+    },
+    "advanced": {
+      "leaveTeam": {
+        "description": "team",
+        "taken": false
+      },
+      "playbookChange": {
+        "description": "playbookChange",
+        "taken": false
+      }
+    }
+  },
+  "sanctuary": {
+    "features": {
+      "assistant": false,
+      "traps": false,
+      "tomes": false,
+      "relics": false,
+      "teleportal": false,
+      "containment": false,
+      "computer": false,
+      "tools": false,
+      "meditation": false,
+      "battery": false,
+      "enhancement": false,
+      "healing": false,
+      "art": false
+    },
+    "downsides": {
+      "access": false,
+      "attention": false,
+      "location": false,
+      "damaged": false,
+      "tied": false
+    },
+    "conditions": [
+      "first",
+      "help",
+      "danger",
+      "lesser",
+      "doom",
+      "obtain"
+    ]
+}

@@ -4,6 +4,7 @@ from discord_slash import SlashCommand
 from discord_slash.utils.manage_commands import create_choice, create_option
 from discord.ext import commands
 from dotenv import load_dotenv
+from parse import slash_parse
 import logging
 
 load_dotenv()
@@ -114,6 +115,10 @@ async def condition(ctx,condition:str,what:str):
             create_choice(name="soldier", value="soldier"),
             create_choice(name="star", value="star"),
             create_choice(name="transformed", value="transformed"),
+            create_choice(name="ace", value="ace"),
+            create_choice(name="inheritor", value="inheritor"),
+            create_choice(name="persona", value="persona"),
+            create_choice(name="ranger", value="ranger")
         ]),
         create_option(name='character_name', description='What is your character called?', required=True, option_type=3),
         create_option(name='player_name', description="What is the player's name?", required=True, option_type=3),
@@ -181,7 +186,16 @@ async def team(ctx, action):
             create_choice(name="scion", value="scion"),
             create_choice(name="soldier", value="soldier"),
             create_choice(name="star", value="star"),
-            create_choice(name="transformed", value="transformed")
+            create_choice(name="transformed", value="transformed"),
+            create_choice(name="ace", value="ace"),
+            create_choice(name="inheritor", value="inheritor"),
+            create_choice(name="persona", value="persona"),
+            create_choice(name="ranger", value="ranger"),
+            create_choice(name="relic", value="relic")
+#            create_choice(name="ronin", value="ronin"),
+#            create_choice(name="royal", value="royal"),
+#            create_choice(name="transfer", value="transfer"),
+#            create_choice(name="witch", value="witch")
         ])
     ]
 )
@@ -214,5 +228,31 @@ async def me(ctx, choice):
     if choice == 'labels':
         await ctx.send(get_labels_slash(ctx, 'en'))
 
+@slash.slash(
+    name="battle",
+    description="Enter Battle",
+    guild_ids=[696999350726819931]
+)
+async def battle(ctx):
+    from discord_slash.utils.manage_components import create_actionrow, create_button
+    from discord_slash.model import ButtonStyle
+    from config_interactions import team_slash
+    buttons = [
+            create_button(style=ButtonStyle.green, label="Leader has influence?"),
+            create_button(style=ButtonStyle.green, label="Same purpose?"),
+            create_button(style=ButtonStyle.blue, label="Mistrust leader or team?"),
+            create_button(style=ButtonStyle.blue, label="Ill-prepared/off balance?")
+            ]
+    action_row = create_actionrow(*buttons)
+    embed, addendum = slash_parse(ctx, 153, 0)
+    #team_slash(ctx, 'en', 'add')
+    #team_slash(ctx, 'en', 'add')
+    team = team_slash(ctx, 'en', 'check')
+    await ctx.send(embed=embed, components=[action_row], content=team)
+
+
+# include generated slash commands file as if it's written inside this one:
+with open(os.path.join(os.path.normpath(os.path.join(os.path.realpath(__file__), os.pardir)), "generated_commands.py")) as generated_code:
+          exec(generated_code.read())
 
 bot.run(TOKEN)

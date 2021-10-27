@@ -1,0 +1,167 @@
+{
+  "characterName": "",
+  "playerName": "",
+  "playbook": "witch",
+  "labels": {
+    "danger": {
+      "value": 1,
+      "locked": false
+    },
+    "freak": {
+      "value": 1,
+      "locked": false
+    },
+    "savior": {
+      "value": -1,
+      "locked": false
+    },
+    "superior": {
+      "value": 2,
+      "locked": false
+    },
+    "mundane": {
+      "value": -1,
+      "locked": false
+    }
+  },
+  "potential": 0,
+  "pendingAdvancements": 0,
+  "conditions": {
+    "afraid": false,
+    "angry": false,
+    "guilty": false,
+    "hopeless": false,
+    "insecure": false
+  },
+  "moves": [
+    { "id": 155, "picked": true },
+    { "id": 156, "picked": false },
+    { "id": 157, "picked": false },
+    { "id": 158, "picked": false },
+    { "id": 159, "picked": false },
+    { "id": 160, "picked": false },
+	{ "id": 161, "picked": false }
+  ],
+  "advancement": {
+    "basic": {
+	  "newForm": {
+	    "description": "newForm",
+		"taken": false
+	  },
+      "yourPlaybookMove1": {
+        "description": "moveOtherPlaybook",
+        "taken": false
+      },
+      "yourPlaybookMove2": {
+        "description": "moveOtherPlaybook",
+        "taken": false
+      },
+	  "yourPlaybookMove3": {
+        "description": "moveOtherPlaybook",
+        "taken": false
+      },
+      "deleteInfluence": {
+        "description": "loseInfluence",
+        "taken": false
+      },
+      "rearrange": {
+        "description": "rearrange",
+        "taken": false
+      },
+	  "doom": {
+		"description": "doom",
+		"taken": false
+	  },
+      "momentOfTruth": {
+        "description": "mot",
+        "taken": false
+      }
+    },
+    "advanced": {
+      "momentOfTruth": {
+        "description": "motAgain",
+        "taken": false
+      },
+      "playbookChange": {
+        "description": "playbookChange",
+        "taken": false
+      },
+      "adultMove1": {
+        "description": "adult",
+        "taken": false
+      },
+      "adultMove2": {
+        "description": "adult",
+        "taken": false
+      },
+      "blockLabel": {
+        "description": "lock",
+        "taken": false
+      },
+      "retire": {
+        "description": "retire",
+        "taken": false
+      }
+    }
+  },
+  "form1": {
+	  "crests": {
+		"transmutation": false,
+		"wilds": false,
+		"knowledge": false,
+		"mana": false,
+		"beasts": false,
+		"fabrication": false
+	  },
+	  "signs": {
+	    "clarity": false,
+		"fear": false,
+		"knock": false,
+		"mirror": false,
+		"polymorph": false,
+		"reflect": false,
+		"sending": false,
+		"thief": false
+	  }
+  },
+  "form2": {
+	  "crests": {
+		"transmutation": false,
+		"wilds": false,
+		"knowledge": false,
+		"mana": false,
+		"beasts": false,
+		"fabrication": false
+	  },
+	  "signs": {
+	    "clarity": false,
+		"fear": false,
+		"knock": false,
+		"mirror": false,
+		"polymorph": false,
+		"reflect": false,
+		"sending": false,
+		"thief": false
+	  }
+  },
+  "form3": {
+	  "crests": {
+		"transmutation": false,
+		"wilds": false,
+		"knowledge": false,
+		"mana": false,
+		"beasts": false,
+		"fabrication": false
+	  },
+	  "signs": {
+	    "clarity": false,
+		"fear": false,
+		"knock": false,
+		"mirror": false,
+		"polymorph": false,
+		"reflect": false,
+		"sending": false,
+		"thief": false
+	  }
+	}
+}

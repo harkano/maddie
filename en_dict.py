@@ -205,7 +205,7 @@ en = {
   },
   "playbooks": {
     "the": "The",
-    "list": ['beacon', 'bull', 'delinquent', 'doomed', 'janus', 'legacy', 'nova', 'outsider', 'protege', 'transformed', 'brain', 'harbinger', 'innocent', 'joined', 'newborn', 'nomad', 'reformed', 'scion', 'soldier', 'star'],
+    "list": ['beacon', 'bull', 'delinquent', 'doomed', 'janus', 'legacy', 'nova', 'outsider', 'protege', 'transformed', 'brain', 'harbinger', 'innocent', 'joined', 'newborn', 'nomad', 'reformed', 'scion', 'soldier', 'star', 'ace', 'inheritor', 'persona', 'ranger', 'relic', 'ronin', 'royal', 'transfer', 'witch'],
     "names": {
       "beacon": "beacon",
       "bull": "bull",
@@ -226,7 +226,16 @@ en = {
       "reformed": "reformed",
       "scion": "scion",
       "soldier": "soldier",
-      "star": "star"
+      "star": "star",
+      "ace": "ace",
+      "inheritor": "inheritor",
+      "persona": "persona",
+      "ranger": "ranger",
+      "relic": "relic",
+      "ronin": "ronin",
+      "royal": "royal",
+      "transfer": "transfer",
+      "witch": "witch"
     },
     "inverted_names": {
       "beacon": "beacon",
@@ -248,7 +257,17 @@ en = {
       "reformed": "reformed",
       "scion": "scion",
       "soldier": "soldier",
-      "star": "star"
+      "star": "star",
+      "ace": "ace",
+      "inheritor": "inheritor",
+      "persona": "persona",
+      "ranger": "ranger",
+      "relic": "relic",
+      "ronin": "ronin",
+      "royal": "royal",
+      "transfer": "transfer",
+      "witch": "witch"
+
     },
     "playbooks": "Playbooks",
     "available": "Available Playbooks are - ",

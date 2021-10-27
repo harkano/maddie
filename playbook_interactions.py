@@ -2,7 +2,7 @@
 import json
 from storage import info_from_s3, get_s3_client, upload_to_s3, get_files_from_dir, s3_delete
 from language_handler import get_translation
-from utils import get_moves as get_moves_json_array, get_key_and_content_from_message, get_args_from_content, format_labels, validate_labels, get_folder_from_message, get_key_from_ctx
+from utils import get_moves as get_moves_json_array, get_key_and_content_from_message, get_args_from_content, format_labels, validate_labels, get_folder_from_message, get_key_from_ctx, get_key_and_content_from_ctx
 from constants import  LABELS, VALUE, LOCKED, POTENTIAL, PENDING_ADVANCEMENTS, CONDITIONS, MOVES, ADVANCEMENT, MAX_LABEL_VALUE, MIN_LABEL_VALUE, PLAYBOOK_INTERACTIONS, DESCRIPTION, TAKEN
 
 # These are the auxiliar functions
@@ -70,7 +70,7 @@ def invert_condition(message, compare_to, lang):
 
     return format_conditions(char_info[CONDITIONS], lang)
 
-def invert_condition_slash(ctx, compare_to, lang, condition, what):
+def invert_condition_slash(ctx, lang, condition, what):
     key = get_key_from_ctx(ctx)
     condition_name_og = condition
     condition_name = get_translation(lang, f'inverted_conditions.{condition_name_og}')
@@ -87,10 +87,15 @@ def invert_condition_slash(ctx, compare_to, lang, condition, what):
 
     condition_to_mark = conditions[condition_name]
 
-    if condition_to_mark == compare_to:
-        return get_condition_is_unchangable(compare_to, lang)
+    if conditions[condition] == False:
+        conditions[condition] = True
+    elif conditions[condition] == True:
+        conditions[condition] = False
 
-    char_info[CONDITIONS][condition_name] = compare_to
+    #if condition_to_mark == compare_to:
+        #return get_condition_is_unchangable(compare_to, lang)
+
+    #char_info[CONDITIONS][condition_name] = compare_to
 
     upload_to_s3(char_info, key, s3_client)
 
@@ -283,7 +288,7 @@ def mark_condition(message, lang):
 
 
 def condition_slash(ctx, lang, condition, what):
-    return invert_condition_slash(ctx, what, lang, condition, what)
+    return invert_condition_slash(ctx, lang, condition, what)
 
 
 def clear_condition(message, lang):
@@ -393,6 +398,12 @@ def get_character(message):
     key, _content = get_key_and_content_from_message(message)
     s3_client = get_s3_client()
     return info_from_s3(key, s3_client)
+
+def get_character_ctx(ctx):
+    key = get_key_and_content_from_ctx(ctx)
+    s3_client = get_s3_client()
+    return info_from_s3(key, s3_client)
+
 
 #def get_all_characters(message):
 #    key, _content = get_folder_from_message(message)

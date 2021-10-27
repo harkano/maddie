@@ -1,26 +1,26 @@
 {
   "characterName": "",
   "playerName": "",
-  "playbook": "joined",
+  "playbook": "transfer",
   "labels": {
     "danger": {
-      "value": 0,
+      "value": 1,
       "locked": false
     },
     "freak": {
-      "value": 0,
-      "locked": false
-    },
-    "savior": {
       "value": -1,
       "locked": false
     },
+    "savior": {
+      "value": 1,
+      "locked": false
+    },
     "superior": {
-      "value": 2,
+      "value": -1,
       "locked": false
     },
     "mundane": {
-      "value": 1,
+      "value": 2,
       "locked": false
     }
   },
@@ -34,36 +34,43 @@
     "insecure": false
   },
   "moves": [
-    { "id": 101, "picked": true }
+    { "id": 218, "picked": false },
+    { "id": 219, "picked": false },
+    { "id": 220, "picked": false },
+    { "id": 221, "picked": false },
+    { "id": 222, "picked": false },
+    { "id": 223, "picked": false },
+    { "id": 224, "picked": true },
+    { "id": 225, "picked": true }
   ],
   "advancement": {
     "basic": {
-      "bond": {
-        "description": "bond",
-        "taken": false
-      },
-      "distinction": {
-        "description": "distinction",
-        "taken": false
-      },
       "otherPlaybookMove1": {
         "description": "moveYouPlaybook",
         "taken": false
       },
-      "joinAbilities": {
-        "description": "joinAbilities",
+      "otherPlaybookMove2": {
+        "description": "moveYouPlaybook",
         "taken": false
       },
-      "advance": {
-        "description": "advance",
+      "yourPlaybookMove1": {
+        "description": "moveOtherPlaybook",
+        "taken": false
+      },
+      "yourPlaybookMove2": {
+        "description": "moveOtherPlaybook",
         "taken": false
       },
       "deleteInfluence": {
         "description": "loseInfluence",
         "taken": false
       },
-      "rearrange": {
+      "rearrange1": {
         "description": "rearrange",
+        "taken": false
+      },
+      "heart": {
+        "description": "heart",
         "taken": false
       },
       "momentOfTruth": {
@@ -92,11 +99,22 @@
         "description": "lock",
         "taken": false
       },
-      "retire": {
+      "future": {
         "description": "retire",
         "taken": false
       }
     }
   },
-  "otherHalf": ""
+  "quirks": {
+    "ability1": {
+      "quirk1": "",
+	  "quirk1Track": 0,
+	  "quirk2": "",
+	  "quirk2Track": 0},
+    "ability2": {
+      "quirk1": "",
+	  "quirk1Track": 0,
+	  "quirk2": "",
+	  "quirk2Track": 0}
+  }
 }

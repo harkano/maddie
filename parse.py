@@ -3,10 +3,10 @@ import discord
 import random
 import logging
 
-from utils import get_modified_num, get_moves, get_cap
+from utils import get_modified_num, get_moves, get_cap, get_move, get_modified_num_ctx, get_cap_ctx
 from language_handler import get_translation
 from config_interactions import get_raw_lang, get_dicedisplay
-from playbook_interactions import get_character
+from playbook_interactions import get_character, get_character_ctx
 from constants import LABELS, CONDITIONS, VALUE, dice, modifier_emojis
 
 ##Setup the big sub
@@ -92,6 +92,28 @@ def mad_parse(message):
         return None
 
 
+def slash_parse(ctx, move, modifier=0):
+    move_data = get_move(move)
+    character = get_character_ctx(ctx)
+    embed=discord.Embed(title=f"{move_data['capital']}", colour=5450873)
+    embed.set_footer(text=" ")
+    embed.set_author(name=f"{ctx.author.name} {move_data['phrase']}")
+    #embed.set_thumbnail(url=move_data['img']) this is the default maddie logo
+    embed.set_thumbnail(url=ctx.author.avatar_url) #use their logo instead!
+    lang = 'en'
+    desc = get_translation(lang, 'description')
+    embed.add_field(name=desc, value=f"{move_data['blob']}")
+    addendum = None
+    if move_data['requiresRolling']:
+        addendum = handle_roll_ctx(character, embed, modifier, lang, ctx, move_data)
+        #       embed.set_footer(text=" ")
+        #       embed.set_author(name=f"{user} {phrase}")
+        dicedisplay = True
+
+        if dicedisplay:
+            return embed, addendum
+    return embed, ''
+
 def get_modifier_from_character(labels, conditions, label, condition, user, lang):
     mod = 0
     character_label = ''
@@ -130,7 +152,24 @@ def handle_roll(character, message, embed, num, mod, lang, label, condition, use
     num_calc = get_cap(num_calc + char_mod)
     return add_result(embed, num_calc, mod, lang, character_label, character_condition, user, command_mod)
 
-def add_result (embed, num_calc, mod, lang, character_label, character_condition, user, command_mod):
+def handle_roll_ctx(character, embed, modifier, lang, ctx, move_data):
+    #character = get_character(message) #get it higher up instead
+    character_label = ''
+    character_condition = ''
+    char_mod = 0
+    command_mod = ''
+
+    if character:
+        user = character['characterName']
+        (char_mod, character_condition, character_label) = get_modifier_from_character(character[LABELS], character[CONDITIONS], move_data.get('label'), move_data.get('condition'), user, lang)
+#        logger.info("Accessing " + character['characterName'])
+    num_calc = get_modified_num_ctx(modifier)
+    command_mod = num_calc #before the character mod is applied but after it's capped
+    num_calc = get_cap_ctx(num_calc + char_mod)
+    return add_result(embed, num_calc, modifier, lang, character_label, character_condition, command_mod)
+
+
+def add_result (embed, num_calc, mod, lang, character_label, character_condition, user, command_mod=''):
     """
     Rolls dice, mutates embed with result, returns emoji
     corresponding to the dice components of the result.
@@ -145,6 +184,11 @@ def add_result (embed, num_calc, mod, lang, character_label, character_condition
 
     if mod == '-':
         modifier_to_show = ''
+    elif type(mod) == int: # dumb case as when the slash verion runs this is a number, but for normal it's a +/- modifier
+        if mod > -1:
+            modifier_to_show = '+'
+        elif mod <= -1:
+            modifier_to_show = ''
     else:
         modifier_to_show = f' {mod}'
 

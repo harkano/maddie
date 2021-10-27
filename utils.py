@@ -7,11 +7,24 @@ def get_modified_num(mod, num):
     if mod == SUB: return -1 * min(num, MIN_NEGATIVE_MOD)
     return num
 
+def get_modified_num_ctx(modifier):
+    if modifier >= MAX_POSITIVE_MOD: return MAX_POSITIVE_MOD
+    if modifier <= -1 * MIN_NEGATIVE_MOD: return -1 * MIN_NEGATIVE_MOD
+    return modifier
+
+
 def get_cap(num):
     if num >= MAX_POSITIVE_MOD:
         return MAX_POSITIVE_MOD
     if num <= (-1 * MIN_NEGATIVE_MOD):
         return (-1 * MIN_NEGATIVE_MOD)
+    return num
+
+def get_cap_ctx(num):
+    if num >= MAX_POSITIVE_MOD:
+        return MAX_POSITIVE_MOD
+    if num <= -1 * MIN_NEGATIVE_MOD:
+        return -1 * MIN_NEGATIVE_MOD
     return num
 
 def get_moves(language = 'en'):
@@ -28,6 +41,10 @@ def get_key_and_content_from_message(message):
     return f'adventures/{key}', message.content
 
 def get_key_from_ctx(ctx):
+    key = f'{ctx.channel_id}/{ctx.author.id}'
+    return f'adventures/{key}'
+
+def get_key_and_content_from_ctx(ctx):
     key = f'{ctx.channel_id}/{ctx.author.id}'
     return f'adventures/{key}'
 
@@ -87,3 +104,11 @@ def format_flares(lang, flares):
         if flare:
             translated_flare = get_translation(lang, f'playbooks.nova.names.{flare}').capitalize()
             response += f'\n• {translated_flare}'
+
+
+def get_move(move, language = 'en'):
+    ##Load in the existing moves
+    input_file = open (f'language_files/{language}.json', encoding='utf-8')
+    json_array = json.load(input_file)
+    move_data = json_array['moves'][move]
+    return move_data

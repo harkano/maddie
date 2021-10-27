@@ -1,22 +1,22 @@
 {
   "characterName": "",
   "playerName": "",
-  "playbook": "harbinger",
+  "playbook": "ranger",
   "labels": {
     "danger": {
-      "value": 0,
+      "value": 1,
       "locked": false
     },
     "freak": {
-      "value": 0,
+      "value": 1,
       "locked": false
     },
     "savior": {
-      "value": 2,
+      "value": 1,
       "locked": false
     },
     "superior": {
-      "value": 1,
+      "value": 0,
       "locked": false
     },
     "mundane": {
@@ -34,14 +34,13 @@
     "insecure": false
   },
   "moves": [
-    { "id": 129, "picked": false },
-    { "id": 130, "picked": false },
-    { "id": 131, "picked": false },
-    { "id": 132, "picked": false },
-    { "id": 133, "picked": false },
-    { "id": 134, "picked": false },
-    { "id": 135, "picked": true },
-    { "id": 136, "picked": true }
+    { "id": 195, "picked": false },
+    { "id": 196, "picked": false },
+    { "id": 197, "picked": false },
+    { "id": 198, "picked": false },
+    { "id": 199, "picked": false },
+	{ "id": 200, "picked": false },
+    { "id": 201, "picked": true }
   ],
   "advancement": {
     "basic": {
@@ -65,22 +64,22 @@
         "description": "loseInfluence",
         "taken": false
       },
-      "rearrange1": {
+      "rearrange": {
         "description": "rearrange",
         "taken": false
       },
-      "rearrange2": {
-        "description": "rearrange",
+	    "powers": {
+        "description": "powers",
         "taken": false
       },
-      "momentOfTruth": {
-        "description": "mot",
+      "onceAnEpisode": {
+        "description": "oae",
         "taken": false
       }
     },
     "advanced": {
-      "momentOfTruth": {
-        "description": "motAgain",
+      "onceAnEpisode": {
+        "description": "oaeAgain",
         "taken": false
       },
       "playbookChange": {
@@ -99,19 +98,40 @@
         "description": "lock",
         "taken": false
       },
-      "future": {
+      "retire": {
         "description": "retire",
         "taken": false
       }
     }
   },
-  "memories": -1,
-  "roles": {
-    "monster": "",
-    "traitor": "",
-    "corruptor": "",
-    "martyr": "",
-    "builder": "",
-    "leader": ""
+  "image": {
+    "must": "",
+    "inever": "",
+    "have": "",
+    "expected": "",
+	"hadto": "",
+	"squadnever": ""
+  },
+  "bucketListDescription": "bucketListDescription",
+  "bucketList": {
+    "hobby": false,
+    "threat": false,
+    "standUpSquadmate": false,
+    "fear": false,
+    "trip": false,
+    "aid": false,
+    "newCostume": false,
+    "standUpSelf": false,
+    "drama": false,
+    "dream": false,
+    "forgive": false,
+    "newFriendship": false
+  },
+  "giantRobot": {
+    "takeDownFoe": false,
+    "moveObstacle": false,
+    "secureScenery": false,
+    "assistBattle": false,
+    "protectiveZone": false
   }
 }

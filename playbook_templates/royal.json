@@ -1,18 +1,18 @@
 {
   "characterName": "",
   "playerName": "",
-  "playbook": "joined",
+  "playbook": "royal,
   "labels": {
     "danger": {
-      "value": 0,
+      "value": 1,
       "locked": false
     },
     "freak": {
-      "value": 0,
+      "value": 1,
       "locked": false
     },
     "savior": {
-      "value": -1,
+      "value": 0,
       "locked": false
     },
     "superior": {
@@ -20,7 +20,7 @@
       "locked": false
     },
     "mundane": {
-      "value": 1,
+      "value": -2,
       "locked": false
     }
   },
@@ -34,28 +34,32 @@
     "insecure": false
   },
   "moves": [
-    { "id": 101, "picked": true }
+    { "id": 209, "picked": false },
+    { "id": 210, "picked": false },
+    { "id": 211, "picked": false },
+    { "id": 212, "picked": false },
+    { "id": 213, "picked": false },
+    { "id": 214, "picked": false },
+    { "id": 215, "picked": true },
+	{ "id": 216, "picked": true },
+	{ "id": 217, "picked": true }
   ],
   "advancement": {
     "basic": {
-      "bond": {
-        "description": "bond",
-        "taken": false
-      },
-      "distinction": {
-        "description": "distinction",
-        "taken": false
-      },
       "otherPlaybookMove1": {
         "description": "moveYouPlaybook",
         "taken": false
       },
-      "joinAbilities": {
-        "description": "joinAbilities",
+      "otherPlaybookMove2": {
+        "description": "moveYouPlaybook",
         "taken": false
       },
-      "advance": {
-        "description": "advance",
+      "yourPlaybookMove1": {
+        "description": "moveOtherPlaybook",
+        "taken": false
+      },
+      "yourPlaybookMove2": {
+        "description": "moveOtherPlaybook",
         "taken": false
       },
       "deleteInfluence": {
@@ -66,10 +70,14 @@
         "description": "rearrange",
         "taken": false
       },
+      "sanctuary": {
+        "description": "sanctuary",
+        "taken": false
+      },
       "momentOfTruth": {
         "description": "mot",
         "taken": false
-      }
+      },
     },
     "advanced": {
       "momentOfTruth": {
@@ -98,5 +106,17 @@
       }
     }
   },
-  "otherHalf": ""
+  "age": {
+    "gold": false,
+	"silver": false,
+	"bronze": false
+  },
+  "scornTrack": 0,
+  "fetters": {
+    "must": "",
+    "mayNever": "",
+    "have": "",
+    "family": "",
+	"city": ""
+  }
 }

@@ -33,24 +33,24 @@ def info_from_s3(key, s3_client):
             Key=f'{key}.json'
         )
 #Handle Replicate functionality
-        if file.get('Metadata','replicate'):
-            key = file['Metadata']['replicate']
-            try:
-                file = s3_client.get_object(
-                    Bucket=BUCKET,
-                    Key=f'{key}.json'
-                )
-                if file.get('Body'):
-                    file_body = file.get('Body')
-                    return_dict = json.loads(file_body.read())
-                    return_dict['replicate_key'] = key
-                    return return_dict
-            except Exception as e:
-                if f'{e}' == EXISTING_KEY_ERROR_MESSAGE:
-                    return None
-                logger.error(f'An error occurred while interacting with s3:\n{e}')
-
-            raise e
+        # if file.get('Metadata','replicate'):
+        #     key = file['Metadata']['replicate']
+        #     try:
+        #         file = s3_client.get_object(
+        #             Bucket=BUCKET,
+        #             Key=f'{key}.json'
+        #         )
+        #         if file.get('Body'):
+        #             file_body = file.get('Body')
+        #             return_dict = json.loads(file_body.read())
+        #             return_dict['replicate_key'] = key
+        #             return return_dict
+        #     except Exception as e:
+        #         if f'{e}' == EXISTING_KEY_ERROR_MESSAGE:
+        #             return None
+        #         logger.error(f'An error occurred while interacting with s3:\n{e}')
+        #
+        #     raise e
 #Handles normal case
         if file.get('Body'):
             file_body = file.get('Body')
