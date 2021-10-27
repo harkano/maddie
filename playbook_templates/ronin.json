@@ -1,0 +1,109 @@
+{
+  "characterName": "",
+  "playerName": "",
+  "playbook": "ronin",
+  "labels": {
+    "danger": {
+      "value": 2,
+      "locked": false
+    },
+    "freak": {
+      "value": 1,
+      "locked": false
+    },
+    "savior": {
+      "value": -2,
+      "locked": false
+    },
+    "superior": {
+      "value": 1,
+      "locked": false
+    },
+    "mundane": {
+      "value": 0,
+      "locked": false
+    }
+  },
+  "potential": 0,
+  "pendingAdvancements": 0,
+  "conditions": {
+    "afraid": false,
+    "angry": false,
+    "guilty": false,
+    "hopeless": false,
+    "insecure": false
+  },
+  "moves": [
+    { "id": 171, "picked": false },
+    { "id": 172, "picked": false },
+    { "id": 173, "picked": false },
+    { "id": 174, "picked": false },
+    { "id": 175, "picked": false },
+    { "id": 176, "picked": false },
+	{ "id": 177, "picked": true },
+	{ "id": 178, "picked": true },
+	{ "id": 179, "picked": true }
+  ],
+  "advancement": {
+    "basic": {
+      "otherPlaybookMove1": {
+        "description": "moveYouPlaybook",
+        "taken": false
+      },
+	  "otherPlaybookMove2": {
+        "description": "moveYouPlaybook",
+        "taken": false
+      },
+      "yourPlaybookMove1": {
+        "description": "moveOtherPlaybook",
+        "taken": false
+      },
+      "yourPlaybookMove2": {
+        "description": "moveOtherPlaybook",
+        "taken": false
+      },
+      "deleteInfluence": {
+        "description": "loseInfluence",
+        "taken": false
+      },
+      "rearrange": {
+        "description": "rearrange",
+        "taken": false
+      },
+	  "drives": {
+        "description": "drives",
+        "taken": false
+      },
+      "momentOfTruth": {
+        "description": "mot",
+        "taken": false
+      },
+    },
+    "advanced": {
+      "momentOfTruth": {
+        "description": "motAgain",
+        "taken": false
+      },
+      "playbookChange": {
+        "description": "playbookChange",
+        "taken": false
+      },
+      "adultMove1": {
+        "description": "adult",
+        "taken": false
+      },
+      "adultMove2": {
+        "description": "adult",
+        "taken": false
+      },
+      "blockLabel": {
+        "description": "lock",
+        "taken": false
+      },
+      "retire": {
+        "description": "retire",
+        "taken": false
+      }
+    }
+  },
+}

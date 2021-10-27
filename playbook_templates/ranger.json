@@ -1,0 +1,137 @@
+{
+  "characterName": "",
+  "playerName": "",
+  "playbook": "ranger",
+  "labels": {
+    "danger": {
+      "value": 1,
+      "locked": false
+    },
+    "freak": {
+      "value": 1,
+      "locked": false
+    },
+    "savior": {
+      "value": 1,
+      "locked": false
+    },
+    "superior": {
+      "value": 0,
+      "locked": false
+    },
+    "mundane": {
+      "value": -1,
+      "locked": false
+    }
+  },
+  "potential": 0,
+  "pendingAdvancements": 0,
+  "conditions": {
+    "afraid": false,
+    "angry": false,
+    "guilty": false,
+    "hopeless": false,
+    "insecure": false
+  },
+  "moves": [
+    { "id": 195, "picked": false },
+    { "id": 196, "picked": false },
+    { "id": 197, "picked": false },
+    { "id": 198, "picked": false },
+    { "id": 199, "picked": false },
+	{ "id": 200, "picked": false },
+    { "id": 201, "picked": true }
+  ],
+  "advancement": {
+    "basic": {
+      "otherPlaybookMove1": {
+        "description": "moveYouPlaybook",
+        "taken": false
+      },
+      "otherPlaybookMove2": {
+        "description": "moveYouPlaybook",
+        "taken": false
+      },
+      "yourPlaybookMove1": {
+        "description": "moveOtherPlaybook",
+        "taken": false
+      },
+      "yourPlaybookMove2": {
+        "description": "moveOtherPlaybook",
+        "taken": false
+      },
+      "deleteInfluence": {
+        "description": "loseInfluence",
+        "taken": false
+      },
+      "rearrange": {
+        "description": "rearrange",
+        "taken": false
+      },
+	    "powers": {
+        "description": "powers",
+        "taken": false
+      },
+      "onceAnEpisode": {
+        "description": "oae",
+        "taken": false
+      }
+    },
+    "advanced": {
+      "onceAnEpisode": {
+        "description": "oaeAgain",
+        "taken": false
+      },
+      "playbookChange": {
+        "description": "playbookChange",
+        "taken": false
+      },
+      "adultMove1": {
+        "description": "adult",
+        "taken": false
+      },
+      "adultMove2": {
+        "description": "adult",
+        "taken": false
+      },
+      "blockLabel": {
+        "description": "lock",
+        "taken": false
+      },
+      "retire": {
+        "description": "retire",
+        "taken": false
+      }
+    }
+  },
+  "image": {
+    "must": "",
+    "inever": "",
+    "have": "",
+    "expected": "",
+	"hadto": "",
+	"squadnever": ""
+  },
+  "bucketListDescription": "bucketListDescription",
+  "bucketList": {
+    "hobby": false,
+    "threat": false,
+    "standUpSquadmate": false,
+    "fear": false,
+    "trip": false,
+    "aid": false,
+    "newCostume": false,
+    "standUpSelf": false,
+    "drama": false,
+    "dream": false,
+    "forgive": false,
+    "newFriendship": false
+  },
+  "giantRobot": {
+    "takeDownFoe": false,
+    "moveObstacle": false,
+    "secureScenery": false,
+    "assistBattle": false,
+    "protectiveZone": false
+  }
+}
