@@ -115,6 +115,10 @@ async def condition(ctx,condition:str,what:str):
             create_choice(name="soldier", value="soldier"),
             create_choice(name="star", value="star"),
             create_choice(name="transformed", value="transformed"),
+            create_choice(name="ace", value="ace"),
+            create_choice(name="inheritor", value="inheritor"),
+            create_choice(name="persona", value="persona"),
+            create_choice(name="ranger", value="ranger")
         ]),
         create_option(name='character_name', description='What is your character called?', required=True, option_type=3),
         create_option(name='player_name', description="What is the player's name?", required=True, option_type=3),
@@ -182,7 +186,16 @@ async def team(ctx, action):
             create_choice(name="scion", value="scion"),
             create_choice(name="soldier", value="soldier"),
             create_choice(name="star", value="star"),
-            create_choice(name="transformed", value="transformed")
+            create_choice(name="transformed", value="transformed"),
+            create_choice(name="ace", value="ace"),
+            create_choice(name="inheritor", value="inheritor"),
+            create_choice(name="persona", value="persona"),
+            create_choice(name="ranger", value="ranger"),
+            create_choice(name="relic", value="relic")
+#            create_choice(name="ronin", value="ronin"),
+#            create_choice(name="royal", value="royal"),
+#            create_choice(name="transfer", value="transfer"),
+#            create_choice(name="witch", value="witch")
         ])
     ]
 )
