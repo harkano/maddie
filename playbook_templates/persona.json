@@ -1,0 +1,117 @@
+{
+  "characterName": "",
+  "aliasName": "",
+  "playerName": "",
+  "playbook": "persona",
+  "labels": {
+    "danger": {
+      "value": 1,
+      "locked": false
+    },
+    "freak": {
+      "value": 1,
+      "locked": false
+    },
+    "savior": {
+      "value": 1,
+      "locked": false
+    },
+    "superior": {
+      "value": 1,
+      "locked": false
+    },
+    "mundane": {
+      "value": -2,
+      "locked": false
+    }
+  },
+  "potential": 0,
+  "pendingAdvancements": 0,
+  "conditions": {
+    "afraid": false,
+    "angry": false,
+    "guilty": false,
+    "hopeless": false,
+    "insecure": false
+  },
+  "moves": [
+    { "id": 187, "picked": false },
+    { "id": 188, "picked": false },
+    { "id": 189, "picked": false },
+    { "id": 190, "picked": false },
+    { "id": 191, "picked": false },
+    { "id": 192, "picked": false },
+    { "id": 193, "picked": true },
+	{ "id": 194, "picked": true }
+  ],
+  "advancement": {
+    "basic": {
+      "otherPlaybookMove1": {
+        "description": "moveYouPlaybook",
+        "taken": false
+      },
+      "yourPlaybookMove1": {
+        "description": "moveOtherPlaybook",
+        "taken": false
+      },
+      "yourPlaybookMove2": {
+        "description": "moveOtherPlaybook",
+        "taken": false
+      },
+	  "yourPlaybookMove3": {
+        "description": "moveOtherPlaybook",
+        "taken": false
+      },
+      "deleteInfluence": {
+        "description": "loseInfluence",
+        "taken": false
+      },
+	  "rearrange": {
+        "description": "rearrange",
+        "taken": false
+      },
+      "powers": {
+        "description": "powers",
+        "taken": false
+      },
+      "momentOfTruth": {
+        "description": "mot",
+        "taken": false
+      }
+    },
+    "advanced": {
+      "momentOfTruth": {
+        "description": "motAgain",
+        "taken": false
+      },
+      "blockLabel": {
+        "description": "lock",
+        "taken": false
+      },
+	  "adultMove1": {
+        "description": "adult",
+        "taken": false
+      },
+      "adultMove2": {
+        "description": "adult",
+        "taken": false
+      },
+      "playbookChange": {
+        "description": "playbookChange",
+        "taken": false
+      },
+      "retire": {
+        "description": "retire",
+        "taken": false
+      }
+    }
+  },
+  "heroLabel": "",
+  "aliasLabel": "",
+  "darkness": {
+    "villain": false,
+	"injustice": false,
+	"facade": false,
+	"disaster": false
+  }
+}

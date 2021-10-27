@@ -1,0 +1,126 @@
+{
+  "characterName": "",
+  "playerName": "",
+  "playbook": "ace",
+  "labels": {
+    "danger": {
+      "value": 2,
+      "locked": false
+    },
+    "freak": {
+      "value": 2,
+      "locked": false
+    },
+    "savior": {
+      "value": -1,
+      "locked": false
+    },
+    "superior": {
+      "value": 1,
+      "locked": false
+    },
+    "mundane": {
+      "value": -2,
+      "locked": false
+    }
+  },
+  "potential": 0,
+  "pendingAdvancements": 0,
+  "conditions": {
+    "afraid": false,
+    "angry": false,
+    "guilty": false,
+    "hopeless": false,
+    "insecure": false
+  },
+  "moves": [
+    { "id": 162, "picked": false },
+    { "id": 163, "picked": false },
+    { "id": 164, "picked": false },
+    { "id": 165, "picked": false },
+    { "id": 166, "picked": false },
+    { "id": 167, "picked": false },
+	{ "id": 168, "picked": true },
+	{ "id": 169, "picked": true },
+	{ "id": 170, "picked": true }
+  ],
+  "advancement": {
+    "basic": {
+      "otherPlaybookMove1": {
+        "description": "moveYouPlaybook",
+        "taken": false
+      },
+      "yourPlaybookMove1": {
+        "description": "moveOtherPlaybook",
+        "taken": false
+      },
+      "yourPlaybookMove2": {
+        "description": "moveOtherPlaybook",
+        "taken": false
+      },
+	  "powers": {
+        "description": "powers",
+        "taken": false
+      },
+      "deleteInfluence": {
+        "description": "loseInfluence",
+        "taken": false
+      },
+      "rearrange": {
+        "description": "rearrange",
+        "taken": false
+      },
+	  "heart": {
+        "description": "heart",
+        "taken": false
+      },
+      "momentOfTruth": {
+        "description": "mot",
+        "taken": false
+      },
+    },
+    "advanced": {
+      "momentOfTruth": {
+        "description": "motAgain",
+        "taken": false
+      },
+      "playbookChange": {
+        "description": "playbookChange",
+        "taken": false
+      },
+      "adultMove1": {
+        "description": "adult",
+        "taken": false
+      },
+      "adultMove2": {
+        "description": "adult",
+        "taken": false
+      },
+      "blockLabel": {
+        "description": "lock",
+        "taken": false
+      },
+      "retire": {
+        "description": "retire",
+        "taken": false
+      }
+    }
+  },
+  "adversary": {
+	"name": "",
+    "similarities": {
+      "powers": false,
+	  "protect": false,
+      "raised": false,
+      "innocents": false,
+      "team": false
+    },
+    "differences": {
+      "sacrifice": false,
+	  "defeat": false,
+      "orders": false,
+      "refuse": false,
+      "extremes": false
+    },
+  }
+}
