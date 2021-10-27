@@ -1,0 +1,120 @@
+{
+  "characterName": "",
+  "playerName": "",
+  "playbook": "transfer",
+  "labels": {
+    "danger": {
+      "value": 1,
+      "locked": false
+    },
+    "freak": {
+      "value": -1,
+      "locked": false
+    },
+    "savior": {
+      "value": 1,
+      "locked": false
+    },
+    "superior": {
+      "value": -1,
+      "locked": false
+    },
+    "mundane": {
+      "value": 2,
+      "locked": false
+    }
+  },
+  "potential": 0,
+  "pendingAdvancements": 0,
+  "conditions": {
+    "afraid": false,
+    "angry": false,
+    "guilty": false,
+    "hopeless": false,
+    "insecure": false
+  },
+  "moves": [
+    { "id": 218, "picked": false },
+    { "id": 219, "picked": false },
+    { "id": 220, "picked": false },
+    { "id": 221, "picked": false },
+    { "id": 222, "picked": false },
+    { "id": 223, "picked": false },
+    { "id": 224, "picked": true },
+    { "id": 225, "picked": true }
+  ],
+  "advancement": {
+    "basic": {
+      "otherPlaybookMove1": {
+        "description": "moveYouPlaybook",
+        "taken": false
+      },
+      "otherPlaybookMove2": {
+        "description": "moveYouPlaybook",
+        "taken": false
+      },
+      "yourPlaybookMove1": {
+        "description": "moveOtherPlaybook",
+        "taken": false
+      },
+      "yourPlaybookMove2": {
+        "description": "moveOtherPlaybook",
+        "taken": false
+      },
+      "deleteInfluence": {
+        "description": "loseInfluence",
+        "taken": false
+      },
+      "rearrange1": {
+        "description": "rearrange",
+        "taken": false
+      },
+      "heart": {
+        "description": "heart",
+        "taken": false
+      },
+      "momentOfTruth": {
+        "description": "mot",
+        "taken": false
+      }
+    },
+    "advanced": {
+      "momentOfTruth": {
+        "description": "motAgain",
+        "taken": false
+      },
+      "playbookChange": {
+        "description": "playbookChange",
+        "taken": false
+      },
+      "adultMove1": {
+        "description": "adult",
+        "taken": false
+      },
+      "adultMove2": {
+        "description": "adult",
+        "taken": false
+      },
+      "blockLabel": {
+        "description": "lock",
+        "taken": false
+      },
+      "future": {
+        "description": "retire",
+        "taken": false
+      }
+    }
+  },
+  "quirks": {
+    "ability1": {
+      "quirk1": "",
+	  "quirk1Track": 0,
+	  "quirk2": "",
+	  "quirk2Track": 0},
+    "ability2": {
+      "quirk1": "",
+	  "quirk1Track": 0,
+	  "quirk2": "",
+	  "quirk2Track": 0}
+  }
+}
