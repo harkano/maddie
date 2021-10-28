@@ -95,6 +95,7 @@ en = {
     "already_locked": lambda label_name: f"Oh no, {label_name} is already locked!",
     "is_locked": lambda label_name: f"Oh no, {label_name} is locked, this one can't change!",
     "labels_base": "Your labels are:\n",
+    "labels_change": lambda label_increase, label_decrease: f"{label_increase} increased, while {label_decrease} decreased!\n",
     "up": "up",
     "down": "down",
     "value_is_in_border": lambda value, label_name, direction: f"Oh no, with a value of {value}, your {label_name} can't go {direction}! You get a condition!",

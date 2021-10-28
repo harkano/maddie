@@ -138,6 +138,39 @@ async def createcharacter(ctx,playbook_name,character_name,player_name,label_to_
     await ctx.send(create_character_slash(ctx, 'en', playbook_name, character_name, player_name, label_to_increase_og))
 
 @slash.slash(
+    name="createcharacter5p",
+    description="Create a character using Five Points playbooks",
+    #guild_ids=[696999350726819931],
+    options=[
+        create_option(name='playbook_name', description='Choose a playbook', required=True, option_type=3, choices= [
+            create_choice(name="ace", value="ace"),
+            create_choice(name="inheritor", value="inheritor"),
+            create_choice(name="persona", value="persona"),
+            create_choice(name="ranger", value="ranger"),
+            create_choice(name="relic", value="relic"),
+            create_choice(name="ronin", value="ronin"),
+            create_choice(name="royal", value="royal"),
+            create_choice(name="transfer", value="transfer"),
+            create_choice(name="witch", value="witch"),
+        ]),
+        create_option(name='character_name', description='What is your character called?', required=True, option_type=3),
+        create_option(name='player_name', description="What is the player's name?", required=True, option_type=3),
+        create_option(name='label_to_increase_og', description="What initial label would you like to increase?", required=True, option_type=3, choices=[
+            create_choice(name="danger", value="danger"),
+            create_choice(name="freak", value="freak"),
+            create_choice(name="superior", value="superior"),
+            create_choice(name="savior", value="savior"),
+            create_choice(name="mundane", value="mundane")
+        ])
+    ]
+)
+async def createcharacter5p(ctx,playbook_name,character_name,player_name,label_to_increase_og):
+    from playbook_interactions import create_character_slash
+    logger.info(str(ctx.author.guild) + str(ctx.author.display_name) + str(ctx.data))
+    await ctx.send(create_character_slash(ctx, 'en', playbook_name, character_name, player_name, label_to_increase_og))
+
+
+@slash.slash(
     name="team",
     description="Interact with Team Pool",
     #guild_ids=[696999350726819931],
@@ -186,16 +219,7 @@ async def team(ctx, action):
             create_choice(name="scion", value="scion"),
             create_choice(name="soldier", value="soldier"),
             create_choice(name="star", value="star"),
-            create_choice(name="transformed", value="transformed"),
-            create_choice(name="ace", value="ace"),
-            create_choice(name="inheritor", value="inheritor"),
-            create_choice(name="persona", value="persona"),
-            create_choice(name="ranger", value="ranger"),
-            create_choice(name="relic", value="relic")
-#            create_choice(name="ronin", value="ronin"),
-#            create_choice(name="royal", value="royal"),
-#            create_choice(name="transfer", value="transfer"),
-#            create_choice(name="witch", value="witch")
+            create_choice(name="transformed", value="transformed")
         ])
     ]
 )
@@ -204,6 +228,33 @@ async def playbooks(ctx, choice, playbook=None):
     logger.info(str(ctx.author.guild) + str(ctx.author.display_name) + str(ctx.data))
     await ctx.send(embed=get_playbook_component_slash(choice, ctx, 'en', playbook))
 
+@slash.slash(
+    name="playbooks5p",
+    description="Playbook team moves, Moment of Truth etc. for Five Points Playbooks",
+    #guild_ids=[696999350726819931],
+    options=[
+        create_option(name='choice', description='Which piece', required=True, option_type=3, choices=[
+            create_choice(name='Share a triumphant celebration with someone', value='celebrate'),
+            create_choice(name='Share a vulnerability or weakness with someone', value='weakness'),
+            create_choice(name='Moment of Truth!', value='mot')
+        ]),
+        create_option(name='playbook', description="Playbook (optional)", required=False, option_type=3, choices=[
+            create_choice(name="ace", value="ace"),
+            create_choice(name="inheritor", value="inheritor"),
+            create_choice(name="persona", value="persona"),
+            create_choice(name="ranger", value="ranger"),
+            create_choice(name="relic", value="relic"),
+            create_choice(name="ronin", value="ronin"),
+            create_choice(name="royal", value="royal"),
+            create_choice(name="transfer", value="transfer"),
+            create_choice(name="witch", value="witch")
+        ])
+    ]
+)
+async def playbooks5p(ctx, choice, playbook=None):
+    from playbooks import get_playbook_component_slash
+    logger.info(str(ctx.author.guild) + str(ctx.author.display_name) + str(ctx.data))
+    await ctx.send(embed=get_playbook_component_slash(choice, ctx, 'en', playbook))
 
 
 @slash.slash(

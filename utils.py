@@ -86,6 +86,22 @@ def format_labels(labels, lang):
     return response
 
 
+def format_labels_changed(labels, lang, labelup, labeldown):
+    response = get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.labels_change')(labelup.capitalize(), labeldown.capitalize())
+    response = response + get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.labels_base')
+
+    for label in labels:
+        name = get_translation(lang, f'labels.{label}').capitalize()
+        value = labels[label][VALUE]
+
+        if labels[label][LOCKED]:
+            is_locked = get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.locked')
+        else:
+            is_locked = ''
+
+        response = response + f'{name}: {value} {is_locked}\n'
+
+    return response
 
 def validate_labels(lang, inputed_labels):
     result = ''
