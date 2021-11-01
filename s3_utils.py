@@ -64,7 +64,14 @@ def info_from_s3(key, s3_client):
         raise e
 
 
+
 def get_files_from_dir(key, s3_client):
+    if not key:
+        return
+
+    return s3_client.list_objects_v2(Bucket=BUCKET, Prefix=f'{key}/')
+
+def get_char_files_from_dir(key, s3_client):
     if not key:
         return
     response = s3_client.list_objects_v2(Bucket=BUCKET, Prefix=f'{key}')
