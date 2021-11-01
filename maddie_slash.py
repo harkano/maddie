@@ -260,7 +260,7 @@ async def playbooks5p(ctx, choice, playbook=None):
 @slash.slash(
     name="me",
     description="Retrieve character information",
-    guild_ids=[696999350726819931],
+    #guild_ids=[696999350726819931],
     options=[
         create_option(name='choice', description='Choose which one to display', required=True, option_type=3, choices=[
             create_choice(name='Print Character', value='print'),
