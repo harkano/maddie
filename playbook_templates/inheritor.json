@@ -153,36 +153,5 @@
         "taken": false
       }
     }
-  },
-  "sanctuary": {
-    "features": {
-      "assistant": false,
-      "traps": false,
-      "tomes": false,
-      "relics": false,
-      "teleportal": false,
-      "containment": false,
-      "computer": false,
-      "tools": false,
-      "meditation": false,
-      "battery": false,
-      "enhancement": false,
-      "healing": false,
-      "art": false
-    },
-    "downsides": {
-      "access": false,
-      "attention": false,
-      "location": false,
-      "damaged": false,
-      "tied": false
-    },
-    "conditions": [
-      "first",
-      "help",
-      "danger",
-      "lesser",
-      "doom",
-      "obtain"
-    ]
+  }
 }

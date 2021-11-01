@@ -77,7 +77,7 @@
       "momentOfTruth": {
         "description": "mot",
         "taken": false
-      },
+      }
     },
     "advanced": {
       "momentOfTruth": {
