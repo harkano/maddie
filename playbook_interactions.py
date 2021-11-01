@@ -1,8 +1,8 @@
 # import boto3 # This is unused in this file.
 import json
-from storage import info_from_s3, get_s3_client, upload_to_s3, get_files_from_dir, s3_delete
+from storage import info_from_s3, get_s3_client, upload_to_s3, get_files_from_dir, s3_delete, get_files_from_dir
 from language_handler import get_translation
-from utils import get_moves as get_moves_json_array, get_key_and_content_from_message, get_args_from_content, format_labels, validate_labels, get_folder_from_message, get_key_from_ctx, get_key_and_content_from_ctx, format_labels_changed
+from utils import get_moves as get_moves_json_array, get_key_and_content_from_message, get_args_from_content, format_labels, validate_labels, get_folder_from_message, get_key_from_ctx, get_key_and_content_from_ctx, format_labels_changed, get_channel_from_ctx
 from constants import  LABELS, VALUE, LOCKED, POTENTIAL, PENDING_ADVANCEMENTS, CONDITIONS, MOVES, ADVANCEMENT, MAX_LABEL_VALUE, MIN_LABEL_VALUE, PLAYBOOK_INTERACTIONS, DESCRIPTION, TAKEN
 
 # These are the auxiliar functions
@@ -29,6 +29,22 @@ def format_conditions(conditions, lang):
         return get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.condition_not_marked')
 
     response = get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.youre')
+
+    for condition in conditions:
+        if conditions[condition]:
+            response = response + f"  - {get_translation(lang, f'conditions.{condition}')}\n"
+
+    return response
+
+def format_conditions_slash(conditions, lang, condition, what):
+    if not len(conditions):
+        return get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.condition_not_marked')
+    if what == 'mark':
+        response = get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.marked')
+    elif what == 'clear':
+        response = get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.cleared')
+    response = response + f"{get_translation(lang, f'conditions.{condition}')}\n"
+    response = response + get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.youre')
 
     for condition in conditions:
         if conditions[condition]:
@@ -99,7 +115,7 @@ def invert_condition_slash(ctx, lang, condition, what):
 
     upload_to_s3(char_info, key, s3_client)
 
-    return format_conditions(char_info[CONDITIONS], lang)
+    return format_conditions_slash(char_info[CONDITIONS], lang, condition, what)
 
 
 
@@ -528,6 +544,18 @@ def print_playbook_slash(ctx, lang):
 #        this_id = message.channel.get("id")
         char_text = f'You are a copy of {char_info["characterName"]}, a {char_info["playbook"].capitalize()}.'
     return char_text
+
+def print_party(ctx,lang):
+    key = get_channel_from_ctx(ctx)
+    s3_client = get_s3_client()
+    party = get_files_from_dir(key,s3_client)
+    response = "The Party is made up of:\n"
+    for player in party:
+        player_key = player.split('.')[0]
+        char_info = info_from_s3(player_key, s3_client)
+        response = response + f' - {char_info["characterName"]} the {char_info["playbook"].capitalize()} played by {char_info["playerName"]}\n'
+
+    return response
 
 
 generic_playbook_dict = {

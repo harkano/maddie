@@ -67,8 +67,10 @@ def info_from_s3(key, s3_client):
 def get_files_from_dir(key, s3_client):
     if not key:
         return
-
-    return s3_client.list_objects_v2(Bucket=BUCKET, Prefix=f'{key}/')
+    response = s3_client.list_objects_v2(Bucket=BUCKET, Prefix=f'{key}')
+    for content in response.get('Contents', []):
+        yield content.get('Key')
+    return
 
 
 def get_bytes_from_json(json_to_parse):

@@ -260,17 +260,18 @@ async def playbooks5p(ctx, choice, playbook=None):
 @slash.slash(
     name="me",
     description="Retrieve character information",
-    #guild_ids=[696999350726819931],
+    guild_ids=[696999350726819931],
     options=[
         create_option(name='choice', description='Choose which one to display', required=True, option_type=3, choices=[
             create_choice(name='Print Character', value='print'),
             create_choice(name='Show Labels', value= 'labels'),
-            create_choice(name='Show Conditions', value= 'conditions')
+            create_choice(name='Show Conditions', value= 'conditions'),
+            create_choice(name='Show Party', value= 'party')
         ])
     ]
 )
 async def me(ctx, choice):
-    from playbook_interactions import print_playbook_slash, get_conditions_slash, get_labels_slash
+    from playbook_interactions import print_playbook_slash, get_conditions_slash, get_labels_slash, print_party
     logger.info(str(ctx.author.guild) + str(ctx.author.display_name) + str(ctx.data))
     if choice == 'print':
         await ctx.send(print_playbook_slash(ctx, 'en'))
@@ -278,6 +279,8 @@ async def me(ctx, choice):
         await ctx.send(get_conditions_slash(ctx, 'en'))
     if choice == 'labels':
         await ctx.send(get_labels_slash(ctx, 'en'))
+    if choice == 'party':
+        await ctx.send(print_party(ctx, 'en'))
 
 @slash.slash(
     name="battle",
@@ -300,6 +303,7 @@ async def battle(ctx):
     #team_slash(ctx, 'en', 'add')
     team = team_slash(ctx, 'en', 'check')
     await ctx.send(embed=embed, components=[action_row], content=team)
+
 
 
 # include generated slash commands file as if it's written inside this one:
