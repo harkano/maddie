@@ -102,6 +102,8 @@ en = {
     "locked": "[LOCKED]",
     "condition_not_marked": "You don't have any condition marked",
     "youre": "You are:\n",
+    "marked": "MARKED: ",
+    "cleared": "CLEARED: ",
     "dont": "don't ",
     "condition_status": lambda status: f"Oh, you {status}have that condition marked.",
     "no_character": "I'm sorry but it appears you have no character created",
