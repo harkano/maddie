@@ -78,7 +78,8 @@ en = {
     "result": "Result",
     "condition_text": lambda condition, name: f"-2 as **{name}** is **{condition}**!\n",
     "conditions_marked": lambda conditions, name: f"**{name}** has {conditions} conditions marked!\n",
-    "command_modifier": lambda mod: f"Modifier from command is **{mod}**\n"
+    "command_modifier": lambda mod: f"Modifier from command is **{mod}**\n",
+    "damaged_marked": "They are also damaged which inflicts an extra +1.\n"
   },
   "description": "Description",
   "moves": {
