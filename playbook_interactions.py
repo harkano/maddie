@@ -314,13 +314,13 @@ def clear_condition(message, lang):
 #     return invert_condition_slash(ctx, False, lang, condition)
 
 
-def replicate_character(message, lang):
-    key, content = get_key_and_content_from_message(message)
+def replicate_character(ctx, lang, channel_id):
+    key, content = get_key_and_content_from_ctx(ctx)
     s3_client = get_s3_client()
     char_info = info_from_s3(key, s3_client)
     if char_info:
         return get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.existing_character')
-    link_server = get_args_from_content(content)
+    link_server = channel_id
     file_list = get_files_from_dir('playbooks', s3_client)
     template_key = f'playbooks/blank'
     matching_files = list(filter(lambda file_info: file_info["Key"] == f'{template_key}.json', file_list["Contents"]))
@@ -407,6 +407,19 @@ def delete_character(message, lang):
         return get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.character_deletion')(character_name, formated_playbook_name)
     if not char_info:
         return get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.no_character')
+
+def delete_character_ctx(ctx, lang):
+    key, content = get_key_and_content_from_ctx(ctx)
+    s3_client = get_s3_client()
+    char_info = info_from_s3(key, s3_client)
+    if char_info:
+        character_name = char_info['characterName']
+        formated_playbook_name = char_info['playbook'].capitalize()
+        s3_delete(key, s3_client)
+        return get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.character_deletion')(character_name, formated_playbook_name)
+    if not char_info:
+        return get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.no_character')
+
 
 # These are the functions that get the data in the characters s3 file
 
@@ -551,9 +564,10 @@ def print_party(ctx,lang):
     party = get_char_files_from_dir(key,s3_client)
     response = "The Party is made up of:\n"
     for player in party:
-        player_key = player.split('.')[0]
-        char_info = info_from_s3(player_key, s3_client)
-        response = response + f' - {char_info["characterName"]} the {char_info["playbook"].capitalize()} played by {char_info["playerName"]}\n'
+        if 'settings' not in player: #here we need to ignore settings.json files :D
+            player_key = player.split('.')[0]
+            char_info = info_from_s3(player_key, s3_client)
+            response = response + f' - {char_info["characterName"]} the {char_info["playbook"].capitalize()} played by {char_info["playerName"]}\n'
 
     return response
 

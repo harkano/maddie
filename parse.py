@@ -127,7 +127,14 @@ def get_modifier_from_character(labels, conditions, label, condition, user, lang
         for condition in conditions:
             if conditions[condition]:
                 conditions_count += 1
+                #Special case for newborn damaged condition which has been confirmed to give an extra +1
+                if condition == 'damaged':
+                    conditions_count += 1
         character_condition = get_translation(lang, 'dice_rolling.conditions_marked')(conditions_count, user)
+        # Special case for newborn damaged condition which has been confirmed to give an extra +1
+        if conditions['damaged']:
+            character_condition = get_translation(lang, 'dice_rolling.conditions_marked')(conditions_count-1, user) + get_translation(lang, 'dice_rolling.damaged_marked')
+
         return (mod + conditions_count, character_condition, character_label)
 
     if label not in ['adult', 'basic', 'flat']:

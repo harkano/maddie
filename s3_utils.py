@@ -33,24 +33,27 @@ def info_from_s3(key, s3_client):
             Key=f'{key}.json'
         )
 #Handle Replicate functionality
-        # if file.get('Metadata','replicate'):
-        #     key = file['Metadata']['replicate']
-        #     try:
-        #         file = s3_client.get_object(
-        #             Bucket=BUCKET,
-        #             Key=f'{key}.json'
-        #         )
-        #         if file.get('Body'):
-        #             file_body = file.get('Body')
-        #             return_dict = json.loads(file_body.read())
-        #             return_dict['replicate_key'] = key
-        #             return return_dict
-        #     except Exception as e:
-        #         if f'{e}' == EXISTING_KEY_ERROR_MESSAGE:
-        #             return None
-        #         logger.error(f'An error occurred while interacting with s3:\n{e}')
-        #
-        #     raise e
+        #if file.get('Metadata', 'replicate'):
+        if file['Metadata'].get('replicate'):
+            split_key = key.split("/")
+            key = split_key[0] + "/"  + file['Metadata']['replicate'] + "/" + split_key[2]
+            #key = file['Metadata']['replicate']
+            try:
+                file = s3_client.get_object(
+                    Bucket=BUCKET,
+                    Key=f'{key}.json'
+                )
+                if file.get('Body'):
+                    file_body = file.get('Body')
+                    return_dict = json.loads(file_body.read())
+                    return_dict['replicate_key'] = key
+                    return return_dict
+            except Exception as e:
+                if f'{e}' == EXISTING_KEY_ERROR_MESSAGE:
+                    return None
+                logger.error(f'An error occurred while interacting with s3:\n{e}')
+
+            raise e
 #Handles normal case
         if file.get('Body'):
             file_body = file.get('Body')
@@ -77,6 +80,7 @@ def get_char_files_from_dir(key, s3_client):
     response = s3_client.list_objects_v2(Bucket=BUCKET, Prefix=f'{key}')
     for content in response.get('Contents', []):
         yield content.get('Key')
+        meta = s3_client.head_object(Bucket=BUCKET, Key=content.get('Key'))
     return
 
 
@@ -89,8 +93,10 @@ def upload_to_s3(content, key, s3_client):
     if content.get('replicate_key'):
         key = content['replicate_key']
         content.pop('replicate_key')
+        split_key = key.split("/")
+        # replicate key needs to be just the channel id
         s3_client.put_object(
-            Body=get_bytes_from_json(content), Bucket=BUCKET, Key=f'{key}.json', Metadata={'replicate': key}
+            Body=get_bytes_from_json(content), Bucket=BUCKET, Key=f'{key}.json', Metadata={'replicate': split_key[1]}
         )
     else: #normal case for any other json updates
         s3_client.put_object(

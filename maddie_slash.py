@@ -304,6 +304,26 @@ async def battle(ctx):
     team = team_slash(ctx, 'en', 'check')
     await ctx.send(embed=embed, components=[action_row], content=team)
 
+# @slash.slash(
+#     name="character",
+#     description="Character management functions",
+#     guild_ids=[696999350726819931, 369149981782835200],
+#     options=[
+#         create_option(name='choice', description='Choose which one', required=True, option_type=3, choices=[
+#             create_option(name='Delete Character  - this is permanent', value='delete'),
+#             create_option(name='Replicate Character - please provide channel ID of original character', choices=[
+#                 create_choice(name='Channel ID', value='chan_id')
+#             ]
+#             )
+#
+# )
+
+async def character(ctx, choice):
+    from playbook_interactions import delete_character_ctx, replicate_character
+    if choice == 'delete':
+        await ctx.send("Me", ctx, 'en')
+    if choice == 'replicate':
+        await ctx.send(replicate_character(ctx, 'en', chan_id))
 
 
 # include generated slash commands file as if it's written inside this one:
