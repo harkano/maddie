@@ -74,6 +74,8 @@ def mad_parse(message):
         character = get_character(message)
         embed=discord.Embed(title=f"{capital}", colour=5450873)
         embed.set_footer(text=" ")
+        if character:
+            user = character['characterName']
         embed.set_author(name=f"{user} {phrase}")
         #embed.set_author(name=f"{user} {phrase}")
         embed.set_thumbnail(url=img)
@@ -98,6 +100,9 @@ def slash_parse(ctx, move, modifier=0):
     embed=discord.Embed(title=f"{move_data['capital']}", colour=5450873)
     embed.set_footer(text=" ")
     embed.set_author(name=f"{ctx.author.name} {move_data['phrase']}")
+    if character:
+        user = character['characterName']
+        embed.set_author(name=f"{user} {move_data['phrase']}")
     #embed.set_thumbnail(url=move_data['img']) this is the default maddie logo
     embed.set_thumbnail(url=ctx.author.avatar_url) #use their logo instead!
     lang = 'en'
@@ -124,15 +129,17 @@ def get_modifier_from_character(labels, conditions, label, condition, user, lang
 
     if label == CONDITIONS:
         conditions_count = 0
+        is_damaged = False
         for condition in conditions:
             if conditions[condition]:
                 conditions_count += 1
                 #Special case for newborn damaged condition which has been confirmed to give an extra +1
                 if condition == 'damaged':
                     conditions_count += 1
+                    is_damaged = True
         character_condition = get_translation(lang, 'dice_rolling.conditions_marked')(conditions_count, user)
         # Special case for newborn damaged condition which has been confirmed to give an extra +1
-        if conditions['damaged']:
+        if is_damaged:
             character_condition = get_translation(lang, 'dice_rolling.conditions_marked')(conditions_count-1, user) + get_translation(lang, 'dice_rolling.damaged_marked')
 
         return (mod + conditions_count, character_condition, character_label)
