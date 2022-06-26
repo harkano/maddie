@@ -118,7 +118,7 @@
 		"description": " ",
 		"img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
 		"requiresRolling": true,
-		"playbook": "adult",
+		"playbook": "basic",
 		"condition": "insecure"
 	}, {
 		"id": 11,
@@ -1321,7 +1321,7 @@
 		"label": "savior",
 		"description": " ",
 		"img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
-		"requiresRolling": false,
+		"requiresRolling": true,
 		"playbook": "brain"
 	}, {
 		"id": 118,
