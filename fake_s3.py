@@ -27,9 +27,10 @@ def info_from_s3(key, s3_client):
         with file:
             return json.load(file)
 
-def bulk_get_from_s3(key, s3_client):
-    try
-        file
+# TODO: implement this, so the `/me Show Party` command works
+# when USE_FAKE_S3="true".
+def get_char_files_from_dir(key, s3_client):
+    pass
 
 
 # Yep, just listing files.
