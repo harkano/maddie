@@ -150,8 +150,16 @@ USE_FAKE_S3="true"
 ```
 
 ## Execution
+To ensure the deps are all available, run `poetry install` before either of these.
+
 ```sh
-poetry install
 poetry shell
 python maddie.py
+```
+
+For slash commands, run:
+```sh
+poetry shell
+python slash_gen.py generated_commands.py
+python maddie_slash.py
 ```
