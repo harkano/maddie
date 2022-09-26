@@ -138,6 +138,15 @@ async def createcharacter(ctx,playbook_name,character_name,player_name,label_to_
     await ctx.send(create_character_slash(ctx, 'en', playbook_name, character_name, player_name, label_to_increase_og))
 
 @slash.slash(
+    name = "deletecharacter",
+    description = "Delete your character from the current channel."
+)
+async def delete_character(ctx):
+    from playbook_interactions import delete_character_ctx
+    logger.info(str(ctx.author.guild) + str(ctx.author.display_name) + str(ctx.data))
+    await ctx.send(delete_character_ctx(ctx, 'en'))
+
+@slash.slash(
     name="createcharacter5p",
     description="Create a character using Five Points playbooks",
     #guild_ids=[696999350726819931],
