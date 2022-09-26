@@ -21,11 +21,10 @@ def get_s3_client():
 def info_from_s3(key, s3_client):
     try:
         file = open(s3_client._top_dir + f"{key}.json")
-    except FileNotFoundError:
-        return None
-    else:
         with file:
             return json.load(file)
+    except FileNotFoundError:
+        return None
 
 # TODO: implement this, so the `/me Show Party` command works
 # when USE_FAKE_S3="true".
@@ -33,11 +32,17 @@ def get_char_files_from_dir(key, s3_client):
     pass
 
 
+def next(it):
+    for x in it:
+        return x
+
 # Yep, just listing files.
 def get_files_from_dir(key, s3_client):
     # Since the usage of this thing doesn't perform any indexing,
     # we should be able to get away with not actually making this into a list.
-    return { "Contents": (file_name for (_, _, file_name) in os.walk(s3_client._top_dir + key)) }
+    par, _, names = next(os.walk(s3_client._top_dir + key))
+    files = [ { "Key": f"{key}/{x}" } for x in names ]
+    return { "Contents": files }
 
 # I fail to see why this is a necessary abstraction,
 # but the `s3_utils` module defines it.
@@ -45,8 +50,8 @@ def get_bytes_from_json(json_to_parse):
     return bytearray(json.dumps(json_to_parse), 'latin-1')
 
 def upload_to_s3(content, key, s3_client):
-    with open(s3_client._top_dir + key, 'w') as file:
-        file.write(content)
+    with open(s3_client._top_dir + key + '.json', 'w') as file:
+        file.write(json.dumps(content))
 
 def s3_delete(key, s3_client):
-    os.delete(s3_client._top_dir + key)
+    os.remove(s3_client._top_dir + key + '.json')
