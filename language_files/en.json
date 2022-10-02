@@ -698,7 +698,7 @@
 		"capital": "BE THE MONSTER",
 		"phrase": "is the monster!",
 		"blob": "When you *frighten, intimidate or cow others with your monstrous form*, roll + Freak. On a hit, they are thrown off and make themselves vulnerable to you, or they flee. On a 10+, choose one. On a 7 - 9, choose two.\n• you frighten others you had not intended to scare\n• you hurt someone or break something you shouldn't have\n• you feel like more of a monster afterward; mark a condition (GM's choice)\nOn a miss, they react with violence, hatred and paranoia, and you suffer the brunt of it.",
-		"label": "conditions",
+		"label": "freak",
 		"description": " ",
 		"img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
 		"requiresRolling": true,
