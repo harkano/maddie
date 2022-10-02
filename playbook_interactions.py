@@ -409,7 +409,7 @@ def delete_character(message, lang):
         return get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.no_character')
 
 def delete_character_ctx(ctx, lang):
-    key, content = get_key_and_content_from_ctx(ctx)
+    key = get_key_from_ctx(ctx)
     s3_client = get_s3_client()
     char_info = info_from_s3(key, s3_client)
     if char_info:
