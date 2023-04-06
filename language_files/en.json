@@ -1742,7 +1742,7 @@
 	}, {
 		"id": 155,
 		"shortName": "formchange",
-		"capital": "FROM CHANGE",
+		"capital": "FORM CHANGE",
 		"phrase": "changes their form!",
 		"blob": "When you *enter your Form*, roll + unmarked conditions. \nOn a miss, your Form is sloppy or provides only a weak connection to your magical source. Hold two Power and take -1 forward. \nOn a hit hold four. \nOn a 10+, clear a Condition. \nSpend Power on Signs. You leave your Form at the end of the scene. If you have more than one Form, you may change between them at the cost of a Power. When you spend all your Power you lose access to your Form.",
 		"label": "flat",
@@ -1828,7 +1828,7 @@
 		"shortName": "scarred",
 		"capital": "BATTLE SCARRED",
 		"phrase": "shows off their battle scars!",
-		"blob": "When *facing an opponent significantly stronger than yourself*, you count as having one marked Condition fewer when Taking a Powerful Blow.",
+		"blob": "When *facing an opponent significantly stronger than yourself*, you count as having one marked Condition less when Taking a Powerful Blow.",
 		"label": "",
 		"description": " ",
 		"img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
@@ -2163,7 +2163,7 @@
 		"playbook": "persona"
 	}, {
 		"id": 192,
-		"shortName": "costune",
+		"shortName": "costume",
 		"capital": "COSTUME CHANGE",
 		"phrase": "quickly changes their costume!",
 		"blob": "When you *change between your Alias and Heroic Identity under stress or in a short time* roll + your current Identity. \nOn a miss, you’ve left a clue or evidence behind. \nOn a hit, the change between one or the other isn’t perfect, mark a Condition. \nOn a 10+, you’ve nailed it, clear a Condition.",

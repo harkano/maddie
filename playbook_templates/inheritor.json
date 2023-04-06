@@ -153,6 +153,7 @@
         "taken": false
       }
     }
+
   },
   "sanctuary": {
     "features": {
@@ -185,5 +186,6 @@
       "doom",
       "obtain"
     ]
+
   }
 }
