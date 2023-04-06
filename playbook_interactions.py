@@ -1,8 +1,8 @@
 # import boto3 # This is unused in this file.
 import json
-from storage import info_from_s3, get_s3_client, upload_to_s3, get_files_from_dir, s3_delete
+from storage import info_from_s3, get_s3_client, upload_to_s3, get_files_from_dir, s3_delete, get_char_files_from_dir
 from language_handler import get_translation
-from utils import get_moves as get_moves_json_array, get_key_and_content_from_message, get_args_from_content, format_labels, validate_labels, get_folder_from_message, get_key_from_ctx, get_key_and_content_from_ctx
+from utils import get_moves as get_moves_json_array, get_key_and_content_from_message, get_args_from_content, format_labels, validate_labels, get_folder_from_message, get_key_from_ctx, get_key_and_content_from_ctx, format_labels_changed, get_channel_from_ctx
 from constants import  LABELS, VALUE, LOCKED, POTENTIAL, PENDING_ADVANCEMENTS, CONDITIONS, MOVES, ADVANCEMENT, MAX_LABEL_VALUE, MIN_LABEL_VALUE, PLAYBOOK_INTERACTIONS, DESCRIPTION, TAKEN
 
 # These are the auxiliar functions
@@ -29,6 +29,22 @@ def format_conditions(conditions, lang):
         return get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.condition_not_marked')
 
     response = get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.youre')
+
+    for condition in conditions:
+        if conditions[condition]:
+            response = response + f"  - {get_translation(lang, f'conditions.{condition}')}\n"
+
+    return response
+
+def format_conditions_slash(conditions, lang, condition, what):
+    if not len(conditions):
+        return get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.condition_not_marked')
+    if what == 'mark':
+        response = get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.marked')
+    elif what == 'clear':
+        response = get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.cleared')
+    response = response + f"{get_translation(lang, f'conditions.{condition}')}\n"
+    response = response + get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.youre')
 
     for condition in conditions:
         if conditions[condition]:
@@ -70,7 +86,7 @@ def invert_condition(message, compare_to, lang):
 
     return format_conditions(char_info[CONDITIONS], lang)
 
-def invert_condition_slash(ctx, compare_to, lang, condition, what):
+def invert_condition_slash(ctx, lang, condition, what):
     key = get_key_from_ctx(ctx)
     condition_name_og = condition
     condition_name = get_translation(lang, f'inverted_conditions.{condition_name_og}')
@@ -87,14 +103,19 @@ def invert_condition_slash(ctx, compare_to, lang, condition, what):
 
     condition_to_mark = conditions[condition_name]
 
-    if condition_to_mark == compare_to:
-        return get_condition_is_unchangable(compare_to, lang)
+    if conditions[condition] == False:
+        conditions[condition] = True
+    elif conditions[condition] == True:
+        conditions[condition] = False
 
-    char_info[CONDITIONS][condition_name] = compare_to
+    #if condition_to_mark == compare_to:
+        #return get_condition_is_unchangable(compare_to, lang)
+
+    #char_info[CONDITIONS][condition_name] = compare_to
 
     upload_to_s3(char_info, key, s3_client)
 
-    return format_conditions(char_info[CONDITIONS], lang)
+    return format_conditions_slash(char_info[CONDITIONS], lang, condition, what)
 
 
 
@@ -208,7 +229,7 @@ def edit_labels_slash(ctx, lang, labelup, labeldown):
 
     upload_to_s3(char_info, key, s3_client)
 
-    return format_labels(labels, lang)
+    return format_labels_changed(labels, lang, label_to_increase_name, label_to_decrease_name)
 
 def lock_label(message, lang):
     key, content = get_key_and_content_from_message(message)
@@ -283,7 +304,7 @@ def mark_condition(message, lang):
 
 
 def condition_slash(ctx, lang, condition, what):
-    return invert_condition_slash(ctx, what, lang, condition, what)
+    return invert_condition_slash(ctx, lang, condition, what)
 
 
 def clear_condition(message, lang):
@@ -293,13 +314,13 @@ def clear_condition(message, lang):
 #     return invert_condition_slash(ctx, False, lang, condition)
 
 
-def replicate_character(message, lang):
-    key, content = get_key_and_content_from_message(message)
+def replicate_character(ctx, lang, channel_id):
+    key, content = get_key_and_content_from_ctx(ctx)
     s3_client = get_s3_client()
     char_info = info_from_s3(key, s3_client)
     if char_info:
         return get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.existing_character')
-    link_server = get_args_from_content(content)
+    link_server = channel_id
     file_list = get_files_from_dir('playbooks', s3_client)
     template_key = f'playbooks/blank'
     matching_files = list(filter(lambda file_info: file_info["Key"] == f'{template_key}.json', file_list["Contents"]))
@@ -386,6 +407,19 @@ def delete_character(message, lang):
         return get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.character_deletion')(character_name, formated_playbook_name)
     if not char_info:
         return get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.no_character')
+
+def delete_character_ctx(ctx, lang):
+    key = get_key_from_ctx(ctx)
+    s3_client = get_s3_client()
+    char_info = info_from_s3(key, s3_client)
+    if char_info:
+        character_name = char_info['characterName']
+        formated_playbook_name = char_info['playbook'].capitalize()
+        s3_delete(key, s3_client)
+        return get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.character_deletion')(character_name, formated_playbook_name)
+    if not char_info:
+        return get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.no_character')
+
 
 # These are the functions that get the data in the characters s3 file
 
@@ -523,6 +557,19 @@ def print_playbook_slash(ctx, lang):
 #        this_id = message.channel.get("id")
         char_text = f'You are a copy of {char_info["characterName"]}, a {char_info["playbook"].capitalize()}.'
     return char_text
+
+def print_party(ctx,lang):
+    key = get_channel_from_ctx(ctx)
+    s3_client = get_s3_client()
+    party = get_char_files_from_dir(key,s3_client)
+    response = "The Party is made up of:\n"
+    for player in party:
+        if 'settings' not in player: #here we need to ignore settings.json files :D
+            player_key = player.split('.')[0]
+            char_info = info_from_s3(player_key, s3_client)
+            response = response + f' - {char_info["characterName"]} the {char_info["playbook"].capitalize()} played by {char_info["playerName"]}\n'
+
+    return response
 
 
 generic_playbook_dict = {

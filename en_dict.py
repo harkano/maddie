@@ -78,7 +78,8 @@ en = {
     "result": "Result",
     "condition_text": lambda condition, name: f"-2 as **{name}** is **{condition}**!\n",
     "conditions_marked": lambda conditions, name: f"**{name}** has {conditions} conditions marked!\n",
-    "command_modifier": lambda mod: f"Modifier from command is **{mod}**\n"
+    "command_modifier": lambda mod: f"Modifier from command is **{mod}**\n",
+    "damaged_marked": "They are also damaged which inflicts an extra +1.\n"
   },
   "description": "Description",
   "moves": {
@@ -95,12 +96,15 @@ en = {
     "already_locked": lambda label_name: f"Oh no, {label_name} is already locked!",
     "is_locked": lambda label_name: f"Oh no, {label_name} is locked, this one can't change!",
     "labels_base": "Your labels are:\n",
+    "labels_change": lambda label_increase, label_decrease: f"{label_increase} increased, while {label_decrease} decreased!\n",
     "up": "up",
     "down": "down",
     "value_is_in_border": lambda value, label_name, direction: f"Oh no, with a value of {value}, your {label_name} can't go {direction}! You get a condition!",
     "locked": "[LOCKED]",
     "condition_not_marked": "You don't have any condition marked",
     "youre": "You are:\n",
+    "marked": "MARKED: ",
+    "cleared": "CLEARED: ",
     "dont": "don't ",
     "condition_status": lambda status: f"Oh, you {status}have that condition marked.",
     "no_character": "I'm sorry but it appears you have no character created",
@@ -205,7 +209,7 @@ en = {
   },
   "playbooks": {
     "the": "The",
-    "list": ['beacon', 'bull', 'delinquent', 'doomed', 'janus', 'legacy', 'nova', 'outsider', 'protege', 'transformed', 'brain', 'harbinger', 'innocent', 'joined', 'newborn', 'nomad', 'reformed', 'scion', 'soldier', 'star'],
+    "list": ['beacon', 'bull', 'delinquent', 'doomed', 'janus', 'legacy', 'nova', 'outsider', 'protege', 'transformed', 'brain', 'harbinger', 'innocent', 'joined', 'newborn', 'nomad', 'reformed', 'scion', 'soldier', 'star', 'ace', 'inheritor', 'persona', 'ranger', 'relic', 'ronin', 'royal', 'transfer', 'witch'],
     "names": {
       "beacon": "beacon",
       "bull": "bull",
@@ -226,7 +230,16 @@ en = {
       "reformed": "reformed",
       "scion": "scion",
       "soldier": "soldier",
-      "star": "star"
+      "star": "star",
+      "ace": "ace",
+      "inheritor": "inheritor",
+      "persona": "persona",
+      "ranger": "ranger",
+      "relic": "relic",
+      "ronin": "ronin",
+      "royal": "royal",
+      "transfer": "transfer",
+      "witch": "witch"
     },
     "inverted_names": {
       "beacon": "beacon",
@@ -248,7 +261,17 @@ en = {
       "reformed": "reformed",
       "scion": "scion",
       "soldier": "soldier",
-      "star": "star"
+      "star": "star",
+      "ace": "ace",
+      "inheritor": "inheritor",
+      "persona": "persona",
+      "ranger": "ranger",
+      "relic": "relic",
+      "ronin": "ronin",
+      "royal": "royal",
+      "transfer": "transfer",
+      "witch": "witch"
+
     },
     "playbooks": "Playbooks",
     "available": "Available Playbooks are - ",

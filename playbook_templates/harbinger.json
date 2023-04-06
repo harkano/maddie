@@ -12,15 +12,15 @@
       "locked": false
     },
     "savior": {
-      "value": -1,
-      "locked": false
-    },
-    "superior": {
       "value": 2,
       "locked": false
     },
-    "mundane": {
+    "superior": {
       "value": 1,
+      "locked": false
+    },
+    "mundane": {
+      "value": -1,
       "locked": false
     }
   },
