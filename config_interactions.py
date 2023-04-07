@@ -218,6 +218,8 @@ def team_slash(ctx, lang, action):
     team = settings[TEAM]
     if action == 'increase':
         team = team + 1 #increment!
+    elif action == 'increase_twice':
+        team = team + 2 #increment!
     elif action == 'decrease':
         if team > 0:
             team = team - 1 #spend!
