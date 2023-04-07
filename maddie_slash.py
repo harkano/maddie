@@ -299,9 +299,8 @@ def update_embed(embed, team):
 
 @slash.slash(
     name="battle",
-    description="Enter Battle",
-    guild_ids=[696999350726819931]
-)
+    description="Enter Battle"
+    )
 async def battle(ctx):
     from discord_slash.utils.manage_components import create_actionrow, create_button
     from discord_slash.model import ButtonStyle
