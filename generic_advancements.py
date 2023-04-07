@@ -90,6 +90,8 @@ def rearrange_labels(message, lang):
     s3_client = get_s3_client()
     char_info = info_from_s3(key, s3_client)
     new_label_values = get_args_from_content(content)
+    #strip the last element out of the array as it now has to be a tag
+    new_label_values.pop()
     labels = char_info[LABELS]
 
     total_sum = 0
