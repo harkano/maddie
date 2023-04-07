@@ -2,6 +2,8 @@ import os
 import discord
 from discord_slash import SlashCommand
 from discord_slash.utils.manage_commands import create_choice, create_option
+from discord_slash.utils.manage_components import wait_for_component
+
 from discord.ext import commands
 from dotenv import load_dotenv
 from parse import slash_parse
@@ -291,6 +293,10 @@ async def me(ctx, choice):
     if choice == 'party':
         await ctx.send(print_party(ctx, 'en'))
 
+def update_embed(embed, team):
+    embed.add_field(name=team, value= f'\nTeam has been updated to {team}.')
+    return embed
+
 @slash.slash(
     name="battle",
     description="Enter Battle",
@@ -300,19 +306,54 @@ async def battle(ctx):
     from discord_slash.utils.manage_components import create_actionrow, create_button
     from discord_slash.model import ButtonStyle
     from config_interactions import team_slash
-    buttons = [
-            create_button(style=ButtonStyle.green, label="Leader has influence?"),
-            create_button(style=ButtonStyle.green, label="Same purpose?"),
-            create_button(style=ButtonStyle.blue, label="Mistrust leader or team?"),
-            create_button(style=ButtonStyle.blue, label="Ill-prepared/off balance?")
-            ]
-    action_row = create_actionrow(*buttons)
-    embed, addendum = slash_parse(ctx, 153, 0)
-    #team_slash(ctx, 'en', 'add')
-    #team_slash(ctx, 'en', 'add')
-    team = team_slash(ctx, 'en', 'check')
-    await ctx.send(embed=embed, components=[action_row], content=team)
+    button_states = {
+        "add_2_team": False,
+        "leader_influence": False,
+        "same_purpose": False,
+        "mistrust": False,
+        "ill_prepared": False
+    }
 
+
+    def create_updated_buttons():
+        return [
+            create_button(style=ButtonStyle.blurple if not button_states["add_2_team"] else ButtonStyle.gray,
+                          label="Add 2 Team", custom_id="add_2_team"),
+            create_button(style=ButtonStyle.green if not button_states["leader_influence"] else ButtonStyle.gray,
+                          label="Leader has influence?", custom_id="leader_influence"),
+            create_button(style=ButtonStyle.green if not button_states["same_purpose"] else ButtonStyle.gray,
+                          label="Same purpose?", custom_id="same_purpose"),
+            create_button(style=ButtonStyle.blue if not button_states["mistrust"] else ButtonStyle.gray,
+                          label="Mistrust leader or team?", custom_id="mistrust"),
+            create_button(style=ButtonStyle.blue if not button_states["ill_prepared"] else ButtonStyle.gray,
+                          label="Ill-prepared/off balance?", custom_id="ill_prepared"),
+        ]
+
+    action_row = create_actionrow(*create_updated_buttons())
+    embed, addendum = slash_parse(ctx, 153, 0)
+    team = team_slash(ctx, 'en', 'check')
+    message = await ctx.send(embed=embed, components=[action_row], content=team)
+
+    while True:
+        button_ctx = await wait_for_component(bot, components=action_row, timeout=3600)
+        button_states[button_ctx.custom_id] = not button_states[button_ctx.custom_id]  # Toggle the button state
+        prev_team = team
+        if button_ctx.custom_id == "add_2_team":
+            team = team_slash(ctx, 'en', 'increase_twice') if button_states[button_ctx.custom_id] else None
+        if button_ctx.custom_id == "leader_influence":
+            team = team_slash(ctx, 'en', 'increase') if button_states[button_ctx.custom_id] else team_slash(ctx, 'en', 'decrease')
+        if button_ctx.custom_id == "same_purpose":
+            team = team_slash(ctx, 'en', 'increase') if button_states[button_ctx.custom_id] else team_slash(ctx, 'en', 'decrease')
+        if button_ctx.custom_id == "mistrust":
+            team = team_slash(ctx, 'en', 'decrease') if button_states[button_ctx.custom_id] else team_slash(ctx, 'en', 'increase')
+        if button_ctx.custom_id == "ill_prepared":
+            team = team_slash(ctx, 'en', 'decrease') if button_states[button_ctx.custom_id] else team_slash(ctx, 'en', 'increase')
+        if prev_team != team:  # Only update the embed if the team stat changed
+            embed = update_embed(embed, team)
+        # Handle other button interactions if needed
+        await button_ctx.defer(edit_origin=True)  # Acknowledge the interaction
+        action_row = create_actionrow(*create_updated_buttons())  # Update the buttons based on their new states
+        await message.edit(content=team, components=[action_row])  # Update the message with the new 'team' stat
 # @slash.slash(
 #     name="character",
 #     description="Character management functions",
