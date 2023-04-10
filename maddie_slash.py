@@ -1,9 +1,9 @@
 import os
-import discord
 from discord_slash import SlashCommand
 from discord_slash.utils.manage_commands import create_choice, create_option
-from discord_slash.utils.manage_components import wait_for_component
-
+from discord_slash.utils.manage_components import wait_for_component, create_actionrow, create_button
+from discord_slash.model import ButtonStyle
+from config_interactions import team_slash
 from discord.ext import commands
 from dotenv import load_dotenv
 from parse import slash_parse
@@ -268,6 +268,13 @@ async def playbooks5p(ctx, choice, playbook=None):
     await ctx.send(embed=get_playbook_component_slash(choice, ctx, 'en', playbook))
 
 
+def create_updated_buttons(influence_over):
+    updated_buttons = []
+    for char in influence_over:
+        button_style = ButtonStyle.green if char['hasInfluence'] else ButtonStyle.grey
+        updated_buttons.append(create_button(style=button_style, label=char['id'], custom_id=f"influence_{char['id']}"))
+    return create_actionrow(*updated_buttons)
+
 @slash.slash(
     name="me",
     description="Retrieve character information",
@@ -277,12 +284,13 @@ async def playbooks5p(ctx, choice, playbook=None):
             create_choice(name='Print Character', value='print'),
             create_choice(name='Show Labels', value= 'labels'),
             create_choice(name='Show Conditions', value= 'conditions'),
-            create_choice(name='Show Party', value= 'party')
+            create_choice(name='Show Party', value= 'party'),
+            create_choice(name='Show Influence', value= 'influence')
         ])
     ]
 )
 async def me(ctx, choice):
-    from playbook_interactions import print_playbook_slash, get_conditions_slash, get_labels_slash, print_party
+    from playbook_interactions import print_playbook_slash, get_conditions_slash, get_labels_slash, print_party, get_influence, invert_influence
     logger.info(str(ctx.author.guild) + str(ctx.author.display_name) + str(ctx.data))
     if choice == 'print':
         await ctx.send(print_playbook_slash(ctx, 'en'))
@@ -292,6 +300,29 @@ async def me(ctx, choice):
         await ctx.send(get_labels_slash(ctx, 'en'))
     if choice == 'party':
         await ctx.send(print_party(ctx, 'en'))
+    if choice == 'influence':
+        char_info = get_influence(ctx, 'en')
+        if char_info == 'No other players in the party.':
+            await ctx.send(char_info)
+        else:
+            action_row = create_updated_buttons(char_info['influenceOver'])
+            await ctx.send("Toggle influence over characters:", components=[action_row])
+
+            @bot.event
+            async def on_component(ctx_button):
+                custom_id = ctx_button.custom_id
+                if custom_id.startswith("influence_"):
+                    if ctx_button.author.id == ctx.author.id:
+                        character_name = custom_id.split("_")[1]
+                        # Call the invert_influence function to handle influence changes
+                        invert_influence(ctx, character_name, char_info)
+
+                        updated_action_row = create_updated_buttons(char_info['influenceOver'])
+                        await ctx_button.edit_origin(content="Toggle influence over characters:",
+                                                     components=[updated_action_row])
+                    else:
+                        await ctx_button.send("You are not authorized to change the influence status.", hidden=True)
+
 
 def update_embed(embed, team):
     embed.add_field(name=team, value= f'\nTeam has been updated to {team}.')
@@ -302,9 +333,7 @@ def update_embed(embed, team):
     description="Enter Battle"
     )
 async def battle(ctx):
-    from discord_slash.utils.manage_components import create_actionrow, create_button
-    from discord_slash.model import ButtonStyle
-    from config_interactions import team_slash
+
     button_states = {
         "add_2_team": False,
         "leader_influence": False,
