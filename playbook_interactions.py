@@ -571,6 +571,59 @@ def print_party(ctx,lang):
 
     return response
 
+def get_influence(ctx, lang):
+    import os
+    s3_client = get_s3_client()
+    channel_key = get_channel_from_ctx(ctx)
+    party = get_char_files_from_dir(channel_key, s3_client)
+
+    char_key = get_key_from_ctx(ctx)
+    char_info = info_from_s3(char_key, s3_client)
+    #What if they've never checked influence before - add an empty array
+    if 'influenceOver' not in char_info:
+        char_info['influenceOver'] = []
+        #upload_to_s3(char_info, char_key, s3_client)
+        party_list = [file for file in list(party) if os.path.basename(file) != "settings.json"]
+        if len(party_list) <= 1:
+            return 'No other players in the party.'
+        for player in party:
+            if 'settings' not in player:  # here we need to ignore settings.json files :D
+                player_key = player.split('.')[0]
+                party_info = info_from_s3(player_key, s3_client)
+
+                if party_info['characterName'] != char_info['characterName']:
+                    char_info['influenceOver'].append({'id': party_info['characterName'], 'hasInfluence': False})
+        upload_to_s3(char_info, char_key, s3_client)
+    #However if they do have influence make sure the whole party is in the array!
+    elif 'influenceOver' in char_info:
+        party_list = [file for file in list(party) if os.path.basename(file) != "settings.json"]
+        if len(party_list) <= 1:
+            return 'No other players in the party.'
+        existing_character_names = [influence['id'] for influence in char_info['influenceOver']]
+        for player in party:
+            if 'settings' not in player:  # here we need to ignore settings.json files :D
+                player_key = player.split('.')[0]
+                party_info = info_from_s3(player_key, s3_client)
+
+                if party_info['characterName'] != char_info['characterName'] and party_info['characterName'] not in existing_character_names:
+                    char_info['influenceOver'].append({'id': party_info['characterName'], 'hasInfluence': False})
+        upload_to_s3(char_info, char_key, s3_client)
+
+    response = char_info
+    return response
+
+
+def invert_influence(ctx, character_name, char_info):
+    # Find the character in the influenceOver array and toggle its influence status
+    for char in char_info['influenceOver']:
+        if char['id'] == character_name:
+            char['hasInfluence'] = not char['hasInfluence']
+            break
+
+    # Update the character info in S3
+    s3_client = get_s3_client()
+    char_key = get_key_from_ctx(ctx)
+    upload_to_s3(char_info, char_key, s3_client)
 
 generic_playbook_dict = {
   "lock": lock_label,
