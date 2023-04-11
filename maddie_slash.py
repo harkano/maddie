@@ -302,8 +302,10 @@ async def me(ctx, choice):
         await ctx.send(print_party(ctx, 'en'))
     if choice == 'influence':
         char_info = get_influence(ctx, 'en')
-        if char_info == 'No other players in the party.':
+        if char_info == "I'm sorry but it appears you have no character created" or char_info == "No other players in the party.":
             await ctx.send(char_info)
+        elif len(char_info['influenceOver']) <= 1:
+            await ctx.send("No other players in the party.")
         else:
             action_row = create_updated_buttons(char_info['influenceOver'])
             await ctx.send("Toggle influence over characters:", components=[action_row])
