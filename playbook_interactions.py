@@ -579,6 +579,9 @@ def get_influence(ctx, lang):
 
     char_key = get_key_from_ctx(ctx)
     char_info = info_from_s3(char_key, s3_client)
+    if not char_info:
+        return get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.no_character')
+
     #What if they've never checked influence before - add an empty array
     if 'influenceOver' not in char_info:
         char_info['influenceOver'] = []
@@ -600,7 +603,7 @@ def get_influence(ctx, lang):
         if len(party_list) <= 1:
             return 'No other players in the party.'
         existing_character_names = [influence['id'] for influence in char_info['influenceOver']]
-        for player in party:
+        for player in party_list:
             if 'settings' not in player:  # here we need to ignore settings.json files :D
                 player_key = player.split('.')[0]
                 party_info = info_from_s3(player_key, s3_client)
