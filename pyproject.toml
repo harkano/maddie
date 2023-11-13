@@ -10,10 +10,12 @@ license = "GPL-3.0"
 # and see which ones Maddie works with. This is just the one
 # I have on my laptop.
 python = "^3.8"
-"discord.py" = "^1.5.1"
+"discord.py" = "^1.7.3"
+discord-py-slash-command = "2.3.2"
 python-dotenv = "^0.15.0"
 boto3 = "^1.16.7"
 tssplit = "^1.0.4"
+discord-ext-slash = "^0.9.2"
 
 [tool.poetry.dev-dependencies]
 
