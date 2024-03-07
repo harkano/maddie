@@ -1089,7 +1089,7 @@
 		"shortName": "gossip",
 		"capital": "THE GOSSIP MAGS",
 		"phrase": "taps into gossip!",
-		"blob": "When you *tap into the gossip and rumor of the velebrity industry for information on an important city figure*, roll +Superior. On a hit you can ask the GM questions. On a 10+, ask three. On a 7 - 9, ask one.\n• What are they up to?\n• What or who do they most care about?\n• What allies do they have? Enemies?\n• Where and when can I find them?\n• How could I make them vulnerable to me?\nOn a miss, ask one anyway, but they hear about your interest in them.",
+		"blob": "When you *tap into the gossip and rumor of the celebrity industry for information on an important city figure*, roll +Superior. On a hit you can ask the GM questions. On a 10+, ask three. On a 7 - 9, ask one.\n• What are they up to?\n• What or who do they most care about?\n• What allies do they have? Enemies?\n• Where and when can I find them?\n• How could I make them vulnerable to me?\nOn a miss, ask one anyway, but they hear about your interest in them.",
 		"label": "superior",
 		"description": " ",
 		"img": "https://media.discordapp.net/attachments/696999351192518677/697498613479243846/unknown.png",
