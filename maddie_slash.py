@@ -7,16 +7,7 @@ from config_interactions import team_slash
 
 logger = logging.getLogger('discord')
 
-# We expect `bot` to be passed or accessed correctly in a modular way. 
-# A cleaner way in discord.py is to use Cogs, but here we can just bind to the existing bot tree 
-# by importing the bot instance from maddie.py, or letting maddie.py run this file.
-
-# Since maddie.py does `import maddie_slash`, we can define a setup function or just access `bot` from __main__ 
-# but circular imports are bad. Let's retrieve the current __main__ bot instance:
-import __main__
-bot = getattr(__main__, 'bot', None)
-
-if bot:
+async def setup(bot):
     @bot.tree.command(name="editlabels", description="Adjust your labels, one up, one down")
     @app_commands.choices(
         labelup=[
@@ -355,7 +346,3 @@ if bot:
         
         view = BattleView(interaction, team_stat, embed)
         await interaction.response.send_message(content=team_stat, embed=embed, view=view)
-
-    # dynamically exec the generated slash commands into this file
-    with open(os.path.join(os.path.normpath(os.path.join(os.path.realpath(__file__), os.pardir)), "generated_commands.py")) as generated_code:
-        exec(generated_code.read())

@@ -38,12 +38,21 @@ async def on_ready():
     for x in range(len(servers)):
         logger.info('   ' + servers[x-1].name)
     
-    # Sync slash commands with Discord globally
+    # Register the cog module dynamically
     try:
+        # Load maddie_slash correctly
+        import maddie_slash
+        if hasattr(maddie_slash, 'setup'):
+            await maddie_slash.setup(bot)
+            
+        import generated_commands
+        if hasattr(generated_commands, 'setup'):
+            generated_commands.setup(bot)
+
         synced = await bot.tree.sync()
         logger.info(f"Synced {len(synced)} slash command(s)")
     except Exception as e:
-        logger.error(f"Failed to sync slash commands: {e}")
+        logger.error(f"Failed to setup or sync slash commands: {e}")
 
 def msg_log_line(message):
     if message.guild is not None:
@@ -116,8 +125,5 @@ async def on_message(message):
                 else:
                     await message.channel.send(embed=embed_response)
             else : logger.info('no match found for '+message.content)
-
-# We include the slash commands here so they get registered on the bot.tree
-import maddie_slash
 
 bot.run(TOKEN)

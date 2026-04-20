@@ -54,7 +54,7 @@ def get_files_from_dir(key, s3_client=None):
             for file_name in files:
                 if file_name.endswith('.json'):
                     # The S3 code expects something like a Key back
-                    rel_path = os.path.relpath(os.path.join(root, file_name), TOP_DIR)
+                    rel_path = os.path.relpath(os.path.join(root, file_name), TOP_DIR).replace("\\", "/")
                     # Remove the .json extension to match old behavior
                     contents.append({"Key": rel_path[:-5]})
     return {"Contents": contents}
@@ -68,7 +68,7 @@ def get_char_files_from_dir(key, s3_client=None):
         for root, _, files in os.walk(dir_path):
             for file_name in files:
                 if file_name.endswith('.json'):
-                    rel_path = os.path.relpath(os.path.join(root, file_name), TOP_DIR)
+                    rel_path = os.path.relpath(os.path.join(root, file_name), TOP_DIR).replace("\\", "/")
                     # S3 returned the key with .json but we used to strip it?
                     # The old code returned content.get('Key') which had .json
                     yield rel_path[:-5]
