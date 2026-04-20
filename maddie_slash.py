@@ -4,6 +4,7 @@ from discord import app_commands
 import logging
 from parse import slash_parse
 from config_interactions import team_slash
+from storage import info_from_s3, get_s3_client
 
 logger = logging.getLogger('discord')
 
@@ -346,3 +347,75 @@ async def setup(bot):
         
         view = BattleView(interaction, team_stat, embed)
         await interaction.response.send_message(content=team_stat, embed=embed, view=view)
+
+    # --- Right-Click Context Menus ---
+
+    # Right-click a Message -> "Spend Team"
+    @bot.tree.context_menu(name="Spend Team")
+    async def context_spend_team(interaction: discord.Interaction, message: discord.Message):
+        from config_interactions import team_slash
+        logger.info(f"{interaction.guild}|{interaction.user.display_name}|Context Menu: Spend Team")
+        
+        # Spend a team pool
+        result = team_slash(interaction, 'en', 'decrease')
+        
+        await interaction.response.send_message(
+            content=f"You spent a Team on [this roll]({message.jump_url})! {result}"
+        )
+
+    # Right-click a User -> "View Character"
+    @bot.tree.context_menu(name="View Character")
+    async def context_view_character(interaction: discord.Interaction, member: discord.Member):
+        logger.info(f"{interaction.guild}|{interaction.user.display_name}|Context Menu: View Character for {member.display_name}")
+        
+        # Fetch their info from storage
+        channel_id = getattr(interaction.channel, "id", getattr(interaction, "channel_id", None))
+        key = f'{channel_id}/{member.id}'
+        char_info = info_from_s3(key, get_s3_client())
+        
+        if not char_info:
+            await interaction.response.send_message(
+                f"{member.display_name} doesn't have a character in this channel.", 
+                ephemeral=True
+            )
+            return
+            
+        embed = discord.Embed(
+            title=char_info.get("characterName", "Unknown Character"),
+            description=f"A {char_info.get('playbook', 'Unknown').capitalize()} played by {char_info.get('playerName', member.display_name)}",
+            color=0x53B0B9
+        )
+        
+        # Add labels
+        from playbook_interactions import format_labels
+        labels_str = format_labels(char_info.get("labels", {}), 'en')
+        embed.add_field(name="Labels", value=labels_str, inline=True)
+        
+        # Add conditions
+        from playbook_interactions import format_conditions
+        cond_str = format_conditions(char_info.get("conditions", {}), 'en')
+        embed.add_field(name="Conditions", value=cond_str, inline=True)
+        
+        # Add potential
+        embed.add_field(name="Potential", value=f"{char_info.get('potential', 0)}/5", inline=True)
+        
+        await interaction.response.send_message(embed=embed, ephemeral=True)
+
+    # Right-click a User -> "View Influence"
+    @bot.tree.context_menu(name="View Influence")
+    async def context_view_influence(interaction: discord.Interaction, member: discord.Member):
+        logger.info(f"{interaction.guild}|{interaction.user.display_name}|Context Menu: View Influence for {member.display_name}")
+        
+        # If they right clicked themselves, use the existing me/influence UI
+        if member.id == interaction.user.id:
+            from playbook_interactions import get_influence
+            char_info = get_influence(interaction, 'en')
+            if char_info in ["I'm sorry but it appears you have no character created", "No other players in the party."]:
+                await interaction.response.send_message(char_info, ephemeral=True)
+            elif len(char_info['influenceOver']) <= 1:
+                await interaction.response.send_message("No other players in the party.", ephemeral=True)
+            else:
+                view = InfluenceView(interaction, char_info)
+                await interaction.response.send_message("Toggle your influence over characters:", view=view, ephemeral=True)
+        else:
+            await interaction.response.send_message("You can only manage your own influence. Right-click yourself instead!", ephemeral=True)
