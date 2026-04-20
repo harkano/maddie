@@ -11,9 +11,10 @@ from command_handler import plain_command_handler, embed_command_handler
 from config_interactions import get_dicedisplay
 from discord.ext import commands
 
+# --- Configure Logging ---
 logger = logging.getLogger('discord')
-logger.setLevel(logging.INFO) #set logging level to INFO, DEBUG if we want the full dump
-handler = logging.FileHandler(filename='discord.log', encoding='utf-8', mode='a') #open log file in append mode
+logger.setLevel(logging.INFO)
+handler = logging.FileHandler(filename='discord.log', encoding='utf-8', mode='a')
 handler.setFormatter(logging.Formatter('%(asctime)s:%(levelname)s:%(name)s: %(message)s'))
 logger.addHandler(handler)
 
@@ -25,15 +26,24 @@ logger.info(TOKEN)
 intents = discord.Intents.default()
 intents.message_content = True # Required to read message content for legacy ! commands
 
-client = discord.Client(intents=intents)
+# We use commands.Bot now, which inherits from discord.Client,
+# so we can use bot.tree.command (Slash commands) seamlessly alongside ! commands.
+bot = commands.Bot(command_prefix="!", intents=intents)
 
-@client.event
+@bot.event
 async def on_ready():
-    logger.info(f'{client.user} has connected to Discord!')
-    servers = list(client.guilds)
-    logger.info("Connected on "+str(len(client.guilds))+" servers:")
+    logger.info(f'{bot.user} has connected to Discord!')
+    servers = list(bot.guilds)
+    logger.info("Connected on "+str(len(bot.guilds))+" servers:")
     for x in range(len(servers)):
         logger.info('   ' + servers[x-1].name)
+    
+    # Sync slash commands with Discord globally
+    try:
+        synced = await bot.tree.sync()
+        logger.info(f"Synced {len(synced)} slash command(s)")
+    except Exception as e:
+        logger.error(f"Failed to sync slash commands: {e}")
 
 def msg_log_line(message):
     if message.guild is not None:
@@ -42,9 +52,9 @@ def msg_log_line(message):
         return "[Direct Message]" + "|" + message.author.name + "|" + message.content
 
 #Listen for messages
-@client.event
+@bot.event
 async def on_message(message):
-    if message.author == client.user:
+    if message.author == bot.user:
         return
 
     # handle help and all of the playbook interactions
@@ -95,4 +105,7 @@ async def on_message(message):
                     await message.channel.send(content = addendum)
             else : logger.info('no match found for '+message.content)
 
-client.run(TOKEN)
+# We include the slash commands here so they get registered on the bot.tree
+import maddie_slash
+
+bot.run(TOKEN)
