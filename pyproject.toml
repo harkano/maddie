@@ -6,11 +6,8 @@ authors = ["Harkano", "also, others"]
 license = "GPL-3.0"
 
 [tool.poetry.dependencies]
-# Ideally, we should test with various versions of Python
-# and see which ones Maddie works with. This is just the one
-# I have on my laptop.
 python = "^3.8"
-"discord.py" = "^1.5.1"
+"discord.py" = "^2.3.2"
 python-dotenv = "^0.15.0"
 boto3 = "^1.16.7"
 tssplit = "^1.0.4"

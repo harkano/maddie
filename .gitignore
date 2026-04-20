@@ -1,2 +1,4 @@
 __pycache__/
 discord.log
+.env
+.gitignore

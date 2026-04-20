@@ -323,7 +323,7 @@ def replicate_character(ctx, lang, channel_id):
     link_server = channel_id
     file_list = get_files_from_dir('playbooks', s3_client)
     template_key = f'playbooks/blank'
-    matching_files = list(filter(lambda file_info: file_info["Key"] == f'{template_key}.json', file_list["Contents"]))
+    matching_files = list(filter(lambda file_info: file_info["Key"] == f'{template_key}', file_list["Contents"]))
     template = info_from_s3(template_key, s3_client)
     upload_to_s3(template, key, s3_client)
     return get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.character_replication')(character_name, formated_playbook_name)
@@ -347,7 +347,7 @@ def create_character(message, lang):
     file_list = get_files_from_dir('playbooks', s3_client)
     template_key = f'playbooks/{translated_name}'
 
-    matching_files = list(filter(lambda file_info: file_info["Key"] == f'{template_key}.json', file_list["Contents"]))
+    matching_files = list(filter(lambda file_info: file_info["Key"] == f'{template_key}', file_list["Contents"]))
 
     if not matching_files:
         return get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.no_template')(playbook_name)
@@ -380,7 +380,7 @@ def create_character_slash(ctx, lang, playbook_name, character_name, player_name
     file_list = get_files_from_dir('playbooks', s3_client)
     template_key = f'playbooks/{translated_name}'
 
-    matching_files = list(filter(lambda file_info: file_info["Key"] == f'{template_key}.json', file_list["Contents"]))
+    matching_files = list(filter(lambda file_info: file_info["Key"] == f'{template_key}', file_list["Contents"]))
 
     if not matching_files:
         return get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.no_template')(playbook_name)
@@ -559,6 +559,7 @@ def print_playbook_slash(ctx, lang):
     return char_text
 
 def print_party(ctx,lang):
+    import os
     key = get_channel_from_ctx(ctx)
     s3_client = get_s3_client()
     party = get_char_files_from_dir(key,s3_client)
@@ -567,7 +568,8 @@ def print_party(ctx,lang):
         if 'settings' not in player: #here we need to ignore settings.json files :D
             player_key = player.split('.')[0]
             char_info = info_from_s3(player_key, s3_client)
-            response = response + f' - {char_info["characterName"]} the {char_info["playbook"].capitalize()} played by {char_info["playerName"]}\n'
+            if char_info:
+                response = response + f' - {char_info["characterName"]} the {char_info["playbook"].capitalize()} played by {char_info["playerName"]}\n'
 
     return response
 
@@ -586,20 +588,20 @@ def get_influence(ctx, lang):
     if 'influenceOver' not in char_info:
         char_info['influenceOver'] = []
         #upload_to_s3(char_info, char_key, s3_client)
-        party_list = [file for file in list(party) if os.path.basename(file) != "settings.json"]
+        party_list = [file for file in list(party) if os.path.basename(file) != "settings.json" and os.path.basename(file) != "settings"]
         if len(party_list) <= 1:
             return 'No other players in the party.'
-        for player in party:
+        for player in party_list:
             if 'settings' not in player:  # here we need to ignore settings.json files :D
                 player_key = player.split('.')[0]
                 party_info = info_from_s3(player_key, s3_client)
-
-                if party_info['characterName'] != char_info['characterName']:
-                    char_info['influenceOver'].append({'id': party_info['characterName'], 'hasInfluence': False})
+                if party_info:
+                    if party_info['characterName'] != char_info['characterName']:
+                        char_info['influenceOver'].append({'id': party_info['characterName'], 'hasInfluence': False})
         upload_to_s3(char_info, char_key, s3_client)
     #However if they do have influence make sure the whole party is in the array!
     elif 'influenceOver' in char_info:
-        party_list = [file for file in list(party) if os.path.basename(file) != "settings.json"]
+        party_list = [file for file in list(party) if os.path.basename(file) != "settings.json" and os.path.basename(file) != "settings"]
         if len(party_list) <= 1:
             return 'No other players in the party.'
         existing_character_names = [influence['id'] for influence in char_info['influenceOver']]
@@ -607,9 +609,9 @@ def get_influence(ctx, lang):
             if 'settings' not in player:  # here we need to ignore settings.json files :D
                 player_key = player.split('.')[0]
                 party_info = info_from_s3(player_key, s3_client)
-
-                if party_info['characterName'] != char_info['characterName'] and party_info['characterName'] not in existing_character_names:
-                    char_info['influenceOver'].append({'id': party_info['characterName'], 'hasInfluence': False})
+                if party_info:
+                    if party_info['characterName'] != char_info['characterName'] and party_info['characterName'] not in existing_character_names:
+                        char_info['influenceOver'].append({'id': party_info['characterName'], 'hasInfluence': False})
         upload_to_s3(char_info, char_key, s3_client)
 
     response = char_info

@@ -1,4 +1,3 @@
-
 # bot.py
 import os
 import discord
@@ -10,8 +9,6 @@ from moves import get_moves
 from parse import mad_parse
 from command_handler import plain_command_handler, embed_command_handler
 from config_interactions import get_dicedisplay
-from discord_slash import SlashCommand
-from discord_slash.utils.manage_commands import create_choice, create_option
 from discord.ext import commands
 
 logger = logging.getLogger('discord')
@@ -22,8 +19,13 @@ logger.addHandler(handler)
 
 load_dotenv()
 TOKEN = os.getenv('DISCORD_TOKEN')
-logger.info (TOKEN)
-client = discord.Client()
+logger.info(TOKEN)
+
+# Enable intents for discord.py 2.0+
+intents = discord.Intents.default()
+intents.message_content = True # Required to read message content for legacy ! commands
+
+client = discord.Client(intents=intents)
 
 @client.event
 async def on_ready():
