@@ -44,7 +44,10 @@ def get_key_from_ctx(ctx):
     # Depending on context, it could be a legacy Context or a new Interaction.
     # We will try both interfaces
     channel_id = getattr(ctx.channel, "id", getattr(ctx, "channel_id", None))
-    author_id = getattr(ctx.user, "id", getattr(ctx.author, "id", None)) if hasattr(ctx, "user") else getattr(ctx.author, "id", None)
+    if hasattr(ctx, "user"):
+        author_id = getattr(ctx.user, "id", None)
+    else:
+        author_id = getattr(ctx.author, "id", None)
     key = f'{channel_id}/{author_id}'
     return f'{key}'
 
@@ -55,7 +58,10 @@ def get_channel_from_ctx(ctx):
 
 def get_key_and_content_from_ctx(ctx):
     channel_id = getattr(ctx.channel, "id", getattr(ctx, "channel_id", None))
-    author_id = getattr(ctx.user, "id", getattr(ctx.author, "id", None)) if hasattr(ctx, "user") else getattr(ctx.author, "id", None)
+    if hasattr(ctx, "user"):
+        author_id = getattr(ctx.user, "id", None)
+    else:
+        author_id = getattr(ctx.author, "id", None)
     key = f'{channel_id}/{author_id}'
     return f'{key}'
 
