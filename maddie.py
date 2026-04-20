@@ -57,6 +57,10 @@ async def on_message(message):
     if message.author == bot.user:
         return
 
+    # Since we are using commands.Bot, we MUST process commands
+    # so that the discord.py library can handle events if we ever use `@bot.command`
+    await bot.process_commands(message)
+
     # handle help and all of the playbook interactions
     if message.content.startswith("!"):
         response = plain_command_handler(message)
@@ -64,7 +68,11 @@ async def on_message(message):
         if response:
             log_line = msg_log_line(message)
             logger.info(log_line)
-            await message.channel.send(response)
+            # The plain_command_handler might return a string or sometimes dict depending on execution
+            if isinstance(response, str):
+                await message.channel.send(response)
+            else:
+                await message.channel.send(content=str(response))
             return
 
         response = embed_command_handler(message)
@@ -72,7 +80,10 @@ async def on_message(message):
         if response:
             log_line = msg_log_line(message)
             logger.info(log_line)
-            await message.channel.send(embed=response)
+            if isinstance(response, discord.Embed):
+                await message.channel.send(embed=response)
+            else:
+                await message.channel.send(content=str(response))
             return
 
     #answer a call for help
@@ -89,7 +100,8 @@ async def on_message(message):
     if message.content.startswith("!"):
         move_list = get_moves(message)
         if move_list:
-            await message.channel.send(move_list)
+            if isinstance(move_list, str):
+                await message.channel.send(move_list)
         #remember generic ! should always be last in the tree#
         else:
             log_line = msg_log_line(message)
@@ -97,12 +109,12 @@ async def on_message(message):
             response = mad_parse(message)
             if response:
                 logger.info(response)
-                (response, addendum) = response
-#            if addendum is not None:  ##testing if going first made a difference
-#                await message.channel.send(content = addendum)
-                await message.channel.send(embed=response)
+                (embed_response, addendum) = response
+                
                 if addendum is not None:
-                    await message.channel.send(content = addendum)
+                    await message.channel.send(content=addendum, embed=embed_response)
+                else:
+                    await message.channel.send(embed=embed_response)
             else : logger.info('no match found for '+message.content)
 
 # We include the slash commands here so they get registered on the bot.tree

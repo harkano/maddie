@@ -18,11 +18,13 @@ def no_config_file():
 
 
 def get_settings_path(message):
-    return f'adventures/{message.channel.id}/settings'
+    return f'{message.channel.id}/settings'
 
 
 def get_settings_path_ctx(ctx):
-    return f'adventures/{ctx.channel_id}/settings'
+    # Support both ctx (legacy) and interaction
+    channel_id = getattr(ctx.channel, "id", getattr(ctx, "channel_id", None))
+    return f'{channel_id}/settings'
 
 
 def get_field_from_config(message, field):
@@ -103,7 +105,7 @@ def create_settings(message):
 
     }
 
-    upload_to_s3(settings, f'adventures/{message.channel.id}/settings', s3_client)
+    upload_to_s3(settings, f'{message.channel.id}/settings', s3_client)
 
     return get_translation(lang, 'configuration.successfull_creation')
 
@@ -126,8 +128,9 @@ def create_settings_ctx(ctx):
         "dicedisplay": True
 
     }
-
-    upload_to_s3(settings, f'adventures/{ctx.channel_id}/settings', s3_client)
+    
+    channel_id = getattr(ctx.channel, "id", getattr(ctx, "channel_id", None))
+    upload_to_s3(settings, f'{channel_id}/settings', s3_client)
 
     return get_translation(lang, 'configuration.successfull_creation')
 

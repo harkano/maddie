@@ -38,30 +38,37 @@ def get_moves(language = 'en'):
 def get_key_and_content_from_message(message):
     key = f'{message.channel.id}/{message.author.id}'
 
-    return f'adventures/{key}', message.content
+    return f'{key}', message.content
 
 def get_key_from_ctx(ctx):
-    key = f'{ctx.channel_id}/{ctx.author.id}'
-    return f'adventures/{key}'
+    # Depending on context, it could be a legacy Context or a new Interaction.
+    # We will try both interfaces
+    channel_id = getattr(ctx.channel, "id", getattr(ctx, "channel_id", None))
+    author_id = getattr(ctx.user, "id", getattr(ctx.author, "id", None)) if hasattr(ctx, "user") else getattr(ctx.author, "id", None)
+    key = f'{channel_id}/{author_id}'
+    return f'{key}'
 
 def get_channel_from_ctx(ctx):
-    key = f'{ctx.channel_id}/'
-    return f'adventures/{key}'
+    channel_id = getattr(ctx.channel, "id", getattr(ctx, "channel_id", None))
+    key = f'{channel_id}/'
+    return f'{key}'
 
 def get_key_and_content_from_ctx(ctx):
-    key = f'{ctx.channel_id}/{ctx.author.id}'
-    return f'adventures/{key}'
+    channel_id = getattr(ctx.channel, "id", getattr(ctx, "channel_id", None))
+    author_id = getattr(ctx.user, "id", getattr(ctx.author, "id", None)) if hasattr(ctx, "user") else getattr(ctx.author, "id", None)
+    key = f'{channel_id}/{author_id}'
+    return f'{key}'
 
 def get_replicate_key_and_content_from_message(message):
     link_channel = get_args_from_content(message.content)
     key = f'{link_channel}/{message.author.id}'
 
-    return f'adventures/{key}', message.content
+    return f'{key}', message.content
 
 
 def get_folder_from_message(message):
     key = f'{message.channel.id}/'
-    return f'adventures/{key}', message.content
+    return f'{key}', message.content
 
 def get_args_from_content(content):
     from tssplit import tssplit

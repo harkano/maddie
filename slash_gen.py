@@ -53,38 +53,45 @@ def parse_file(data_file):
 
 
 def generate_code(top_commands):
-    generated_code = ""
+    generated_code = """import discord
+from discord import app_commands
+import logging
+
+logger = logging.getLogger('discord')
+
+def setup(bot):
+"""
     for command_name, command in top_commands.items():
         top_template = Template("""
-@app_commands.command(
-    name="$name",
-    description="$name moves".title(),
-)
-@app_commands.choices(
-    move=[
-        $sub_commands
-    ],
-    modifier=[
-        app_commands.Choice(name='+4', value=4),
-        app_commands.Choice(name='+3', value=3),
-        app_commands.Choice(name='+2', value=2),
-        app_commands.Choice(name='+1', value=1),
-        app_commands.Choice(name='0', value=0),
-        app_commands.Choice(name='-1', value=-1),
-        app_commands.Choice(name='-2', value=-2),
-        app_commands.Choice(name='-3', value=-3)
-    ]
-)
-async def slash_${name}(interaction: discord.Interaction, move: int, modifier: int=0):
-    from parse import slash_parse
-    logger.info(f"{interaction.guild}|{interaction.user.display_name}|{interaction.data}")
-    # slash_parse needs to handle app_commands correctly, passing interaction or contextual data.
-    # Currently passing 'ctx' equivalent as interaction.
-    embed, addendum = slash_parse(interaction, move, modifier)
-    if addendum:
-        await interaction.response.send_message(embed=embed, content=addendum)
-    else:
-        await interaction.response.send_message(embed=embed)
+    @bot.tree.command(
+        name="$name",
+        description="$name moves".title(),
+    )
+    @app_commands.choices(
+        move=[
+            $sub_commands
+        ],
+        modifier=[
+            app_commands.Choice(name='+4', value=4),
+            app_commands.Choice(name='+3', value=3),
+            app_commands.Choice(name='+2', value=2),
+            app_commands.Choice(name='+1', value=1),
+            app_commands.Choice(name='0', value=0),
+            app_commands.Choice(name='-1', value=-1),
+            app_commands.Choice(name='-2', value=-2),
+            app_commands.Choice(name='-3', value=-3)
+        ]
+    )
+    async def slash_${name}(interaction: discord.Interaction, move: int, modifier: int=0):
+        from parse import slash_parse
+        logger.info(f"{interaction.guild}|{interaction.user.display_name}|{interaction.data}")
+        # slash_parse needs to handle app_commands correctly, passing interaction or contextual data.
+        # Currently passing 'ctx' equivalent as interaction.
+        embed, addendum = slash_parse(interaction, move, modifier)
+        if addendum:
+            await interaction.response.send_message(embed=embed, content=addendum)
+        else:
+            await interaction.response.send_message(embed=embed)
 """)
         sub_commands = []
         for sub_name, sub in command.items():

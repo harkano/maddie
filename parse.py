@@ -99,12 +99,21 @@ def slash_parse(ctx, move, modifier=0):
     character = get_character_ctx(ctx)
     embed=discord.Embed(title=f"{move_data['capital']}", colour=5450873)
     embed.set_footer(text=" ")
-    embed.set_author(name=f"{ctx.author.name} {move_data['phrase']}")
+    
+    author = getattr(ctx, "user", getattr(ctx, "author", None))
+    author_name = author.name if author else "Unknown"
+    
+    embed.set_author(name=f"{author_name} {move_data['phrase']}")
     if character:
         user = character['characterName']
         embed.set_author(name=f"{user} {move_data['phrase']}")
-    #embed.set_thumbnail(url=move_data['img']) this is the default maddie logo
-    embed.set_thumbnail(url=ctx.author.avatar_url) #use their logo instead!
+    
+    # discord.py 2.0+ uses .avatar.url or .display_avatar.url instead of .avatar_url
+    if author and hasattr(author, "display_avatar"):
+        embed.set_thumbnail(url=author.display_avatar.url)
+    elif author and hasattr(author, "avatar") and author.avatar:
+        embed.set_thumbnail(url=author.avatar.url)
+        
     lang = 'en'
     desc = get_translation(lang, 'description')
     embed.add_field(name=desc, value=f"{move_data['blob']}")
