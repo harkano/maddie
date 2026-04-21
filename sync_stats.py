@@ -16,7 +16,7 @@ logger = logging.getLogger('sync_stats')
 
 load_dotenv()
 # Note: Ensure you are using the correct environment variable for your bot token!
-TOKEN = os.getenv('DISCORD_TOKEN') or os.getenv('STATS_TOKEN')
+TOKEN = os.getenv('STATS_TOKEN')
 TOP_DIR = os.path.join(os.path.dirname(os.path.realpath(__file__)), "adventures")
 OUTPUT_FILE = os.path.join(os.path.dirname(os.path.realpath(__file__)), "adventurers.json")
 
