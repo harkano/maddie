@@ -258,6 +258,32 @@ def lock_label(message, lang):
 
     return format_labels(labels, lang)
 
+def lock_label_slash(ctx, lang, label_to_lock_name_og):
+    key = get_key_from_ctx(ctx)
+    label_to_lock_name = get_translation(lang, f'inverted_labels.{label_to_lock_name_og}')
+
+    s3_client = get_s3_client()
+    char_info = info_from_s3(key, s3_client)
+    if not char_info:
+        return get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.no_character')
+
+    labels = char_info[LABELS]
+
+    label_does_not_exist = validate_labels(lang, [label_to_lock_name_og])
+    if label_does_not_exist:
+        return label_does_not_exist
+
+    label_to_lock = labels[label_to_lock_name]
+
+    if label_to_lock[LOCKED]:
+        return get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.already_locked')(get_translation(lang, f'labels.{label_to_lock_name}'))
+
+    labels[label_to_lock_name][LOCKED] = True
+
+    upload_to_s3(char_info, key, s3_client)
+
+    return format_labels(labels, lang)
+
 
 def mark_potential(message, lang):
     key, _content = get_key_and_content_from_message(message)
@@ -281,8 +307,48 @@ def mark_potential(message, lang):
     upload_to_s3(char_info, key, s3_client)
     return get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.congrats_potential')(potential)
 
+def mark_potential_slash(ctx, lang):
+    key = get_key_from_ctx(ctx)
+    s3_client = get_s3_client()
+    char_info = info_from_s3(key, s3_client)
+    if not char_info:
+        return get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.no_character')
+
+    potential = char_info[POTENTIAL]
+
+    if potential == 4:
+        char_info[POTENTIAL] = 0
+        char_info[PENDING_ADVANCEMENTS] = char_info[PENDING_ADVANCEMENTS] + 1
+        potential = 0
+        upload_to_s3(char_info, key, s3_client)
+        return get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.congrats_pending_advancements')(char_info[PENDING_ADVANCEMENTS])
+
+    potential = potential + 1
+    char_info[POTENTIAL] = potential
+
+    upload_to_s3(char_info, key, s3_client)
+    return get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.congrats_potential')(potential)
+
+
 def remove_potential(message, lang):
     key, _content = get_key_and_content_from_message(message)
+    s3_client = get_s3_client()
+    char_info = info_from_s3(key, s3_client)
+    if not char_info:
+        return get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.no_character')
+
+    potential = char_info[POTENTIAL]
+    if potential > 0:
+        potential = potential - 1
+        char_info[POTENTIAL] = potential
+        upload_to_s3(char_info, key, s3_client)
+        return get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.congrats_potential')(potential)
+    elif potential == 0:
+        return get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.nopotential')
+
+
+def remove_potential_slash(ctx, lang):
+    key = get_key_from_ctx(ctx)
     s3_client = get_s3_client()
     char_info = info_from_s3(key, s3_client)
     if not char_info:

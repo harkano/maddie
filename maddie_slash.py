@@ -419,3 +419,61 @@ async def setup(bot):
                 await interaction.response.send_message("Toggle your influence over characters:", view=view, ephemeral=True)
         else:
             await interaction.response.send_message("You can only manage your own influence. Right-click yourself instead!", ephemeral=True)
+
+    # Right-click a User -> "Add Potential"
+    @bot.tree.context_menu(name="Add Potential")
+    async def context_add_potential(interaction: discord.Interaction, member: discord.Member):
+        logger.info(f"{interaction.guild}|{interaction.user.display_name}|Context Menu: Add Potential for {member.display_name}")
+        if member.id == interaction.user.id:
+            from playbook_interactions import mark_potential_slash
+            result = mark_potential_slash(interaction, 'en')
+            await interaction.response.send_message(result, ephemeral=True)
+        else:
+            await interaction.response.send_message("You can only add potential for your own character. Right-click yourself instead!", ephemeral=True)
+
+    # Right-click a User -> "Remove Potential"
+    @bot.tree.context_menu(name="Remove Potential")
+    async def context_remove_potential(interaction: discord.Interaction, member: discord.Member):
+        logger.info(f"{interaction.guild}|{interaction.user.display_name}|Context Menu: Remove Potential for {member.display_name}")
+        if member.id == interaction.user.id:
+            from playbook_interactions import remove_potential_slash
+            result = remove_potential_slash(interaction, 'en')
+            await interaction.response.send_message(result, ephemeral=True)
+        else:
+            await interaction.response.send_message("You can only remove potential for your own character. Right-click yourself instead!", ephemeral=True)
+
+    # Right-click a User -> "Lock Label"
+    @bot.tree.context_menu(name="Lock Label")
+    async def context_lock_label(interaction: discord.Interaction, member: discord.Member):
+        if member.id != interaction.user.id:
+            await interaction.response.send_message("You can only lock labels for your own character. Right-click yourself instead!", ephemeral=True)
+            return
+
+        class LockLabelView(discord.ui.View):
+            def __init__(self, original_interaction):
+                super().__init__()
+                self.original_interaction = original_interaction
+
+            @discord.ui.select(placeholder="Select a label to lock", options=[
+                discord.SelectOption(label="Danger", value="danger"),
+                discord.SelectOption(label="Freak", value="freak"),
+                discord.SelectOption(label="Savior", value="savior"),
+                discord.SelectOption(label="Superior", value="superior"),
+                discord.SelectOption(label="Mundane", value="mundane"),
+                discord.SelectOption(label="Soldier", value="soldier"),
+            ])
+            async def select_callback(self, select_interaction: discord.Interaction, select: discord.ui.Select):
+                if select_interaction.user.id != self.original_interaction.user.id:
+                    await select_interaction.response.send_message("This menu is not for you.", ephemeral=True)
+                    return
+                from playbook_interactions import lock_label_slash
+                result = lock_label_slash(select_interaction, 'en', select.values[0])
+                await select_interaction.response.send_message(result, ephemeral=True)
+
+        await interaction.response.send_message("Which label do you want to lock?", view=LockLabelView(interaction), ephemeral=True)
+
+
+    # dynamically exec the generated slash commands into this file
+    # we don't need to do this here anymore, generated_commands is imported directly in maddie.py
+    # with open(os.path.join(os.path.normpath(os.path.join(os.path.realpath(__file__), os.pardir)), "generated_commands.py")) as generated_code:
+    #     exec(generated_code.read())
