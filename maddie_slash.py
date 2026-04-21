@@ -256,37 +256,70 @@ async def setup(bot):
                 await interaction.response.edit_message(content="Toggle influence over characters:", view=self)
             return callback
 
-    @bot.tree.command(name="me", description="Retrieve character information")
-    @app_commands.choices(
-        choice=[
-            app_commands.Choice(name='Print Character', value='print'),
-            app_commands.Choice(name='Show Labels', value='labels'),
-            app_commands.Choice(name='Show Conditions', value='conditions'),
-            app_commands.Choice(name='Show Party', value='party'),
-            app_commands.Choice(name='Show Influence', value='influence')
-        ]
-    )
-    async def me(interaction: discord.Interaction, choice: str):
-        from playbook_interactions import print_playbook_slash, get_conditions_slash, get_labels_slash, print_party, get_influence
-        logger.info(f"{interaction.guild}|{interaction.user.display_name}|{interaction.data}")
+    class MeDashboardView(discord.ui.View):
+        def __init__(self, original_interaction):
+            super().__init__(timeout=None)
+            self.original_interaction = original_interaction
+
+        @discord.ui.button(label="Print Character", style=discord.ButtonStyle.primary, custom_id="dashboard_print")
+        async def print_character(self, interaction: discord.Interaction, button: discord.ui.Button):
+            if interaction.user.id != self.original_interaction.user.id:
+                await interaction.response.send_message("This dashboard is not for you.", ephemeral=True)
+                return
+            from playbook_interactions import print_playbook_slash
+            await interaction.response.send_message(print_playbook_slash(interaction, 'en'), ephemeral=True)
+
+        @discord.ui.button(label="Show Labels", style=discord.ButtonStyle.secondary, custom_id="dashboard_labels")
+        async def show_labels(self, interaction: discord.Interaction, button: discord.ui.Button):
+            if interaction.user.id != self.original_interaction.user.id:
+                await interaction.response.send_message("This dashboard is not for you.", ephemeral=True)
+                return
+            from playbook_interactions import get_labels_slash
+            await interaction.response.send_message(get_labels_slash(interaction, 'en'), ephemeral=True)
+
+        @discord.ui.button(label="Show Conditions", style=discord.ButtonStyle.secondary, custom_id="dashboard_conditions")
+        async def show_conditions(self, interaction: discord.Interaction, button: discord.ui.Button):
+            if interaction.user.id != self.original_interaction.user.id:
+                await interaction.response.send_message("This dashboard is not for you.", ephemeral=True)
+                return
+            from playbook_interactions import get_conditions_slash
+            await interaction.response.send_message(get_conditions_slash(interaction, 'en'), ephemeral=True)
+
+        @discord.ui.button(label="Show Advancements", style=discord.ButtonStyle.success, custom_id="dashboard_advancements")
+        async def show_advancements(self, interaction: discord.Interaction, button: discord.ui.Button):
+            if interaction.user.id != self.original_interaction.user.id:
+                await interaction.response.send_message("This dashboard is not for you.", ephemeral=True)
+                return
+            from playbook_interactions import get_advancements
+            # Note: get_advancements expects message, we use context logic
+            key = f'{getattr(interaction.channel, "id", getattr(interaction, "channel_id", None))}/{interaction.user.id}'
+            char_info = info_from_s3(key, get_s3_client())
+            if not char_info:
+                await interaction.response.send_message("I'm sorry but it appears you have no character created", ephemeral=True)
+                return
+            from playbook_interactions import format_advancements
+            await interaction.response.send_message(format_advancements(char_info["advancement"], 'en'), ephemeral=True)
+
+    @bot.tree.command(name="me", description="Retrieve character information via a Dashboard")
+    async def me(interaction: discord.Interaction):
+        from playbook_interactions import get_character_ctx
+        logger.info(f"{interaction.guild}|{interaction.user.display_name}|Opened /me dashboard")
+        char_info = get_character_ctx(interaction)
         
-        if choice == 'print':
-            await interaction.response.send_message(print_playbook_slash(interaction, 'en'))
-        elif choice == 'conditions':
-            await interaction.response.send_message(get_conditions_slash(interaction, 'en'))
-        elif choice == 'labels':
-            await interaction.response.send_message(get_labels_slash(interaction, 'en'))
-        elif choice == 'party':
-            await interaction.response.send_message(print_party(interaction, 'en'))
-        elif choice == 'influence':
-            char_info = get_influence(interaction, 'en')
-            if char_info in ["I'm sorry but it appears you have no character created", "No other players in the party."]:
-                await interaction.response.send_message(char_info)
-            elif len(char_info['influenceOver']) <= 1:
-                await interaction.response.send_message("No other players in the party.")
-            else:
-                view = InfluenceView(interaction, char_info)
-                await interaction.response.send_message("Toggle influence over characters:", view=view)
+        if not char_info:
+            await interaction.response.send_message("You don't have a character in this channel.", ephemeral=True)
+            return
+
+        embed = discord.Embed(
+            title=f"Dashboard: {char_info.get('characterName', 'Unknown Character')}",
+            description=f"A {char_info.get('playbook', 'Unknown').capitalize()} played by {char_info.get('playerName', interaction.user.display_name)}",
+            color=0x53B0B9
+        )
+        embed.add_field(name="Potential", value=f"{char_info.get('potential', 0)}/5", inline=False)
+        embed.set_footer(text="Use the buttons below to interact with your character sheet.")
+
+        view = MeDashboardView(interaction)
+        await interaction.response.send_message(embed=embed, view=view, ephemeral=True)
 
     class BattleView(discord.ui.View):
         def __init__(self, interaction: discord.Interaction, team_stat, embed):
