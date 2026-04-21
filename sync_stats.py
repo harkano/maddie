@@ -93,8 +93,21 @@ async def sync_data():
                     logger.debug(f"Missing access to channel {cid}")
                 except discord.errors.NotFound:
                     logger.debug(f"Channel {cid} not found")
+                except discord.errors.HTTPException as e:
+                    if e.status == 429:
+                        logger.warning(f"Rate limited while fetching channel {cid}. Sleeping for {e.retry_after}s")
+                        await asyncio.sleep(e.retry_after + 0.5)  # give it a tiny bit extra buffer
+                        try:
+                            channel = await client.fetch_channel(cid)
+                        except Exception:
+                            pass
+                    else:
+                        logger.debug(f"HTTPException fetching channel {cid}: {e}")
                 except Exception as e:
                     logger.debug(f"Error fetching channel {cid}: {e}")
+            
+            # Much longer backoff to avoid the 429 entirely over 1000s of requests
+            await asyncio.sleep(1.0)
             
             if channel:
                 channel_names[str(cid)] = channel.name
@@ -115,8 +128,21 @@ async def sync_data():
             if not user:
                 try:
                     user = await client.fetch_user(uid)
+                except discord.errors.HTTPException as e:
+                    if e.status == 429:
+                        logger.warning(f"Rate limited while fetching user {uid}. Sleeping for {e.retry_after}s")
+                        await asyncio.sleep(e.retry_after + 0.5)  # give it a tiny bit extra buffer
+                        try:
+                            user = await client.fetch_user(uid)
+                        except Exception:
+                            pass
+                    else:
+                        logger.debug(f"HTTPException fetching user {uid}: {e}")
                 except Exception as e:
                     logger.debug(f"Error fetching user {uid}: {e}")
+            
+            # Much longer backoff to avoid the 429 entirely over 1000s of requests
+            await asyncio.sleep(1.0)
             
             if user:
                 user_names[str(uid)] = user.name
