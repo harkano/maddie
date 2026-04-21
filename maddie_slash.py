@@ -4,7 +4,7 @@ from discord import app_commands
 import logging
 from parse import slash_parse
 from config_interactions import team_slash
-from storage import info_from_s3, get_s3_client
+from storage import info_from_s3, get_s3_client, TOP_DIR
 
 logger = logging.getLogger('discord')
 
@@ -391,6 +391,57 @@ async def setup(bot):
 
         view = MeDashboardView(interaction)
         await interaction.response.send_message(embed=embed, view=view, ephemeral=True)
+
+    @bot.tree.command(name="stats", description="Bot Admin - Show usage stats across servers")
+    async def stats(interaction: discord.Interaction):
+        logger.info(f"{interaction.guild}|{interaction.user.display_name}|Opened /stats dashboard")
+        # Ensure we only allow admin/owner usage or restrict to people who need it.
+        # But as per request, just making a lightweight low-overhead dashboard.
+
+        # Calculate metrics by scanning the TOP_DIR quickly
+        total_guilds = len(bot.guilds)
+        total_users_bot_sees = len(bot.users)
+
+        total_channels_with_data = 0
+        total_characters = 0
+
+        if os.path.exists(TOP_DIR):
+            for entry in os.listdir(TOP_DIR):
+                channel_path = os.path.join(TOP_DIR, entry)
+                if os.path.isdir(channel_path):
+                    total_channels_with_data += 1
+                    # count .json files inside it
+                    json_files = [f for f in os.listdir(channel_path) if f.endswith(".json")]
+                    # exclude settings.json from character count
+                    char_files = [f for f in json_files if f != "settings.json"]
+                    total_characters += len(char_files)
+
+        embed = discord.Embed(
+            title="Maddie Stats Dashboard",
+            description="Quick overview of Maddie's usage and resources.",
+            color=0x53B0B9
+        )
+        
+        embed.add_field(name="Servers (Guilds)", value=str(total_guilds), inline=True)
+        embed.add_field(name="Visible Users", value=str(total_users_bot_sees), inline=True)
+        embed.add_field(name="\u200b", value="\u200b", inline=True) # spacer
+        
+        embed.add_field(name="Active Channels", value=str(total_channels_with_data), inline=True)
+        embed.add_field(name="Characters Created", value=str(total_characters), inline=True)
+
+        # Get very basic memory usage info natively in python, since it's a 1GB google cloud device.
+        try:
+            import resource
+            usage = resource.getrusage(resource.RUSAGE_SELF).ru_maxrss
+            # ru_maxrss is kilobytes on Linux
+            memory_mb = usage / 1024.0
+            embed.set_footer(text=f"Memory footprint: {memory_mb:.2f} MB")
+        except ImportError:
+            # resource module is Unix only
+            embed.set_footer(text="Memory footprint: Unavailable on this OS")
+
+        await interaction.response.send_message(embed=embed, ephemeral=True)
+
 
     class BattleView(discord.ui.View):
         def __init__(self, interaction: discord.Interaction, team_stat, embed):
