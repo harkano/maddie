@@ -9,7 +9,7 @@ logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger('sync_stats')
 
 load_dotenv()
-TOKEN = os.getenv('DISCORD_TOKEN')
+TOKEN = os.getenv('STATS_TOKEN')
 TOP_DIR = os.path.join(os.path.dirname(os.path.realpath(__file__)), "adventures")
 OUTPUT_FILE = os.path.join(os.path.dirname(os.path.realpath(__file__)), "adventurers.json")
 
