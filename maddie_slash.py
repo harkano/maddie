@@ -304,7 +304,7 @@ async def setup(bot):
             self.original_interaction = original_interaction
 
         @discord.ui.button(label="Print Character", style=discord.ButtonStyle.primary, custom_id="dashboard_print", row=0)
-        async def print_character(self, interaction: discord.Interaction, button: discord.ui.Button):
+        async def print_character(self, interaction: discord.Interaction, _button: discord.ui.Button):
             if interaction.user.id != self.original_interaction.user.id:
                 await interaction.response.send_message("This dashboard is not for you.", ephemeral=True)
                 return
@@ -312,7 +312,7 @@ async def setup(bot):
             await interaction.response.send_message(print_playbook_slash(interaction, 'en'), ephemeral=True)
 
         @discord.ui.button(label="Show Labels", style=discord.ButtonStyle.secondary, custom_id="dashboard_labels", row=0)
-        async def show_labels(self, interaction: discord.Interaction, button: discord.ui.Button):
+        async def show_labels(self, interaction: discord.Interaction, _button: discord.ui.Button):
             if interaction.user.id != self.original_interaction.user.id:
                 await interaction.response.send_message("This dashboard is not for you.", ephemeral=True)
                 return
@@ -320,7 +320,7 @@ async def setup(bot):
             await interaction.response.send_message(get_labels_slash(interaction, 'en'), ephemeral=True)
 
         @discord.ui.button(label="Show Conditions", style=discord.ButtonStyle.secondary, custom_id="dashboard_conditions", row=0)
-        async def show_conditions(self, interaction: discord.Interaction, button: discord.ui.Button):
+        async def show_conditions(self, interaction: discord.Interaction, _button: discord.ui.Button):
             if interaction.user.id != self.original_interaction.user.id:
                 await interaction.response.send_message("This dashboard is not for you.", ephemeral=True)
                 return
@@ -328,11 +328,10 @@ async def setup(bot):
             await interaction.response.send_message(get_conditions_slash(interaction, 'en'), ephemeral=True)
 
         @discord.ui.button(label="Show Advancements", style=discord.ButtonStyle.success, custom_id="dashboard_advancements", row=0)
-        async def show_advancements(self, interaction: discord.Interaction, button: discord.ui.Button):
+        async def show_advancements(self, interaction: discord.Interaction, _button: discord.ui.Button):
             if interaction.user.id != self.original_interaction.user.id:
                 await interaction.response.send_message("This dashboard is not for you.", ephemeral=True)
                 return
-            from playbook_interactions import get_advancements
             # Note: get_advancements expects message, we use context logic
             key = f'{getattr(interaction.channel, "id", getattr(interaction, "channel_id", None))}/{interaction.user.id}'
             char_info = info_from_s3(key, get_s3_client())
@@ -342,8 +341,16 @@ async def setup(bot):
             from playbook_interactions import format_advancements
             await interaction.response.send_message(format_advancements(char_info["advancement"], 'en'), ephemeral=True)
 
+        @discord.ui.button(label="Show Moves", style=discord.ButtonStyle.secondary, custom_id="dashboard_moves", row=1)
+        async def show_moves(self, interaction: discord.Interaction, _button: discord.ui.Button):
+            if interaction.user.id != self.original_interaction.user.id:
+                await interaction.response.send_message("This dashboard is not for you.", ephemeral=True)
+                return
+            from playbook_interactions import get_moves_slash
+            await interaction.response.send_message(get_moves_slash(interaction, 'en'), ephemeral=True)
+
         @discord.ui.button(label="Toggle Influence", style=discord.ButtonStyle.secondary, custom_id="dashboard_influence", row=1)
-        async def toggle_influence(self, interaction: discord.Interaction, button: discord.ui.Button):
+        async def toggle_influence(self, interaction: discord.Interaction, _button: discord.ui.Button):
             if interaction.user.id != self.original_interaction.user.id:
                 await interaction.response.send_message("This dashboard is not for you.", ephemeral=True)
                 return
@@ -358,14 +365,14 @@ async def setup(bot):
                 await interaction.response.send_message("Toggle your influence over characters:", view=view, ephemeral=True)
 
         @discord.ui.button(label="Mark Condition", style=discord.ButtonStyle.danger, custom_id="dashboard_mark", row=1)
-        async def mark_condition_btn(self, interaction: discord.Interaction, button: discord.ui.Button):
+        async def mark_condition_btn(self, interaction: discord.Interaction, _button: discord.ui.Button):
             if interaction.user.id != self.original_interaction.user.id:
                 await interaction.response.send_message("This dashboard is not for you.", ephemeral=True)
                 return
             await interaction.response.send_message("Which condition do you want to mark?", view=MarkConditionView(interaction), ephemeral=True)
 
         @discord.ui.button(label="Clear Condition", style=discord.ButtonStyle.primary, custom_id="dashboard_clear", row=1)
-        async def clear_condition_btn(self, interaction: discord.Interaction, button: discord.ui.Button):
+        async def clear_condition_btn(self, interaction: discord.Interaction, _button: discord.ui.Button):
             if interaction.user.id != self.original_interaction.user.id:
                 await interaction.response.send_message("This dashboard is not for you.", ephemeral=True)
                 return
@@ -432,13 +439,14 @@ async def setup(bot):
         # Get very basic memory usage info natively in python, since it's a 1GB google cloud device.
         try:
             import resource
+        except ImportError:
+            # resource module is Unix only
+            embed.set_footer(text="Memory footprint: Unavailable on this OS")
+        else:
             usage = resource.getrusage(resource.RUSAGE_SELF).ru_maxrss
             # ru_maxrss is kilobytes on Linux
             memory_mb = usage / 1024.0
             embed.set_footer(text=f"Memory footprint: {memory_mb:.2f} MB")
-        except ImportError:
-            # resource module is Unix only
-            embed.set_footer(text="Memory footprint: Unavailable on this OS")
 
         await interaction.response.send_message(embed=embed, ephemeral=True)
 
