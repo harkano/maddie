@@ -779,8 +779,116 @@ def get_sheet(message, lang):
     char_info = info_from_s3(key, s3_client)
     if not char_info:
         return get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.no_character')
+    return char_info
 
-    return char  #format_advancements(char_info[C], lang)
+def get_advancement_description(char_info, advance_key):
+    """Get the description field for an advancement by key."""
+    advancements = char_info.get(ADVANCEMENT, {})
+    for category in ['basic', 'advanced']:
+        if category in advancements and advance_key in advancements[category]:
+            return advancements[category][advance_key].get(DESCRIPTION, '')
+    return None
+
+def is_special_advancement(description):
+    """Check if an advancement requires special handling."""
+    return description in ['lock', 'rearrange', 'loseInfluence', 'lockSoldier']
+
+def apply_lock_advancement(ctx, lang, lock_label_key, add_label_key):
+    """Apply the lock advancement: lock one label, add +1 to another."""
+    key = get_key_from_ctx(ctx)
+    s3_client = get_s3_client()
+    char_info = info_from_s3(key, s3_client)
+    if not char_info:
+        return "I'm sorry but it appears you have no character created"
+
+    labels = char_info.get(LABELS, {})
+
+    # Validate labels exist
+    if lock_label_key not in labels or add_label_key not in labels:
+        return "Invalid label selection."
+
+    # Lock the label
+    labels[lock_label_key][LOCKED] = True
+
+    # Add +1 to the other label (capped at MAX_LABEL_VALUE)
+    from constants import MAX_LABEL_VALUE
+    current_value = labels[add_label_key][VALUE]
+    if current_value < MAX_LABEL_VALUE:
+        labels[add_label_key][VALUE] = current_value + 1
+
+    upload_to_s3(char_info, key, s3_client)
+
+    char_name = char_info.get('characterName', 'Unknown')
+    player_name = char_info.get('playerName', 'Unknown')
+    lock_label_name = get_translation(lang, f'labels.{lock_label_key}')
+    add_label_name = get_translation(lang, f'labels.{add_label_key}')
+
+    return f"**{char_name}** ({player_name}) locked **{lock_label_name}** and added +1 to **{add_label_name}**."
+
+def apply_rearrange_advancement(ctx, lang, add_label_key):
+    """Apply the rearrange advancement: pick which label gets the +1."""
+    key = get_key_from_ctx(ctx)
+    s3_client = get_s3_client()
+    char_info = info_from_s3(key, s3_client)
+    if not char_info:
+        return "I'm sorry but it appears you have no character created"
+
+    labels = char_info.get(LABELS, {})
+
+    if add_label_key not in labels:
+        return "Invalid label selection."
+
+    # Add +1 to the chosen label (capped at MAX_LABEL_VALUE)
+    from constants import MAX_LABEL_VALUE
+    current_value = labels[add_label_key][VALUE]
+    if current_value < MAX_LABEL_VALUE:
+        labels[add_label_key][VALUE] = current_value + 1
+
+    upload_to_s3(char_info, key, s3_client)
+
+    char_name = char_info.get('characterName', 'Unknown')
+    player_name = char_info.get('playerName', 'Unknown')
+    add_label_name = get_translation(lang, f'labels.{add_label_key}')
+
+    return f"**{char_name}** ({player_name}) rearranged labels and added +1 to **{add_label_name}**."
+
+def apply_lose_influence_advancement(ctx, lang, target_name, add_label_key):
+    """Apply the lose influence advancement: remove influence, add +1 to a label."""
+    key = get_key_from_ctx(ctx)
+    s3_client = get_s3_client()
+    char_info = info_from_s3(key, s3_client)
+    if not char_info:
+        return "I'm sorry but it appears you have no character created"
+
+    # Remove the influence
+    influence_over = char_info.get('influenceOver', [])
+    target_char = None
+    for char in influence_over:
+        if char['id'] == target_name:
+            char['hasInfluence'] = False
+            target_char = char['id']
+            break
+
+    if not target_char:
+        return f"Could not find influence over {target_name}."
+
+    # Add +1 to the label
+    labels = char_info.get(LABELS, {})
+    if add_label_key not in labels:
+        return "Invalid label selection."
+
+    from constants import MAX_LABEL_VALUE
+    current_value = labels[add_label_key][VALUE]
+    if current_value < MAX_LABEL_VALUE:
+        labels[add_label_key][VALUE] = current_value + 1
+
+    upload_to_s3(char_info, key, s3_client)
+
+    char_name = char_info.get('characterName', 'Unknown')
+    player_name = char_info.get('playerName', 'Unknown')
+    add_label_name = get_translation(lang, f'labels.{add_label_key}')
+
+    return f"**{char_name}** ({player_name}) removed influence from **{target_name}** and added +1 to **{add_label_name}**."
 
 def print_playbook(message, lang):
     key, _content = get_key_and_content_from_message(message)
