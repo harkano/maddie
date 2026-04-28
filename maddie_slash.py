@@ -298,6 +298,82 @@ async def setup(bot):
             result = condition_slash(select_interaction, 'en', select.values[0], 'clear')
             await select_interaction.response.send_message(result, ephemeral=True)
 
+    class SelectMoveView(discord.ui.View):
+        def __init__(self, original_interaction, char_info, all_moves):
+            super().__init__()
+            self.original_interaction = original_interaction
+            unpicked = [
+                m for m in char_info.get('moves', [])
+                if not m.get('picked', False)
+            ]
+            options = []
+            for char_move in unpicked[:25]:
+                move_data = next((mv for mv in all_moves if str(mv['id']) == str(char_move.get('id'))), None)
+                if move_data:
+                    options.append(discord.SelectOption(
+                        label=move_data.get('capital', f"Move {char_move.get('id')}")[:100],
+                        value=str(char_move.get('id')),
+                        description=move_data.get('blob', '')[:100],
+                    ))
+            if not options:
+                options = [discord.SelectOption(label="No unpicked moves available", value="none")]
+            select = discord.ui.Select(
+                placeholder="Select a move to pick",
+                options=options,
+            )
+            select.callback = self.select_callback
+            self.add_item(select)
+
+        async def select_callback(self, select_interaction: discord.Interaction):
+            if select_interaction.user.id != self.original_interaction.user.id:
+                await select_interaction.response.send_message("This menu is not for you.", ephemeral=True)
+                return
+            move_id = select_interaction.data['values'][0]
+            if move_id == "none":
+                await select_interaction.response.send_message("No moves available to pick.", ephemeral=True)
+                return
+            from playbook_interactions import toggle_move_picked
+            result = toggle_move_picked(select_interaction, move_id, True)
+            await select_interaction.response.send_message(result, ephemeral=True)
+
+    class RemoveMoveView(discord.ui.View):
+        def __init__(self, original_interaction, char_info, all_moves):
+            super().__init__()
+            self.original_interaction = original_interaction
+            picked = [
+                m for m in char_info.get('moves', [])
+                if m.get('picked', False)
+            ]
+            options = []
+            for char_move in picked[:25]:
+                move_data = next((mv for mv in all_moves if str(mv['id']) == str(char_move.get('id'))), None)
+                if move_data:
+                    options.append(discord.SelectOption(
+                        label=move_data.get('capital', f"Move {char_move.get('id')}")[:100],
+                        value=str(char_move.get('id')),
+                        description=move_data.get('blob', '')[:100],
+                    ))
+            if not options:
+                options = [discord.SelectOption(label="No picked moves to remove", value="none")]
+            select = discord.ui.Select(
+                placeholder="Select a move to remove",
+                options=options,
+            )
+            select.callback = self.select_callback
+            self.add_item(select)
+
+        async def select_callback(self, select_interaction: discord.Interaction):
+            if select_interaction.user.id != self.original_interaction.user.id:
+                await select_interaction.response.send_message("This menu is not for you.", ephemeral=True)
+                return
+            move_id = select_interaction.data['values'][0]
+            if move_id == "none":
+                await select_interaction.response.send_message("No moves available to remove.", ephemeral=True)
+                return
+            from playbook_interactions import toggle_move_picked
+            result = toggle_move_picked(select_interaction, move_id, False)
+            await select_interaction.response.send_message(result, ephemeral=True)
+
     class MeDashboardView(discord.ui.View):
         def __init__(self, original_interaction):
             super().__init__(timeout=None)
@@ -348,6 +424,34 @@ async def setup(bot):
                 return
             from playbook_interactions import get_moves_slash
             await interaction.response.send_message(get_moves_slash(interaction, 'en'), ephemeral=True)
+
+        @discord.ui.button(label="Select Move", style=discord.ButtonStyle.success, custom_id="dashboard_select_move", row=2)
+        async def select_move_btn(self, interaction: discord.Interaction, _button: discord.ui.Button):
+            if interaction.user.id != self.original_interaction.user.id:
+                await interaction.response.send_message("This dashboard is not for you.", ephemeral=True)
+                return
+            key = f'{getattr(interaction.channel, "id", getattr(interaction, "channel_id", None))}/{interaction.user.id}'
+            char_info = info_from_s3(key, get_s3_client())
+            if not char_info:
+                await interaction.response.send_message("I'm sorry but it appears you have no character created", ephemeral=True)
+                return
+            with open('data.json', 'r') as f:
+                all_moves = json.load(f)['moves']
+            await interaction.response.send_message("Which move do you want to pick?", view=SelectMoveView(interaction, char_info, all_moves), ephemeral=True)
+
+        @discord.ui.button(label="Remove Move", style=discord.ButtonStyle.danger, custom_id="dashboard_remove_move", row=2)
+        async def remove_move_btn(self, interaction: discord.Interaction, _button: discord.ui.Button):
+            if interaction.user.id != self.original_interaction.user.id:
+                await interaction.response.send_message("This dashboard is not for you.", ephemeral=True)
+                return
+            key = f'{getattr(interaction.channel, "id", getattr(interaction, "channel_id", None))}/{interaction.user.id}'
+            char_info = info_from_s3(key, get_s3_client())
+            if not char_info:
+                await interaction.response.send_message("I'm sorry but it appears you have no character created", ephemeral=True)
+                return
+            with open('data.json', 'r') as f:
+                all_moves = json.load(f)['moves']
+            await interaction.response.send_message("Which move do you want to remove?", view=RemoveMoveView(interaction, char_info, all_moves), ephemeral=True)
 
         @discord.ui.button(label="Toggle Influence", style=discord.ButtonStyle.secondary, custom_id="dashboard_influence", row=1)
         async def toggle_influence(self, interaction: discord.Interaction, _button: discord.ui.Button):

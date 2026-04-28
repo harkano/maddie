@@ -597,6 +597,30 @@ def get_moves_slash(ctx, lang):
     return response
 
 
+def toggle_move_picked(ctx, move_id, picked):
+    key = get_key_from_ctx(ctx)
+    s3_client = get_s3_client()
+    char_info = info_from_s3(key, s3_client)
+    if not char_info:
+        return "I'm sorry but it appears you have no character created"
+
+    character_moves = char_info.get('moves', [])
+    move = next((m for m in character_moves if str(m.get('id')) == str(move_id)), None)
+    if not move:
+        return f"Move not found on your character sheet."
+
+    move['picked'] = picked
+    upload_to_s3(char_info, key, s3_client)
+
+    with open('data.json', 'r') as f:
+        all_moves = json.load(f)['moves']
+    move_data = next((m for m in all_moves if str(m['id']) == str(move_id)), None)
+    move_name = move_data.get('capital', f'Move {move_id}') if move_data else f'Move {move_id}'
+
+    status = "selected" if picked else "removed"
+    return f"**{move_name}** has been {status}."
+
+
 def get_pending_advancements(message, lang):
     key, _content = get_key_and_content_from_message(message)
     s3_client = get_s3_client()
