@@ -351,6 +351,108 @@ async def setup(bot):
             await select_interaction.response.edit_message(embed=updated_embed, view=self)
             await select_interaction.followup.send(public_result)
 
+    class LabelsView(discord.ui.View):
+        def __init__(self, original_interaction, char_info):
+            super().__init__()
+            self.original_interaction = original_interaction
+            self.char_info = char_info
+            self.label_up = None
+            self.label_down = None
+            self._rebuild_view()
+
+        def _get_label_options(self, direction):
+            from constants import MAX_LABEL_VALUE, MIN_LABEL_VALUE
+            labels = self.char_info.get('labels', {})
+            options = []
+            label_order = ['danger', 'freak', 'superior', 'savior', 'mundane', 'soldier']
+            for label_key in label_order:
+                if label_key in labels:
+                    label = labels[label_key]
+                    value = label.get('value', 0)
+                    locked = label.get('locked', False)
+                    name = label_key.capitalize()
+                    can_shift = not locked
+                    if direction == 'up':
+                        can_shift = can_shift and value < MAX_LABEL_VALUE
+                        reason = 'at max' if value >= MAX_LABEL_VALUE else ('locked' if locked else '')
+                    else:
+                        can_shift = can_shift and value > MIN_LABEL_VALUE
+                        reason = 'at min' if value <= MIN_LABEL_VALUE else ('locked' if locked else '')
+                    description = f'Value: {value}' + (f' ({reason})' if reason else '')
+                    options.append(discord.SelectOption(
+                        label=f"{name}: {value}{' 🔒' if locked else ''}",
+                        value=label_key,
+                        description=description,
+                        default=(direction == 'up' and self.label_up == label_key) or (direction == 'down' and self.label_down == label_key),
+                    ))
+            return options
+
+        def _rebuild_view(self):
+            self.clear_items()
+            increase_options = self._get_label_options('up')
+            increase_select = discord.ui.Select(
+                placeholder='Label to increase',
+                options=increase_options,
+                custom_id='label_up',
+                row=1
+            )
+            increase_select.callback = self.select_callback
+            self.add_item(increase_select)
+            decrease_options = self._get_label_options('down')
+            decrease_select = discord.ui.Select(
+                placeholder='Label to decrease',
+                options=decrease_options,
+                custom_id='label_down',
+                row=2
+            )
+            decrease_select.callback = self.select_callback
+            self.add_item(decrease_select)
+            apply_button = discord.ui.Button(
+                label='Apply Shift',
+                style=discord.ButtonStyle.primary,
+                custom_id='apply_shift',
+                row=3
+            )
+            apply_button.callback = self.apply_callback
+            self.add_item(apply_button)
+
+        async def select_callback(self, select_interaction: discord.Interaction):
+            if select_interaction.user.id != self.original_interaction.user.id:
+                await select_interaction.response.send_message('This menu is not for you.', ephemeral=True)
+                return
+            custom_id = select_interaction.data['custom_id']
+            selected_value = select_interaction.data['values'][0]
+            if custom_id == 'label_up':
+                self.label_up = selected_value
+            elif custom_id == 'label_down':
+                self.label_down = selected_value
+            self._rebuild_view()
+            await select_interaction.response.edit_message(view=self)
+
+        async def apply_callback(self, button_interaction: discord.Interaction):
+            if button_interaction.user.id != self.original_interaction.user.id:
+                await button_interaction.response.send_message('This menu is not for you.', ephemeral=True)
+                return
+            if not self.label_up or not self.label_down:
+                await button_interaction.response.send_message('Please select both a label to increase and a label to decrease.', ephemeral=True)
+                return
+            if self.label_up == self.label_down:
+                await button_interaction.response.send_message('You must select different labels to increase and decrease.', ephemeral=True)
+                return
+            from playbook_interactions import edit_labels_slash, build_labels_embed
+            public_result = edit_labels_slash(button_interaction, 'en', self.label_up, self.label_down)
+            if 'cannot' in public_result.lower() or 'not' in public_result.lower() and 'different' in public_result.lower():
+                await button_interaction.response.send_message(public_result, ephemeral=True)
+                return
+            key = f'{getattr(button_interaction.channel, "id", getattr(button_interaction, "channel_id", None))}/{button_interaction.user.id}'
+            self.char_info = info_from_s3(key, get_s3_client())
+            self.label_up = None
+            self.label_down = None
+            self._rebuild_view()
+            updated_embed = build_labels_embed(self.char_info)
+            await button_interaction.response.edit_message(embed=updated_embed, view=self)
+            await button_interaction.followup.send(public_result)
+
     class MeDashboardView(discord.ui.View):
         def __init__(self, original_interaction):
             super().__init__(timeout=None)
@@ -369,8 +471,13 @@ async def setup(bot):
             if interaction.user.id != self.original_interaction.user.id:
                 await interaction.response.send_message("This dashboard is not for you.", ephemeral=True)
                 return
-            from playbook_interactions import get_labels_slash
-            await interaction.response.send_message(get_labels_slash(interaction, 'en'), ephemeral=True)
+            from playbook_interactions import get_labels_slash, build_labels_embed
+            char_info = get_labels_slash(interaction, 'en')
+            if char_info is None:
+                await interaction.response.send_message("I'm sorry but it appears you have no character created", ephemeral=True)
+                return
+            embed = build_labels_embed(char_info)
+            await interaction.response.send_message(embed=embed, view=LabelsView(interaction, char_info), ephemeral=True)
 
         @discord.ui.button(label="Show Conditions", style=discord.ButtonStyle.secondary, custom_id="dashboard_conditions", row=0)
         async def show_conditions(self, interaction: discord.Interaction, _button: discord.ui.Button):

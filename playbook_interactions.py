@@ -523,9 +523,8 @@ def get_labels_slash(ctx, lang):
     s3_client = get_s3_client()
     char_info = info_from_s3(key, s3_client)
     if not char_info:
-        return get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.no_character')
-
-    return format_labels(char_info[LABELS], lang)
+        return None, get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.no_character')
+    return char_info
 
 
 def get_conditions(message, lang):
@@ -536,6 +535,25 @@ def get_conditions(message, lang):
         return get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.no_character')
     return format_conditions(char_info[CONDITIONS], lang)
 
+
+def build_labels_embed(char_info):
+    import discord
+    char_name = char_info.get('characterName', 'Unknown')
+    labels = char_info.get('labels', {})
+    embed = discord.Embed(
+        title=f"{char_name}'s Labels",
+        description="Select a label to increase and a label to decrease, then apply the shift.",
+        color=0x3498DB
+    )
+    label_order = ['danger', 'freak', 'superior', 'savior', 'mundane', 'soldier']
+    for label_key in label_order:
+        if label_key in labels:
+            label = labels[label_key]
+            value = label.get('value', 0)
+            locked = label.get('locked', False)
+            status = '🔒' if locked else ''
+            embed.add_field(name=f"{label_key.capitalize()}: {value} {status}", value='​', inline=True)
+    return embed
 
 def build_conditions_embed(char_info):
     import discord
