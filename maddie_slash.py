@@ -294,7 +294,9 @@ async def setup(bot):
                 return
             condition = select_interaction.data['values'][0]
             from playbook_interactions import invert_condition_slash, build_conditions_embed
-            public_result = invert_condition_slash(select_interaction, 'en', condition)
+            is_marked = self.char_info.get('conditions', {}).get(condition, False)
+            what = 'clear' if is_marked else 'mark'
+            public_result = invert_condition_slash(select_interaction, 'en', condition, what)
             key = f'{getattr(select_interaction.channel, "id", getattr(select_interaction, "channel_id", None))}/{select_interaction.user.id}'
             self.char_info = info_from_s3(key, get_s3_client())
             self._rebuild_select()
