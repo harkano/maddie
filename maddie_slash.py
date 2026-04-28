@@ -276,7 +276,7 @@ async def setup(bot):
                 return
             from playbook_interactions import condition_slash
             result = condition_slash(select_interaction, 'en', select.values[0], 'mark')
-            await select_interaction.response.send_message(result, ephemeral=True)
+            await select_interaction.response.send_message(result)
             
     class ClearConditionView(discord.ui.View):
         def __init__(self, original_interaction):
@@ -297,7 +297,7 @@ async def setup(bot):
                 return
             from playbook_interactions import condition_slash
             result = condition_slash(select_interaction, 'en', select.values[0], 'clear')
-            await select_interaction.response.send_message(result, ephemeral=True)
+            await select_interaction.response.send_message(result)
 
     class SelectMoveView(discord.ui.View):
         def __init__(self, original_interaction, char_info, all_moves):
@@ -335,7 +335,7 @@ async def setup(bot):
                 return
             from playbook_interactions import toggle_move_picked
             result = toggle_move_picked(select_interaction, move_id, True)
-            await select_interaction.response.send_message(result, ephemeral=True)
+            await select_interaction.response.send_message(result)
 
     class RemoveMoveView(discord.ui.View):
         def __init__(self, original_interaction, char_info, all_moves):
@@ -373,7 +373,7 @@ async def setup(bot):
                 return
             from playbook_interactions import toggle_move_picked
             result = toggle_move_picked(select_interaction, move_id, False)
-            await select_interaction.response.send_message(result, ephemeral=True)
+            await select_interaction.response.send_message(result)
 
     class MeDashboardView(discord.ui.View):
         def __init__(self, original_interaction):
@@ -424,7 +424,10 @@ async def setup(bot):
                 await interaction.response.send_message("This dashboard is not for you.", ephemeral=True)
                 return
             from playbook_interactions import get_moves_slash
-            await interaction.response.send_message(get_moves_slash(interaction, 'en'), ephemeral=True)
+            chunks = get_moves_slash(interaction, 'en')
+            await interaction.response.send_message(chunks[0], ephemeral=True)
+            for chunk in chunks[1:]:
+                await interaction.followup.send(chunk, ephemeral=True)
 
         @discord.ui.button(label="Select Move", style=discord.ButtonStyle.success, custom_id="dashboard_select_move", row=2)
         async def select_move_btn(self, interaction: discord.Interaction, _button: discord.ui.Button):
