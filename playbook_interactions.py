@@ -540,19 +540,22 @@ def build_labels_embed(char_info):
     import discord
     char_name = char_info.get('characterName', 'Unknown')
     labels = char_info.get('labels', {})
-    embed = discord.Embed(
-        title=f"{char_name}'s Labels",
-        description="Select a label to increase and a label to decrease, then apply the shift.",
-        color=0x3498DB
-    )
+    lines = []
     label_order = ['danger', 'freak', 'superior', 'savior', 'mundane', 'soldier']
     for label_key in label_order:
         if label_key in labels:
             label = labels[label_key]
             value = label.get('value', 0)
             locked = label.get('locked', False)
-            status = '🔒' if locked else ''
-            embed.add_field(name=f"{label_key.capitalize()}: {value} {status}", value='​', inline=True)
+            status = ' 🔒' if locked else ''
+            lines.append(f"**{label_key.capitalize()}:** {value}{status}")
+    description = '\n'.join(lines) if lines else 'No labels found.'
+    embed = discord.Embed(
+        title=f"{char_name}'s Labels",
+        description=description,
+        color=0x3498DB
+    )
+    embed.set_footer(text="Select a label to increase and a label to decrease, then apply the shift.")
     return embed
 
 def build_conditions_embed(char_info):
