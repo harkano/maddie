@@ -115,7 +115,10 @@ def invert_condition_slash(ctx, lang, condition, what):
 
     upload_to_s3(char_info, key, s3_client)
 
-    return format_conditions_slash(char_info[CONDITIONS], lang, condition, what)
+    char_name = char_info.get('characterName', 'Unknown')
+    player_name = char_info.get('playerName', 'Unknown')
+    result = format_conditions_slash(char_info[CONDITIONS], lang, condition, what)
+    return f"**{char_name}** ({player_name}):\n{result}"
 
 
 
@@ -571,7 +574,7 @@ def get_moves_slash(ctx, lang):
     s3_client = get_s3_client()
     char_info = info_from_s3(key, s3_client)
     if not char_info:
-        return get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.no_character')
+        return [get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.no_character')]
 
     # Load all moves from data.json
     with open('data.json', 'r') as f:
@@ -580,21 +583,30 @@ def get_moves_slash(ctx, lang):
     # Get character's moves
     character_moves = char_info.get('moves', [])
 
-    response = "Your character's moves:\n"
+    chunks = []
+    current = "Your character's moves:\n"
     for char_move in character_moves:
         move_id = char_move.get('id')
         picked = char_move.get('picked', False)
-        
-        # Find the move in all_moves
+
         move_data = next((move for move in all_moves if move['id'] == move_id), None)
-        
+
         if move_data:
             move_name = move_data.get('capital', 'Unknown Move')
             move_text = move_data.get('blob', 'No description available.')
             taken_status = " (Taken)" if picked else " (Not Taken)"
-            response += f"**{move_name}**{taken_status}\n- {move_text}\n\n"
+            entry = f"**{move_name}**{taken_status}\n- {move_text}\n\n"
 
-    return response
+            if len(current) + len(entry) > 1900:
+                chunks.append(current)
+                current = entry
+            else:
+                current += entry
+
+    if current:
+        chunks.append(current)
+
+    return chunks if chunks else ["No moves found on your character sheet."]
 
 
 def toggle_move_picked(ctx, move_id, picked):
@@ -617,8 +629,10 @@ def toggle_move_picked(ctx, move_id, picked):
     move_data = next((m for m in all_moves if str(m['id']) == str(move_id)), None)
     move_name = move_data.get('capital', f'Move {move_id}') if move_data else f'Move {move_id}'
 
+    char_name = char_info.get('characterName', 'Unknown')
+    player_name = char_info.get('playerName', 'Unknown')
     status = "selected" if picked else "removed"
-    return f"**{move_name}** has been {status}."
+    return f"**{char_name}** ({player_name}) has {status} **{move_name}**."
 
 
 def get_pending_advancements(message, lang):
