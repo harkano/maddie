@@ -690,6 +690,89 @@ def get_advancements(message, lang):
 
     return format_advancements(char_info[ADVANCEMENT], lang)
 
+def build_advancements_embed(char_info):
+    import discord
+    from language_handler import get_translation
+    char_name = char_info.get('characterName', 'Unknown')
+    lang = 'en'
+    advancements = char_info.get(ADVANCEMENT, {})
+    pending = char_info.get(PENDING_ADVANCEMENTS, 0)
+
+    lines = []
+    lines.append(f"**Pending Advancements:** {pending}")
+    lines.append("")
+
+    basic = advancements.get('basic', {})
+    advanced = advancements.get('advanced', {})
+
+    if basic:
+        lines.append("**Basic:**")
+        for adv_key, adv_data in basic.items():
+            taken = adv_data.get(TAKEN, False)
+            description = adv_data.get(DESCRIPTION, '')
+            adv_text = get_translation(lang, f'playbooks.advances.{description}') if description else adv_key
+            status = '✅' if taken else '⬜'
+            lines.append(f"{status} {adv_text}")
+
+    if advanced:
+        lines.append("")
+        lines.append("**Advanced:**")
+        for adv_key, adv_data in advanced.items():
+            taken = adv_data.get(TAKEN, False)
+            description = adv_data.get(DESCRIPTION, '')
+            adv_text = get_translation(lang, f'playbooks.advances.{description}') if description else adv_key
+            status = '✅' if taken else '⬜'
+            lines.append(f"{status} {adv_text}")
+
+    embed = discord.Embed(
+        title=f"{char_name}'s Advancements",
+        description='\n'.join(lines),
+        color=0x9B59B6
+    )
+    embed.set_footer(text="Select an advancement to toggle it taken or available.")
+    return embed
+
+def get_advancements_slash(ctx, lang):
+    key = get_key_from_ctx(ctx)
+    s3_client = get_s3_client()
+    char_info = info_from_s3(key, s3_client)
+    if not char_info:
+        return None, get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.no_character')
+    return char_info
+
+def toggle_advancement_slash(ctx, lang, advance_key):
+    key = get_key_from_ctx(ctx)
+    s3_client = get_s3_client()
+    char_info = info_from_s3(key, s3_client)
+    if not char_info:
+        return "I'm sorry but it appears you have no character created"
+
+    advancements = char_info.get(ADVANCEMENT, {})
+    adv_data = None
+    adv_type = None
+
+    if 'basic' in advancements and advance_key in advancements['basic']:
+        adv_data = advancements['basic'][advance_key]
+        adv_type = 'basic'
+    elif 'advanced' in advancements and advance_key in advancements['advanced']:
+        adv_data = advancements['advanced'][advance_key]
+        adv_type = 'advanced'
+
+    if not adv_data:
+        return f"Advancement '{advance_key}' not found."
+
+    new_taken = not adv_data.get(TAKEN, False)
+    adv_data[TAKEN] = new_taken
+    upload_to_s3(char_info, key, s3_client)
+
+    description = adv_data.get(DESCRIPTION, '')
+    adv_text = get_translation(lang, f'playbooks.advances.{description}') if description else advance_key
+    char_name = char_info.get('characterName', 'Unknown')
+    player_name = char_info.get('playerName', 'Unknown')
+    status = "taken" if new_taken else "marked available"
+
+    return f"**{char_name}** ({player_name}) has {status} **{adv_text}**."
+
 def get_sheet(message, lang):
     key, _content = get_key_and_content_from_message(message)
     s3_client = get_s3_client()

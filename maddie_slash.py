@@ -446,12 +446,57 @@ async def setup(bot):
                 return
             key = f'{getattr(button_interaction.channel, "id", getattr(button_interaction, "channel_id", None))}/{button_interaction.user.id}'
             self.char_info = info_from_s3(key, get_s3_client())
-            self.label_up = None
-            self.label_down = None
-            self._rebuild_view()
             updated_embed = build_labels_embed(self.char_info)
             await button_interaction.response.edit_message(embed=updated_embed, view=self)
             await button_interaction.followup.send(public_result)
+
+    class AdvancementsView(discord.ui.View):
+        def __init__(self, original_interaction, char_info):
+            super().__init__()
+            self.original_interaction = original_interaction
+            self.char_info = char_info
+            self._rebuild_select()
+
+        def _rebuild_select(self):
+            self.clear_items()
+            from language_handler import get_translation
+            advancements = self.char_info.get('advancement', {})
+            options = []
+            for category in ['basic', 'advanced']:
+                adv_list = advancements.get(category, {})
+                for adv_key, adv_data in adv_list.items():
+                    taken = adv_data.get('taken', False)
+                    description = adv_data.get('description', '')
+                    adv_text = get_translation('en', f'playbooks.advances.{description}') if description else adv_key
+                    label = f"{'✅' if taken else '⬜'} {adv_text}"[:100]
+                    options.append(discord.SelectOption(
+                        label=label,
+                        value=f"{category}:{adv_key}",
+                        description='Untake' if taken else 'Take this advancement',
+                    ))
+            if not options:
+                options = [discord.SelectOption(label='No advancements found', value='none')]
+            select = discord.ui.Select(placeholder='Toggle an advancement', options=options)
+            select.callback = self.select_callback
+            self.add_item(select)
+
+        async def select_callback(self, select_interaction: discord.Interaction):
+            if select_interaction.user.id != self.original_interaction.user.id:
+                await select_interaction.response.send_message('This menu is not for you.', ephemeral=True)
+                return
+            value = select_interaction.data['values'][0]
+            if value == 'none':
+                await select_interaction.response.send_message('No advancements available.', ephemeral=True)
+                return
+            category, adv_key = value.split(':', 1)
+            from playbook_interactions import toggle_advancement_slash, build_advancements_embed
+            public_result = toggle_advancement_slash(select_interaction, 'en', adv_key)
+            key = f'{getattr(select_interaction.channel, "id", getattr(select_interaction, "channel_id", None))}/{select_interaction.user.id}'
+            self.char_info = info_from_s3(key, get_s3_client())
+            self._rebuild_select()
+            updated_embed = build_advancements_embed(self.char_info)
+            await select_interaction.response.edit_message(embed=updated_embed, view=self)
+            await select_interaction.followup.send(public_result)
 
     class MeDashboardView(discord.ui.View):
         def __init__(self, original_interaction):
@@ -497,13 +542,13 @@ async def setup(bot):
             if interaction.user.id != self.original_interaction.user.id:
                 await interaction.response.send_message("This dashboard is not for you.", ephemeral=True)
                 return
-            key = f'{getattr(interaction.channel, "id", getattr(interaction, "channel_id", None))}/{interaction.user.id}'
-            char_info = info_from_s3(key, get_s3_client())
-            if not char_info:
+            from playbook_interactions import get_advancements_slash, build_advancements_embed
+            char_info = get_advancements_slash(interaction, 'en')
+            if char_info is None:
                 await interaction.response.send_message("I'm sorry but it appears you have no character created", ephemeral=True)
                 return
-            from playbook_interactions import format_advancements
-            await interaction.response.send_message(format_advancements(char_info["advancement"], 'en'), ephemeral=True)
+            embed = build_advancements_embed(char_info)
+            await interaction.response.send_message(embed=embed, view=AdvancementsView(interaction, char_info), ephemeral=True)
 
         @discord.ui.button(label="Show Moves", style=discord.ButtonStyle.secondary, custom_id="dashboard_moves", row=1)
         async def show_moves(self, interaction: discord.Interaction, _button: discord.ui.Button):
