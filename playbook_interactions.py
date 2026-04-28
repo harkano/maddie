@@ -534,18 +534,32 @@ def get_conditions(message, lang):
     char_info = info_from_s3(key, s3_client)
     if not char_info:
         return get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.no_character')
-
     return format_conditions(char_info[CONDITIONS], lang)
 
+
+def build_conditions_embed(char_info):
+    import discord
+    char_name = char_info.get('characterName', 'Unknown')
+    embed = discord.Embed(
+        title=f"{char_name}'s Conditions",
+        description="Select a condition below to toggle it marked or cleared.",
+        color=0xE74C3C
+    )
+    conditions = char_info.get('conditions', {})
+    for cond_name, is_marked in conditions.items():
+        status = '\u274C Marked' if is_marked else '\u2705 Clear'
+        embed.add_field(name=f"{status} — {cond_name}", value='\u200b', inline=False)
+    if not embed.fields:
+        embed.description = "No conditions found."
+    return embed
 
 def get_conditions_slash(ctx, lang):
     key = get_key_from_ctx(ctx)
     s3_client = get_s3_client()
     char_info = info_from_s3(key, s3_client)
     if not char_info:
-        return get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.no_character')
-
-    return format_conditions(char_info[CONDITIONS], lang)
+        return None, get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.no_character')
+    return char_info
 
 
 def get_potential(message, lang):

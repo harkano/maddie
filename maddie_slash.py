@@ -257,47 +257,50 @@ async def setup(bot):
                 await interaction.response.edit_message(content="Toggle influence over characters:", view=self)
             return callback
 
-    class MarkConditionView(discord.ui.View):
-        def __init__(self, original_interaction):
+    class ConditionsView(discord.ui.View):
+        def __init__(self, original_interaction, char_info):
             super().__init__()
             self.original_interaction = original_interaction
+            self.char_info = char_info
+            self._rebuild_select()
 
-        @discord.ui.select(placeholder="Select a condition to mark", options=[
-            discord.SelectOption(label="Afraid", value="afraid"),
-            discord.SelectOption(label="Angry", value="angry"),
-            discord.SelectOption(label="Guilty", value="guilty"),
-            discord.SelectOption(label="Hopeless", value="hopeless"),
-            discord.SelectOption(label="Insecure", value="insecure"),
-            discord.SelectOption(label="Damaged", value="damaged"),
-        ])
-        async def select_callback(self, select_interaction: discord.Interaction, select: discord.ui.Select):
-            if select_interaction.user.id != self.original_interaction.user.id:
-                await select_interaction.response.send_message("This menu is not for you.", ephemeral=True)
-                return
-            from playbook_interactions import condition_slash
-            result = condition_slash(select_interaction, 'en', select.values[0], 'mark')
-            await select_interaction.response.send_message(result)
-            
-    class ClearConditionView(discord.ui.View):
-        def __init__(self, original_interaction):
-            super().__init__()
-            self.original_interaction = original_interaction
+        def _rebuild_select(self):
+            self.clear_items()
+            conditions = self.char_info.get('conditions', {})
+            options = []
+            cond_display = {
+                'afraid': 'Afraid',
+                'angry': 'Angry',
+                'guilty': 'Guilty',
+                'hopeless': 'Hopeless',
+                'insecure': 'Insecure',
+                'damaged': 'Damaged',
+            }
+            for cond_key, cond_name in cond_display.items():
+                is_marked = conditions.get(cond_key, False)
+                status = '\u274C Marked' if is_marked else '\u2705 Clear'
+                options.append(discord.SelectOption(
+                    label=f"{status} {cond_name}",
+                    value=cond_key,
+                    description='Clear this condition' if is_marked else 'Mark this condition',
+                ))
+            select = discord.ui.Select(placeholder='Toggle a condition', options=options)
+            select.callback = self.select_callback
+            self.add_item(select)
 
-        @discord.ui.select(placeholder="Select a condition to clear", options=[
-            discord.SelectOption(label="Afraid", value="afraid"),
-            discord.SelectOption(label="Angry", value="angry"),
-            discord.SelectOption(label="Guilty", value="guilty"),
-            discord.SelectOption(label="Hopeless", value="hopeless"),
-            discord.SelectOption(label="Insecure", value="insecure"),
-            discord.SelectOption(label="Damaged", value="damaged"),
-        ])
-        async def select_callback(self, select_interaction: discord.Interaction, select: discord.ui.Select):
+        async def select_callback(self, select_interaction: discord.Interaction):
             if select_interaction.user.id != self.original_interaction.user.id:
-                await select_interaction.response.send_message("This menu is not for you.", ephemeral=True)
+                await select_interaction.response.send_message('This menu is not for you.', ephemeral=True)
                 return
-            from playbook_interactions import condition_slash
-            result = condition_slash(select_interaction, 'en', select.values[0], 'clear')
-            await select_interaction.response.send_message(result)
+            condition = select_interaction.data['values'][0]
+            from playbook_interactions import invert_condition_slash, build_conditions_embed
+            public_result = invert_condition_slash(select_interaction, 'en', condition)
+            key = f'{getattr(select_interaction.channel, "id", getattr(select_interaction, "channel_id", None))}/{select_interaction.user.id}'
+            self.char_info = info_from_s3(key, get_s3_client())
+            self._rebuild_select()
+            updated_embed = build_conditions_embed(self.char_info)
+            await select_interaction.response.edit_message(embed=updated_embed, view=self)
+            await select_interaction.followup.send(public_result)
 
     class MovesView(discord.ui.View):
         def __init__(self, original_interaction, char_info, all_moves):
@@ -372,8 +375,13 @@ async def setup(bot):
             if interaction.user.id != self.original_interaction.user.id:
                 await interaction.response.send_message("This dashboard is not for you.", ephemeral=True)
                 return
-            from playbook_interactions import get_conditions_slash
-            await interaction.response.send_message(get_conditions_slash(interaction, 'en'), ephemeral=True)
+            from playbook_interactions import get_conditions_slash, build_conditions_embed
+            char_info = get_conditions_slash(interaction, 'en')
+            if char_info is None:
+                await interaction.response.send_message("I'm sorry but it appears you have no character created", ephemeral=True)
+                return
+            embed = build_conditions_embed(char_info)
+            await interaction.response.send_message(embed=embed, view=ConditionsView(interaction, char_info), ephemeral=True)
 
         @discord.ui.button(label="Show Advancements", style=discord.ButtonStyle.success, custom_id="dashboard_advancements", row=0)
         async def show_advancements(self, interaction: discord.Interaction, _button: discord.ui.Button):
@@ -415,20 +423,6 @@ async def setup(bot):
             else:
                 view = InfluenceView(interaction, char_info)
                 await interaction.response.send_message("Toggle your influence over characters:", view=view, ephemeral=True)
-
-        @discord.ui.button(label="Mark Condition", style=discord.ButtonStyle.danger, custom_id="dashboard_mark", row=1)
-        async def mark_condition_btn(self, interaction: discord.Interaction, _button: discord.ui.Button):
-            if interaction.user.id != self.original_interaction.user.id:
-                await interaction.response.send_message("This dashboard is not for you.", ephemeral=True)
-                return
-            await interaction.response.send_message("Which condition do you want to mark?", view=MarkConditionView(interaction), ephemeral=True)
-
-        @discord.ui.button(label="Clear Condition", style=discord.ButtonStyle.primary, custom_id="dashboard_clear", row=1)
-        async def clear_condition_btn(self, interaction: discord.Interaction, _button: discord.ui.Button):
-            if interaction.user.id != self.original_interaction.user.id:
-                await interaction.response.send_message("This dashboard is not for you.", ephemeral=True)
-                return
-            await interaction.response.send_message("Which condition do you want to clear?", view=ClearConditionView(interaction), ephemeral=True)
 
     @bot.tree.command(name="me", description="Retrieve character information via a Dashboard")
     async def me(interaction: discord.Interaction):
