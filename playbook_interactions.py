@@ -569,44 +569,44 @@ def get_moves(message, lang):
 
     return format_moves(char_info[MOVES])
 
+def build_moves_embed(char_info, all_moves):
+    import discord
+    char_name = char_info.get('characterName', 'Unknown')
+    playbook = char_info.get('playbook', '').capitalize()
+    embed = discord.Embed(
+        title=f"{char_name}'s Moves",
+        description=f"{playbook} — select a move below to toggle it on or off.",
+        color=0x53B0B9
+    )
+    character_moves = char_info.get('moves', [])
+    for char_move in character_moves:
+        move_id = char_move.get('id')
+        picked = char_move.get('picked', False)
+        move_data = next((m for m in all_moves if m['id'] == move_id), None)
+        if move_data:
+            move_name = move_data.get('capital', f'Move {move_id}')
+            move_text = move_data.get('blob', 'No description available.')
+            status = '✅ Taken' if picked else '⬜ Not Taken'
+            embed.add_field(
+                name=f"{status} — {move_name}",
+                value=move_text[:1024],
+                inline=False
+            )
+    if not embed.fields:
+        embed.description = "No moves found on your character sheet."
+    return embed
+
 def get_moves_slash(ctx, lang):
     key = get_key_from_ctx(ctx)
     s3_client = get_s3_client()
     char_info = info_from_s3(key, s3_client)
     if not char_info:
-        return [get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.no_character')]
+        return None, get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.no_character')
 
-    # Load all moves from data.json
     with open('data.json', 'r') as f:
         all_moves = json.load(f)['moves']
 
-    # Get character's moves
-    character_moves = char_info.get('moves', [])
-
-    chunks = []
-    current = "Your character's moves:\n"
-    for char_move in character_moves:
-        move_id = char_move.get('id')
-        picked = char_move.get('picked', False)
-
-        move_data = next((move for move in all_moves if move['id'] == move_id), None)
-
-        if move_data:
-            move_name = move_data.get('capital', 'Unknown Move')
-            move_text = move_data.get('blob', 'No description available.')
-            taken_status = " (Taken)" if picked else " (Not Taken)"
-            entry = f"**{move_name}**{taken_status}\n- {move_text}\n\n"
-
-            if len(current) + len(entry) > 1900:
-                chunks.append(current)
-                current = entry
-            else:
-                current += entry
-
-    if current:
-        chunks.append(current)
-
-    return chunks if chunks else ["No moves found on your character sheet."]
+    return char_info, all_moves
 
 
 def toggle_move_picked(ctx, move_id, picked):
