@@ -514,10 +514,7 @@ async def setup(bot):
                     return
                 elif adv_description == 'loseInfluence':
                     view = LoseInfluenceAdvancementView(self.original_interaction, self.char_info, adv_key)
-                    if view.has_influence_targets:
-                        await select_interaction.response.send_message('Select a character to remove influence from and a label to add +1 to:', view=view, ephemeral=True)
-                    else:
-                        await select_interaction.response.send_message('You have no established influence targets. This advancement cannot be applied.', ephemeral=True)
+                    await select_interaction.response.send_message('Select a label to add +1 to:', view=view, ephemeral=True)
                     return
 
             # Normal advancement toggle
@@ -708,33 +705,13 @@ async def setup(bot):
             self.original_interaction = original_interaction
             self.char_info = char_info
             self.adv_key = adv_key
-            self.target = None
             self.add_label = None
-
-            influence_over = char_info.get('influenceOver', [])
-            self.has_influence_targets = len(influence_over) > 0 and any(char.get('hasInfluence', False) for char in influence_over)
-
             self._rebuild_view()
 
         def _rebuild_view(self):
             self.clear_items()
             labels = self.char_info.get('labels', {})
-            influence_over = self.char_info.get('influenceOver', [])
             label_order = ['danger', 'freak', 'superior', 'savior', 'mundane', 'soldier']
-
-            target_options = []
-            for char in influence_over:
-                if char.get('hasInfluence', False):
-                    target_options.append(discord.SelectOption(
-                        label=char['id'],
-                        value=char['id'],
-                    ))
-
-            if not target_options:
-                target_options = [discord.SelectOption(label='No influence targets', value='none')]
-            target_select = discord.ui.Select(placeholder='Remove influence from', options=target_options, custom_id='target', row=0)
-            target_select.callback = self.select_callback
-            self.add_item(target_select)
 
             add_options = []
             for label_key in label_order:
@@ -749,15 +726,15 @@ async def setup(bot):
 
             if not add_options:
                 add_options = [discord.SelectOption(label='No labels can be increased', value='none')]
-            add_select = discord.ui.Select(placeholder='Label for +1', options=add_options, custom_id='add_label', row=1)
+            add_select = discord.ui.Select(placeholder='Label for +1', options=add_options, custom_id='add_label', row=0)
             add_select.callback = self.select_callback
             self.add_item(add_select)
 
-            confirm_btn = discord.ui.Button(label='Confirm', style=discord.ButtonStyle.primary, custom_id='confirm', row=2)
+            confirm_btn = discord.ui.Button(label='Confirm', style=discord.ButtonStyle.primary, custom_id='confirm', row=1)
             confirm_btn.callback = self.confirm_callback
             self.add_item(confirm_btn)
 
-            cancel_btn = discord.ui.Button(label='Cancel', style=discord.ButtonStyle.secondary, custom_id='cancel', row=2)
+            cancel_btn = discord.ui.Button(label='Cancel', style=discord.ButtonStyle.secondary, custom_id='cancel', row=1)
             cancel_btn.callback = self.cancel_callback
             self.add_item(cancel_btn)
 
@@ -765,12 +742,7 @@ async def setup(bot):
             if select_interaction.user.id != self.original_interaction.user.id:
                 await select_interaction.response.send_message('This menu is not for you.', ephemeral=True)
                 return
-            custom_id = select_interaction.data['custom_id']
-            value = select_interaction.data['values'][0]
-            if custom_id == 'target':
-                self.target = value
-            elif custom_id == 'add_label':
-                self.add_label = value
+            self.add_label = select_interaction.data['values'][0]
             self._rebuild_view()
             await select_interaction.response.edit_message(view=self)
 
@@ -778,13 +750,13 @@ async def setup(bot):
             if button_interaction.user.id != self.original_interaction.user.id:
                 await button_interaction.response.send_message('This menu is not for you.', ephemeral=True)
                 return
-            if not self.target or not self.add_label:
-                await button_interaction.response.send_message('Please select both an influence target and a label to add +1 to.', ephemeral=True)
+            if not self.add_label:
+                await button_interaction.response.send_message('Please select a label to add +1 to.', ephemeral=True)
                 return
 
-            from playbook_interactions import apply_lose_influence_advancement, toggle_advancement_slash
+            from playbook_interactions import apply_rearrange_advancement, toggle_advancement_slash
 
-            public_result = apply_lose_influence_advancement(button_interaction, 'en', self.target, self.add_label)
+            public_result = apply_rearrange_advancement(button_interaction, 'en', self.add_label)
             toggle_result = toggle_advancement_slash(button_interaction, 'en', self.adv_key)
 
             await button_interaction.response.edit_message(content=f"{public_result}\nAdvancement marked as taken.", view=None, embed=None)
