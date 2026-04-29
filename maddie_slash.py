@@ -516,6 +516,18 @@ async def setup(bot):
                     view = LoseInfluenceAdvancementView(self.original_interaction, self.char_info, adv_key)
                     await select_interaction.response.send_message('Select a label to add +1 to:', view=view, ephemeral=True)
                     return
+                elif adv_description == 'moveYouPlaybook':
+                    view = AddOwnPlaybookMoveAdvancementView(self.original_interaction, self.char_info, adv_key)
+                    await select_interaction.response.send_message('Select a move from your playbook to add:', view=view, ephemeral=True)
+                    return
+                elif adv_description == 'moveOtherPlaybook':
+                    view = AddOtherPlaybookMoveAdvancementView(self.original_interaction, self.char_info, adv_key)
+                    await select_interaction.response.send_message('First select a playbook, then choose a move to add:', view=view, ephemeral=True)
+                    return
+                elif adv_description == 'adult':
+                    view = AddAdultMoveAdvancementView(self.original_interaction, self.char_info, adv_key)
+                    await select_interaction.response.send_message('Select an adult move to add:', view=view, ephemeral=True)
+                    return
 
             # Normal advancement toggle
             from playbook_interactions import toggle_advancement_slash, build_advancements_embed
@@ -757,6 +769,240 @@ async def setup(bot):
             from playbook_interactions import apply_rearrange_advancement, toggle_advancement_slash
 
             public_result = apply_rearrange_advancement(button_interaction, 'en', self.add_label)
+            toggle_result = toggle_advancement_slash(button_interaction, 'en', self.adv_key)
+
+            await button_interaction.response.edit_message(content=f"{public_result}\nAdvancement marked as taken.", view=None, embed=None)
+            await button_interaction.followup.send(toggle_result)
+
+        async def cancel_callback(self, button_interaction: discord.Interaction):
+            if button_interaction.user.id != self.original_interaction.user.id:
+                await button_interaction.response.send_message('This menu is not for you.', ephemeral=True)
+                return
+            await button_interaction.response.edit_message(content='Advancement cancelled.', view=None, embed=None)
+
+    class AddOwnPlaybookMoveAdvancementView(discord.ui.View):
+        def __init__(self, original_interaction, char_info, adv_key):
+            super().__init__()
+            self.original_interaction = original_interaction
+            self.char_info = char_info
+            self.adv_key = adv_key
+            self.selected_move = None
+            self._rebuild_view()
+
+        def _rebuild_view(self):
+            self.clear_items()
+            from utils import get_moves as get_moves_json_array
+            all_moves = get_moves_json_array('en').get('moves', [])
+            own_playbook = self.char_info.get('playbook', '')
+            char_moves = self.char_info.get('moves', [])
+
+            options = []
+            for move in all_moves:
+                if move.get('playbook') == own_playbook:
+                    move_id = move.get('id')
+                    char_move = next((m for m in char_moves if m.get('id') == move_id), None)
+                    if char_move and not char_move.get('picked', False):
+                        options.append(discord.SelectOption(
+                            label=f"{move.get('capital', 'Unknown')}"[:100],
+                            value=str(move_id),
+                        ))
+
+            if not options:
+                options = [discord.SelectOption(label='No moves available to pick', value='none')]
+            select = discord.ui.Select(placeholder='Select a move to add', options=options, custom_id='pick_move', row=0)
+            select.callback = self.select_callback
+            self.add_item(select)
+
+            confirm_btn = discord.ui.Button(label='Confirm', style=discord.ButtonStyle.primary, custom_id='confirm', row=1)
+            confirm_btn.callback = self.confirm_callback
+            self.add_item(confirm_btn)
+
+            cancel_btn = discord.ui.Button(label='Cancel', style=discord.ButtonStyle.secondary, custom_id='cancel', row=1)
+            cancel_btn.callback = self.cancel_callback
+            self.add_item(cancel_btn)
+
+        async def select_callback(self, select_interaction: discord.Interaction):
+            if select_interaction.user.id != self.original_interaction.user.id:
+                await select_interaction.response.send_message('This menu is not for you.', ephemeral=True)
+                return
+            self.selected_move = select_interaction.data['values'][0]
+            self._rebuild_view()
+            await select_interaction.response.edit_message(view=self)
+
+        async def confirm_callback(self, button_interaction: discord.Interaction):
+            if button_interaction.user.id != self.original_interaction.user.id:
+                await button_interaction.response.send_message('This menu is not for you.', ephemeral=True)
+                return
+            if not self.selected_move or self.selected_move == 'none':
+                await button_interaction.response.send_message('Please select a move.', ephemeral=True)
+                return
+
+            from playbook_interactions import apply_add_own_playbook_move, toggle_advancement_slash
+            public_result = apply_add_own_playbook_move(button_interaction, 'en', int(self.selected_move))
+            toggle_result = toggle_advancement_slash(button_interaction, 'en', self.adv_key)
+
+            await button_interaction.response.edit_message(content=f"{public_result}\nAdvancement marked as taken.", view=None, embed=None)
+            await button_interaction.followup.send(toggle_result)
+
+        async def cancel_callback(self, button_interaction: discord.Interaction):
+            if button_interaction.user.id != self.original_interaction.user.id:
+                await button_interaction.response.send_message('This menu is not for you.', ephemeral=True)
+                return
+            await button_interaction.response.edit_message(content='Advancement cancelled.', view=None, embed=None)
+
+    class AddOtherPlaybookMoveAdvancementView(discord.ui.View):
+        def __init__(self, original_interaction, char_info, adv_key):
+            super().__init__()
+            self.original_interaction = original_interaction
+            self.char_info = char_info
+            self.adv_key = adv_key
+            self.selected_playbook = None
+            self.selected_move = None
+            self._rebuild_view()
+
+        def _rebuild_view(self):
+            self.clear_items()
+            from utils import get_moves as get_moves_json_array
+            all_moves = get_moves_json_array('en').get('moves', [])
+            own_playbook = self.char_info.get('playbook', '')
+            char_moves = self.char_info.get('moves', [])
+            char_move_ids = {m.get('id') for m in char_moves}
+
+            if not self.selected_playbook:
+                # Step 1: pick a playbook
+                playbooks = set()
+                for move in all_moves:
+                    pb = move.get('playbook', '')
+                    if pb and pb != own_playbook and pb != 'basic' and pb != 'adult':
+                        playbooks.add(pb)
+
+                options = []
+                for pb in sorted(playbooks):
+                    options.append(discord.SelectOption(label=pb.capitalize(), value=pb))
+
+                if not options:
+                    options = [discord.SelectOption(label='No other playbooks available', value='none')]
+                select = discord.ui.Select(placeholder='Select a playbook', options=options, custom_id='pick_playbook', row=0)
+                select.callback = self.select_callback
+                self.add_item(select)
+            else:
+                # Step 2: pick a move from the selected playbook
+                options = []
+                for move in all_moves:
+                    if move.get('playbook') == self.selected_playbook:
+                        move_id = move.get('id')
+                        if move_id not in char_move_ids:
+                            options.append(discord.SelectOption(
+                                label=f"{move.get('capital', 'Unknown')}"[:100],
+                                value=str(move_id),
+                            ))
+
+                if not options:
+                    options = [discord.SelectOption(label='No moves available from this playbook', value='none')]
+                select = discord.ui.Select(placeholder=f"Select a move from {self.selected_playbook.capitalize()}", options=options, custom_id='pick_move', row=0)
+                select.callback = self.select_callback
+                self.add_item(select)
+
+            confirm_btn = discord.ui.Button(label='Confirm', style=discord.ButtonStyle.primary, custom_id='confirm', row=1)
+            confirm_btn.callback = self.confirm_callback
+            self.add_item(confirm_btn)
+
+            cancel_btn = discord.ui.Button(label='Cancel', style=discord.ButtonStyle.secondary, custom_id='cancel', row=1)
+            cancel_btn.callback = self.cancel_callback
+            self.add_item(cancel_btn)
+
+        async def select_callback(self, select_interaction: discord.Interaction):
+            if select_interaction.user.id != self.original_interaction.user.id:
+                await select_interaction.response.send_message('This menu is not for you.', ephemeral=True)
+                return
+            custom_id = select_interaction.data['custom_id']
+            value = select_interaction.data['values'][0]
+            if custom_id == 'pick_playbook':
+                self.selected_playbook = value
+            elif custom_id == 'pick_move':
+                self.selected_move = value
+            self._rebuild_view()
+            await select_interaction.response.edit_message(view=self)
+
+        async def confirm_callback(self, button_interaction: discord.Interaction):
+            if button_interaction.user.id != self.original_interaction.user.id:
+                await button_interaction.response.send_message('This menu is not for you.', ephemeral=True)
+                return
+            if not self.selected_move or self.selected_move == 'none':
+                await button_interaction.response.send_message('Please select a move.', ephemeral=True)
+                return
+
+            from playbook_interactions import apply_add_other_playbook_move, toggle_advancement_slash
+            public_result = apply_add_other_playbook_move(button_interaction, 'en', int(self.selected_move))
+            toggle_result = toggle_advancement_slash(button_interaction, 'en', self.adv_key)
+
+            await button_interaction.response.edit_message(content=f"{public_result}\nAdvancement marked as taken.", view=None, embed=None)
+            await button_interaction.followup.send(toggle_result)
+
+        async def cancel_callback(self, button_interaction: discord.Interaction):
+            if button_interaction.user.id != self.original_interaction.user.id:
+                await button_interaction.response.send_message('This menu is not for you.', ephemeral=True)
+                return
+            await button_interaction.response.edit_message(content='Advancement cancelled.', view=None, embed=None)
+
+    class AddAdultMoveAdvancementView(discord.ui.View):
+        def __init__(self, original_interaction, char_info, adv_key):
+            super().__init__()
+            self.original_interaction = original_interaction
+            self.char_info = char_info
+            self.adv_key = adv_key
+            self.selected_move = None
+            self._rebuild_view()
+
+        def _rebuild_view(self):
+            self.clear_items()
+            from utils import get_moves as get_moves_json_array
+            all_moves = get_moves_json_array('en').get('moves', [])
+            char_moves = self.char_info.get('moves', [])
+            char_move_ids = {m.get('id') for m in char_moves}
+
+            options = []
+            for move in all_moves:
+                if move.get('playbook') == 'adult':
+                    move_id = move.get('id')
+                    if move_id not in char_move_ids:
+                        options.append(discord.SelectOption(
+                            label=f"{move.get('capital', 'Unknown')}"[:100],
+                            value=str(move_id),
+                        ))
+
+            if not options:
+                options = [discord.SelectOption(label='No adult moves available', value='none')]
+            select = discord.ui.Select(placeholder='Select an adult move to add', options=options, custom_id='pick_move', row=0)
+            select.callback = self.select_callback
+            self.add_item(select)
+
+            confirm_btn = discord.ui.Button(label='Confirm', style=discord.ButtonStyle.primary, custom_id='confirm', row=1)
+            confirm_btn.callback = self.confirm_callback
+            self.add_item(confirm_btn)
+
+            cancel_btn = discord.ui.Button(label='Cancel', style=discord.ButtonStyle.secondary, custom_id='cancel', row=1)
+            cancel_btn.callback = self.cancel_callback
+            self.add_item(cancel_btn)
+
+        async def select_callback(self, select_interaction: discord.Interaction):
+            if select_interaction.user.id != self.original_interaction.user.id:
+                await select_interaction.response.send_message('This menu is not for you.', ephemeral=True)
+                return
+            self.selected_move = select_interaction.data['values'][0]
+            self._rebuild_view()
+            await select_interaction.response.edit_message(view=self)
+
+        async def confirm_callback(self, button_interaction: discord.Interaction):
+            if button_interaction.user.id != self.original_interaction.user.id:
+                await button_interaction.response.send_message('This menu is not for you.', ephemeral=True)
+                return
+            if not self.selected_move or self.selected_move == 'none':
+                await button_interaction.response.send_message('Please select a move.', ephemeral=True)
+                return
+
+            from playbook_interactions import apply_add_adult_move, toggle_advancement_slash
+            public_result = apply_add_adult_move(button_interaction, 'en', int(self.selected_move))
             toggle_result = toggle_advancement_slash(button_interaction, 'en', self.adv_key)
 
             await button_interaction.response.edit_message(content=f"{public_result}\nAdvancement marked as taken.", view=None, embed=None)

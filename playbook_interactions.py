@@ -3,7 +3,7 @@ import json
 from storage import info_from_s3, get_s3_client, upload_to_s3, get_files_from_dir, s3_delete, get_char_files_from_dir
 from language_handler import get_translation
 from utils import get_moves as get_moves_json_array, get_key_and_content_from_message, get_args_from_content, format_labels, validate_labels, get_folder_from_message, get_key_from_ctx, get_key_and_content_from_ctx, format_labels_changed, get_channel_from_ctx
-from constants import  LABELS, VALUE, LOCKED, POTENTIAL, PENDING_ADVANCEMENTS, CONDITIONS, MOVES, ADVANCEMENT, MAX_LABEL_VALUE, MIN_LABEL_VALUE, PLAYBOOK_INTERACTIONS, DESCRIPTION, TAKEN
+from constants import  LABELS, VALUE, LOCKED, POTENTIAL, PENDING_ADVANCEMENTS, CONDITIONS, MOVES, ADVANCEMENT, MAX_LABEL_VALUE, MIN_LABEL_VALUE, PLAYBOOK_INTERACTIONS, DESCRIPTION, TAKEN, ID, PICKED, PLAYBOOK, SHORT_NAME, SPECIAL, ADULT
 
 # These are the auxiliar functions
 
@@ -791,7 +791,7 @@ def get_advancement_description(char_info, advance_key):
 
 def is_special_advancement(description):
     """Check if an advancement requires special handling."""
-    return description in ['lock', 'rearrange', 'loseInfluence', 'lockSoldier']
+    return description in ['lock', 'rearrange', 'loseInfluence', 'lockSoldier', 'moveYouPlaybook', 'moveOtherPlaybook', 'adult']
 
 def apply_lock_advancement(ctx, lang, lock_label_key, add_label_key):
     """Apply the lock advancement: lock one label, add +1 to another."""
@@ -881,14 +881,90 @@ def apply_lose_influence_advancement(ctx, lang, target_name, add_label_key):
     current_value = labels[add_label_key][VALUE]
     if current_value < MAX_LABEL_VALUE:
         labels[add_label_key][VALUE] = current_value + 1
+    return f"**{char_name}** ({player_name}) removed influence from **{target_name}** and added +1 to **{add_label_name}**."
 
+def apply_add_own_playbook_move(ctx, lang, move_id):
+    """Apply the 'take another move from your playbook' advancement."""
+    key = get_key_from_ctx(ctx)
+    s3_client = get_s3_client()
+    char_info = info_from_s3(key, s3_client)
+    if not char_info:
+        return get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.no_character')
+
+    char_moves = char_info.get(MOVES, [])
+    move_entry = next((m for m in char_moves if m.get(ID) == move_id), None)
+    if not move_entry:
+        return "That move is not available for your playbook."
+
+    if move_entry.get(PICKED, False):
+        return get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.move_already_taken')
+
+    char_info[PENDING_ADVANCEMENTS] = char_info.get(PENDING_ADVANCEMENTS, 0) - 1
+    move_entry[PICKED] = True
     upload_to_s3(char_info, key, s3_client)
 
-    char_name = char_info.get('characterName', 'Unknown')
-    player_name = char_info.get('playerName', 'Unknown')
-    add_label_name = get_translation(lang, f'labels.{add_label_key}')
+    moves_array = get_moves_json_array(lang)[MOVES]
+    move_data = next((m for m in moves_array if m.get(ID) == move_id), None)
+    move_name = move_data.get(SHORT_NAME, 'Unknown') if move_data else 'Unknown'
 
-    return f"**{char_name}** ({player_name}) removed influence from **{target_name}** and added +1 to **{add_label_name}**."
+    return get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.successfully_added_move')(move_name)
+
+
+def apply_add_other_playbook_move(ctx, lang, move_id):
+    """Apply the 'take a move from another playbook' advancement."""
+    key = get_key_from_ctx(ctx)
+    s3_client = get_s3_client()
+    char_info = info_from_s3(key, s3_client)
+    if not char_info:
+        return get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.no_character')
+
+    moves_array = get_moves_json_array(lang)[MOVES]
+    move_data = next((m for m in moves_array if m.get(ID) == move_id), None)
+    if not move_data:
+        return get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.no_moves_pb')
+
+    if move_data.get(PLAYBOOK) == char_info.get(PLAYBOOK):
+        return get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.your_playbook')
+
+    char_moves = char_info.get(MOVES, [])
+    if any(m.get(ID) == move_id for m in char_moves):
+        return get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.move_already_taken')
+
+    char_info[PENDING_ADVANCEMENTS] = char_info.get(PENDING_ADVANCEMENTS, 0) - 1
+    char_info[MOVES].append({ID: move_id, PICKED: True})
+    upload_to_s3(char_info, key, s3_client)
+
+    move_name = move_data.get(SHORT_NAME, 'Unknown')
+    return get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.successfully_added_move')(move_name)
+
+
+def apply_add_adult_move(ctx, lang, move_id):
+    """Apply the 'take an adult move' advancement."""
+    key = get_key_from_ctx(ctx)
+    s3_client = get_s3_client()
+    char_info = info_from_s3(key, s3_client)
+    if not char_info:
+        return get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.no_character')
+
+    moves_array = get_moves_json_array(lang)[MOVES]
+    move_data = next((m for m in moves_array if m.get(ID) == move_id), None)
+    if not move_data:
+        return get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.no_moves_pb')
+
+    if move_data.get(PLAYBOOK) != ADULT:
+        return get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.not_adult')(move_data.get(SHORT_NAME, 'Unknown'))
+
+    char_moves = char_info.get(MOVES, [])
+    if any(m.get(ID) == move_id for m in char_moves):
+        return get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.move_already_taken')
+
+    char_info[PENDING_ADVANCEMENTS] = char_info.get(PENDING_ADVANCEMENTS, 0) - 1
+    char_info[MOVES].append({ID: move_id, PICKED: True})
+    upload_to_s3(char_info, key, s3_client)
+
+    move_name = move_data.get(SHORT_NAME, 'Unknown')
+    return get_translation(lang, f'{PLAYBOOK_INTERACTIONS}.successfully_added_move')(move_name)
+
 
 def print_playbook(message, lang):
     key, _content = get_key_and_content_from_message(message)
